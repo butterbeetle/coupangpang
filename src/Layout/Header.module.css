@@ -1,0 +1,19 @@
+* {
+  list-style: none;
+}
+
+.header {
+  display: flex;
+}
+
+.SearchBox {
+  display: flex;
+}
+
+ul {
+  display: flex;
+}
+
+li {
+  margin: 0 5px;
+}

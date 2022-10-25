@@ -6,7 +6,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   return (
-    <header className={classes.header}>
+    <article className={classes.article}>
       <nav>
         <ul>
           <li>즐겨찾기</li>
@@ -22,7 +22,7 @@ const Navigation = () => {
           <li>고객센터</li>
         </ul>
       </nav>
-    </header>
+    </article>
   );
 };
 

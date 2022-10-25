@@ -1,12 +1,22 @@
+import classes from "./Header.module.css";
+
 const Header = () => {
   return (
-    <header>
-      <section>
-        <div>
+    <section>
+      <header className={classes.header}>
+        <div
+          style={{
+            backgroundColor: "#477DEF",
+            width: "115px",
+            height: "115px",
+            color: "white",
+          }}
+        >
+          <p>Icon</p>
           <p>카테고리</p>
         </div>
         <div>
-          <div>
+          <div className={classes.SearchBox}>
             <span>COUPANGPANG</span>
             <p>검색창</p>
             <ul>
@@ -29,8 +39,8 @@ const Header = () => {
             </ul>
           </div>
         </div>
-      </section>
-    </header>
+      </header>
+    </section>
   );
 };
 
