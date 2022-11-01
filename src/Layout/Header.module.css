@@ -31,10 +31,13 @@
 .searchBar {
   display: flex;
   align-items: center;
+  height: 80px;
 }
 .searchBar li {
   display: flex;
   flex-direction: column;
+  font-size: 12px;
+  margin: 0 15px;
 }
 .searchBar h1 {
   margin: auto 25px;
@@ -45,10 +48,11 @@
 
 .searchMenu {
   font-size: 12px;
+  padding-bottom: 15px;
 }
 .searchMenu ul {
   display: flex;
 }
 .searchMenu li {
-  padding: 5px 15px 0;
+  padding: 0 15px;
 }
