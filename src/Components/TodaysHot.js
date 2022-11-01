@@ -1,6 +1,8 @@
+import classes from "./TodaysHot.module.css";
+
 const TodaysHot = () => {
   return (
-    <section>
+    <section className={classes.todayMain}>
       <img />
       <div>
         <ul>
