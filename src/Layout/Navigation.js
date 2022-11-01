@@ -6,7 +6,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   return (
-    <article className={classes.article}>
+    <div className={classes.topBar}>
       <nav>
         <ul>
           <li>즐겨찾기</li>
@@ -15,14 +15,13 @@ const Navigation = () => {
             <FontAwesomeIcon icon={faCaretDown} />
           </li>
         </ul>
-
         <ul>
           <li>로그인</li>
           <li>회원가입</li>
           <li>고객센터</li>
         </ul>
       </nav>
-    </article>
+    </div>
   );
 };
 

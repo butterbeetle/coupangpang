@@ -3,17 +3,52 @@
 }
 
 .header {
+  width: 1020px;
+  margin: 0 auto;
   display: flex;
 }
 
-.SearchBox {
+.categoryBtn {
+  background-color: #4285f4;
+  width: 110px;
+  height: 115px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+.categoryBtn span {
+  font-size: 13px;
+  margin-top: 10px;
+}
+
+.searchBox {
+  height: 115px;
+  margin-left: 30px;
+}
+
+.searchBar {
+  display: flex;
+  align-items: center;
+}
+.searchBar li {
+  display: flex;
+  flex-direction: column;
+}
+.searchBar h1 {
+  margin: auto 25px;
+}
+.searchBar ul {
   display: flex;
 }
 
-ul {
+.searchMenu {
+  font-size: 12px;
+}
+.searchMenu ul {
   display: flex;
 }
-
-li {
-  margin: 0 5px;
+.searchMenu li {
+  padding: 5px 15px 0;
 }

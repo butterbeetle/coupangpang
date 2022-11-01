@@ -1,29 +1,27 @@
-.article {
-  width: 100%;
-  height: 32px;
+.topBar {
+  width: 1020px;
+  margin: 0 auto;
   background-color: #f0f0f0;
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
-.article nav {
+.topBar nav {
   display: flex;
   justify-content: space-between;
 }
 
-.article ul {
+.topBar ul {
   list-style: none;
   margin: 0;
   padding: 5px 10px;
   display: flex;
-  align-items: baseline;
 }
 
-.article li {
-  font-size: 11px;
-  margin: 3px;
-  padding-left: 5px;
+.topBar li {
+  font-size: 12px;
+  margin: 0.2rem;
+  padding: 0.2rem;
 }
 
-.article span {
+.topBar span {
   padding-right: 3px;
 }
