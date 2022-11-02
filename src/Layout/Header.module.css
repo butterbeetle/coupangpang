@@ -5,6 +5,7 @@
 
 .header {
   width: 1020px;
+  height: 115px;
   margin: 0 auto;
   display: flex;
 }
@@ -20,11 +21,6 @@
   color: white;
 }
 
-.searchBox {
-  width: auto;
-  height: 115px;
-}
-
 .searchBar {
   display: flex;
   align-items: center;
@@ -35,7 +31,6 @@
 }
 .searchBar img {
   width: 200px;
-  height: 45px;
 }
 
 .search {
@@ -72,8 +67,8 @@
   position: relative;
   padding-left: 25px;
   top: -12px;
-  height: 25px;
   display: flex;
+  margin-bottom: 0;
 }
 .gnbMenu li {
   padding: 0 7px;
@@ -84,5 +79,4 @@
 .gnbMenu img {
   padding-right: 5px;
   width: 15px;
-  height: 15px;
 }
