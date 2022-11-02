@@ -6,7 +6,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   return (
-    <div className={classes.topBar}>
+    <section className={classes.topBar}>
       <nav>
         <ul>
           <li>즐겨찾기</li>
@@ -21,7 +21,7 @@ const Navigation = () => {
           <li>고객센터</li>
         </ul>
       </nav>
-    </div>
+    </section>
   );
 };
 

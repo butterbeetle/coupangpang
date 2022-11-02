@@ -1,9 +1,13 @@
 import { Fragment } from "react";
 import classes from "./Header.module.css";
 import Navigation from "./Navigation";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faBars, faShoppingCart } from "@fortawesome/free-solid-svg-icons";
-import { faUser } from "@fortawesome/free-regular-svg-icons";
+//Icon
+import coupangpang_logo from "../img/logo_coupangpang.png";
+import search_click from "../img/search_click.png";
+import search_mic from "../img/search_mic.png";
+import category from "../img/category.png";
+import my_coupang from "../img/my_coupang.png";
+import cart from "../img/cart.png";
 
 const Header = () => {
   return (
@@ -11,24 +15,29 @@ const Header = () => {
       <Navigation />
       <section style={{ backgroundColor: "white" }}>
         <header className={classes.header}>
-          <div className={classes.categoryBtn}>
-            <FontAwesomeIcon icon={faBars} size="2x" />
+          <div className={classes.category}>
+            <img src={category} alt="카테고리" />
             <span>카테고리</span>
           </div>
           <div className={classes.searchBox}>
             <div className={classes.searchBar}>
-              <h1>COUPANGPANG</h1>
-              <div>
+              <img src={coupangpang_logo} alt="로고" />
+              <div className={classes.search}>
                 <input />
-                <button>돋보기</button>
+                <button>
+                  <img src={search_mic} alt="마이크" />
+                </button>
+                <button>
+                  <img src={search_click} alt="검색" />
+                </button>
               </div>
-              <ul>
+              <ul className={classes.userInfo}>
                 <li>
-                  <FontAwesomeIcon icon={faUser} size="2x" />
+                  <img src={my_coupang} alt="내 정보" />
                   <span>마이쿠팡</span>
                 </li>
                 <li>
-                  <FontAwesomeIcon icon={faShoppingCart} size="2x" />
+                  <img src={cart} alt="장바구니" />
                   <span>장바구니</span>
                 </li>
               </ul>

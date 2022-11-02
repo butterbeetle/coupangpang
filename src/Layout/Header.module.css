@@ -7,50 +7,71 @@
   margin: 0 auto;
   display: flex;
 }
-
-.categoryBtn {
-  background-color: #4285f4;
-  width: 110px;
-  height: 115px;
+.category {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  color: white;
+  text-align: center;
 }
-.categoryBtn span {
+.category span {
   font-size: 13px;
-  margin-top: 10px;
+  position: relative;
+  top: -40px;
+  color: white;
 }
 
 .searchBox {
   height: 115px;
-  margin-left: 30px;
 }
 
 .searchBar {
   display: flex;
   align-items: center;
-  height: 80px;
-}
-.searchBar li {
-  display: flex;
-  flex-direction: column;
-  font-size: 12px;
-  margin: 0 15px;
-}
-.searchBar h1 {
-  margin: auto 25px;
+  margin: 10px 30px;
 }
 .searchBar ul {
   display: flex;
 }
+.searchBar img {
+  width: 200px;
+  height: 45px;
+}
+
+.search {
+  display: flex;
+  border: 2px solid #4285f4;
+  margin-left: 15px;
+}
+.search button {
+  background-color: white;
+  border: 0;
+}
+.search img {
+  width: 25px;
+  height: 25px;
+  background-color: white;
+}
+
+.userInfo li {
+  display: flex;
+  flex-direction: column;
+  font-size: 12px;
+  text-align: center;
+  margin: 0 10px;
+}
+.userInfo img {
+  display: block;
+  margin: 0 auto;
+  width: 30px;
+  height: 30px;
+}
 
 .searchMenu {
   font-size: 12px;
-  padding-bottom: 15px;
 }
 .searchMenu ul {
+  position: relative;
+  top: -10px;
+  left: -10px;
   display: flex;
 }
 .searchMenu li {
