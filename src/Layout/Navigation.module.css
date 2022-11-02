@@ -1,5 +1,6 @@
 .topBar {
   width: 1020px;
+  height: 30px;
   margin: 0 auto;
   background-color: #f0f0f0;
 }
@@ -19,7 +20,6 @@
 .topBar li {
   font-size: 12px;
   margin: 0.2rem;
-  padding: 0.2rem;
 }
 
 .topBar span {
