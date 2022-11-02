@@ -1,6 +1,24 @@
-.todayMain {
+.todaySection {
   width: 1020px;
   height: 450px;
   margin: 0 auto;
   background-color: antiquewhite;
+  display: flex;
+  justify-content: center;
+}
+.banner {
+  position: absolute;
+}
+.todaySection ul {
+  position: relative;
+  top: 20px;
+  left: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  z-index: 2;
+}
+
+.todaySection img {
+  vertical-align: top;
 }
