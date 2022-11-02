@@ -1,5 +1,6 @@
 * {
   list-style: none;
+  text-decoration: none;
 }
 
 .header {
@@ -12,7 +13,7 @@
   flex-direction: column;
   text-align: center;
 }
-.category span {
+.category a {
   font-size: 13px;
   position: relative;
   top: -40px;
@@ -20,6 +21,7 @@
 }
 
 .searchBox {
+  width: auto;
   height: 115px;
 }
 
@@ -65,15 +67,22 @@
   height: 30px;
 }
 
-.searchMenu {
+.gnbMenu {
   font-size: 12px;
-}
-.searchMenu ul {
   position: relative;
-  top: -10px;
-  left: -10px;
+  padding-left: 25px;
+  top: -12px;
+  height: 25px;
   display: flex;
 }
-.searchMenu li {
-  padding: 0 15px;
+.gnbMenu li {
+  padding: 0 7px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.gnbMenu img {
+  padding-right: 5px;
+  width: 15px;
+  height: 15px;
 }
