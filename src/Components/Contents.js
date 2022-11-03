@@ -1,7 +1,30 @@
 import classes from "./Contents.module.css";
 
 const Contents = () => {
-  return <section style={{ backgroundColor: "white" }}>Hi</section>;
+  return (
+    <section className={classes.main_contents_box}>
+      <div>
+        <div className={classes.title_box}>
+          <h1>오늘의 발견</h1>
+          <h4>|</h4>
+          <h4>오늘 쿠팡이 엄선한 가장 HOT한 상품!</h4>
+        </div>
+        <div className={classes.today_items}>
+          <div className={classes.today_items_grid}>
+            <div className={classes.today_item1}>item1</div>
+            <div className={classes.today_item2}>item2</div>
+            <div className={classes.today_item3}>item3</div>
+            <div className={classes.today_item4}>item4</div>
+            <div className={classes.today_item5}>item5</div>
+            <div className={classes.today_item6}>item6</div>
+            <div className={classes.today_item7}>item7</div>
+            <div className={classes.today_item8}>item8</div>
+            <div className={classes.today_item9}>item9</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 };
 
 export default Contents;

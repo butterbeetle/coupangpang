@@ -2,8 +2,8 @@
   width: 1020px;
   height: 450px;
   margin: 0 auto;
-  background-color: antiquewhite;
   display: flex;
+  position: relative;
   justify-content: center;
 }
 .banner {
