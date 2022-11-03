@@ -1,11 +1,30 @@
+.main_contents_section {
+  position: relative;
+}
+
 .main_contents_box {
   width: 1020px;
   margin: 0 auto;
 }
-
 .title_box {
   display: flex;
   align-items: baseline;
+}
+
+.side_bar_box {
+  border: 1px solid pink;
+  position: absolute;
+  top: 0;
+  left: 53%;
+  margin: 40px 0 0 500px;
+  width: 200px;
+  height: 500px;
+}
+.side_bar {
+  border: 1px solid red;
+  left: 0;
+  width: 100px;
+  height: 200px;
 }
 
 .today_items {
