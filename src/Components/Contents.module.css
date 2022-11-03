@@ -2,7 +2,7 @@
   position: relative;
 }
 
-.main_contents_box {
+.today_discovery_box {
   width: 1020px;
   margin: 0 auto;
 }
@@ -76,4 +76,11 @@
 .today_item9 {
   grid-area: i;
   border: 1px solid #ccc;
+}
+
+.today_recommend_box {
+  height: 300px;
+}
+.category_recommend_box {
+  height: 300px;
 }

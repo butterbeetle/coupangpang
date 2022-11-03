@@ -6,7 +6,7 @@ const Contents = () => {
       <article className={classes.side_bar_box}>
         <div className={classes.side_bar}></div>
       </article>
-      <article className={classes.main_contents_box}>
+      <article className={classes.today_discovery_box}>
         <div>
           <div className={classes.title_box}>
             <h1>오늘의 발견</h1>
@@ -28,6 +28,8 @@ const Contents = () => {
           </div>
         </div>
       </article>
+      <article className={classes.today_recommend_box}></article>
+      <article className={classes.category_recommend_box}></article>
     </section>
   );
 };
