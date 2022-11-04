@@ -1,4 +1,6 @@
 import classes from "./Contents.module.css";
+// 오늘의 쇼핑 제안
+import today_shopping_item from "../img/today_shopping_item/today_shopping_item1.jpg";
 
 const Contents = () => {
   return (
@@ -46,7 +48,105 @@ const Contents = () => {
           </div>
         </div>
       </article>
-      <article className={classes.today_recommend_box}></article>
+      <article className={classes.today_recommend_box}>
+        <div className={classes.today_shopping_box}>
+          <div className={classes.today_shopping_title_box}>
+            <span>오늘의 쇼핑 제안</span>
+          </div>
+          <div className={classes.today_shopping_items_box}>
+            <ul>
+              <li>
+                <div>
+                  <a href="/">
+                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                    <div>
+                      <span className={classes.shopping_item_title}>
+                        TCL 4K QLED 안드로이드 안드로이드
+                      </span>
+                    </div>
+                    <div>
+                      <span className={classes.empty_star}>
+                        <span className={classes.review_star} />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a href="/">
+                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                    <div>
+                      <span className={classes.shopping_item_title}>
+                        TCL 4K QLED 안드로이드 안드로이드
+                      </span>
+                    </div>
+                    <div>
+                      <span className={classes.empty_star}>
+                        <span className={classes.review_star} />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a href="/">
+                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                    <div>
+                      <span className={classes.shopping_item_title}>
+                        TCL 4K QLED 안드로이드 안드로이드
+                      </span>
+                    </div>
+                    <div>
+                      <span className={classes.empty_star}>
+                        <span className={classes.review_star} />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a href="/">
+                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                    <div>
+                      <span className={classes.shopping_item_title}>
+                        TCL 4K QLED 안드로이드 안드로이드
+                      </span>
+                    </div>
+                    <div>
+                      <span className={classes.empty_star}>
+                        <span className={classes.review_star} />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </li>
+              <li>
+                <div>
+                  <a href="/">
+                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                    <div>
+                      <span className={classes.shopping_item_title}>
+                        TCL 4K QLED 안드로이드 안드로이드
+                      </span>
+                    </div>
+                    <div>
+                      <span className={classes.empty_star}>
+                        <span className={classes.review_star} />
+                      </span>
+                    </div>
+                  </a>
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div className={classes.ad_box}>
+            <span>광고</span>
+          </div>
+        </div>
+      </article>
       <article className={classes.category_recommend_box}></article>
     </section>
   );
