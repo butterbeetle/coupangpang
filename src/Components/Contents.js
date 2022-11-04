@@ -15,15 +15,33 @@ const Contents = () => {
           </div>
           <div className={classes.today_items}>
             <div className={classes.today_items_grid}>
-              <div className={classes.today_item1}>item1</div>
-              <div className={classes.today_item2}>item2</div>
-              <div className={classes.today_item3}>item3</div>
-              <div className={classes.today_item4}>item4</div>
-              <div className={classes.today_item5}>item5</div>
-              <div className={classes.today_item6}>item6</div>
-              <div className={classes.today_item7}>item7</div>
-              <div className={classes.today_item8}>item8</div>
-              <div className={classes.today_item9}>item9</div>
+              <div className={[classes.item, classes.today_item1].join(" ")}>
+                item1
+              </div>
+              <div className={[classes.item, classes.today_item2].join(" ")}>
+                item2
+              </div>
+              <div className={[classes.item, classes.today_item3].join(" ")}>
+                item3
+              </div>
+              <div className={[classes.item, classes.today_item4].join(" ")}>
+                item4
+              </div>
+              <div className={[classes.item, classes.today_item5].join(" ")}>
+                item5
+              </div>
+              <div className={[classes.item, classes.today_item6].join(" ")}>
+                item6
+              </div>
+              <div className={[classes.item, classes.today_item7].join(" ")}>
+                item7
+              </div>
+              <div className={[classes.item, classes.today_item8].join(" ")}>
+                item8
+              </div>
+              <div className={[classes.item, classes.today_item9].join(" ")}>
+                item9
+              </div>
             </div>
           </div>
         </div>

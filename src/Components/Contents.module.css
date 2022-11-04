@@ -41,6 +41,9 @@
   gap: 10px;
   margin: 10px;
 }
+.item:hover {
+  border: 1px solid #0096e4;
+}
 .today_item1 {
   grid-area: a;
   border: 1px solid #ccc;
