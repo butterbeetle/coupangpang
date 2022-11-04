@@ -146,6 +146,110 @@ const Contents = () => {
             <span>광고</span>
           </div>
         </div>
+        <div className={classes.now_recommend_ad_box}>
+          <div className={classes.now_recommend_ad_title_box}>
+            <span>지금 이 상품이 필요하신가요?</span>
+            <span>광고</span>
+            <span>1/3</span>
+          </div>
+          <div className={classes.now_recommend_ad_items_box}>
+            <div>
+              <span className={classes.now_recommend_ad_prev_button}></span>
+            </div>
+            <div className={classes.now_recommend_ad_items}>
+              <ul>
+                <li>
+                  <div>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+                <li>
+                  <div>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </div>
+                </li>
+              </ul>
+            </div>
+            <div>
+              <span className={classes.now_recommend_ad_next_button}></span>
+            </div>
+          </div>
+        </div>
       </article>
       <article className={classes.category_recommend_box}></article>
     </section>
