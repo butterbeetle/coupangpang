@@ -222,6 +222,7 @@
   border-top: 2px solid #f6699e;
   border-bottom: 2px solid #ccc;
   display: flex;
+  margin-bottom: 25px;
 }
 .category_items__title__keyword {
   padding-left: 10px;
@@ -258,4 +259,27 @@
 }
 .test img {
   vertical-align: top;
+}
+
+.test2 {
+  width: auto;
+}
+
+.test3 ul {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 5px 0 0 0;
+  margin: 0;
+}
+.test3 li {
+  width: fit-content;
+  padding: 25px 12px 70px;
+}
+.test3 li:nth-child(-n + 3) {
+  border-bottom: 1px solid #ccc;
+}
+.test3 img {
+  width: 160px;
+  height: 160px;
+  border: 1px solid pink;
 }

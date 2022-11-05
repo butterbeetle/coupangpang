@@ -488,14 +488,276 @@ const Contents = () => {
                 <img src={best_thumnail1} alt="썸넬" />
               </a>
             </div>
-            <div>
-              <span>상품</span>
+            <div className={classes.test2}>
+              <div className={classes.test3}>
+                <ul>
+                  <li>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div className={classes.category_items}>
+            <div className={classes.category_items__title__keyword}>
+              <div className={classes.category_items__title}>
+                <img src={best_title1} alt="Title" />
+                <a href="/">
+                  <span>{"바로가기 >"}</span>
+                </a>
+              </div>
+              <div className={classes.category_items__keyword}>
+                <h4>HOT키워드</h4>
+                <ul>
+                  <li>#반팔 티셔츠</li>
+                  <li>#원피스</li>
+                  <li>#청바지</li>
+                  <li>#에코백</li>
+                  <li>#샌들</li>
+                  <li>#에코백</li>
+                </ul>
+              </div>
+            </div>
+            <div className={classes.test}>
+              <a href="/">
+                <img src={best_thumnail1} alt="썸넬" />
+              </a>
+            </div>
+            <div className={classes.test2}>
+              <div className={classes.test3}>
+                <ul>
+                  <li>
+                    <a href="/">
+                      <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
+                      <div>
+                        <span className={classes.now_recommend_ad_title}>
+                          TCL 4K QLED 안드로이드 안드로이드
+                        </span>
+                      </div>
+                      <div>
+                        <span className={classes.empty_star}>
+                          <span className={classes.review_star} />
+                        </span>
+                      </div>
+                    </a>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                  <li>
+                    <div>
+                      <a href="/">
+                        <img
+                          src={today_shopping_item}
+                          alt="오늘의 쇼핑 제안1"
+                        />
+                        <div>
+                          <span className={classes.now_recommend_ad_title}>
+                            TCL 4K QLED 안드로이드 안드로이드
+                          </span>
+                        </div>
+                        <div>
+                          <span className={classes.empty_star}>
+                            <span className={classes.review_star} />
+                          </span>
+                        </div>
+                      </a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
             </div>
           </div>
         </div>
-        <div>aa</div>
-        <div>aa</div>
-        <div>aa</div>
       </article>
     </section>
   );
