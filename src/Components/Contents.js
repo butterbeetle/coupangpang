@@ -1,7 +1,12 @@
 import classes from "./Contents.module.css";
 // 오늘의 쇼핑 제안
 import today_shopping_item from "../img/today_shopping_item/today_shopping_item1.jpg";
-
+// 카테고리별 추천 상품 Title
+import best_title1 from "../img/best_title/best_title_womanclothe2.png";
+import best_title2 from "../img/best_title/best_title_manclothe.png";
+// 카테고리별 추천 상품 썸네일
+import best_thumnail1 from "../img/best_title_thumnail/category_best_woman_thumbnail.jpg";
+import best_thumnail2 from "../img/best_title_thumnail/category_best_man_thumbnail.jpg";
 const Contents = () => {
   return (
     <section className={classes.main_contents_section}>
@@ -458,19 +463,39 @@ const Contents = () => {
           <div className={classes.title_box}>
             <div></div>
           </div>
-          <div className={classes.category_items_box}>
-            <div className={classes.category_items_box}>
-              <span>Title</span>
-              <span>HOT 키워드</span>
+          <div className={classes.category_items}>
+            <div className={classes.category_items__title__keyword}>
+              <div className={classes.category_items__title}>
+                <img src={best_title1} alt="Title" />
+                <a href="/">
+                  <span>{"바로가기 >"}</span>
+                </a>
+              </div>
+              <div className={classes.category_items__keyword}>
+                <h4>HOT키워드</h4>
+                <ul>
+                  <li>#반팔 티셔츠</li>
+                  <li>#원피스</li>
+                  <li>#청바지</li>
+                  <li>#에코백</li>
+                  <li>#샌들</li>
+                  <li>#에코백</li>
+                </ul>
+              </div>
             </div>
-            <div>
-              <span>프로모션</span>
+            <div className={classes.test}>
+              <a href="/">
+                <img src={best_thumnail1} alt="썸넬" />
+              </a>
             </div>
             <div>
               <span>상품</span>
             </div>
           </div>
         </div>
+        <div>aa</div>
+        <div>aa</div>
+        <div>aa</div>
       </article>
     </section>
   );

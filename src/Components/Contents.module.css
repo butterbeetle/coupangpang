@@ -201,20 +201,61 @@
   height: 20px;
 }
 
+/* Title */
 .today_discovery_box .title_box div {
-  margin-top: 40px;
+  margin: 40px 0 20px 0;
   width: 350px;
   height: 50px;
   background: url("../img/widget/coupang_widget_main.png") no-repeat 0px -60px;
 }
 .category_recommend_box .title_box div {
-  margin-top: 40px;
+  margin: 40px 0 20px 0;
   width: 290px;
   height: 50px;
   background: url("../img/widget/coupang_widget_main.png") no-repeat 0px -125px;
 }
 
-.category_items_box {
-  border: 1px solid pink;
+.category_recommend_box {
+  height: auto;
+}
+.category_items {
+  border-top: 2px solid #f6699e;
+  border-bottom: 2px solid #ccc;
   display: flex;
+}
+.category_items__title__keyword {
+  padding-left: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.category_items__title {
+  padding: 40px 5px 0 15px;
+  display: flex;
+  flex-direction: column;
+}
+.category_items__title img {
+  padding-bottom: 15px;
+  width: 100px;
+}
+.category_items__title a {
+  font-size: 12px;
+  color: #ccc;
+}
+.category_items__keyword h4 {
+  margin: 0;
+}
+.category_items__keyword ul {
+  padding: 0;
+}
+.category_items__keyword li {
+  border: 1px solid #ccc;
+  width: fit-content;
+  color: #de6090;
+  margin: 0 5px 5px 0;
+  font-size: 12px;
+  padding: 5px 10px;
+}
+.test img {
+  vertical-align: top;
 }
