@@ -2,16 +2,6 @@
   position: relative;
 }
 
-.today_discovery_box,
-.today_recommend_box {
-  width: 1020px;
-  margin: 0 auto;
-}
-.title_box {
-  display: flex;
-  align-items: baseline;
-}
-
 .side_bar_box {
   border: 1px solid pink;
   position: absolute;
@@ -26,6 +16,13 @@
   left: 0;
   width: 100px;
   height: 200px;
+}
+
+.today_discovery_box,
+.today_recommend_box,
+.category_recommend_box {
+  width: 1020px;
+  margin: 0px auto;
 }
 
 .today_items {
@@ -202,4 +199,22 @@
   word-break: break-all;
   width: 160px;
   height: 20px;
+}
+
+.today_discovery_box .title_box div {
+  margin-top: 40px;
+  width: 350px;
+  height: 50px;
+  background: url("../img/widget/coupang_widget_main.png") no-repeat 0px -60px;
+}
+.category_recommend_box .title_box div {
+  margin-top: 40px;
+  width: 290px;
+  height: 50px;
+  background: url("../img/widget/coupang_widget_main.png") no-repeat 0px -125px;
+}
+
+.category_items_box {
+  border: 1px solid pink;
+  display: flex;
 }

@@ -11,9 +11,7 @@ const Contents = () => {
       <article className={classes.today_discovery_box}>
         <div>
           <div className={classes.title_box}>
-            <h1>오늘의 발견</h1>
-            <h4>|</h4>
-            <h4>오늘 쿠팡이 엄선한 가장 HOT한 상품!</h4>
+            <div></div>
           </div>
           <div className={classes.today_items}>
             <div className={classes.today_items_grid}>
@@ -455,7 +453,25 @@ const Contents = () => {
           </div>
         </div>
       </article>
-      <article className={classes.category_recommend_box}></article>
+      <article className={classes.category_recommend_box}>
+        <div>
+          <div className={classes.title_box}>
+            <div></div>
+          </div>
+          <div className={classes.category_items_box}>
+            <div className={classes.category_items_box}>
+              <span>Title</span>
+              <span>HOT 키워드</span>
+            </div>
+            <div>
+              <span>프로모션</span>
+            </div>
+            <div>
+              <span>상품</span>
+            </div>
+          </div>
+        </div>
+      </article>
     </section>
   );
 };
