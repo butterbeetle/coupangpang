@@ -7,6 +7,7 @@ import best_title2 from "../img/best_title/best_title_manclothe.png";
 // 카테고리별 추천 상품 썸네일
 import best_thumnail1 from "../img/best_title_thumnail/category_best_woman_thumbnail.jpg";
 import best_thumnail2 from "../img/best_title_thumnail/category_best_man_thumbnail.jpg";
+
 const Contents = () => {
   return (
     <section className={classes.main_contents_section}>
