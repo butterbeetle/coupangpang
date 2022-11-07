@@ -17,10 +17,11 @@
   height: 110px;
   background: url("../img/header_img/header_img_collection.png") no-repeat;
 }
-.category a {
+.category p {
   font-size: 13px;
   position: relative;
-  top: -20px;
+  top: -8px;
+  cursor: pointer;
   color: white;
 }
 .searchBox {
@@ -77,8 +78,9 @@
 }
 .searchBox__mainBox__bar input {
   border: 0;
+  width: 280px;
   height: 33px;
-  padding: 0 120px 0 10px;
+  padding: 0 0 0 10px;
   outline: none;
 }
 .searchBox__mainBox__bar__form {
@@ -95,21 +97,35 @@
   background: url("../img/header_img/header_img_collection.png") no-repeat -123px -75px;
 }
 
-.userInfo li {
-  display: flex;
-  flex-direction: column;
+.searchBox__mainBox__user {
+  padding: 0 15px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+.searchBox__mainBox__user li {
   font-size: 12px;
-  text-align: center;
   margin: 0 10px;
 }
-.userInfo img {
-  display: block;
-  margin: 0 auto;
+.searchBox__mainBox__user p {
+  display: inline-block;
+  position: relative;
+  top: 25px;
+  left: -5px;
+}
+.searchBox__mainBox__user__info {
+  margin-right: 20px;
   width: 30px;
-  height: 30px;
+  height: 35px;
+  background: url("../img/header_img/header_img_collection.png") no-repeat -112px -36px;
+}
+.searchBox__mainBox__user__cart {
+  width: 40px;
+  height: 40px;
+  background: url("../img/header_img/header_img_collection.png") no-repeat -112px
+    0px;
 }
 
-.gnbMenu {
+.searchBox__gnbMenu {
   font-size: 12px;
   position: relative;
   padding-left: 25px;
@@ -117,13 +133,13 @@
   display: flex;
   margin-bottom: 0;
 }
-.gnbMenu li {
+.searchBox__gnbMenu li {
   padding: 0 7px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.gnbMenu img {
+.searchBox__gnbMenu img {
   padding-right: 5px;
   width: 15px;
 }

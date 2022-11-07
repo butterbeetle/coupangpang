@@ -3,8 +3,6 @@ import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
 import search_mic from "../img/search_mic.png";
-import my_coupang from "../img/my_coupang.png";
-import cart from "../img/cart.png";
 import icon_new from "../img/ico_new.png";
 import rocket_fresh from "../img/rocket_fresh.png";
 import rocket_delivery from "../img/rocket_delivery.png";
@@ -20,7 +18,7 @@ const Header = () => {
       <header style={{ backgroundColor: "white" }}>
         <section className={styles.header}>
           <div className={styles.category}>
-            <a href="/">카테고리</a>
+            <p>카테고리</p>
           </div>
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>
@@ -38,18 +36,20 @@ const Header = () => {
                   <button alt="검색" />
                 </form>
               </div>
-              <ul className={styles.userInfo}>
+              <ul className={styles.searchBox__mainBox__user}>
                 <li>
-                  <img src={my_coupang} alt="내 정보" />
-                  <a href="/">마이쿠팡</a>
+                  <div className={styles.searchBox__mainBox__user__info}>
+                    <p>마이쿠팡</p>
+                  </div>
                 </li>
                 <li>
-                  <img src={cart} alt="장바구니" />
-                  <a href="/">장바구니</a>
+                  <div className={styles.searchBox__mainBox__user__cart}>
+                    <p>장바구니</p>
+                  </div>
                 </li>
               </ul>
             </div>
-            <ul className={styles.gnbMenu}>
+            <ul className={styles.searchBox__gnbMenu}>
               <li>
                 <img src={rocket_delivery} alt="로켓배송" />
                 <a href="/">로켓배송</a>
