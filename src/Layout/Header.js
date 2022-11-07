@@ -2,10 +2,7 @@ import { Fragment } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
-import coupang_logo from "../img/header_img/logo_coupang.png";
-import search_click from "../img/search_click.png";
 import search_mic from "../img/search_mic.png";
-import category from "../img/category.png";
 import my_coupang from "../img/my_coupang.png";
 import cart from "../img/cart.png";
 import icon_new from "../img/ico_new.png";
@@ -23,20 +20,23 @@ const Header = () => {
       <header style={{ backgroundColor: "white" }}>
         <section className={styles.header}>
           <div className={styles.category}>
-            <img src={category} alt="카테고리" />
             <a href="/">카테고리</a>
           </div>
           <div className={styles.searchBox}>
-            <div className={styles.searchBar}>
-              <img src={coupang_logo} alt="로고" />
-              <div className={styles.search}>
-                <input />
-                <button>
+            <div className={styles.searchBox__mainBox}>
+              <a href="/" title="Coupang - 내가 잘사는 이유">
+                <i className={styles.searchBox__mainBox__logo}></i>
+              </a>
+              <div className={styles.searchBox__mainBox__bar}>
+                <div className={styles.searchBox__mainBox__bar__category}>
+                  <p>전체</p>
+                  <i className={styles.icon}></i>
+                </div>
+                <form className={styles.searchBox__mainBox__bar__form}>
+                  <input placeholder="찾고 싶은 상품을 검색해보세요!" />
                   <img src={search_mic} alt="마이크" />
-                </button>
-                <button>
-                  <img src={search_click} alt="검색" />
-                </button>
+                  <button alt="검색" />
+                </form>
               </div>
               <ul className={styles.userInfo}>
                 <li>

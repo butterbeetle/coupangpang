@@ -11,41 +11,88 @@
 }
 .category {
   display: flex;
-  flex-direction: column;
-  text-align: center;
+  justify-content: center;
+  align-items: flex-end;
+  width: 110px;
+  height: 110px;
+  background: url("../img/header_img/header_img_collection.png") no-repeat;
 }
 .category a {
   font-size: 13px;
   position: relative;
-  top: -40px;
+  top: -20px;
   color: white;
 }
-
-.searchBar {
+.searchBox {
+  margin: 0;
+  top: 5px;
+  left: 30px;
+  position: relative;
+}
+.searchBox__mainBox {
   display: flex;
   align-items: center;
-  margin: 10px 30px;
 }
-.searchBar ul {
+.searchBox__mainBox ul {
   display: flex;
 }
-.searchBar img {
-  width: 200px;
+.searchBox__mainBox__logo {
+  display: inline-block;
+  width: 180px;
+  height: 40px;
+  background: url("../img/header_img/logo_coupang.png") no-repeat;
+  background-size: cover;
 }
 
-.search {
+.searchBox__mainBox__bar {
   display: flex;
+  width: 510px;
+  height: 35px;
   border: 2px solid #4285f4;
-  margin-left: 15px;
+  margin-left: 20px;
+  align-items: center;
 }
-.search button {
-  background-color: white;
-  border: 0;
+.searchBox__mainBox__bar__category {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  height: 35px;
+  border-right: 1px solid #ccc;
 }
-.search img {
+.searchBox__mainBox__bar__category p {
+  padding: 0 75px 0 10px;
+}
+.icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  padding-right: 15px;
+  background: url("../img/header_img/header_img_collection.png") no-repeat 0px -175px;
+}
+.searchBox__mainBox__bar img {
   width: 25px;
   height: 25px;
+  padding-right: 5px;
   background-color: white;
+}
+.searchBox__mainBox__bar input {
+  border: 0;
+  height: 33px;
+  padding: 0 120px 0 10px;
+  outline: none;
+}
+.searchBox__mainBox__bar__form {
+  display: flex;
+  align-items: center;
+}
+.searchBox__mainBox__bar__form img {
+  padding-right: 10px;
+}
+.searchBox__mainBox__bar__form button {
+  border: 0;
+  width: 30px;
+  height: 30px;
+  background: url("../img/header_img/header_img_collection.png") no-repeat -123px -75px;
 }
 
 .userInfo li {
