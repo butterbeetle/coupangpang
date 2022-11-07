@@ -2,14 +2,7 @@ import { Fragment } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
-import search_mic from "../img/search_mic.png";
 import icon_new from "../img/ico_new.png";
-import rocket_fresh from "../img/rocket_fresh.png";
-import rocket_delivery from "../img/rocket_delivery.png";
-import icon_government_promotion from "../img/icon_government_promotion.png";
-import icon_travel from "../img/icon_travel.png";
-import logoBizonlyBrown from "../img/logoBizonlyBrown.png";
-import Overseas from "../img/Overseas.png";
 
 const Header = () => {
   return (
@@ -32,7 +25,7 @@ const Header = () => {
                 </div>
                 <form className={styles.searchBox__mainBox__bar__form}>
                   <input placeholder="찾고 싶은 상품을 검색해보세요!" />
-                  <img src={search_mic} alt="마이크" />
+                  <span></span>
                   <button alt="검색" />
                 </form>
               </div>
@@ -53,22 +46,22 @@ const Header = () => {
               </p>
             </div>
             <ul className={styles.searchBox__gnbMenu}>
-              <li>
-                <img src={rocket_delivery} alt="로켓배송" />
+              <li className={styles.searchBox__gnbMenu__delivery}>
                 <a href="/">로켓배송</a>
               </li>
-              <li>
-                <img src={rocket_fresh} alt="로켓프레시" />
-                <a href="/">로켓프레시</a>
-                <img className={styles.newIcon} src={icon_new} alt="new" />
+              <li className={styles.searchBox__gnbMenu__fresh}>
+                <a href="/">
+                  로켓프레시
+                  <img className={styles.newIcon} src={icon_new} alt="new" />
+                </a>
               </li>
-              <li>
-                <img src={logoBizonlyBrown} alt="biz" />
-                <a href="/">쿠팡비즈</a>
-                <img className={styles.newIcon} src={icon_new} alt="new" />
+              <li className={styles.searchBox__gnbMenu__biz}>
+                <a href="/">
+                  쿠팡비즈
+                  <img className={styles.newIcon} src={icon_new} alt="new" />
+                </a>
               </li>
-              <li>
-                <img src={Overseas} alt="로켓직구" />
+              <li className={styles.searchBox__gnbMenu__overseas}>
                 <a href="/">로켓직구</a>
               </li>
               <li>
@@ -80,22 +73,20 @@ const Header = () => {
               <li>
                 <a href="/">이벤트/쿠폰</a>
               </li>
-              <li>
-                <img
-                  className={styles.newIcon}
-                  src={icon_government_promotion}
-                  alt="착한상점"
-                />
-                <span>착한상점</span>
-                <img className={styles.newIcon} src={icon_new} alt="new" />
+              <li className={styles.searchBox__gnbMenu__promotion}>
+                <a href="/">
+                  착한상점
+                  <img className={styles.newIcon} src={icon_new} alt="new" />
+                </a>
               </li>
               <li>
-                <span>기획전</span>
+                <a href="/">기획전</a>
               </li>
-              <li>
-                <img src={icon_travel} alt="여행" />
-                <span>여행/티켓</span>
-                <img className={styles.newIcon} src={icon_new} alt="new" />
+              <li className={styles.searchBox__gnbMenu__travel}>
+                <a href="/">
+                  여행/티켓
+                  <img className={styles.newIcon} src={icon_new} alt="new" />
+                </a>
               </li>
             </ul>
           </div>
