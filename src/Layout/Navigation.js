@@ -14,7 +14,7 @@ const Navigation = () => {
         </ul>
         <ul>
           <li>
-            <Link to="login">로그인</Link>
+            <Link to="/login">로그인</Link>
           </li>
           <li>회원가입</li>
           <li>고객센터</li>
