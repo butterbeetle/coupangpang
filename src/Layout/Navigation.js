@@ -1,4 +1,4 @@
-import classes from "./Navigation.module.css";
+import styles from "./Navigation.module.css";
 
 // for FontAwesome Icon
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -6,7 +6,7 @@ import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
 
 const Navigation = () => {
   return (
-    <section className={classes.topBar}>
+    <section className={styles.topBar}>
       <nav>
         <ul>
           <li>즐겨찾기</li>

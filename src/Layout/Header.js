@@ -1,5 +1,5 @@
 import { Fragment } from "react";
-import classes from "./Header.module.css";
+import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
 import coupangpang_logo from "../img/logo_coupangpang.png";
@@ -20,16 +20,16 @@ const Header = () => {
   return (
     <Fragment>
       <Navigation />
-      <section style={{ backgroundColor: "white" }}>
-        <header className={classes.header}>
-          <div className={classes.category}>
+      <header style={{ backgroundColor: "white" }}>
+        <section className={styles.header}>
+          <div className={styles.category}>
             <img src={category} alt="카테고리" />
             <a href="/">카테고리</a>
           </div>
-          <div className={classes.searchBox}>
-            <div className={classes.searchBar}>
+          <div className={styles.searchBox}>
+            <div className={styles.searchBar}>
               <img src={coupangpang_logo} alt="로고" />
-              <div className={classes.search}>
+              <div className={styles.search}>
                 <input />
                 <button>
                   <img src={search_mic} alt="마이크" />
@@ -38,7 +38,7 @@ const Header = () => {
                   <img src={search_click} alt="검색" />
                 </button>
               </div>
-              <ul className={classes.userInfo}>
+              <ul className={styles.userInfo}>
                 <li>
                   <img src={my_coupang} alt="내 정보" />
                   <a href="/">마이쿠팡</a>
@@ -49,7 +49,7 @@ const Header = () => {
                 </li>
               </ul>
             </div>
-            <ul className={classes.gnbMenu}>
+            <ul className={styles.gnbMenu}>
               <li>
                 <img src={rocket_delivery} alt="로켓배송" />
                 <a href="/">로켓배송</a>
@@ -57,12 +57,12 @@ const Header = () => {
               <li>
                 <img src={rocket_fresh} alt="로켓프레시" />
                 <a href="/">로켓프레시</a>
-                <img className={classes.newIcon} src={icon_new} alt="new" />
+                <img className={styles.newIcon} src={icon_new} alt="new" />
               </li>
               <li>
                 <img src={logoBizonlyBrown} alt="biz" />
                 <a href="/">쿠팡비즈</a>
-                <img className={classes.newIcon} src={icon_new} alt="new" />
+                <img className={styles.newIcon} src={icon_new} alt="new" />
               </li>
               <li>
                 <img src={Overseas} alt="로켓직구" />
@@ -79,12 +79,12 @@ const Header = () => {
               </li>
               <li>
                 <img
-                  className={classes.newIcon}
+                  className={styles.newIcon}
                   src={icon_government_promotion}
                   alt="착한상점"
                 />
                 <span>착한상점</span>
-                <img className={classes.newIcon} src={icon_new} alt="new" />
+                <img className={styles.newIcon} src={icon_new} alt="new" />
               </li>
               <li>
                 <span>기획전</span>
@@ -92,12 +92,12 @@ const Header = () => {
               <li>
                 <img src={icon_travel} alt="여행" />
                 <span>여행/티켓</span>
-                <img className={classes.newIcon} src={icon_new} alt="new" />
+                <img className={styles.newIcon} src={icon_new} alt="new" />
               </li>
             </ul>
           </div>
-        </header>
-      </section>
+        </section>
+      </header>
     </Fragment>
   );
 };
