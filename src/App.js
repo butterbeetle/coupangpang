@@ -1,13 +1,15 @@
-import Contents from "./Components/Contents";
-import TodaysHot from "./Components/TodaysHot";
-import Layout from "./Layout/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import Login from "./pages/Login";
+import Main from "./pages/Main";
 
 function App() {
   return (
-    <Layout>
-      <TodaysHot />
-      <Contents />
-    </Layout>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Main />} />
+        <Route path="/login" element={<Login />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

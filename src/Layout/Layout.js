@@ -2,11 +2,13 @@ import { Fragment } from "react";
 import Footer from "./Footer";
 import Header from "./Header";
 
+import styles from "./Layout.module.css";
+
 const Layout = (props) => {
   return (
     <Fragment>
       <Header />
-      <main style={{ backgroundColor: "white" }}>{props.children}</main>
+      <main className={styles.main}>{props.children}</main>
       <Footer />
     </Fragment>
   );
