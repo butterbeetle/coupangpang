@@ -1,9 +1,5 @@
 import styles from "./Navigation.module.css";
 
-// for FontAwesome Icon
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCaretDown } from "@fortawesome/free-solid-svg-icons";
-
 const Navigation = () => {
   return (
     <section className={styles.topBar}>
@@ -12,7 +8,7 @@ const Navigation = () => {
           <li>즐겨찾기</li>
           <li>
             <span>입점신청</span>
-            <FontAwesomeIcon icon={faCaretDown} />
+            <i className={styles.icon}></i>
           </li>
         </ul>
         <ul>

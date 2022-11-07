@@ -1,6 +1,7 @@
 .topBar {
   width: 1020px;
   height: 30px;
+  font-size: 11px;
   margin: 0 auto;
   background-color: #f0f0f0;
 }
@@ -18,10 +19,18 @@
 }
 
 .topBar li {
-  font-size: 12px;
-  margin: 0.2rem;
+  margin: 2px;
+  padding-right: 15px;
+  cursor: pointer;
 }
 
 .topBar span {
-  padding-right: 3px;
+  padding-right: 5px;
+}
+
+.icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: url("../img/header_img/header_img_collection.png") no-repeat -150px -31px;
 }

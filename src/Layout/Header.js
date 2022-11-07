@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
-import coupangpang_logo from "../img/logo_coupangpang.png";
+import coupang_logo from "../img/header_img/logo_coupang.png";
 import search_click from "../img/search_click.png";
 import search_mic from "../img/search_mic.png";
 import category from "../img/category.png";
@@ -28,7 +28,7 @@ const Header = () => {
           </div>
           <div className={styles.searchBox}>
             <div className={styles.searchBar}>
-              <img src={coupangpang_logo} alt="로고" />
+              <img src={coupang_logo} alt="로고" />
               <div className={styles.search}>
                 <input />
                 <button>
