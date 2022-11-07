@@ -10,9 +10,13 @@ import today_item6 from "../img/banner/today_hot_banner_item6.png";
 
 const TodaysHot = () => {
   return (
-    <section className={styles.todaySection}>
-      <img className={styles.banner} src={big_banner1} alt="큰 배너1" />
-      <ul>
+    <section className={styles.todayhot}>
+      <img
+        className={styles.todayhot__bg_banner}
+        src={big_banner1}
+        alt="큰 배너1"
+      />
+      <ul className={styles.todayhot__banner_items}>
         <li>
           <a href="/">
             <img src={today_item1} alt="배너1" />

@@ -1,4 +1,4 @@
-.todaySection {
+.todayhot {
   width: 1020px;
   height: 450px;
   margin: 0 auto;
@@ -6,10 +6,10 @@
   position: relative;
   justify-content: center;
 }
-.banner {
+.todayhot__bg_banner {
   position: absolute;
 }
-.todaySection ul {
+.todayhot ul {
   position: relative;
   top: 20px;
   left: 400px;
@@ -19,6 +19,10 @@
   z-index: 2;
 }
 
-.todaySection img {
+.todayhot__banner_items img {
   vertical-align: top;
+}
+.todayhot__banner_items img:hover {
+  outline: 2px solid #4285f4;
+  outline-offset: -2px;
 }

@@ -2,7 +2,7 @@ import { Fragment } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
-import icon_new from "../img/ico_new.png";
+import icon_new from "../img/header_img/ico_new.png";
 
 const Header = () => {
   return (
