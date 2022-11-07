@@ -124,6 +124,14 @@
   background: url("../img/header_img/header_img_collection.png") no-repeat -112px
     0px;
 }
+.searchBox__mainBox__user__cart__counter {
+  display: block;
+  position: relative;
+  font-size: 12px;
+  color: white;
+  top: -12px;
+  left: -42px;
+}
 
 .searchBox__gnbMenu {
   font-size: 12px;

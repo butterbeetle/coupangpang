@@ -48,6 +48,9 @@ const Header = () => {
                   </div>
                 </li>
               </ul>
+              <p className={styles.searchBox__mainBox__user__cart__counter}>
+                0
+              </p>
             </div>
             <ul className={styles.searchBox__gnbMenu}>
               <li>
