@@ -1,35 +1,14 @@
-body {
-  background-color: white;
-}
-
-.login {
-  width: 450px;
-  margin: 0 auto;
-}
-.login__header {
-  padding-top: 40px;
-  width: 200px;
-  margin: 0 auto 10px;
-}
-.login__header__logo {
-  display: inline-block;
-  width: 200px;
-  height: 50px;
-  background: url("../img/header_img/logo_coupang.png") no-repeat;
-  background-size: 200px 50px;
-}
-
 .login__main__id__icon {
   display: inline-block;
   width: 22px;
   height: 20px;
-  background: url("../assets/img/sprite-member.svg") no-repeat 0px 0px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat 0px 0px;
 }
 .login__main__passwd__icon {
   display: inline-block;
   width: 22px;
   height: 20px;
-  background: url("../assets/img/sprite-member.svg") no-repeat -21px -1px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -21px -1px;
 }
 .login__main__passwd__hide {
   position: absolute;
@@ -38,7 +17,7 @@ body {
   top: 15px;
   width: 22px;
   height: 20px;
-  background: url("../assets/img/sprite-member.svg") no-repeat -105px -1px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -105px -1px;
 }
 
 .login__main__id,
@@ -113,7 +92,7 @@ body {
   width: 10px;
   height: 13px;
   margin-left: 5px;
-  background: url("../assets/img/sprite-member.svg") no-repeat -102px -23px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -102px -23px;
 }
 .login__main__btn {
   margin-top: 15px;
@@ -146,13 +125,4 @@ body {
   width: 100%;
   margin: 20px auto;
   border-top: 1px solid #ccc;
-}
-
-.login__footer {
-  font-size: 12px;
-  color: rgb(129, 129, 129);
-  width: 450px;
-  margin: 0 auto;
-  text-align: center;
-  padding-top: 5px;
 }

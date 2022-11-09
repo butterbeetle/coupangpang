@@ -1,16 +1,10 @@
 import { Fragment } from "react";
 import { Link } from "react-router-dom";
-import styles from "./Login.module.css";
+import styles from "./LoginForm.module.css";
 
-const Login = () => {
+const LoginForm = () => {
   return (
     <Fragment>
-      <header className={styles.login__header}>
-        <Link to="/">
-          <span className={styles.login__header__logo}> </span>
-        </Link>
-      </header>
-
       <main className={styles.login__main}>
         <form>
           <div className={styles.login__main__id}>
@@ -58,14 +52,8 @@ const Login = () => {
           </div>
         </form>
       </main>
-
-      <footer className={styles.login__footer}>
-        <div>
-          <p>©Coupang Corp. All rights reserved</p>
-        </div>
-      </footer>
     </Fragment>
   );
 };
 
-export default Login;
+export default LoginForm;
