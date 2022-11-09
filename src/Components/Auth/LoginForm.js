@@ -34,7 +34,7 @@ const LoginForm = () => {
               <label for="checkbox">자동로그인</label>
             </div>
             <div className={styles.login__main__util__find}>
-              <Link to="/login">
+              <Link to="/auth">
                 <p>아이디(이메일)/비밀번호 찾기</p>
                 <span></span>
               </Link>
@@ -44,7 +44,7 @@ const LoginForm = () => {
           <div className={styles.login__main__btn}>
             <button className={styles.login__main__btn__login}>로그인</button>
             <hr className={styles.line} />
-            <Link to="/login">
+            <Link to="/auth">
               <button className={styles.login__main__btn__join}>
                 회원가입
               </button>
