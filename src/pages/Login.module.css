@@ -31,6 +31,16 @@ body {
   height: 20px;
   background: url("../assets/img/sprite-member.svg") no-repeat -21px -1px;
 }
+.login__main__passwd__hide {
+  position: absolute;
+  display: inline-block;
+  right: 15px;
+  top: 15px;
+  width: 22px;
+  height: 20px;
+  background: url("../assets/img/sprite-member.svg") no-repeat -105px -1px;
+}
+
 .login__main__id,
 .login__main__passwd {
   width: 450px;
@@ -49,6 +59,7 @@ body {
 .login__main__id__label,
 .login__main__passwd__label {
   display: flex;
+  position: relative;
 }
 .login__main__id__label div,
 .login__main__passwd__label div {

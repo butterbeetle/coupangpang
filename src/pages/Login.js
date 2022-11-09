@@ -29,6 +29,7 @@ const Login = () => {
                 <span className={styles.login__main__passwd__icon}></span>
               </div>
               <input id="passwd" placeholder="비밀번호" type="password"></input>
+              <span className={styles.login__main__passwd__hide}></span>
             </label>
             {/* <p>비밀번호를 입력해주세요.</p> */}
           </div>
