@@ -1,14 +1,16 @@
+import { Fragment } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Login.module.css";
 
 const Login = () => {
   return (
-    <section className={styles.login}>
+    <Fragment>
       <header className={styles.login__header}>
         <Link to="/">
           <span className={styles.login__header__logo}> </span>
         </Link>
       </header>
+
       <main className={styles.login__main}>
         <form>
           <div className={styles.login__main__id}>
@@ -61,7 +63,7 @@ const Login = () => {
           <p>©Coupang Corp. All rights reserved</p>
         </div>
       </footer>
-    </section>
+    </Fragment>
   );
 };
 
