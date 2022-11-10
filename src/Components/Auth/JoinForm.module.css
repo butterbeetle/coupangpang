@@ -13,11 +13,36 @@
   color: #e52528;
   padding-left: 12px;
 }
-.auth-form__icon {
+
+.auth-form__icon--email {
   display: inline-block;
-  width: 22px;
-  height: 20px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat 0px 0px;
+  width: 20px;
+  height: 22px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -1px 2px;
+}
+.auth-form__icon--passwd {
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -22px 0px;
+}
+.auth-form__icon--passwd--confirm {
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -43px 0px;
+}
+.auth-form__icon--name {
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -2px -21px;
+}
+.auth-form__icon--phone {
+  display: inline-block;
+  width: 20px;
+  height: 22px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -21px -21px;
 }
 
 .auth-form__icon--hide {
@@ -57,6 +82,7 @@
   width: 100%;
   border: 0;
   text-indent: 15px;
+  font-size: 14px;
   font-weight: bold;
 }
 .auth-form__label input:focus {
