@@ -182,7 +182,9 @@ const JoinForm = () => {
               휴대폰 번호를 정확하게 입력하세요.
             </p>
           )}
-
+          <section className={styles.terms}>
+            <div></div>
+          </section>
           <button className={styles["auth-form__button"]}>
             동의하고 가입하기
           </button>
