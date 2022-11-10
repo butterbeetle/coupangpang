@@ -1,11 +1,14 @@
 import useInput from "../../hooks/use-input";
 import styles from "./JoinForm.module.css";
 
+// 공백이 아닌가
 const isEmpty = (value) => value.trim() !== "";
+// 공백이 아니고 @를 포함하며 .com 혹은 .net을 포함하는가
 const isEmail = (value) =>
-  // 공백이 아니고 @를 포함하며 .com 혹은 .net을 포함하는가
   (isEmpty && value.includes("@") && value.includes(".com")) ||
   value.includes(".net");
+const isName = (value) => {};
+const isPhone = (value) => {};
 
 const JoinForm = () => {
   const {
@@ -17,15 +20,35 @@ const JoinForm = () => {
     reset: resetEmailInput,
   } = useInput(isEmail);
 
+  const {
+    value: enteredName,
+    isValid: enteredNameIsValid,
+    hasError: nameInputHasError,
+    valueChangeHandler: nameChangeHandler,
+    inputBlurHandler: nameBlurHandler,
+    reset: resetNameInput,
+  } = useInput(isEmpty);
+
+  const {
+    value: enteredPhone,
+    isValid: enteredPhoneIsValid,
+    hasError: phoneInputHasError,
+    valueChangeHandler: phoneChangeHandler,
+    inputBlurHandler: phoneBlurHandler,
+    reset: resetPhoneInput,
+  } = useInput(isEmpty);
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
-    if (!enteredEmailIsValid) return;
+    if (!enteredEmailIsValid && !enteredNameIsValid) return;
 
     resetEmailInput();
+    resetNameInput();
   };
 
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
+  const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
 
   return (
     <main>
@@ -114,23 +137,22 @@ const JoinForm = () => {
               htmlFor="name"
               className={`
     ${styles["auth-form__label"]}
-    ${stylesInputEmail}`}
+    ${stylesInputName}`}
             >
               <div>
                 <span className={styles["auth-form__icon--name"]}></span>
               </div>
               <input
-                onChange={emailChangeHandler}
-                onBlur={emailBlurHandler}
+                onChange={nameChangeHandler}
+                onBlur={nameBlurHandler}
                 id="name"
                 placeholder="이름"
                 type="text"
-                value={enteredEmail}
+                value={enteredName}
               ></input>
-              {/* <span className={styles["auth-form__icon--hide"]}></span> */}
             </label>
           </div>
-          {emailInputHasError && (
+          {nameInputHasError && (
             <p className={styles["error-text"]}>이름을 정확히 입력하세요.</p>
           )}
 
