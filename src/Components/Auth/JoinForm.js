@@ -183,7 +183,89 @@ const JoinForm = () => {
             </p>
           )}
           <section className={styles.terms}>
-            <div></div>
+            <div className={styles["terms__all"]}>
+              <div className={styles["terms__all--icon"]}>
+                <i className={styles["terms__icon--off"]}></i>
+                <p>모두 확인하였으며 동의합니다.</p>
+              </div>
+              <div className={styles["terms__all--text"]}>
+                <p>
+                  전체 동의에는 필수 및 선택 정보에 대한 동의가 포함되어 있으며,
+                  개별적으로 동의를 선택 하실 수 있습니다. 선택 항목에 대한
+                  동의를 거부하시는 경우에도 서비스 이용이 가능합니다
+                </p>
+              </div>
+            </div>
+            <div className={styles["terms__each"]}>
+              <ul className={styles["terms__each--items"]}>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[필수] 만 14세 이상입니다.</p>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[필수] 쿠팡 이용약관 동의</p>
+                  </label>
+                  <button className={styles["terms__icon--arrow"]}></button>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[필수] 전자금융거래 이용약관 동의</p>
+                  </label>
+                  <button className={styles["terms__icon--arrow"]}></button>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[필수] 개인정보 수집 및 이용 동의</p>
+                  </label>
+                  <button className={styles["terms__icon--arrow"]}></button>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[필수] 개인정보 제3자 제공 동의</p>
+                  </label>
+                  <button className={styles["terms__icon--arrow"]}></button>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[선택] 마케팅 목적의 개인정보 수집 및 이용 동의</p>
+                  </label>
+                  <button className={styles["terms__icon--arrow"]}></button>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[선택] 광고성 정보 수신 동의</p>
+                  </label>
+                  <button className={styles["terms__icon--arrow"]}></button>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[선택] 이메일 수신 동의</p>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[선택] SMS, SNS 수신 동의</p>
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <i className={styles["terms__icon--off"]}></i>
+                    <p>[선택] 앱 푸시 수신 동의</p>
+                  </label>
+                </li>
+              </ul>
+            </div>
           </section>
           <button className={styles["auth-form__button"]}>
             동의하고 가입하기

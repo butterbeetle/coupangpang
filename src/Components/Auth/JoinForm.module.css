@@ -104,5 +104,71 @@
 .terms {
   border-top: 1px solid #f1f4f6;
   margin-top: 20px;
+  margin-bottom: 30px;
   padding-top: 20px;
+}
+.terms__all--icon {
+  display: flex;
+  align-items: flex-start;
+  cursor: pointer;
+}
+.terms__all--icon p {
+  display: inline-block;
+  margin: 0;
+  font-size: 16px;
+  font-weight: bold;
+}
+.terms__icon--on {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../../assets/img/terms_check_on.svg") no-repeat;
+  margin-right: 10px;
+}
+.terms__icon--off {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../../assets/img/terms_check_off.svg") no-repeat;
+  margin-right: 10px;
+}
+.terms__icon--arrow {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  background: url("../../assets/img/terms_arrow.svg") no-repeat;
+  background-size: 20px 20px;
+  border: 0;
+}
+.terms__all--text {
+  font-size: 12px;
+  color: #666;
+  padding-left: 25px;
+}
+
+.terms__each {
+  border: 1px solid #ccc;
+  margin-top: 20px;
+}
+.terms__each--items {
+  padding: 0 0 0 20px;
+}
+.terms__each li {
+  display: flex;
+  margin-bottom: 15px;
+}
+.terms__each--items li:nth-last-child(-n + 3) {
+  padding-left: 25px;
+}
+.terms__each--items label {
+  display: flex;
+  align-items: center;
+  width: 390px;
+  cursor: pointer;
+}
+.terms__each--items li p {
+  display: inline-block;
+  margin: 0;
+  font-size: 14px;
+  color: #666;
 }
