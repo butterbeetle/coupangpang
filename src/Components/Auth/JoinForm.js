@@ -1,3 +1,4 @@
+import { useState } from "react";
 import useInput from "../../hooks/use-input";
 import styles from "./JoinForm.module.css";
 
@@ -9,6 +10,69 @@ const isEmail = (value) =>
   value.includes(".net");
 const isName = (value) => {};
 const isPhone = (value) => {};
+
+const termsItems = [
+  {
+    id: "terms_age",
+    text: "[필수] 만 14세 이상입니다",
+    isCheck: false,
+    isArrow: false,
+  },
+  {
+    id: "terms_service",
+    text: "[필수] 쿠팡 이용약관 동의",
+    isCheck: false,
+    isArrow: true,
+  },
+  {
+    id: "terms_service",
+    text: "[필수] 전자금융거래 이용약관 동의",
+    isCheck: false,
+    isArrow: true,
+  },
+  {
+    id: "terms_service",
+    text: "[필수] 개인정보 수집 및 이용 동의",
+    isCheck: false,
+    isArrow: true,
+  },
+  {
+    id: "terms_service",
+    text: "[필수] 개인정보 제3자 제공 동의",
+    isCheck: false,
+    isArrow: true,
+  },
+  {
+    id: "terms_service",
+    text: "[선택] 마케팅 목적의 개인정보 수집 및 이용 동의",
+    isCheck: false,
+    isArrow: true,
+  },
+  {
+    id: "terms_service",
+    text: "[선택] 광고성 정보 수신 동의",
+    isCheck: false,
+    isArrow: true,
+  },
+  {
+    id: "terms_service",
+    text: "[선택] 이메일 수신 동의",
+    isCheck: false,
+    isArrow: false,
+  },
+  {
+    id: "terms_service",
+    text: "[선택] SMS, SNS 수신 동의",
+    isCheck: false,
+    isArrow: false,
+  },
+  {
+    id: "terms_service",
+    text: "[선택] 앱 푸시 수신 동의",
+    isCheck: false,
+    isArrow: false,
+  },
+];
 
 const JoinForm = () => {
   const {
@@ -38,6 +102,9 @@ const JoinForm = () => {
     reset: resetPhoneInput,
   } = useInput(isEmpty);
 
+  const [isAllCheck, setIsAllCheck] = useState(false);
+  const [isCheck, setIsCheck] = useState([]);
+
   const formSubmissionHandler = (event) => {
     event.preventDefault();
 
@@ -50,142 +117,164 @@ const JoinForm = () => {
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
 
+  // 모두 동의 눌렀을 때
+  const termsAllCheckedHandler = () => {
+    setIsAllCheck((prevState) => !prevState);
+  };
+  const termsCheckedHandler = (event) => {
+    const targetName = event.currentTarget.getAttribute("for");
+    // 해당 아이템 한번만 들어가도록 있는지 검사
+    if (!isCheck.includes(targetName)) {
+      setIsCheck((prevArray) => [...prevArray, targetName]);
+    }
+  };
+
+  const stylesTermsIcon = isAllCheck
+    ? styles["terms__icon--on"]
+    : styles["terms__icon--off"];
+
   return (
     <main>
       <section className={styles.auth}>
         <p className={styles["auth-text"]}>회원정보를 입력해주세요</p>
         <form className={styles["auth-form"]} onSubmit={formSubmissionHandler}>
-          <div className={styles["auth-form__content"]}>
-            <label
-              htmlFor="email"
-              className={`
+          <div>
+            <div className={styles["auth-form__content"]}>
+              <label
+                htmlFor="email"
+                className={`
     ${styles["auth-form__label"]}
     ${stylesInputEmail}`}
-            >
-              <div>
-                <span className={styles["auth-form__icon--email"]}></span>
-              </div>
-              <input
-                onChange={emailChangeHandler}
-                onBlur={emailBlurHandler}
-                id="email"
-                placeholder="아이디(이메일)"
-                type="text"
-                value={enteredEmail}
-              ></input>
-              {/* <span className={styles["auth-form__icon--hide"]}></span> */}
-            </label>
-          </div>
-          {emailInputHasError && (
-            <p className={styles["error-text"]}>이메일을 입력하세요.</p>
-          )}
+              >
+                <div>
+                  <span className={styles["auth-form__icon--email"]}></span>
+                </div>
+                <input
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
+                  id="email"
+                  placeholder="아이디(이메일)"
+                  type="text"
+                  value={enteredEmail}
+                ></input>
+                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
+              </label>
+            </div>
+            {emailInputHasError && (
+              <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+            )}
 
-          <div className={styles["auth-form__content"]}>
-            <label
-              htmlFor="passwd"
-              className={`
+            <div className={styles["auth-form__content"]}>
+              <label
+                htmlFor="passwd"
+                className={`
     ${styles["auth-form__label"]}
     ${stylesInputEmail}`}
-            >
-              <div>
-                <span className={styles["auth-form__icon--passwd"]}></span>
-              </div>
-              <input
-                onChange={emailChangeHandler}
-                onBlur={emailBlurHandler}
-                id="passwd"
-                placeholder="비밀번호"
-                type="text"
-                value={enteredEmail}
-              ></input>
-              {/* <span className={styles["auth-form__icon--hide"]}></span> */}
-            </label>
-          </div>
-          {emailInputHasError && (
-            <p className={styles["error-text"]}>이메일을 입력하세요.</p>
-          )}
+              >
+                <div>
+                  <span className={styles["auth-form__icon--passwd"]}></span>
+                </div>
+                <input
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
+                  id="passwd"
+                  placeholder="비밀번호"
+                  type="text"
+                  value={enteredEmail}
+                ></input>
+                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
+              </label>
+            </div>
+            {emailInputHasError && (
+              <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+            )}
 
-          <div className={styles["auth-form__content"]}>
-            <label
-              htmlFor="passwd-confirm"
-              className={`
+            <div className={styles["auth-form__content"]}>
+              <label
+                htmlFor="passwd-confirm"
+                className={`
     ${styles["auth-form__label"]}
     ${stylesInputEmail}`}
-            >
-              <div>
-                <span
-                  className={styles["auth-form__icon--passwd--confirm"]}
-                ></span>
-              </div>
-              <input
-                onChange={emailChangeHandler}
-                onBlur={emailBlurHandler}
-                id="passwd-confirm"
-                placeholder="비밀번호 확인"
-                type="text"
-                value={enteredEmail}
-              ></input>
-              {/* <span className={styles["auth-form__icon--hide"]}></span> */}
-            </label>
-          </div>
-          {emailInputHasError && (
-            <p className={styles["error-text"]}>이메일을 입력하세요.</p>
-          )}
+              >
+                <div>
+                  <span
+                    className={styles["auth-form__icon--passwd--confirm"]}
+                  ></span>
+                </div>
+                <input
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
+                  id="passwd-confirm"
+                  placeholder="비밀번호 확인"
+                  type="text"
+                  value={enteredEmail}
+                ></input>
+                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
+              </label>
+            </div>
+            {emailInputHasError && (
+              <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+            )}
 
-          <div className={styles["auth-form__content"]}>
-            <label
-              htmlFor="name"
-              className={`
+            <div className={styles["auth-form__content"]}>
+              <label
+                htmlFor="name"
+                className={`
     ${styles["auth-form__label"]}
     ${stylesInputName}`}
-            >
-              <div>
-                <span className={styles["auth-form__icon--name"]}></span>
-              </div>
-              <input
-                onChange={nameChangeHandler}
-                onBlur={nameBlurHandler}
-                id="name"
-                placeholder="이름"
-                type="text"
-                value={enteredName}
-              ></input>
-            </label>
-          </div>
-          {nameInputHasError && (
-            <p className={styles["error-text"]}>이름을 정확히 입력하세요.</p>
-          )}
+              >
+                <div>
+                  <span className={styles["auth-form__icon--name"]}></span>
+                </div>
+                <input
+                  onChange={nameChangeHandler}
+                  onBlur={nameBlurHandler}
+                  id="name"
+                  placeholder="이름"
+                  type="text"
+                  value={enteredName}
+                ></input>
+              </label>
+            </div>
+            {nameInputHasError && (
+              <p className={styles["error-text"]}>이름을 정확히 입력하세요.</p>
+            )}
 
-          <div className={styles["auth-form__content"]}>
-            <label
-              htmlFor="phone"
-              className={`
+            <div className={styles["auth-form__content"]}>
+              <label
+                htmlFor="phone"
+                className={`
     ${styles["auth-form__label"]}
     ${stylesInputEmail}`}
-            >
-              <div>
-                <span className={styles["auth-form__icon--phone"]}></span>
-              </div>
-              <input
-                onChange={emailChangeHandler}
-                onBlur={emailBlurHandler}
-                id="phone"
-                placeholder="휴대폰 번호"
-                type="text"
-                value={enteredEmail}
-              ></input>
-              {/* <span className={styles["auth-form__icon--hide"]}></span> */}
-            </label>
+              >
+                <div>
+                  <span className={styles["auth-form__icon--phone"]}></span>
+                </div>
+                <input
+                  onChange={emailChangeHandler}
+                  onBlur={emailBlurHandler}
+                  id="phone"
+                  placeholder="휴대폰 번호"
+                  type="text"
+                  value={enteredEmail}
+                ></input>
+                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
+              </label>
+            </div>
+            {emailInputHasError && (
+              <p className={styles["error-text"]}>
+                휴대폰 번호를 정확하게 입력하세요.
+              </p>
+            )}
           </div>
-          {emailInputHasError && (
-            <p className={styles["error-text"]}>
-              휴대폰 번호를 정확하게 입력하세요.
-            </p>
-          )}
+
           <section className={styles.terms}>
             <div className={styles["terms__all"]}>
-              <div className={styles["terms__all--icon"]}>
-                <i className={styles["terms__icon--off"]}></i>
+              <div
+                onClick={termsAllCheckedHandler}
+                className={styles["terms__all--icon"]}
+              >
+                <i className={`${stylesTermsIcon}`}></i>
                 <p>모두 확인하였으며 동의합니다.</p>
               </div>
               <div className={styles["terms__all--text"]}>
@@ -198,72 +287,21 @@ const JoinForm = () => {
             </div>
             <div className={styles["terms__each"]}>
               <ul className={styles["terms__each--items"]}>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[필수] 만 14세 이상입니다.</p>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[필수] 쿠팡 이용약관 동의</p>
-                  </label>
-                  <button className={styles["terms__icon--arrow"]}></button>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[필수] 전자금융거래 이용약관 동의</p>
-                  </label>
-                  <button className={styles["terms__icon--arrow"]}></button>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[필수] 개인정보 수집 및 이용 동의</p>
-                  </label>
-                  <button className={styles["terms__icon--arrow"]}></button>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[필수] 개인정보 제3자 제공 동의</p>
-                  </label>
-                  <button className={styles["terms__icon--arrow"]}></button>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[선택] 마케팅 목적의 개인정보 수집 및 이용 동의</p>
-                  </label>
-                  <button className={styles["terms__icon--arrow"]}></button>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[선택] 광고성 정보 수신 동의</p>
-                  </label>
-                  <button className={styles["terms__icon--arrow"]}></button>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[선택] 이메일 수신 동의</p>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[선택] SMS, SNS 수신 동의</p>
-                  </label>
-                </li>
-                <li>
-                  <label>
-                    <i className={styles["terms__icon--off"]}></i>
-                    <p>[선택] 앱 푸시 수신 동의</p>
-                  </label>
-                </li>
+                {termsItems.map((obj) => (
+                  <li className={styles["terms__each--item"]}>
+                    <label htmlFor="terms_age" onClick={termsCheckedHandler}>
+                      <i className={`${stylesTermsIcon}`}></i>
+                      <p>{obj.text}</p>
+                      {obj.isArrow ? (
+                        <button
+                          className={styles["terms__icon--arrow"]}
+                        ></button>
+                      ) : (
+                        ""
+                      )}
+                    </label>
+                  </li>
+                ))}
               </ul>
             </div>
           </section>
