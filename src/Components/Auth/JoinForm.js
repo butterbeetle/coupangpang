@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
 import styles from "./JoinForm.module.css";
 
@@ -11,7 +11,7 @@ const isEmail = (value) =>
 const isName = (value) => {};
 const isPhone = (value) => {};
 
-const termsItems = [
+const termsData = [
   {
     id: "terms_age",
     text: "[필수] 만 14세 이상입니다",
@@ -25,49 +25,49 @@ const termsItems = [
     isArrow: true,
   },
   {
-    id: "terms_service",
+    id: "terms_commerce",
     text: "[필수] 전자금융거래 이용약관 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_service",
+    id: "terms_collection_userInfo",
     text: "[필수] 개인정보 수집 및 이용 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_service",
+    id: "terms_collection_userInfo_thirdParty",
     text: "[필수] 개인정보 제3자 제공 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_service",
+    id: "terms_marketing",
     text: "[선택] 마케팅 목적의 개인정보 수집 및 이용 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_service",
+    id: "terms_margketing_ad",
     text: "[선택] 광고성 정보 수신 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_service",
+    id: "terms_margketing_ad_email",
     text: "[선택] 이메일 수신 동의",
     isCheck: false,
     isArrow: false,
   },
   {
-    id: "terms_service",
+    id: "terms_margketing_ad_sms",
     text: "[선택] SMS, SNS 수신 동의",
     isCheck: false,
     isArrow: false,
   },
   {
-    id: "terms_service",
+    id: "terms_margketing_ad_app",
     text: "[선택] 앱 푸시 수신 동의",
     isCheck: false,
     isArrow: false,
@@ -103,7 +103,19 @@ const JoinForm = () => {
   } = useInput(isEmpty);
 
   const [isAllCheck, setIsAllCheck] = useState(false);
-  const [isCheck, setIsCheck] = useState([]);
+  const [termsItems, setTermsItems] = useState(termsData);
+
+  useEffect(() => {
+    // Check 되지 않은 item 개수
+    const result = termsItems.filter((item) => item.isCheck === false);
+
+    // Check 되지 않은 item 개수 가 0이 되면 모두 체크된 것으로 판단함.
+    if (!result?.length) {
+      setIsAllCheck(true);
+    } else {
+      setIsAllCheck(false);
+    }
+  }, [termsItems]);
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
@@ -119,14 +131,35 @@ const JoinForm = () => {
 
   // 모두 동의 눌렀을 때
   const termsAllCheckedHandler = () => {
-    setIsAllCheck((prevState) => !prevState);
-  };
-  const termsCheckedHandler = (event) => {
-    const targetName = event.currentTarget.getAttribute("for");
-    // 해당 아이템 한번만 들어가도록 있는지 검사
-    if (!isCheck.includes(targetName)) {
-      setIsCheck((prevArray) => [...prevArray, targetName]);
+    let copyItems = [...termsItems];
+    // Check 되지 않은 item 개수
+    let filterItem = copyItems.filter((item) => item.isCheck === false);
+
+    if (filterItem.length === 0) {
+      // 모두 체크되었다면
+      copyItems.map((item) => (item.isCheck = false));
+    } else {
+      // 모두 체크되지 않았다면 isCheck가 false item을 찾아서 true로 변경함.
+      copyItems
+        .filter((item) => item.isCheck === false)
+        .map((item) => (item.isCheck = true));
     }
+    setTermsItems((prevState) => (prevState = copyItems));
+  };
+
+  // 각각 체크박스 눌렀을 때
+  const termsCheckedHandler = (event) => {
+    // 누구껄 눌렀는지 htmlfor로 item.id를 가져옴.
+    const targetId = event.currentTarget.getAttribute("for");
+
+    let copyItems = [...termsItems];
+    // termsItem의 id와 targetId를 비교해서 찾음
+    const idx = termsItems.findIndex((item) => item.id === targetId);
+
+    // index item의 isCheck를 변경
+    copyItems[idx].isCheck = !copyItems[idx].isCheck;
+
+    setTermsItems((prevState) => (prevState = copyItems));
   };
 
   const stylesTermsIcon = isAllCheck
@@ -287,12 +320,16 @@ const JoinForm = () => {
             </div>
             <div className={styles["terms__each"]}>
               <ul className={styles["terms__each--items"]}>
-                {termsItems.map((obj) => (
-                  <li className={styles["terms__each--item"]}>
-                    <label htmlFor="terms_age" onClick={termsCheckedHandler}>
-                      <i className={`${stylesTermsIcon}`}></i>
-                      <p>{obj.text}</p>
-                      {obj.isArrow ? (
+                {termsItems.map((item, idx) => (
+                  <li key={idx} className={styles["terms__each--item"]}>
+                    <label htmlFor={item.id} onClick={termsCheckedHandler}>
+                      {item.isCheck ? (
+                        <i className={styles["terms__icon--on"]}></i>
+                      ) : (
+                        <i className={styles["terms__icon--off"]}></i>
+                      )}
+                      <p>{item.text}</p>
+                      {item.isArrow ? (
                         <button
                           className={styles["terms__icon--arrow"]}
                         ></button>
