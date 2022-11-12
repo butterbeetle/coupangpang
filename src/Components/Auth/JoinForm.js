@@ -139,7 +139,7 @@ const JoinForm = () => {
       // 모두 체크되었다면
       copyItems.map((item) => (item.isCheck = false));
     } else {
-      // 모두 체크되지 않았다면 isCheck가 false item을 찾아서 true로 변경함.
+      // 모두 체크되지 않거나 몇몇만 체크 됐다면 isCheck가 false인 item을 찾아서 true로 변경함.
       copyItems
         .filter((item) => item.isCheck === false)
         .map((item) => (item.isCheck = true));
