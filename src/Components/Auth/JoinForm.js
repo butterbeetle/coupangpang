@@ -49,25 +49,25 @@ const termsData = [
     isArrow: true,
   },
   {
-    id: "terms_margketing_ad",
+    id: "terms_marketing_ad",
     text: "[선택] 광고성 정보 수신 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_margketing_ad_email",
+    id: "terms_marketing_ad_email",
     text: "[선택] 이메일 수신 동의",
     isCheck: false,
     isArrow: false,
   },
   {
-    id: "terms_margketing_ad_sms",
+    id: "terms_marketing_ad_sms",
     text: "[선택] SMS, SNS 수신 동의",
     isCheck: false,
     isArrow: false,
   },
   {
-    id: "terms_margketing_ad_app",
+    id: "terms_marketing_ad_app",
     text: "[선택] 앱 푸시 수신 동의",
     isCheck: false,
     isArrow: false,
@@ -103,6 +103,7 @@ const JoinForm = () => {
   } = useInput(isEmpty);
 
   const [isAllCheck, setIsAllCheck] = useState(false);
+  const [marketingCheck, setMarketingCheck] = useState(false);
   const [termsItems, setTermsItems] = useState(termsData);
 
   useEffect(() => {
@@ -147,6 +148,32 @@ const JoinForm = () => {
     setTermsItems((prevState) => (prevState = copyItems));
   };
 
+  const marketingCheckHandler = (marketingIdx) => {
+    let copyItems = [...termsItems];
+
+    if (copyItems[marketingIdx].id === "terms_marketing") {
+      if (
+        copyItems[marketingIdx].isCheck &&
+        !copyItems[marketingIdx + 1].isCheck
+      ) {
+        copyItems[marketingIdx].isCheck = false;
+      } else {
+        copyItems
+          .filter((item, idx) => idx >= marketingIdx)
+          .map((item) => (item.isCheck = !item.isCheck));
+      }
+    } else if (copyItems[marketingIdx].id === "terms_marketing_ad") {
+      if (!copyItems[marketingIdx - 1].isCheck)
+        copyItems[marketingIdx - 1].isCheck = true;
+
+      copyItems
+        .filter((item, idx) => idx >= marketingIdx)
+        .map((item) => (item.isCheck = !item.isCheck));
+    }
+
+    setTermsItems((prevState) => (prevState = copyItems));
+  };
+
   // 각각 체크박스 눌렀을 때
   const termsCheckedHandler = (event) => {
     // 누구껄 눌렀는지 htmlfor로 item.id를 가져옴.
@@ -156,10 +183,18 @@ const JoinForm = () => {
     // termsItem의 id와 targetId를 비교해서 찾음
     const idx = termsItems.findIndex((item) => item.id === targetId);
 
-    // index item의 isCheck를 변경
-    copyItems[idx].isCheck = !copyItems[idx].isCheck;
+    const marketingIdx = termsItems.findIndex(
+      (item) => item.id === "terms_marketing"
+    );
 
-    setTermsItems((prevState) => (prevState = copyItems));
+    if (idx >= marketingIdx) {
+      marketingCheckHandler(idx);
+    } else {
+      // index item의 isCheck를 변경
+      copyItems[idx].isCheck = !copyItems[idx].isCheck;
+
+      setTermsItems((prevState) => (prevState = copyItems));
+    }
   };
 
   const stylesTermsIcon = isAllCheck

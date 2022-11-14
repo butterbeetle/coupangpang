@@ -154,7 +154,7 @@
 }
 .terms__each--item {
   display: flex;
-  margin-bottom: 15px;
+  margin-bottom: 12px;
   padding-left: 0;
 }
 .terms__each--item:nth-last-child(-n + 3) {
