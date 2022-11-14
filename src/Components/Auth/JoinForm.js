@@ -8,10 +8,10 @@ const isEmpty = (value) => value.trim() !== "";
 const isEmail = (value) =>
   (isEmpty && value.includes("@") && value.includes(".com")) ||
   value.includes(".net");
-const isName = (value) => {};
-const isPhone = (value) => {};
+// const isName = (value) => {};
+// const isPhone = (value) => {};
 
-const termsData = [
+const essentialTermsData = [
   {
     id: "terms_age",
     text: "[필수] 만 14세 이상입니다",
@@ -42,6 +42,9 @@ const termsData = [
     isCheck: false,
     isArrow: true,
   },
+];
+
+const optionalTermsData = [
   {
     id: "terms_marketing",
     text: "[선택] 마케팅 목적의 개인정보 수집 및 이용 동의",
@@ -49,25 +52,25 @@ const termsData = [
     isArrow: true,
   },
   {
-    id: "terms_marketing_ad",
+    id: "terms_SMS",
     text: "[선택] 광고성 정보 수신 동의",
     isCheck: false,
     isArrow: true,
   },
   {
-    id: "terms_marketing_ad_email",
+    id: "terms_SMS_email",
     text: "[선택] 이메일 수신 동의",
     isCheck: false,
     isArrow: false,
   },
   {
-    id: "terms_marketing_ad_sms",
+    id: "terms_SMS_sms",
     text: "[선택] SMS, SNS 수신 동의",
     isCheck: false,
     isArrow: false,
   },
   {
-    id: "terms_marketing_ad_app",
+    id: "terms_SMS_app",
     text: "[선택] 앱 푸시 수신 동의",
     isCheck: false,
     isArrow: false,
@@ -93,30 +96,31 @@ const JoinForm = () => {
     reset: resetNameInput,
   } = useInput(isEmpty);
 
-  const {
-    value: enteredPhone,
-    isValid: enteredPhoneIsValid,
-    hasError: phoneInputHasError,
-    valueChangeHandler: phoneChangeHandler,
-    inputBlurHandler: phoneBlurHandler,
-    reset: resetPhoneInput,
-  } = useInput(isEmpty);
+  // const {
+  //   value: enteredPhone,
+  //   isValid: enteredPhoneIsValid,
+  //   hasError: phoneInputHasError,
+  //   valueChangeHandler: phoneChangeHandler,
+  //   inputBlurHandler: phoneBlurHandler,
+  //   reset: resetPhoneInput,
+  // } = useInput(isEmpty);
 
   const [isAllCheck, setIsAllCheck] = useState(false);
-  const [marketingCheck, setMarketingCheck] = useState(false);
-  const [termsItems, setTermsItems] = useState(termsData);
+  const [essentItems, setEssentItems] = useState(essentialTermsData);
+  const [optionItems, setOptionItems] = useState(optionalTermsData);
 
   useEffect(() => {
     // Check 되지 않은 item 개수
-    const result = termsItems.filter((item) => item.isCheck === false);
+    const tempArray = [...essentItems, ...optionItems];
+    const result = tempArray.filter((item) => item.isCheck === false);
 
     // Check 되지 않은 item 개수 가 0이 되면 모두 체크된 것으로 판단함.
-    if (!result?.length) {
+    if (!result.length) {
       setIsAllCheck(true);
     } else {
       setIsAllCheck(false);
     }
-  }, [termsItems]);
+  }, [essentItems, optionItems]);
 
   const formSubmissionHandler = (event) => {
     event.preventDefault();
@@ -130,71 +134,115 @@ const JoinForm = () => {
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
 
-  // 모두 동의 눌렀을 때
-  const termsAllCheckedHandler = () => {
-    let copyItems = [...termsItems];
-    // Check 되지 않은 item 개수
-    let filterItem = copyItems.filter((item) => item.isCheck === false);
+  // 모두 확인 눌렀을 때
+  const allCheckHandler = () => {
+    const copyEssentItems = [...essentItems];
+    const copyOptionItems = [...optionItems];
 
-    if (filterItem.length === 0) {
+    // Check 되지 않은 [필수] 아이템 개수
+    const filterEssentItems = copyEssentItems.filter(
+      (item) => item.isCheck === false
+    );
+
+    // Check 되지 않은 [선택] 아이템 개수
+    const filterOptionItems = copyOptionItems.filter(
+      (item) => item.isCheck === false
+    );
+
+    if (filterEssentItems.length === 0 && filterOptionItems.length === 0) {
       // 모두 체크되었다면
-      copyItems.map((item) => (item.isCheck = false));
+      copyEssentItems.map((item) => (item.isCheck = false));
+      copyOptionItems.map((item) => (item.isCheck = false));
     } else {
-      // 모두 체크되지 않거나 몇몇만 체크 됐다면 isCheck가 false인 item을 찾아서 true로 변경함.
-      copyItems
+      // 모두 체크되지 않거나 일부만 체크 되었다면
+      // isCheck가 false인 item을 찾아서 true로 변경함.
+      copyEssentItems
+        .filter((item) => item.isCheck === false)
+        .map((item) => (item.isCheck = true));
+
+      copyOptionItems
         .filter((item) => item.isCheck === false)
         .map((item) => (item.isCheck = true));
     }
-    setTermsItems((prevState) => (prevState = copyItems));
+    setEssentItems((prevState) => (prevState = copyEssentItems));
+    setOptionItems((prevState) => (prevState = copyOptionItems));
   };
 
-  const marketingCheckHandler = (marketingIdx) => {
-    let copyItems = [...termsItems];
-
-    if (copyItems[marketingIdx].id === "terms_marketing") {
-      if (
-        copyItems[marketingIdx].isCheck &&
-        !copyItems[marketingIdx + 1].isCheck
-      ) {
-        copyItems[marketingIdx].isCheck = false;
-      } else {
-        copyItems
-          .filter((item, idx) => idx >= marketingIdx)
-          .map((item) => (item.isCheck = !item.isCheck));
-      }
-    } else if (copyItems[marketingIdx].id === "terms_marketing_ad") {
-      if (!copyItems[marketingIdx - 1].isCheck)
-        copyItems[marketingIdx - 1].isCheck = true;
-
-      copyItems
-        .filter((item, idx) => idx >= marketingIdx)
-        .map((item) => (item.isCheck = !item.isCheck));
-    }
-
-    setTermsItems((prevState) => (prevState = copyItems));
-  };
-
-  // 각각 체크박스 눌렀을 때
-  const termsCheckedHandler = (event) => {
-    // 누구껄 눌렀는지 htmlfor로 item.id를 가져옴.
+  // [필수] 아이템 체크박스 눌렀을 때
+  const essentItemCheckHandler = (event) => {
+    // 어느 Item의 체크박스를 체크했는지 htmlfor로 {item.id}를 가져옴.
     const targetId = event.currentTarget.getAttribute("for");
 
-    let copyItems = [...termsItems];
+    let copyItems = [...essentItems];
     // termsItem의 id와 targetId를 비교해서 찾음
-    const idx = termsItems.findIndex((item) => item.id === targetId);
+    const idx = copyItems.findIndex((item) => item.id === targetId);
 
-    const marketingIdx = termsItems.findIndex(
-      (item) => item.id === "terms_marketing"
-    );
+    // index item의 isCheck를 변경
+    copyItems[idx].isCheck = !copyItems[idx].isCheck;
 
-    if (idx >= marketingIdx) {
-      marketingCheckHandler(idx);
+    setEssentItems((prevState) => (prevState = copyItems));
+  };
+
+  // [선택] 아이템 체크박스 눌렀을 때
+  const optionItemCheckHandler = (event) => {
+    let copyItems = [...optionItems];
+    // 어느 Item의 체크박스를 체크했는지 htmlfor로 {item.id}를 가져옴.
+    const targetId = event.currentTarget.getAttribute("for");
+
+    // termsItem의 id와 targetId를 비교해서 찾음
+    const targetIndex = copyItems.findIndex((item) => item.id === targetId);
+
+    if (targetId === "terms_marketing") {
+      // [선택] 마케팅 목적의 개인정보 수집 및 이용 동의
+      if (copyItems[targetIndex].isCheck) {
+        copyItems
+          .filter((item, idx) => idx >= targetIndex)
+          .map((item) => (item.isCheck = false));
+      } else {
+        copyItems
+          .filter((item, idx) => idx >= targetIndex)
+          .map((item) => (item.isCheck = true));
+      }
+    } else if (targetId === "terms_SMS") {
+      //[선택] 광고성 정보 수신 동의
+      if (copyItems[targetIndex].isCheck) {
+        copyItems
+          .filter((item, idx) => idx >= targetIndex)
+          .map((item) => (item.isCheck = false));
+      } else {
+        if (!copyItems[targetIndex - 1].isCheck) {
+          copyItems[targetIndex - 1].isCheck = true;
+        }
+        copyItems
+          .filter((item, idx) => idx >= targetIndex)
+          .map((item) => (item.isCheck = true));
+      }
     } else {
-      // index item의 isCheck를 변경
-      copyItems[idx].isCheck = !copyItems[idx].isCheck;
-
-      setTermsItems((prevState) => (prevState = copyItems));
+      // [선택] 이메일 수신 동의 / SMS, SNS수신 동의 / 앱 푸시 수신 동의
+      copyItems[targetIndex].isCheck = !copyItems[targetIndex].isCheck;
+      if (copyItems[targetIndex].isCheck) {
+        copyItems
+          .filter(
+            (item) => item.id === "terms_marketing" || item.id === "terms_SMS"
+          )
+          .map((item) => (item.isCheck = true));
+      } else {
+        const smsLength = copyItems
+          .filter(
+            (item) =>
+              item.id === "terms_SMS_email" ||
+              item.id === "terms_SMS_sms" ||
+              item.id === "terms_SMS_app"
+          )
+          .filter((item) => item.isCheck === true);
+        if (smsLength.length === 0) {
+          const idx = copyItems.findIndex((item) => item.id === "terms_SMS");
+          copyItems[idx].isCheck = false;
+        }
+      }
     }
+
+    setOptionItems((prevState) => (prevState = copyItems));
   };
 
   const stylesTermsIcon = isAllCheck
@@ -339,7 +387,7 @@ const JoinForm = () => {
           <section className={styles.terms}>
             <div className={styles["terms__all"]}>
               <div
-                onClick={termsAllCheckedHandler}
+                onClick={allCheckHandler}
                 className={styles["terms__all--icon"]}
               >
                 <i className={`${stylesTermsIcon}`}></i>
@@ -355,9 +403,29 @@ const JoinForm = () => {
             </div>
             <div className={styles["terms__each"]}>
               <ul className={styles["terms__each--items"]}>
-                {termsItems.map((item, idx) => (
+                {essentItems.map((item, idx) => (
                   <li key={idx} className={styles["terms__each--item"]}>
-                    <label htmlFor={item.id} onClick={termsCheckedHandler}>
+                    <label htmlFor={item.id} onClick={essentItemCheckHandler}>
+                      {item.isCheck ? (
+                        <i className={styles["terms__icon--on"]}></i>
+                      ) : (
+                        <i className={styles["terms__icon--off"]}></i>
+                      )}
+                      <p>{item.text}</p>
+                      {item.isArrow ? (
+                        <button
+                          className={styles["terms__icon--arrow"]}
+                        ></button>
+                      ) : (
+                        ""
+                      )}
+                    </label>
+                  </li>
+                ))}
+
+                {optionItems.map((item, idx) => (
+                  <li key={idx} className={styles["terms__each--item"]}>
+                    <label htmlFor={item.id} onClick={optionItemCheckHandler}>
                       {item.isCheck ? (
                         <i className={styles["terms__icon--on"]}></i>
                       ) : (
