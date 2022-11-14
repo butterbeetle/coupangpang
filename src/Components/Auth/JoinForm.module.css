@@ -160,12 +160,15 @@
 .terms__each--item:nth-last-child(-n + 3) {
   padding-left: 25px;
 }
+.terms__each--item--box {
+  display: flex;
+}
 .terms__icon--arrow {
   border: 0;
+  cursor: pointer;
 }
 .terms__each--items label {
   display: flex;
-  align-items: center;
   cursor: pointer;
 }
 .terms__each--items li p {

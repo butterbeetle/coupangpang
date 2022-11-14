@@ -134,7 +134,7 @@ const JoinForm = () => {
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
 
-  // 모두 확인 눌렀을 때
+  // 모두 확인하였으며 동의합니다.
   const allCheckHandler = () => {
     const copyEssentItems = [...essentItems];
     const copyOptionItems = [...optionItems];
@@ -405,13 +405,15 @@ const JoinForm = () => {
               <ul className={styles["terms__each--items"]}>
                 {essentItems.map((item, idx) => (
                   <li key={idx} className={styles["terms__each--item"]}>
-                    <label htmlFor={item.id} onClick={essentItemCheckHandler}>
-                      {item.isCheck ? (
-                        <i className={styles["terms__icon--on"]}></i>
-                      ) : (
-                        <i className={styles["terms__icon--off"]}></i>
-                      )}
-                      <p>{item.text}</p>
+                    <div className={styles["terms__each--item--box"]}>
+                      <label htmlFor={item.id} onClick={essentItemCheckHandler}>
+                        {item.isCheck ? (
+                          <i className={styles["terms__icon--on"]}></i>
+                        ) : (
+                          <i className={styles["terms__icon--off"]}></i>
+                        )}
+                        <p>{item.text}</p>
+                      </label>
                       {item.isArrow ? (
                         <button
                           className={styles["terms__icon--arrow"]}
@@ -419,19 +421,21 @@ const JoinForm = () => {
                       ) : (
                         ""
                       )}
-                    </label>
+                    </div>
                   </li>
                 ))}
 
                 {optionItems.map((item, idx) => (
                   <li key={idx} className={styles["terms__each--item"]}>
-                    <label htmlFor={item.id} onClick={optionItemCheckHandler}>
-                      {item.isCheck ? (
-                        <i className={styles["terms__icon--on"]}></i>
-                      ) : (
-                        <i className={styles["terms__icon--off"]}></i>
-                      )}
-                      <p>{item.text}</p>
+                    <div className={styles["terms__each--item--box"]}>
+                      <label htmlFor={item.id} onClick={optionItemCheckHandler}>
+                        {item.isCheck ? (
+                          <i className={styles["terms__icon--on"]}></i>
+                        ) : (
+                          <i className={styles["terms__icon--off"]}></i>
+                        )}
+                        <p>{item.text}</p>
+                      </label>
                       {item.isArrow ? (
                         <button
                           className={styles["terms__icon--arrow"]}
@@ -439,7 +443,7 @@ const JoinForm = () => {
                       ) : (
                         ""
                       )}
-                    </label>
+                    </div>
                   </li>
                 ))}
               </ul>
