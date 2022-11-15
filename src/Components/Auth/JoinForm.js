@@ -89,9 +89,11 @@ const JoinForm = () => {
   const {
     value: enteredEmail,
     isValid: enteredEmailIsValid,
+    isTouch: emailTouch,
     hasError: emailInputHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
+    focusHandler: emailFocusHandler,
     reset: resetEmailInput,
   } = useInput(isEmail);
 
@@ -130,7 +132,7 @@ const JoinForm = () => {
     }
   }, [essentItems, optionItems]);
 
-  const formSubmissionHandler = (event) => {
+  const submitHandler = (event) => {
     event.preventDefault();
 
     if (!enteredEmailIsValid && !enteredNameIsValid) return;
@@ -141,6 +143,10 @@ const JoinForm = () => {
 
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
+  const stylesTouch = emailTouch ? `${styles.touch}` : "";
+  const stylesTermsIcon = isAllCheck
+    ? styles["terms__icon--on"]
+    : styles["terms__icon--off"];
 
   // 모두 확인하였으며 동의합니다.
   const allCheckHandler = () => {
@@ -253,21 +259,18 @@ const JoinForm = () => {
     setOptionItems((prevState) => (prevState = copyItems));
   };
 
-  const stylesTermsIcon = isAllCheck
-    ? styles["terms__icon--on"]
-    : styles["terms__icon--off"];
-
   return (
     <main>
       <section className={styles.auth}>
         <p className={styles["auth-text"]}>회원정보를 입력해주세요</p>
-        <form className={styles["auth-form"]} onSubmit={formSubmissionHandler}>
+        <form className={styles["auth-form"]} onSubmit={submitHandler}>
           <div>
             <div className={styles["auth-form__content"]}>
               <label
                 htmlFor="email"
                 className={`
     ${styles["auth-form__label"]}
+    ${stylesTouch}
     ${stylesInputEmail}`}
               >
                 <div>
@@ -276,6 +279,7 @@ const JoinForm = () => {
                 <input
                   onChange={emailChangeHandler}
                   onBlur={emailBlurHandler}
+                  onFocus={emailFocusHandler}
                   id="email"
                   placeholder="아이디(이메일)"
                   type="text"
@@ -285,7 +289,9 @@ const JoinForm = () => {
               </label>
             </div>
             {emailInputHasError && (
-              <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+              <div className={styles["error"]}>
+                <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+              </div>
             )}
 
             <div className={styles["auth-form__content"]}>
@@ -310,7 +316,24 @@ const JoinForm = () => {
               </label>
             </div>
             {emailInputHasError && (
-              <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+              <>
+                <div className={styles["error"]}>
+                  <span className={styles["error-icon"]}></span>
+                  <p className={styles["error-text"]}>
+                    영문/숫자/특수문자 2가지 이상 조합 (8~20자)
+                  </p>
+                </div>
+                <div className={styles["error"]}>
+                  <span className={styles["error-icon"]}></span>
+                  <p className={styles["error-text"]}>
+                    3개 이상 연속되거나 동일한 문자/숫자 제외
+                  </p>
+                </div>
+                <div className={styles["error"]}>
+                  <span className={styles["error-icon"]}></span>
+                  <p className={styles["error-text"]}>아이디(이메일) 제외</p>
+                </div>
+              </>
             )}
 
             <div className={styles["auth-form__content"]}>
@@ -337,7 +360,12 @@ const JoinForm = () => {
               </label>
             </div>
             {emailInputHasError && (
-              <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+              <div className={styles["error"]}>
+                <span className={styles["error-icon"]}></span>
+                <p className={styles["error-text"]}>
+                  확인을 위해 새 비밀번호를 다시 입력해주세요.
+                </p>
+              </div>
             )}
 
             <div className={styles["auth-form__content"]}>
@@ -361,7 +389,11 @@ const JoinForm = () => {
               </label>
             </div>
             {nameInputHasError && (
-              <p className={styles["error-text"]}>이름을 정확히 입력하세요.</p>
+              <div className={styles["error"]}>
+                <p className={styles["error-text"]}>
+                  이름을 정확히 입력하세요.
+                </p>
+              </div>
             )}
 
             <div className={styles["auth-form__content"]}>
@@ -386,9 +418,11 @@ const JoinForm = () => {
               </label>
             </div>
             {emailInputHasError && (
-              <p className={styles["error-text"]}>
-                휴대폰 번호를 정확하게 입력하세요.
-              </p>
+              <div className={styles["error"]}>
+                <p className={styles["error-text"]}>
+                  휴대폰 번호를 정확하게 입력하세요.
+                </p>
+              </div>
             )}
           </div>
 

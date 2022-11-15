@@ -8,12 +8,6 @@
   padding-bottom: 15px;
 }
 
-.error-text {
-  font-size: 12px;
-  color: #e52528;
-  padding-left: 12px;
-}
-
 .auth-form__icon--email {
   display: inline-block;
   width: 20px;
@@ -59,7 +53,7 @@
   width: 450px;
   margin: 0 auto;
   border: 1px solid #ccc;
-  margin-bottom: 15px;
+  margin: 15px 0;
 }
 
 .auth-form__label {
@@ -68,6 +62,9 @@
 }
 .invalid {
   border-bottom: 2px solid #e7223d;
+}
+.touch {
+  border-bottom: 2px solid #346aff;
 }
 .auth-form__label div {
   display: flex;
@@ -177,4 +174,23 @@
   font-size: 14px;
   color: #666;
   width: 360px;
+}
+
+.error {
+  display: flex;
+  align-items: center;
+  padding-left: 12px;
+}
+.error-icon {
+  margin-right: 5px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../../assets/img/icon-cross-gray.png") no-repeat 0px 0px;
+  background-size: cover;
+}
+.error-text {
+  font-size: 12px;
+  color: #e52528;
+  margin: 0;
 }
