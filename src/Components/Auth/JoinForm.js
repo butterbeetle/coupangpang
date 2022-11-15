@@ -2,22 +2,11 @@ import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
 import styles from "./JoinForm.module.css";
 
-// 정규식 이용해서 검사하는 용
-const isEmail = (value) => {
-  const regExp = //eslint-disable-next-line
-    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-  return regExp.test(value);
-};
-const isName = (value) => {
-  const regExp = //eslint-disable-next-line
-    /^[a-zA-Z가-힣][a-zA-Z가-힣]*$/;
-  return regExp.test(value);
-};
-const isPhone = (value) => {
-  const regExp = //eslint-disable-next-line
-    /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
-  return regExp.test(value);
-};
+const EMAIL = 1;
+const PASSWD = 2;
+const PASSWD_CONFIRM = 3;
+const NAME = 4;
+const PHONE = 5;
 
 const essentialTermsData = [
   {
@@ -95,25 +84,51 @@ const JoinForm = () => {
     inputBlurHandler: emailBlurHandler,
     focusHandler: emailFocusHandler,
     reset: resetEmailInput,
-  } = useInput(isEmail);
+  } = useInput(EMAIL);
+
+  const {
+    value: enteredPasswd,
+    isValid: enteredPasswdIsValid,
+    isTouch: passwdTouch,
+    hasError: passwdInputHasError,
+    valueChangeHandler: passwdChangeHandler,
+    inputBlurHandler: passwdBlurHandler,
+    focusHandler: passwdFocusHandler,
+    reset: resetPasswdInput,
+  } = useInput(PASSWD);
+
+  const {
+    value: enteredPasswdConfirm,
+    isValid: enteredPasswdConfirmIsValid,
+    isTouch: passwdConfirmTouch,
+    hasError: passwdConfirmInputHasError,
+    valueChangeHandler: passwdConfirmChangeHandler,
+    inputBlurHandler: passwdConfirmBlurHandler,
+    focusHandler: passwdConfirmFocusHandler,
+    reset: resetPasswdConfirmInput,
+  } = useInput(PASSWD_CONFIRM);
 
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
+    isTouch: nameTouch,
     hasError: nameInputHasError,
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
+    focusHandler: nameFocusHandler,
     reset: resetNameInput,
-  } = useInput(isName);
+  } = useInput(NAME);
 
   const {
     value: enteredPhone,
     isValid: enteredPhoneIsValid,
+    isTouch: phoneTouch,
     hasError: phoneInputHasError,
     valueChangeHandler: phoneChangeHandler,
     inputBlurHandler: phoneBlurHandler,
+    focusHandler: phoneFocusHandler,
     reset: resetPhoneInput,
-  } = useInput(isPhone);
+  } = useInput(PHONE);
 
   const [isAllCheck, setIsAllCheck] = useState(false);
   const [essentItems, setEssentItems] = useState(essentialTermsData);
@@ -132,18 +147,53 @@ const JoinForm = () => {
     }
   }, [essentItems, optionItems]);
 
+  const [isPasswdInput, setIsPasswdInput] = useState(false);
+
+  useEffect(() => {
+    setIsPasswdInput(true);
+  }, [enteredPasswd]);
+
   const submitHandler = (event) => {
     event.preventDefault();
 
-    if (!enteredEmailIsValid && !enteredNameIsValid) return;
+    if (
+      !enteredEmailIsValid &&
+      !enteredNameIsValid &&
+      !enteredPhoneIsValid &&
+      !enteredPasswdIsValid &&
+      !enteredPasswdConfirmIsValid
+    )
+      return;
 
     resetEmailInput();
+    resetPasswdInput();
+    resetPasswdConfirmInput();
     resetNameInput();
+    resetPhoneInput();
   };
 
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
+  const stylesTouchEmail = emailTouch ? `${styles.touch}` : "";
+
+  const stylesInputPasswd = !isPasswdInput
+    ? passwdInputHasError
+      ? `${styles.invalid}`
+      : ""
+    : "";
+  const stylesTouchPasswd = passwdTouch ? `${styles.touch}` : "";
+  const stylesTouchText = passwdTouch ? `${styles["error--text--touch"]}` : "";
+
+  const stylesInputPasswdConfirm = passwdConfirmInputHasError
+    ? `${styles.invalid}`
+    : "";
+  const stylesTouchPasswdConfirm = passwdConfirmTouch ? `${styles.touch}` : "";
+
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
-  const stylesTouch = emailTouch ? `${styles.touch}` : "";
+  const stylesTouchName = nameTouch ? `${styles.touch}` : "";
+
+  const stylesInputPhone = phoneInputHasError ? `${styles.invalid}` : "";
+  const stylesTouchPhone = phoneTouch ? `${styles.touch}` : "";
+
   const stylesTermsIcon = isAllCheck
     ? styles["terms__icon--on"]
     : styles["terms__icon--off"];
@@ -270,7 +320,7 @@ const JoinForm = () => {
                 htmlFor="email"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesTouch}
+    ${stylesTouchEmail}
     ${stylesInputEmail}`}
               >
                 <div>
@@ -299,39 +349,42 @@ const JoinForm = () => {
                 htmlFor="passwd"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesInputEmail}`}
+    ${stylesTouchPasswd}
+    ${stylesInputPasswd}`}
               >
                 <div>
                   <span className={styles["auth-form__icon--passwd"]}></span>
                 </div>
                 <input
-                  onChange={emailChangeHandler}
-                  onBlur={emailBlurHandler}
+                  onChange={passwdChangeHandler}
+                  onBlur={passwdBlurHandler}
+                  onFocus={passwdFocusHandler}
                   id="passwd"
                   placeholder="비밀번호"
                   type="text"
-                  value={enteredEmail}
+                  value={enteredPasswd}
                 ></input>
-                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
               </label>
             </div>
-            {emailInputHasError && (
+            {(passwdTouch || passwdInputHasError) && (
               <>
                 <div className={styles["error"]}>
                   <span className={styles["error-icon"]}></span>
-                  <p className={styles["error-text"]}>
+                  <p className={`${styles["error-text"]} ${stylesTouchText}`}>
                     영문/숫자/특수문자 2가지 이상 조합 (8~20자)
                   </p>
                 </div>
                 <div className={styles["error"]}>
                   <span className={styles["error-icon"]}></span>
-                  <p className={styles["error-text"]}>
+                  <p className={`${styles["error-text"]} ${stylesTouchText}`}>
                     3개 이상 연속되거나 동일한 문자/숫자 제외
                   </p>
                 </div>
                 <div className={styles["error"]}>
                   <span className={styles["error-icon"]}></span>
-                  <p className={styles["error-text"]}>아이디(이메일) 제외</p>
+                  <p className={`${styles["error-text"]} ${stylesTouchText}`}>
+                    아이디(이메일) 제외
+                  </p>
                 </div>
               </>
             )}
@@ -341,7 +394,8 @@ const JoinForm = () => {
                 htmlFor="passwd-confirm"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesInputEmail}`}
+    ${stylesTouchPasswdConfirm}
+    ${stylesInputPasswdConfirm}`}
               >
                 <div>
                   <span
@@ -349,20 +403,20 @@ const JoinForm = () => {
                   ></span>
                 </div>
                 <input
-                  onChange={emailChangeHandler}
-                  onBlur={emailBlurHandler}
+                  onChange={passwdConfirmChangeHandler}
+                  onBlur={passwdConfirmBlurHandler}
+                  onFocus={passwdConfirmFocusHandler}
                   id="passwd-confirm"
                   placeholder="비밀번호 확인"
                   type="text"
-                  value={enteredEmail}
+                  value={enteredPasswdConfirm}
                 ></input>
-                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
               </label>
             </div>
-            {emailInputHasError && (
+            {passwdConfirmInputHasError && (
               <div className={styles["error"]}>
                 <span className={styles["error-icon"]}></span>
-                <p className={styles["error-text"]}>
+                <p className={`${styles["error-text"]} `}>
                   확인을 위해 새 비밀번호를 다시 입력해주세요.
                 </p>
               </div>
@@ -373,6 +427,7 @@ const JoinForm = () => {
                 htmlFor="name"
                 className={`
     ${styles["auth-form__label"]}
+    ${stylesTouchName}
     ${stylesInputName}`}
               >
                 <div>
@@ -381,6 +436,7 @@ const JoinForm = () => {
                 <input
                   onChange={nameChangeHandler}
                   onBlur={nameBlurHandler}
+                  onFocus={nameFocusHandler}
                   id="name"
                   placeholder="이름"
                   type="text"
@@ -401,23 +457,24 @@ const JoinForm = () => {
                 htmlFor="phone"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesInputEmail}`}
+    ${stylesTouchPhone}
+    ${stylesInputPhone}`}
               >
                 <div>
                   <span className={styles["auth-form__icon--phone"]}></span>
                 </div>
                 <input
-                  onChange={emailChangeHandler}
-                  onBlur={emailBlurHandler}
+                  onChange={phoneChangeHandler}
+                  onBlur={phoneBlurHandler}
+                  onFocus={phoneFocusHandler}
                   id="phone"
                   placeholder="휴대폰 번호"
                   type="text"
-                  value={enteredEmail}
+                  value={enteredPhone}
                 ></input>
-                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
               </label>
             </div>
-            {emailInputHasError && (
+            {phoneInputHasError && (
               <div className={styles["error"]}>
                 <p className={styles["error-text"]}>
                   휴대폰 번호를 정확하게 입력하세요.
