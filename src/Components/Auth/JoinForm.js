@@ -2,14 +2,22 @@ import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
 import styles from "./JoinForm.module.css";
 
-// 공백이 아닌가
-const isEmpty = (value) => value.trim() !== "";
-// 공백이 아니고 @를 포함하며 .com 혹은 .net을 포함하는가
-const isEmail = (value) =>
-  (isEmpty && value.includes("@") && value.includes(".com")) ||
-  value.includes(".net");
-// const isName = (value) => {};
-// const isPhone = (value) => {};
+// 정규식 이용해서 검사하는 용
+const isEmail = (value) => {
+  const regExp = //eslint-disable-next-line
+    /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
+  return regExp.test(value);
+};
+const isName = (value) => {
+  const regExp = //eslint-disable-next-line
+    /^[a-zA-Z가-힣][a-zA-Z가-힣]*$/;
+  return regExp.test(value);
+};
+const isPhone = (value) => {
+  const regExp = //eslint-disable-next-line
+    /^01(?:0|1|[6-9])-(?:\d{3}|\d{4})-\d{4}$/;
+  return regExp.test(value);
+};
 
 const essentialTermsData = [
   {
@@ -94,16 +102,16 @@ const JoinForm = () => {
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
     reset: resetNameInput,
-  } = useInput(isEmpty);
+  } = useInput(isName);
 
-  // const {
-  //   value: enteredPhone,
-  //   isValid: enteredPhoneIsValid,
-  //   hasError: phoneInputHasError,
-  //   valueChangeHandler: phoneChangeHandler,
-  //   inputBlurHandler: phoneBlurHandler,
-  //   reset: resetPhoneInput,
-  // } = useInput(isEmpty);
+  const {
+    value: enteredPhone,
+    isValid: enteredPhoneIsValid,
+    hasError: phoneInputHasError,
+    valueChangeHandler: phoneChangeHandler,
+    inputBlurHandler: phoneBlurHandler,
+    reset: resetPhoneInput,
+  } = useInput(isPhone);
 
   const [isAllCheck, setIsAllCheck] = useState(false);
   const [essentItems, setEssentItems] = useState(essentialTermsData);
