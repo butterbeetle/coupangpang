@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import useInput from "../../hooks/use-input";
+import { AuthModal } from "../../UI/AuthModal";
 import styles from "./JoinForm.module.css";
 
 const EMAIL = 1;
@@ -133,6 +134,9 @@ const JoinForm = () => {
   const [isAllCheck, setIsAllCheck] = useState(false);
   const [essentItems, setEssentItems] = useState(essentialTermsData);
   const [optionItems, setOptionItems] = useState(optionalTermsData);
+
+  const [modalClicked, setModalClicked] = useState(false);
+  const [modalInfo, setModalInfo] = useState(null);
 
   useEffect(() => {
     // Check 되지 않은 item 개수
@@ -309,8 +313,19 @@ const JoinForm = () => {
     setOptionItems((prevState) => (prevState = copyItems));
   };
 
+  // > 클릭 시 Modal 창
+  const modalClickHandler = (id) => {
+    setModalInfo(id);
+  };
+  const modalConfirmHandler = () => {
+    setModalInfo(null);
+  };
+
   return (
     <main>
+      {modalInfo && (
+        <AuthModal modalType={modalInfo} onConfirm={modalConfirmHandler} />
+      )}
       <section className={styles.auth}>
         <p className={styles["auth-text"]}>회원정보를 입력해주세요</p>
         <form className={styles["auth-form"]} onSubmit={submitHandler}>
@@ -515,6 +530,7 @@ const JoinForm = () => {
                       </label>
                       {item.isArrow ? (
                         <button
+                          onClick={() => modalClickHandler(item.id)}
                           className={styles["terms__icon--arrow"]}
                         ></button>
                       ) : (
