@@ -196,8 +196,10 @@ const JoinForm = () => {
   const stylesFocusPasswd = passwdFocus ? `${styles.focus}` : "";
   const stylesFocusText = passwdFocus ? `${styles["error--text--focus"]}` : "";
 
-  const stylesInputPasswdConfirm = passwdConfirmInputHasError
-    ? `${styles.invalid}`
+  const stylesInputPasswdConfirm = !passwdConfirmInput
+    ? passwdConfirmInputHasError
+      ? `${styles.invalid}`
+      : ""
     : "";
   const stylesFocusPasswdConfirm = passwdConfirmFocus ? `${styles.focus}` : "";
 
@@ -329,7 +331,7 @@ const JoinForm = () => {
   const modalConfirmHandler = () => {
     setModalInfo(null);
   };
-  // console.log(passwdFocus);
+
   return (
     <main>
       {modalInfo && (
@@ -401,31 +403,33 @@ const JoinForm = () => {
             {passwdFocus || passwdInputHasError ? (
               <>
                 <div className={styles["error"]}>
-                  <span className={styles["error-icon"]}></span>
-                  <p className={`${styles["error-text"]} ${stylesFocusText}`}>
+                  <span className={styles["gray-icon"]}></span>
+                  <p className={`${styles["gray-text"]} ${stylesFocusText}`}>
                     영문/숫자/특수문자 2가지 이상 조합 (8~20자)
                   </p>
                 </div>
                 <div className={styles["error"]}>
-                  <span className={styles["error-icon"]}></span>
-                  <p className={`${styles["error-text"]} ${stylesFocusText}`}>
+                  <span className={styles["gray-icon"]}></span>
+                  <p className={`${styles["gray-text"]} ${stylesFocusText}`}>
                     3개 이상 연속되거나 동일한 문자/숫자 제외
                   </p>
                 </div>
                 <div className={styles["error"]}>
-                  <span className={styles["error-icon"]}></span>
-                  <p className={`${styles["error-text"]} ${stylesFocusText}`}>
+                  <span className={styles["gray-icon"]}></span>
+                  <p className={`${styles["gray-text"]} ${stylesFocusText}`}>
                     아이디(이메일) 제외
                   </p>
                 </div>
               </>
-            ) : (
+            ) : passwdFocus ? (
               <div className={styles["green"]}>
                 <span className={styles["green-icon"]}></span>
                 <p className={`${styles["green-text"]} ${stylesFocusText}`}>
                   사용 가능한 비밀번호입니다.
                 </p>
               </div>
+            ) : (
+              ""
             )}
 
             <div className={styles["auth-form__content"]}>
@@ -454,8 +458,8 @@ const JoinForm = () => {
             </div>
             {passwdConfirmInputHasError && (
               <div className={styles["error"]}>
-                <span className={styles["error-icon"]}></span>
-                <p className={`${styles["error-text"]} `}>
+                <span className={styles["gray-icon"]}></span>
+                <p className={`${styles["gray-text"]} `}>
                   확인을 위해 새 비밀번호를 다시 입력해주세요.
                 </p>
               </div>
@@ -488,7 +492,7 @@ const JoinForm = () => {
             </div>
             {nameInputHasError && (
               <div className={styles["error"]}>
-                {emailInput ? (
+                {nameInput ? (
                   <p className={styles["error-text"]}>
                     이름을 정확히 입력하세요.
                   </p>

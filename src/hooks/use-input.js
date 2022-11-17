@@ -7,15 +7,27 @@ const isEmail = (value) => {
   return pattern.test(value);
 };
 
+let emailValue = "";
+
 const isPasswd = (value) => {
+  const isError = [false, false, false];
+
   // 영문/숫자/특수문자 2가지 이상 조합 (8~20자)
+  // true: 경우 조건 달성, false: error
   const pattern = //eslint-disable-next-line
     /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/;
+  console.log("Pattern:", pattern.test(value));
   // 3개 이상 연속되거나 동일한 문자/숫자 제외
+  // true: , false:
   const pattern2 = //eslint-disable-next-line
-    /^([0-9]{3}|[a-z]{3}|[A-Z]{3})|((\w)\1\1)/;
-  // // 아이디(이메일) 제외
-  const pattern3 = "A"; //eslint-disable-next-line
+    /(\w){3,}/;
+  console.log("Pattern2:", pattern2.test(value));
+  const pattern3 = //eslint-disable-next-line
+    /(\w)\1\1/;
+  console.log("Pattern3:", pattern3.test(value));
+  // 아이디(이메일) 제외
+  // -1이면 같지않음, 0이면 email과 같음
+  const pattern4 = value.search(emailValue);
   return pattern.test(value);
 };
 
@@ -31,18 +43,20 @@ const isPhone = (value) => {
 };
 
 const useInput = (type) => {
-  const [enteredValue, setEnteredValue] = useState("");
+  // 입력을 시도했거나 그냥 input을 클릭했다 바깥클릭
   const [isBlur, setIsBlur] = useState(false);
+  // 입력을 시도하려고 누를 때
   const [isFocus, setIsFocus] = useState(false);
+  // 무언갈 입력했을 때
   const [isInput, setIsInput] = useState(false);
+  // 입력된 값
+  const [enteredValue, setEnteredValue] = useState("");
 
   let valueIsValid = false;
-
   switch (type) {
     case 1:
       // valueIsValid = true 일때 조건 만족
       valueIsValid = isEmail(enteredValue);
-      console.log("1.", valueIsValid);
       break;
     case 2:
       // valueIsValid = true 일때 조건 만족
@@ -71,19 +85,24 @@ const useInput = (type) => {
     } else {
       setIsInput(false);
     }
+    // email 이면 enteredValue 저장
+    if (type === 1) {
+      emailValue = event.target.value;
+    }
     setEnteredValue(event.target.value);
   };
 
   const inputBlurHandler = () => {
-    console.log("Blur !!");
+    // console.log("Blur !!");
     setIsFocus(false);
     setIsBlur(true);
   };
 
   const focusHandler = () => {
-    console.log("Focus !!");
+    // console.log("Focus !!", valueIsValid);
     // valueIsValid 가 true 즉 조건을 만족했을 때
     // input이 focus 즉 Focus 되는 경우
+    if (type === 2) setIsFocus(true);
     if (valueIsValid) setIsFocus(true);
   };
 
