@@ -79,7 +79,9 @@ const JoinForm = () => {
   const {
     value: enteredEmail,
     isValid: enteredEmailIsValid,
-    isTouch: emailTouch,
+    isFocus: emailFocus,
+    isBlur: emailBlur,
+    isInput: emailInput,
     hasError: emailInputHasError,
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
@@ -90,7 +92,7 @@ const JoinForm = () => {
   const {
     value: enteredPasswd,
     isValid: enteredPasswdIsValid,
-    isTouch: passwdTouch,
+    isFocus: passwdFocus,
     hasError: passwdInputHasError,
     valueChangeHandler: passwdChangeHandler,
     inputBlurHandler: passwdBlurHandler,
@@ -101,7 +103,7 @@ const JoinForm = () => {
   const {
     value: enteredPasswdConfirm,
     isValid: enteredPasswdConfirmIsValid,
-    isTouch: passwdConfirmTouch,
+    isFocus: passwdConfirmFocus,
     hasError: passwdConfirmInputHasError,
     valueChangeHandler: passwdConfirmChangeHandler,
     inputBlurHandler: passwdConfirmBlurHandler,
@@ -112,7 +114,7 @@ const JoinForm = () => {
   const {
     value: enteredName,
     isValid: enteredNameIsValid,
-    isTouch: nameTouch,
+    isFocus: nameFocus,
     hasError: nameInputHasError,
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
@@ -123,7 +125,7 @@ const JoinForm = () => {
   const {
     value: enteredPhone,
     isValid: enteredPhoneIsValid,
-    isTouch: phoneTouch,
+    isFocus: phoneFocus,
     hasError: phoneInputHasError,
     valueChangeHandler: phoneChangeHandler,
     inputBlurHandler: phoneBlurHandler,
@@ -176,26 +178,26 @@ const JoinForm = () => {
   };
 
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
-  const stylesTouchEmail = emailTouch ? `${styles.touch}` : "";
+  const stylesFocusEmail = emailFocus ? `${styles.focus}` : "";
 
   const stylesInputPasswd = !isPasswdInput
     ? passwdInputHasError
       ? `${styles.invalid}`
       : ""
     : "";
-  const stylesTouchPasswd = passwdTouch ? `${styles.touch}` : "";
-  const stylesTouchText = passwdTouch ? `${styles["error--text--touch"]}` : "";
+  const stylesFocusPasswd = passwdFocus ? `${styles.focus}` : "";
+  const stylesFocusText = passwdFocus ? `${styles["error--text--focus"]}` : "";
 
   const stylesInputPasswdConfirm = passwdConfirmInputHasError
     ? `${styles.invalid}`
     : "";
-  const stylesTouchPasswdConfirm = passwdConfirmTouch ? `${styles.touch}` : "";
+  const stylesFocusPasswdConfirm = passwdConfirmFocus ? `${styles.focus}` : "";
 
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
-  const stylesTouchName = nameTouch ? `${styles.touch}` : "";
+  const stylesFocusName = nameFocus ? `${styles.focus}` : "";
 
   const stylesInputPhone = phoneInputHasError ? `${styles.invalid}` : "";
-  const stylesTouchPhone = phoneTouch ? `${styles.touch}` : "";
+  const stylesFocusPhone = phoneFocus ? `${styles.focus}` : "";
 
   const stylesTermsIcon = isAllCheck
     ? styles["terms__icon--on"]
@@ -319,7 +321,7 @@ const JoinForm = () => {
   const modalConfirmHandler = () => {
     setModalInfo(null);
   };
-
+  // console.log(passwdFocus);
   return (
     <main>
       {modalInfo && (
@@ -334,7 +336,7 @@ const JoinForm = () => {
                 htmlFor="email"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesTouchEmail}
+    ${stylesFocusEmail}
     ${stylesInputEmail}`}
               >
                 <div>
@@ -349,12 +351,20 @@ const JoinForm = () => {
                   type="text"
                   value={enteredEmail}
                 ></input>
-                {/* <span className={styles["auth-form__icon--hide"]}></span> */}
+                {!emailInputHasError && !emailFocus && emailBlur && (
+                  <span className={styles["auth-form__icon--check"]}></span>
+                )}
               </label>
             </div>
             {emailInputHasError && (
               <div className={styles["error"]}>
-                <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+                {emailInput ? (
+                  <p className={styles["error-text"]}>
+                    이메일을 올바르게 입력해주세요.
+                  </p>
+                ) : (
+                  <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+                )}
               </div>
             )}
 
@@ -363,7 +373,7 @@ const JoinForm = () => {
                 htmlFor="passwd"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesTouchPasswd}
+    ${stylesFocusPasswd}
     ${stylesInputPasswd}`}
               >
                 <div>
@@ -380,27 +390,34 @@ const JoinForm = () => {
                 ></input>
               </label>
             </div>
-            {(passwdTouch || passwdInputHasError) && (
+            {passwdFocus || passwdInputHasError ? (
               <>
                 <div className={styles["error"]}>
                   <span className={styles["error-icon"]}></span>
-                  <p className={`${styles["error-text"]} ${stylesTouchText}`}>
+                  <p className={`${styles["error-text"]} ${stylesFocusText}`}>
                     영문/숫자/특수문자 2가지 이상 조합 (8~20자)
                   </p>
                 </div>
                 <div className={styles["error"]}>
                   <span className={styles["error-icon"]}></span>
-                  <p className={`${styles["error-text"]} ${stylesTouchText}`}>
+                  <p className={`${styles["error-text"]} ${stylesFocusText}`}>
                     3개 이상 연속되거나 동일한 문자/숫자 제외
                   </p>
                 </div>
                 <div className={styles["error"]}>
                   <span className={styles["error-icon"]}></span>
-                  <p className={`${styles["error-text"]} ${stylesTouchText}`}>
+                  <p className={`${styles["error-text"]} ${stylesFocusText}`}>
                     아이디(이메일) 제외
                   </p>
                 </div>
               </>
+            ) : (
+              <div className={styles["green"]}>
+                <span className={styles["green-icon"]}></span>
+                <p className={`${styles["green-text"]} ${stylesFocusText}`}>
+                  사용 가능한 비밀번호입니다.
+                </p>
+              </div>
             )}
 
             <div className={styles["auth-form__content"]}>
@@ -408,7 +425,7 @@ const JoinForm = () => {
                 htmlFor="passwd-confirm"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesTouchPasswdConfirm}
+    ${stylesFocusPasswdConfirm}
     ${stylesInputPasswdConfirm}`}
               >
                 <div>
@@ -441,7 +458,7 @@ const JoinForm = () => {
                 htmlFor="name"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesTouchName}
+    ${stylesFocusName}
     ${stylesInputName}`}
               >
                 <div>
@@ -471,7 +488,7 @@ const JoinForm = () => {
                 htmlFor="phone"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesTouchPhone}
+    ${stylesFocusPhone}
     ${stylesInputPhone}`}
               >
                 <div>

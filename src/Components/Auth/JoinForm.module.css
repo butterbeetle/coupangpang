@@ -5,7 +5,7 @@
 .auth-text {
   font-size: 14px;
   font-weight: bold;
-  padding-bottom: 15px;
+  padding-bottom: 5px;
 }
 
 .auth-form__icon--email {
@@ -38,6 +38,15 @@
   height: 22px;
   background: url("../../assets/img/sprite-member.svg") no-repeat -21px -21px;
 }
+.auth-form__icon--check {
+  display: inline-block;
+  position: absolute;
+  top: 15px;
+  right: 13px;
+  width: 20px;
+  height: 22px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -63px 0px;
+}
 
 .auth-form__icon--hide {
   position: absolute;
@@ -63,7 +72,7 @@
 .invalid {
   border-bottom: 2px solid #e7223d;
 }
-.touch {
+.focus {
   border-bottom: 2px solid #346aff;
 }
 .auth-form__label div {
@@ -136,6 +145,7 @@
   background: url("../../assets/img/terms_arrow.svg") no-repeat;
   background-size: 20px 20px;
 }
+
 .terms__all--text {
   font-size: 12px;
   color: #666;
@@ -176,7 +186,8 @@
   width: 360px;
 }
 
-.error {
+.error,
+.green {
   display: flex;
   align-items: center;
   padding-left: 12px;
@@ -189,11 +200,24 @@
   background: url("../../assets/img/icon-cross-gray.png") no-repeat 0px 0px;
   background-size: cover;
 }
+.green-icon {
+  margin-right: 5px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../../assets/img/icon-check-green.png") no-repeat 0px 0px;
+  background-size: cover;
+}
+.green-text {
+  font-size: 12px;
+  color: #4f8993;
+  margin: 0;
+}
 .error-text {
   font-size: 12px;
   color: #e52528;
   margin: 0;
 }
-.error--text--touch {
+.error--text--focus {
   color: #888;
 }

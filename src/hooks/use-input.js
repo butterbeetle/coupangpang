@@ -32,16 +32,20 @@ const isPhone = (value) => {
 
 const useInput = (type) => {
   const [enteredValue, setEnteredValue] = useState("");
-  const [isTouched, setIsTouched] = useState(false);
-  const [isTouch, setIsTouch] = useState(false);
+  const [isBlur, setIsBlur] = useState(false);
+  const [isFocus, setIsFocus] = useState(false);
+  const [isInput, setIsInput] = useState(false);
 
   let valueIsValid = false;
 
   switch (type) {
     case 1:
+      // valueIsValid = true 일때 조건 만족
       valueIsValid = isEmail(enteredValue);
+      console.log("1.", valueIsValid);
       break;
     case 2:
+      // valueIsValid = true 일때 조건 만족
       valueIsValid = isPasswd(enteredValue);
       break;
     case 3:
@@ -56,31 +60,45 @@ const useInput = (type) => {
     default: //NOTHING
   }
 
-  const hasError = !valueIsValid && isTouched;
+  // valueIsValid = false 즉 요구조건을 통과못하고
+  // isBlur = true 한번이라도 input창을 클릭했고,
+  // isFocus = false 현재 input창을 focus중이 아닐때
+  const hasError = !valueIsValid && isBlur && !isFocus;
 
   const valueChangeHandler = (event) => {
+    if (event.target.value) {
+      setIsInput(true);
+    } else {
+      setIsInput(false);
+    }
     setEnteredValue(event.target.value);
   };
 
   const inputBlurHandler = () => {
-    setIsTouch(false);
-    setIsTouched(true);
+    console.log("Blur !!");
+    setIsFocus(false);
+    setIsBlur(true);
   };
 
   const focusHandler = () => {
-    if (!hasError) setIsTouch(true);
+    console.log("Focus !!");
+    // valueIsValid 가 true 즉 조건을 만족했을 때
+    // input이 focus 즉 Focus 되는 경우
+    if (valueIsValid) setIsFocus(true);
   };
 
   const reset = () => {
     setEnteredValue("");
-    setIsTouch(false);
-    setIsTouched(false);
+    setIsFocus(false);
+    setIsBlur(false);
   };
 
   return {
     value: enteredValue,
     isValid: valueIsValid,
-    isTouch,
+    isFocus,
+    isBlur,
+    isInput,
     hasError,
     valueChangeHandler,
     inputBlurHandler,
