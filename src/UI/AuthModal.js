@@ -66,34 +66,34 @@ const AuthModalOverlay = (props) => {
             <div className={styles["overlay__main--header"]}>
               [필수] 개인정보 수집 및 이용 동의약관
             </div>
-            <div className={styles["overlay__main--grid"]}>
-              <div className={styles["overlay__main--grid--item"]}>항목</div>
-              <div className={styles["overlay__main--grid--item"]}>목적</div>
-              <div className={styles["overlay__main--grid--item"]}>
+            <div className={styles["overlay__main--user"]}>
+              <div className={styles["overlay__main--user--item"]}>항목</div>
+              <div className={styles["overlay__main--user--item"]}>목적</div>
+              <div className={styles["overlay__main--user--item"]}>
                 보유 및 이용 기간
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 아이디(이메일), 이름, 휴대폰번호, 비밀번호
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 회원 가입 및 이용자 식별, 회원관리
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 회원탈퇴 시 90일간 보관 후 파기
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 아이디(이메일), 이름, 휴대폰번호, 서비스 이용기록, 연령 및 성별
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 개인화 서비스 제공
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 부정행위 탐지된 아이디(이메일), 이름, 휴대폰번호, 부정행위 기록
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 부정행위 방지
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--user--item"]}>
                 회원탈퇴 시 180일간 보관 후 파기
               </div>
             </div>
@@ -122,29 +122,29 @@ const AuthModalOverlay = (props) => {
             <div className={styles["overlay__main--header"]}>
               [필수] 개인정보 제 3자 제공 동의에 대한 약관
             </div>
-            <div className={styles["overlay__main--grid"]}>
-              <div className={styles["overlay__main--grid--item"]}>
+            <div className={styles["overlay__main--third"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 개인정보 제공 받는 자
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 개인정보 제공 항목
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 개인정보 제공 목적
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 개인정보 이용 기간
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 쿠팡페이 주식회사
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 쿠팡 아이디
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 쿠팡캐시 서비스 제공
               </div>
-              <div className={styles["overlay__main--grid--item"]}>
+              <div className={styles["overlay__main--third--item"]}>
                 전자상거래법에 의해 5년간 보관 후 파기
               </div>
             </div>
@@ -159,8 +159,99 @@ const AuthModalOverlay = (props) => {
       );
       break;
     case "terms_marketing":
+      modalContent = (
+        <Fragment>
+          <header className={styles.overlay__header}>
+            <p>마케팅 목적의 개인정보 수집 및 이용 동의</p>
+            <i onClick={props.onConfirm}></i>
+          </header>
+          <main className={styles.overlay__main}>
+            <div className={styles["overlay__main--header"]}>
+              [선택] 마케팅 목적의 개인정보 수집 및 이용 동의
+            </div>
+            <div className={styles["overlay__main--user"]}>
+              <div className={styles["overlay__main--user--item"]}>항목</div>
+              <div className={styles["overlay__main--user--item"]}>목적</div>
+              <div className={styles["overlay__main--user--item"]}>
+                보유 및 이용 기간
+              </div>
+              <div className={styles["overlay__main--marketing--item"]}>
+                서비스 이용기록, 연령 및 성별
+              </div>
+              <div className={styles["overlay__main--marketing--item"]}>
+                인구통계학적 특성과 이용자의 관심 및 성향의 추정을 통한 맞춤형
+                광고에 활용
+              </div>
+              <div className={styles["overlay__main--marketing--item"]}>
+                동의 철회 시 맞춤형 광고 차단, 회원 탈퇴 시 파기
+              </div>
+              <div className={styles["overlay__main--marketing--item"]}>
+                아이디(이메일), 휴대폰번호
+              </div>
+              <div className={styles["overlay__main--marketing--item"]}>
+                쿠팡 아이디를 이용하는 서비스의 마케팅 및 프로모션
+              </div>
+              <div className={styles["overlay__main--marketing--item"]}>
+                회원 탈퇴 시 파기
+              </div>
+            </div>
+            <div className={styles["overlay__main--footer"]}>
+              <p>
+                연령 및 성별 정보는 회원 가입 이후 본인 확인을 진행한 이용자에
+                한해 활용됩니다.
+              </p>
+              <p>
+                동의를 거부할 수 있으며, 동의를 거부하셔도 서비스를 이용하실 수
+                있습니다.
+              </p>
+            </div>
+          </main>
+        </Fragment>
+      );
       break;
     case "terms_SMS":
+      modalContent = (
+        <Fragment>
+          <header className={styles.overlay__header}>
+            <p>광고성 정보 수신 동의</p>
+            <i onClick={props.onConfirm}></i>
+          </header>
+          <main className={styles.overlay__main}>
+            <div className={styles["overlay__main--header"]}>
+              [선택] 광고성 정보 수신 동의
+            </div>
+            <div className={styles["overlay__main--sms"]}>
+              <p>
+                쿠팡은 회원님이 수집 및 이용에 동의한 개인정보를 이용하여
+                SMS(MMS), SNS 메시지, 이메일, 푸시 알림 등 다양한 전자적 전송
+                매체를 통해 오전 8시부터 오후 9시까지 개인 맞춤형 광고 및 정보를
+                전송할 수 있습니다.{" "}
+              </p>
+              <p>
+                본 동의는 거부하실 수 있으나, 거부 시 이벤트 및 프로모션 안내,
+                유용한 광고를 받아보실 수 없습니다.{" "}
+              </p>
+              <p>광고성정보수신의 변경은</p>
+              <p>
+                {" "}
+                1) 쿠팡 고객센터(1577-7011, <a href="/">help@coupang.com</a>)로
+                요청하거나{" "}
+              </p>
+              <p>
+                2) SMS, 이메일: 웹 브라우저에서 쿠팡에 로그인 {">"} 마이쿠팡{" "}
+                {">"}
+                MY정보(개인정보확인/수정) {">"} 수신설정{" "}
+              </p>
+              <p>3) SNS: 각 SNS의 설정 내 수신 차단 메뉴 </p>
+              <p>
+                4) 푸시알림: 쿠팡 앱 로그인{">"} 마이쿠팡{">"} 이름
+                선택(내정보관리) {">"}
+                푸시 설정에서 언제든지 변경할 수 있습니다.
+              </p>
+            </div>
+          </main>
+        </Fragment>
+      );
       break;
     default:
   }

@@ -135,7 +135,6 @@ const JoinForm = () => {
   const [essentItems, setEssentItems] = useState(essentialTermsData);
   const [optionItems, setOptionItems] = useState(optionalTermsData);
 
-  const [modalClicked, setModalClicked] = useState(false);
   const [modalInfo, setModalInfo] = useState(null);
 
   useEffect(() => {
@@ -553,6 +552,7 @@ const JoinForm = () => {
                       </label>
                       {item.isArrow ? (
                         <button
+                          onClick={() => modalClickHandler(item.id)}
                           className={styles["terms__icon--arrow"]}
                         ></button>
                       ) : (

@@ -5,7 +5,7 @@
   top: 0;
   left: 0;
   z-index: 10;
-  background: rgba(0, 0, 0, 0.2);
+  background: rgba(0, 0, 0, 0.5);
 }
 
 .error {
@@ -18,7 +18,8 @@
 .overlay {
   position: absolute;
   top: 25vh;
-  left: 33%;
+  left: 50%;
+  transform: translate(-50%, 0%);
   width: 330px;
   z-index: 20;
   background-color: #ffffff;
@@ -36,6 +37,7 @@
   display: inline;
   font-size: 16px;
   font-weight: bold;
+  max-width: 230px;
 }
 .overlay__header i {
   display: inline-block;
@@ -43,6 +45,7 @@
   height: 22px;
   background: url("../assets/img/cross.svg") no-repeat 0 0;
   background-size: cover;
+  cursor: pointer;
 }
 
 .overlay__main {
@@ -69,7 +72,7 @@
   font-size: 16px;
 }
 
-.overlay__main--grid {
+.overlay__main--user {
   width: 100%;
   display: grid;
   margin: 15px auto 0;
@@ -77,11 +80,11 @@
   grid-template-rows: repeat(auto-fill, auto);
   border: 1px solid #ccc;
 }
-.overlay__main--grid--item {
+.overlay__main--user--item {
   border: 1px solid #ccc;
   padding: 10px;
 }
-.overlay__main--grid--item:nth-child(-n + 3) {
+.overlay__main--user--item:nth-child(-n + 3) {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -89,15 +92,61 @@
   font-weight: bold;
   background-color: #f0f3f5;
 }
-.overlay__main--grid--item:nth-child(6) {
+.overlay__main--user--item:nth-child(6) {
   font-weight: bold;
   grid-column: 3/4;
   grid-row: 2/4;
 }
-.overlay__main--grid--item:last-child {
+.overlay__main--user--item:last-child {
   font-weight: bold;
 }
 .overlay__main--footer {
   font-size: 11px;
   color: #666;
+}
+
+.overlay__main--third {
+  width: 100%;
+  display: grid;
+  margin: 15px auto 0;
+  grid-template-columns: repeat(auto-fill, minmax(60px, auto));
+  grid-template-rows: repeat(auto-fill, auto);
+  border: 1px solid #ccc;
+}
+.overlay__main--third--item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-weight: bold;
+}
+.overlay__main--third--item:nth-child(-n + 4) {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #f0f3f5;
+}
+.overlay__main--third--item:nth-child(6) {
+  font-weight: 200;
+}
+
+.overlay__main--marketing--item {
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-weight: bold;
+  font-size: 13px;
+}
+
+.overlay__main--marketing--item:nth-child(4),
+.overlay__main--marketing--item:nth-child(7) {
+  font-weight: 200;
+}
+
+.overlay__main--sms {
+  white-space: pre-line;
+}
+.overlay__main--sms a {
+  text-decoration: underline;
+  color: #0000ed;
 }
