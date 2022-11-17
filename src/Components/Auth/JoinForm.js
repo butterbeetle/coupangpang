@@ -93,6 +93,8 @@ const JoinForm = () => {
     value: enteredPasswd,
     isValid: enteredPasswdIsValid,
     isFocus: passwdFocus,
+    isBlur: passwdBlur,
+    isInput: passwdInput,
     hasError: passwdInputHasError,
     valueChangeHandler: passwdChangeHandler,
     inputBlurHandler: passwdBlurHandler,
@@ -104,6 +106,8 @@ const JoinForm = () => {
     value: enteredPasswdConfirm,
     isValid: enteredPasswdConfirmIsValid,
     isFocus: passwdConfirmFocus,
+    isBlur: passwdConfirmBlur,
+    isInput: passwdConfirmInput,
     hasError: passwdConfirmInputHasError,
     valueChangeHandler: passwdConfirmChangeHandler,
     inputBlurHandler: passwdConfirmBlurHandler,
@@ -115,6 +119,8 @@ const JoinForm = () => {
     value: enteredName,
     isValid: enteredNameIsValid,
     isFocus: nameFocus,
+    isBlur: nameBlur,
+    isInput: nameInput,
     hasError: nameInputHasError,
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
@@ -126,6 +132,8 @@ const JoinForm = () => {
     value: enteredPhone,
     isValid: enteredPhoneIsValid,
     isFocus: phoneFocus,
+    isBlur: phoneBlur,
+    isInput: phoneInput,
     hasError: phoneInputHasError,
     valueChangeHandler: phoneChangeHandler,
     inputBlurHandler: phoneBlurHandler,
@@ -473,13 +481,20 @@ const JoinForm = () => {
                   type="text"
                   value={enteredName}
                 ></input>
+                {!nameInputHasError && !nameFocus && nameBlur && (
+                  <span className={styles["auth-form__icon--check"]}></span>
+                )}
               </label>
             </div>
             {nameInputHasError && (
               <div className={styles["error"]}>
-                <p className={styles["error-text"]}>
-                  이름을 정확히 입력하세요.
-                </p>
+                {emailInput ? (
+                  <p className={styles["error-text"]}>
+                    이름을 정확히 입력하세요.
+                  </p>
+                ) : (
+                  <p className={styles["error-text"]}>이름을 입력하세요.</p>
+                )}
               </div>
             )}
 
@@ -503,13 +518,22 @@ const JoinForm = () => {
                   type="text"
                   value={enteredPhone}
                 ></input>
+                {!phoneInputHasError && !phoneFocus && phoneBlur && (
+                  <span className={styles["auth-form__icon--check"]}></span>
+                )}
               </label>
             </div>
             {phoneInputHasError && (
               <div className={styles["error"]}>
-                <p className={styles["error-text"]}>
-                  휴대폰 번호를 정확하게 입력하세요.
-                </p>
+                {phoneInput ? (
+                  <p className={styles["error-text"]}>
+                    휴대폰 번호를 정확하게 입력하세요.
+                  </p>
+                ) : (
+                  <p className={styles["error-text"]}>
+                    휴대폰 번호를 입력하세요.
+                  </p>
+                )}
               </div>
             )}
           </div>
