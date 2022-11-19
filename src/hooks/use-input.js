@@ -81,16 +81,16 @@ const useInput = (type) => {
   const [enteredValue, setEnteredValue] = useState("");
 
   let valueIsValid = false;
-  let passwdIsClear = [];
+  let passwdResult = [];
 
   switch (type) {
     case 1:
       valueIsValid = isEmail(enteredValue);
       break;
     case 2:
-      const result = isPasswd(enteredValue);
-      passwdIsClear = result.filter((isClear) => !isClear).length;
-      if (passwdIsClear > 0) {
+      passwdResult = isPasswd(enteredValue);
+      const passwdIsClear = passwdResult.filter((isClear) => !isClear);
+      if (passwdIsClear.length > 0) {
         valueIsValid = false;
       } else {
         valueIsValid = true;
@@ -127,13 +127,11 @@ const useInput = (type) => {
   };
 
   const inputBlurHandler = () => {
-    // console.log("Blur !!");
     setIsFocus(false);
     setIsBlur(true);
   };
 
   const focusHandler = () => {
-    // console.log("Focus !!", valueIsValid);
     // valueIsValid 가 true 즉 조건을 만족했을 때
     // input이 focus 즉 Focus 되는 경우
     if (type === 2) setIsFocus(true);
@@ -152,7 +150,7 @@ const useInput = (type) => {
     isFocus,
     isBlur,
     isInput,
-    passwdIsClear,
+    passwdIsClear: passwdResult,
     hasError,
     valueChangeHandler,
     inputBlurHandler,

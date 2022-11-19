@@ -75,6 +75,21 @@ const optionalTermsData = [
   },
 ];
 
+const passwdData = [
+  {
+    text: "영문/숫자/특수문자 2가지 이상 조합 (8~20자)",
+    isClear: true,
+  },
+  {
+    text: "3개 이상 연속되거나 동일한 문자/숫자 제외",
+    isClear: true,
+  },
+  {
+    text: "아이디(이메일) 제외",
+    isClear: true,
+  },
+];
+
 const JoinForm = () => {
   const {
     value: enteredEmail,
@@ -95,6 +110,7 @@ const JoinForm = () => {
     isFocus: passwdFocus,
     isBlur: passwdBlur,
     isInput: passwdInput,
+    passwdIsClear,
     hasError: passwdInputHasError,
     valueChangeHandler: passwdChangeHandler,
     inputBlurHandler: passwdBlurHandler,
@@ -185,17 +201,27 @@ const JoinForm = () => {
     resetPhoneInput();
   };
 
+  // email
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
   const stylesFocusEmail = emailFocus ? `${styles.focus}` : "";
 
+  // passwd
   const stylesInputPasswd = !isPasswdInput
     ? passwdInputHasError
       ? `${styles.invalid}`
       : ""
     : "";
-  const stylesFocusPasswd = passwdFocus ? `${styles.focus}` : "";
-  const stylesFocusText = passwdFocus ? `${styles["error--text--focus"]}` : "";
+  const stylesFocusPasswd = passwdFocus
+    ? !isPasswdInput
+      ? `${styles.focus}`
+      : passwdInputHasError
+      ? `${styles.invalid}`
+      : ""
+    : "";
+  // const stylesFocusText = passwdFocus ? `${styles["error--text--focus"]}` : "";
 
+  const color = "gray";
+  // passwdConfirm
   const stylesInputPasswdConfirm = !passwdConfirmInput
     ? passwdConfirmInputHasError
       ? `${styles.invalid}`
@@ -203,9 +229,11 @@ const JoinForm = () => {
     : "";
   const stylesFocusPasswdConfirm = passwdConfirmFocus ? `${styles.focus}` : "";
 
+  // name
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
   const stylesFocusName = nameFocus ? `${styles.focus}` : "";
 
+  // phone
   const stylesInputPhone = phoneInputHasError ? `${styles.invalid}` : "";
   const stylesFocusPhone = phoneFocus ? `${styles.focus}` : "";
 
@@ -332,6 +360,11 @@ const JoinForm = () => {
     setModalInfo(null);
   };
 
+  passwdIsClear.filter((isClear, index) =>
+    !isClear
+      ? (passwdData[index].isClear = false)
+      : (passwdData[index].isClear = true)
+  );
   return (
     <main>
       {modalInfo && (
@@ -401,30 +434,16 @@ const JoinForm = () => {
               </label>
             </div>
             {passwdFocus || passwdInputHasError ? (
-              <>
-                <div className={styles["error"]}>
+              passwdData.map((data, index) => (
+                <div key={index} className={styles["error"]}>
                   <span className={styles["gray-icon"]}></span>
-                  <p className={`${styles["gray-text"]} ${stylesFocusText}`}>
-                    영문/숫자/특수문자 2가지 이상 조합 (8~20자)
-                  </p>
+                  <p className={`${styles[`${color}-text`]}`}>{data.text}</p>
                 </div>
-                <div className={styles["error"]}>
-                  <span className={styles["gray-icon"]}></span>
-                  <p className={`${styles["gray-text"]} ${stylesFocusText}`}>
-                    3개 이상 연속되거나 동일한 문자/숫자 제외
-                  </p>
-                </div>
-                <div className={styles["error"]}>
-                  <span className={styles["gray-icon"]}></span>
-                  <p className={`${styles["gray-text"]} ${stylesFocusText}`}>
-                    아이디(이메일) 제외
-                  </p>
-                </div>
-              </>
+              ))
             ) : passwdFocus ? (
               <div className={styles["green"]}>
                 <span className={styles["green-icon"]}></span>
-                <p className={`${styles["green-text"]} ${stylesFocusText}`}>
+                <p className={`${styles["green-text"]}`}>
                   사용 가능한 비밀번호입니다.
                 </p>
               </div>
