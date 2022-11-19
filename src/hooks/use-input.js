@@ -10,24 +10,31 @@ const isEmail = (value) => {
 let emailValue = "";
 
 const isPasswd = (value) => {
-  const isError = [false, false, false];
+  const isError = [false, false, false, false];
 
   // 영문/숫자/특수문자 2가지 이상 조합 (8~20자)
-  // true: 경우 조건 달성, false: error
+  // true: 조건 달성, false: error
   const pattern = //eslint-disable-next-line
     /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/;
   console.log("Pattern:", pattern.test(value));
-  // 3개 이상 연속되거나 동일한 문자/숫자 제외
+
+  // 3개 이상 연속된 문자/숫자 제외
   // true: , false:
   const pattern2 = //eslint-disable-next-line
     /(\w){3,}/;
   console.log("Pattern2:", pattern2.test(value));
+
+  //3개 이상 동일한 문자/숫자 제외
+  // true: , false:
   const pattern3 = //eslint-disable-next-line
     /(\w)\1\1/;
   console.log("Pattern3:", pattern3.test(value));
+
   // 아이디(이메일) 제외
   // -1이면 같지않음, 0이면 email과 같음
-  const pattern4 = value.search(emailValue);
+  // true: 조건 달성, false: error
+  const pattern4 = value.search(emailValue) > -1 ? false : true;
+  console.log("Pattern4:", pattern4);
   return pattern.test(value);
 };
 
