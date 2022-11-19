@@ -9,33 +9,54 @@ const isEmail = (value) => {
 
 let emailValue = "";
 
+/**
+ * @param {string} str a sentence to be examined
+ * @param {integer} limit Maximum allowable.
+ * @returns true or false
+ */
+const isContiguous = (str = "", limit = 3) => {
+  if (!str.trim()) return false;
+
+  const unicodeStr = [...str].map((char) => char.charCodeAt());
+
+  let preStr = 0;
+  let chr = 0;
+
+  unicodeStr.forEach((code) => {
+    if (Math.abs(preStr - code) === 1) {
+      chr++;
+    }
+    preStr = code;
+  });
+
+  return chr >= limit - 1;
+};
+
 const isPasswd = (value) => {
-  const isError = [false, false, false, false];
+  // true: clear, false: error
+  const isClear = [true, true, true];
 
   // 영문/숫자/특수문자 2가지 이상 조합 (8~20자)
-  // true: 조건 달성, false: error
-  const pattern = //eslint-disable-next-line
+  const pattern1 = //eslint-disable-next-line
     /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/;
-  console.log("Pattern:", pattern.test(value));
 
   // 3개 이상 연속된 문자/숫자 제외
-  // true: , false:
-  const pattern2 = //eslint-disable-next-line
-    /(\w){3,}/;
-  console.log("Pattern2:", pattern2.test(value));
+  const result = isContiguous(value, 3);
 
   //3개 이상 동일한 문자/숫자 제외
-  // true: , false:
-  const pattern3 = //eslint-disable-next-line
+  const pattern2 = //eslint-disable-next-line
     /(\w)\1\1/;
-  console.log("Pattern3:", pattern3.test(value));
 
   // 아이디(이메일) 제외
   // -1이면 같지않음, 0이면 email과 같음
-  // true: 조건 달성, false: error
-  const pattern4 = value.search(emailValue) > -1 ? false : true;
-  console.log("Pattern4:", pattern4);
-  return pattern.test(value);
+  // const pattern3 = value.search(emailValue) > -1 ? true : false;
+  const pattern3 = value === emailValue ? true : false;
+
+  isClear[0] = pattern1.test(value);
+  isClear[1] = result || pattern2.test(value) ? false : true;
+  isClear[2] = !pattern3;
+
+  return isClear;
 };
 
 const isName = (value) => {
@@ -60,14 +81,20 @@ const useInput = (type) => {
   const [enteredValue, setEnteredValue] = useState("");
 
   let valueIsValid = false;
+  let passwdIsClear = [];
+
   switch (type) {
     case 1:
-      // valueIsValid = true 일때 조건 만족
       valueIsValid = isEmail(enteredValue);
       break;
     case 2:
-      // valueIsValid = true 일때 조건 만족
-      valueIsValid = isPasswd(enteredValue);
+      const result = isPasswd(enteredValue);
+      passwdIsClear = result.filter((isClear) => !isClear).length;
+      if (passwdIsClear > 0) {
+        valueIsValid = false;
+      } else {
+        valueIsValid = true;
+      }
       break;
     case 3:
       valueIsValid = isEmail(enteredValue);
@@ -125,6 +152,7 @@ const useInput = (type) => {
     isFocus,
     isBlur,
     isInput,
+    passwdIsClear,
     hasError,
     valueChangeHandler,
     inputBlurHandler,
