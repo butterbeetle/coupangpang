@@ -49,8 +49,8 @@ const isPasswd = (value) => {
 
   // 아이디(이메일) 제외
   // -1이면 같지않음, 0이면 email과 같음
-  // const pattern3 = value.search(emailValue) > -1 ? true : false;
-  const pattern3 = value === emailValue ? true : false;
+  const pattern3 =
+    emailValue.length > 0 ? (value === emailValue ? true : false) : false;
 
   isClear[0] = pattern1.test(value);
   isClear[1] = result || pattern2.test(value) ? false : true;
@@ -82,6 +82,7 @@ const useInput = (type) => {
 
   let valueIsValid = false;
   let passwdResult = [];
+  let hasError = false;
 
   switch (type) {
     case 1:
@@ -90,11 +91,13 @@ const useInput = (type) => {
     case 2:
       passwdResult = isPasswd(enteredValue);
       const passwdIsClear = passwdResult.filter((isClear) => !isClear);
+      // console.log("Passwd Error count:", passwdIsClear.length, passwdResult);
       if (passwdIsClear.length > 0) {
         valueIsValid = false;
       } else {
         valueIsValid = true;
       }
+      // console.log("Passwd value Valid:", valueIsValid);
       break;
     case 3:
       valueIsValid = isEmail(enteredValue);
@@ -109,15 +112,17 @@ const useInput = (type) => {
   }
 
   // valueIsValid = false 즉 요구조건을 통과못하고
-  // isBlur = true 한번이라도 input창을 클릭했고,
-  // isFocus = false 현재 input창을 focus중이 아닐때
-  const hasError = !valueIsValid && isBlur && !isFocus;
+  // isBlur = true 한번이라도 input창을 클릭했을 때
+  if (type === 2) {
+    hasError = !valueIsValid && isBlur && isInput;
+    //   console.log("Passwd hasError?", hasError, valueIsValid, isBlur);
+  } else {
+    hasError = !valueIsValid && isBlur;
+  }
 
   const valueChangeHandler = (event) => {
     if (event.target.value) {
       setIsInput(true);
-    } else {
-      setIsInput(false);
     }
     // email 이면 enteredValue 저장
     if (type === 1) {
@@ -132,10 +137,8 @@ const useInput = (type) => {
   };
 
   const focusHandler = () => {
-    // valueIsValid 가 true 즉 조건을 만족했을 때
-    // input이 focus 즉 Focus 되는 경우
+    if (!hasError) setIsFocus(true);
     if (type === 2) setIsFocus(true);
-    if (valueIsValid) setIsFocus(true);
   };
 
   const reset = () => {

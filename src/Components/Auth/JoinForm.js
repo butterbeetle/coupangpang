@@ -75,17 +75,29 @@ const optionalTermsData = [
   },
 ];
 
-const passwdData = [
+const passwdInit = [
   {
+    type: "condition",
     text: "영문/숫자/특수문자 2가지 이상 조합 (8~20자)",
+    isColor: "gray",
     isClear: true,
   },
   {
+    type: "condition",
     text: "3개 이상 연속되거나 동일한 문자/숫자 제외",
+    isColor: "gray",
     isClear: true,
   },
   {
+    type: "condition",
     text: "아이디(이메일) 제외",
+    isColor: "gray",
+    isClear: true,
+  },
+  {
+    type: "clear",
+    text: "사용 가능한 비밀번호입니다.",
+    isColor: "green",
     isClear: true,
   },
 ];
@@ -176,12 +188,6 @@ const JoinForm = () => {
     }
   }, [essentItems, optionItems]);
 
-  const [isPasswdInput, setIsPasswdInput] = useState(false);
-
-  useEffect(() => {
-    setIsPasswdInput(true);
-  }, [enteredPasswd]);
-
   const submitHandler = (event) => {
     event.preventDefault();
 
@@ -206,21 +212,51 @@ const JoinForm = () => {
   const stylesFocusEmail = emailFocus ? `${styles.focus}` : "";
 
   // passwd
-  const stylesInputPasswd = !isPasswdInput
+  const passwdTempData = [...passwdInit];
+  let passwdData = [];
+
+  // const stylesInputPasswd = !isPasswdInput
+  //   ? passwdInputHasError
+  //     ? `${styles.invalid}`
+  //     : ""
+  //   : "";
+
+  // console.log(isPasswdInput);
+
+  const stylesFocusPasswd = passwdInput
     ? passwdInputHasError
       ? `${styles.invalid}`
-      : ""
-    : "";
-  const stylesFocusPasswd = passwdFocus
-    ? !isPasswdInput
+      : passwdFocus
       ? `${styles.focus}`
-      : passwdInputHasError
-      ? `${styles.invalid}`
       : ""
+    : passwdFocus
+    ? `${styles.focus}`
     : "";
-  // const stylesFocusText = passwdFocus ? `${styles["error--text--focus"]}` : "";
 
-  const color = "gray";
+  passwdIsClear.filter((isClear, index) =>
+    !isClear
+      ? (passwdTempData[index].isClear = false)
+      : (passwdTempData[index].isClear = true)
+  );
+
+  for (let i = 0; i < passwdTempData.length; i++) {
+    if (passwdTempData[i].type === "condition") {
+      if (passwdInput) {
+        !passwdTempData[i].isClear
+          ? (passwdTempData[i].isColor = "red")
+          : (passwdTempData[i].isColor = "green");
+      } else {
+        passwdTempData[i].isColor = "gray";
+      }
+    }
+  }
+  const index = passwdTempData.findIndex((item) => item.type === "clear");
+
+  if (passwdInputHasError) {
+    passwdData = passwdTempData.slice(0, index);
+  } else {
+    passwdData = passwdTempData.slice(index);
+  }
   // passwdConfirm
   const stylesInputPasswdConfirm = !passwdConfirmInput
     ? passwdConfirmInputHasError
@@ -360,11 +396,6 @@ const JoinForm = () => {
     setModalInfo(null);
   };
 
-  passwdIsClear.filter((isClear, index) =>
-    !isClear
-      ? (passwdData[index].isClear = false)
-      : (passwdData[index].isClear = true)
-  );
   return (
     <main>
       {modalInfo && (
@@ -402,11 +433,11 @@ const JoinForm = () => {
             {emailInputHasError && (
               <div className={styles["error"]}>
                 {emailInput ? (
-                  <p className={styles["error-text"]}>
+                  <p className={styles["red-text"]}>
                     이메일을 올바르게 입력해주세요.
                   </p>
                 ) : (
-                  <p className={styles["error-text"]}>이메일을 입력하세요.</p>
+                  <p className={styles["red-text"]}>이메일을 입력하세요.</p>
                 )}
               </div>
             )}
@@ -416,8 +447,7 @@ const JoinForm = () => {
                 htmlFor="passwd"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesFocusPasswd}
-    ${stylesInputPasswd}`}
+    ${stylesFocusPasswd}`}
               >
                 <div>
                   <span className={styles["auth-form__icon--passwd"]}></span>
@@ -431,25 +461,17 @@ const JoinForm = () => {
                   type="text"
                   value={enteredPasswd}
                 ></input>
+                {!passwdInputHasError && !passwdFocus && passwdBlur && (
+                  <span className={styles["auth-form__icon--check"]}></span>
+                )}
               </label>
             </div>
-            {passwdFocus || passwdInputHasError ? (
-              passwdData.map((data, index) => (
-                <div key={index} className={styles["error"]}>
-                  <span className={styles["gray-icon"]}></span>
-                  <p className={`${styles[`${color}-text`]}`}>{data.text}</p>
-                </div>
-              ))
-            ) : passwdFocus ? (
-              <div className={styles["green"]}>
-                <span className={styles["green-icon"]}></span>
-                <p className={`${styles["green-text"]}`}>
-                  사용 가능한 비밀번호입니다.
-                </p>
+            {passwdData.map((data, index) => (
+              <div key={index} className={styles["error"]}>
+                <span className={styles[`${data.isColor}-icon`]}></span>
+                <p className={styles[`${data.isColor}-text`]}>{data.text}</p>
               </div>
-            ) : (
-              ""
-            )}
+            ))}
 
             <div className={styles["auth-form__content"]}>
               <label
@@ -512,11 +534,11 @@ const JoinForm = () => {
             {nameInputHasError && (
               <div className={styles["error"]}>
                 {nameInput ? (
-                  <p className={styles["error-text"]}>
+                  <p className={styles["red-text"]}>
                     이름을 정확히 입력하세요.
                   </p>
                 ) : (
-                  <p className={styles["error-text"]}>이름을 입력하세요.</p>
+                  <p className={styles["red-text"]}>이름을 입력하세요.</p>
                 )}
               </div>
             )}
@@ -549,11 +571,11 @@ const JoinForm = () => {
             {phoneInputHasError && (
               <div className={styles["error"]}>
                 {phoneInput ? (
-                  <p className={styles["error-text"]}>
+                  <p className={styles["red-text"]}>
                     휴대폰 번호를 정확하게 입력하세요.
                   </p>
                 ) : (
-                  <p className={styles["error-text"]}>
+                  <p className={styles["red-text"]}>
                     휴대폰 번호를 입력하세요.
                   </p>
                 )}
