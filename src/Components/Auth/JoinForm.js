@@ -251,12 +251,17 @@ const JoinForm = () => {
     }
   }
   const index = passwdTempData.findIndex((item) => item.type === "clear");
+  const clearCnt = passwdIsClear.filter((isClear) => isClear).length;
 
-  if (passwdInputHasError) {
-    passwdData = passwdTempData.slice(0, index);
-  } else {
-    passwdData = passwdTempData.slice(index);
+  if (passwdFocus || passwdBlur) {
+    if (passwdInputHasError || clearCnt < 3) {
+      passwdData = passwdTempData.slice(0, index);
+    } else {
+      passwdData = passwdTempData.slice(index);
+    }
+    // console.log(!passwdInputHasError, !passwdFocus, passwdBlur);
   }
+
   // passwdConfirm
   const stylesInputPasswdConfirm = !passwdConfirmInput
     ? passwdConfirmInputHasError
@@ -461,9 +466,12 @@ const JoinForm = () => {
                   type="text"
                   value={enteredPasswd}
                 ></input>
-                {!passwdInputHasError && !passwdFocus && passwdBlur && (
-                  <span className={styles["auth-form__icon--check"]}></span>
-                )}
+                {!passwdInputHasError &&
+                  !passwdFocus &&
+                  passwdBlur &&
+                  passwdInput && (
+                    <span className={styles["auth-form__icon--check"]}></span>
+                  )}
               </label>
             </div>
             {passwdData.map((data, index) => (
