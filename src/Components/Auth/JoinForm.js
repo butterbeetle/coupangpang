@@ -102,6 +102,21 @@ const passwdInit = [
   },
 ];
 
+const passwdConfirmInit = [
+  {
+    text: "확인을 위해 새 비밀번호를 다시 입력해주세요.",
+    isColor: "gray",
+  },
+  {
+    text: "새 비밀번호가 일치하지 않습니다.",
+    isColor: "red",
+  },
+  {
+    text: "새 비밀번호가 일치합니다.",
+    isColor: "green",
+  },
+];
+
 const JoinForm = () => {
   const {
     value: enteredEmail,
@@ -188,29 +203,14 @@ const JoinForm = () => {
     }
   }, [essentItems, optionItems]);
 
-  const submitHandler = (event) => {
-    event.preventDefault();
-
-    if (
-      !enteredEmailIsValid &&
-      !enteredNameIsValid &&
-      !enteredPhoneIsValid &&
-      !enteredPasswdIsValid &&
-      !enteredPasswdConfirmIsValid
-    )
-      return;
-
-    resetEmailInput();
-    resetPasswdInput();
-    resetPasswdConfirmInput();
-    resetNameInput();
-    resetPhoneInput();
-  };
+  // useEffect(()=>{
+  //   setTest(emailInputHasError)
+  // },[emailInputHasError])
+  // const [test, setTest] = useState(emailInputHasError);
 
   // email
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
   const stylesFocusEmail = emailFocus ? `${styles.focus}` : "";
-
   // passwd
   const passwdTempData = [...passwdInit];
   let passwdData = [];
@@ -263,12 +263,37 @@ const JoinForm = () => {
   }
 
   // passwdConfirm
-  const stylesInputPasswdConfirm = !passwdConfirmInput
+  const passwdConfirmTemp = [...passwdConfirmInit];
+  let passwdConfirmData = [];
+
+  if (passwdConfirmInput) passwdConfirmTemp[0].isColor = "red";
+
+  if (passwdConfirmFocus || passwdConfirmBlur) {
+    if (enteredPasswdConfirm.length > 0) {
+      if (passwdConfirmInputHasError) {
+        passwdConfirmData = passwdConfirmTemp.slice(1, 2);
+      } else {
+        passwdConfirmData = passwdConfirmTemp.slice(-1);
+      }
+    } else {
+      passwdConfirmData = passwdConfirmTemp.slice(0, 1);
+    }
+  }
+
+  const stylesFocusPasswdConfirm = passwdConfirmInput
     ? passwdConfirmInputHasError
       ? `${styles.invalid}`
+      : passwdConfirmFocus
+      ? `${styles.focus}`
       : ""
+    : passwdConfirmFocus
+    ? `${styles.focus}`
     : "";
-  const stylesFocusPasswdConfirm = passwdConfirmFocus ? `${styles.focus}` : "";
+  // console.log(
+  //   passwdConfirmInput,
+  //   passwdConfirmInputHasError,
+  //   passwdConfirmFocus
+  // );
 
   // name
   const stylesInputName = nameInputHasError ? `${styles.invalid}` : "";
@@ -277,10 +302,6 @@ const JoinForm = () => {
   // phone
   const stylesInputPhone = phoneInputHasError ? `${styles.invalid}` : "";
   const stylesFocusPhone = phoneFocus ? `${styles.focus}` : "";
-
-  const stylesTermsIcon = isAllCheck
-    ? styles["terms__icon--on"]
-    : styles["terms__icon--off"];
 
   // 모두 확인하였으며 동의합니다.
   const allCheckHandler = () => {
@@ -315,6 +336,9 @@ const JoinForm = () => {
     setEssentItems((prevState) => (prevState = copyEssentItems));
     setOptionItems((prevState) => (prevState = copyOptionItems));
   };
+  const stylesTermsIcon = isAllCheck
+    ? styles["terms__icon--on"]
+    : styles["terms__icon--off"];
 
   // [필수] 아이템 체크박스 눌렀을 때
   const essentItemCheckHandler = (event) => {
@@ -401,6 +425,34 @@ const JoinForm = () => {
     setModalInfo(null);
   };
 
+  const submitHandler = (event) => {
+    event.preventDefault();
+
+    if (
+      !enteredEmailIsValid &&
+      !enteredNameIsValid &&
+      !enteredPhoneIsValid &&
+      !enteredPasswdIsValid &&
+      !enteredPasswdConfirmIsValid
+    ) {
+      console.log("A", emailInputHasError);
+      return;
+    }
+
+    resetEmailInput();
+    resetPasswdInput();
+    resetPasswdConfirmInput();
+    resetNameInput();
+    resetPhoneInput();
+
+    console.log(
+      enteredEmail,
+      enteredPasswd,
+      enteredPasswdConfirm,
+      enteredName,
+      enteredPhone
+    );
+  };
   return (
     <main>
       {modalInfo && (
@@ -486,8 +538,7 @@ const JoinForm = () => {
                 htmlFor="passwd-confirm"
                 className={`
     ${styles["auth-form__label"]}
-    ${stylesFocusPasswdConfirm}
-    ${stylesInputPasswdConfirm}`}
+    ${stylesFocusPasswdConfirm}`}
               >
                 <div>
                   <span
@@ -503,16 +554,21 @@ const JoinForm = () => {
                   type="text"
                   value={enteredPasswdConfirm}
                 ></input>
+                {!passwdConfirmInputHasError &&
+                  !passwdConfirmFocus &&
+                  passwdConfirmBlur &&
+                  passwdConfirmInput &&
+                  enteredPasswdConfirm && (
+                    <span className={styles["auth-form__icon--check"]}></span>
+                  )}
               </label>
             </div>
-            {passwdConfirmInputHasError && (
-              <div className={styles["error"]}>
-                <span className={styles["gray-icon"]}></span>
-                <p className={`${styles["gray-text"]} `}>
-                  확인을 위해 새 비밀번호를 다시 입력해주세요.
-                </p>
+            {passwdConfirmData.map((data, index) => (
+              <div key={index} className={styles["error"]}>
+                <span className={styles[`${data.isColor}-icon`]}></span>
+                <p className={styles[`${data.isColor}-text`]}>{data.text}</p>
               </div>
-            )}
+            ))}
 
             <div className={styles["auth-form__content"]}>
               <label

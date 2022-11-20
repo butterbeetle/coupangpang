@@ -8,6 +8,7 @@ const isEmail = (value) => {
 };
 
 let emailValue = "";
+let passwdValue = "";
 
 /**
  * @param {string} str a sentence to be examined
@@ -59,6 +60,14 @@ const isPasswd = (value) => {
   return isClear;
 };
 
+const isPasswdConfirm = (value) => {
+  return passwdValue.length > 0
+    ? value === passwdValue
+      ? true
+      : false
+    : false;
+};
+
 const isName = (value) => {
   const pattern = //eslint-disable-next-line
     /^[a-zA-Z가-힣][a-zA-Z가-힣]*$/;
@@ -100,7 +109,8 @@ const useInput = (type) => {
       // console.log("Passwd value Valid:", valueIsValid);
       break;
     case 3:
-      valueIsValid = isEmail(enteredValue);
+      valueIsValid = isPasswdConfirm(enteredValue);
+      console.log(enteredValue, valueIsValid);
       break;
     case 4:
       valueIsValid = isName(enteredValue);
@@ -116,6 +126,9 @@ const useInput = (type) => {
   if (type === 2) {
     hasError = !valueIsValid && isBlur && isInput;
     //   console.log("Passwd hasError?", hasError, valueIsValid, isBlur);
+  } else if (type === 3) {
+    hasError = !valueIsValid && isInput;
+    console.log("hasError:", hasError);
   } else {
     hasError = !valueIsValid && isBlur;
   }
@@ -127,6 +140,8 @@ const useInput = (type) => {
     // email 이면 enteredValue 저장
     if (type === 1) {
       emailValue = event.target.value;
+    } else if (type === 2) {
+      passwdValue = event.target.value;
     }
     setEnteredValue(event.target.value);
   };
@@ -138,7 +153,7 @@ const useInput = (type) => {
 
   const focusHandler = () => {
     if (!hasError) setIsFocus(true);
-    if (type === 2) setIsFocus(true);
+    if (type === 2 || type === 3) setIsFocus(true);
   };
 
   const reset = () => {
