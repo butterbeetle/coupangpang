@@ -110,7 +110,7 @@ const useInput = (type) => {
       break;
     case 3:
       valueIsValid = isPasswdConfirm(enteredValue);
-      console.log(enteredValue, valueIsValid);
+      // console.log(enteredValue, valueIsValid);
       break;
     case 4:
       valueIsValid = isName(enteredValue);
@@ -128,7 +128,6 @@ const useInput = (type) => {
     //   console.log("Passwd hasError?", hasError, valueIsValid, isBlur);
   } else if (type === 3) {
     hasError = !valueIsValid && isInput;
-    console.log("hasError:", hasError);
   } else {
     hasError = !valueIsValid && isBlur;
   }

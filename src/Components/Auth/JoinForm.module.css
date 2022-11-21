@@ -151,10 +151,12 @@
   color: #666;
   padding-left: 25px;
 }
-
+.terms__all--text p {
+  margin: 5px 0;
+}
 .terms__each {
   border: 1px solid #ccc;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 .terms__each--items {
   padding: 0 0 0 20px;
@@ -214,6 +216,21 @@
   width: 12px;
   height: 12px;
   background: url("../../assets/img/icon-cross-red.png") no-repeat 0px 0px;
+  background-size: cover;
+}
+
+.terms__error--text {
+  display: inline-block;
+  font-size: 12px;
+  color: #e52528;
+  margin: 0;
+}
+.terms__error--icon {
+  margin-right: 5px;
+  display: inline-block;
+  width: 12px;
+  height: 12px;
+  background: url("../../assets/img/red-bang.svg") no-repeat 0px 0px;
   background-size: cover;
 }
 

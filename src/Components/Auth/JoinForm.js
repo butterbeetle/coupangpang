@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import useInput from "../../hooks/use-input";
 import { AuthModal } from "../../UI/AuthModal";
 import styles from "./JoinForm.module.css";
@@ -128,7 +129,6 @@ const JoinForm = () => {
     valueChangeHandler: emailChangeHandler,
     inputBlurHandler: emailBlurHandler,
     focusHandler: emailFocusHandler,
-    reset: resetEmailInput,
   } = useInput(EMAIL);
 
   const {
@@ -142,7 +142,6 @@ const JoinForm = () => {
     valueChangeHandler: passwdChangeHandler,
     inputBlurHandler: passwdBlurHandler,
     focusHandler: passwdFocusHandler,
-    reset: resetPasswdInput,
   } = useInput(PASSWD);
 
   const {
@@ -155,7 +154,6 @@ const JoinForm = () => {
     valueChangeHandler: passwdConfirmChangeHandler,
     inputBlurHandler: passwdConfirmBlurHandler,
     focusHandler: passwdConfirmFocusHandler,
-    reset: resetPasswdConfirmInput,
   } = useInput(PASSWD_CONFIRM);
 
   const {
@@ -168,7 +166,6 @@ const JoinForm = () => {
     valueChangeHandler: nameChangeHandler,
     inputBlurHandler: nameBlurHandler,
     focusHandler: nameFocusHandler,
-    reset: resetNameInput,
   } = useInput(NAME);
 
   const {
@@ -181,32 +178,7 @@ const JoinForm = () => {
     valueChangeHandler: phoneChangeHandler,
     inputBlurHandler: phoneBlurHandler,
     focusHandler: phoneFocusHandler,
-    reset: resetPhoneInput,
   } = useInput(PHONE);
-
-  const [isAllCheck, setIsAllCheck] = useState(false);
-  const [essentItems, setEssentItems] = useState(essentialTermsData);
-  const [optionItems, setOptionItems] = useState(optionalTermsData);
-
-  const [modalInfo, setModalInfo] = useState(null);
-
-  useEffect(() => {
-    // Check 되지 않은 item 개수
-    const tempArray = [...essentItems, ...optionItems];
-    const result = tempArray.filter((item) => item.isCheck === false);
-
-    // Check 되지 않은 item 개수 가 0이 되면 모두 체크된 것으로 판단함.
-    if (!result.length) {
-      setIsAllCheck(true);
-    } else {
-      setIsAllCheck(false);
-    }
-  }, [essentItems, optionItems]);
-
-  // useEffect(()=>{
-  //   setTest(emailInputHasError)
-  // },[emailInputHasError])
-  // const [test, setTest] = useState(emailInputHasError);
 
   // email
   const stylesInputEmail = emailInputHasError ? `${styles.invalid}` : "";
@@ -246,6 +218,9 @@ const JoinForm = () => {
           ? (passwdTempData[i].isColor = "red")
           : (passwdTempData[i].isColor = "green");
       } else {
+        passwdTempData[i].isColor = "gray";
+      }
+      if (!enteredPasswd.length) {
         passwdTempData[i].isColor = "gray";
       }
     }
@@ -302,6 +277,35 @@ const JoinForm = () => {
   // phone
   const stylesInputPhone = phoneInputHasError ? `${styles.invalid}` : "";
   const stylesFocusPhone = phoneFocus ? `${styles.focus}` : "";
+
+  const [isAllCheck, setIsAllCheck] = useState(false);
+
+  const [btnTouch, setBtnTouch] = useState(false);
+  const [essentCheck, setEssentCheck] = useState(false);
+
+  const [essentItems, setEssentItems] = useState(essentialTermsData);
+  const [optionItems, setOptionItems] = useState(optionalTermsData);
+
+  const [modalInfo, setModalInfo] = useState(null);
+
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const essentArray = [...essentItems];
+    const essentResult = essentArray.filter((item) => item.isCheck === false);
+    if (!essentResult.length) setEssentCheck(true);
+
+    // Check 되지 않은 item 개수
+    const tempArray = [...essentItems, ...optionItems];
+    const result = tempArray.filter((item) => item.isCheck === false);
+
+    // Check 되지 않은 item 개수 가 0이 되면 모두 체크된 것으로 판단함.
+    if (!result.length) {
+      setIsAllCheck(true);
+    } else {
+      setIsAllCheck(false);
+    }
+  }, [essentItems, optionItems]);
 
   // 모두 확인하였으며 동의합니다.
   const allCheckHandler = () => {
@@ -427,31 +431,59 @@ const JoinForm = () => {
 
   const submitHandler = (event) => {
     event.preventDefault();
+    setBtnTouch(true);
 
     if (
       !enteredEmailIsValid &&
+      !enteredPasswdIsValid &&
+      !enteredPasswdConfirmIsValid &&
       !enteredNameIsValid &&
       !enteredPhoneIsValid &&
-      !enteredPasswdIsValid &&
-      !enteredPasswdConfirmIsValid
+      !essentCheck
     ) {
-      console.log("A", emailInputHasError);
+      if (!essentCheck) setEssentCheck(false);
       return;
     }
 
-    resetEmailInput();
-    resetPasswdInput();
-    resetPasswdConfirmInput();
-    resetNameInput();
-    resetPhoneInput();
+    // resetEmailInput();
+    // resetPasswdInput();
+    // resetPasswdConfirmInput();
+    // resetNameInput();
+    // resetPhoneInput();
 
     console.log(
       enteredEmail,
       enteredPasswd,
       enteredPasswdConfirm,
       enteredName,
-      enteredPhone
+      enteredPhone,
+      optionItems,
+      event
     );
+
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCnzUriRYYCPwUKN4YWiZsHDHKI-5TKBWk";
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: enteredEmail,
+        password: enteredPasswd,
+        returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    }).then((res) => {
+      if (res.ok) {
+        navigate("/auth", { state: { isLogin: true } });
+      } else {
+        return res.json().then((data) => {
+          if (data && data.error && data.error.message) {
+          }
+          console.log(data.error.message);
+        });
+      }
+    });
   };
   return (
     <main>
@@ -462,189 +494,191 @@ const JoinForm = () => {
         <p className={styles["auth-text"]}>회원정보를 입력해주세요</p>
         <form className={styles["auth-form"]} onSubmit={submitHandler}>
           <div>
-            <div className={styles["auth-form__content"]}>
-              <label
-                htmlFor="email"
-                className={`
+            <div>
+              <div className={styles["auth-form__content"]}>
+                <label
+                  htmlFor="email"
+                  className={`
     ${styles["auth-form__label"]}
     ${stylesFocusEmail}
     ${stylesInputEmail}`}
-              >
-                <div>
-                  <span className={styles["auth-form__icon--email"]}></span>
-                </div>
-                <input
-                  onChange={emailChangeHandler}
-                  onBlur={emailBlurHandler}
-                  onFocus={emailFocusHandler}
-                  id="email"
-                  placeholder="아이디(이메일)"
-                  type="text"
-                  value={enteredEmail}
-                ></input>
-                {!emailInputHasError && !emailFocus && emailBlur && (
-                  <span className={styles["auth-form__icon--check"]}></span>
-                )}
-              </label>
-            </div>
-            {emailInputHasError && (
-              <div className={styles["error"]}>
-                {emailInput ? (
-                  <p className={styles["red-text"]}>
-                    이메일을 올바르게 입력해주세요.
-                  </p>
-                ) : (
-                  <p className={styles["red-text"]}>이메일을 입력하세요.</p>
-                )}
+                >
+                  <div>
+                    <span className={styles["auth-form__icon--email"]}></span>
+                  </div>
+                  <input
+                    onChange={emailChangeHandler}
+                    onBlur={emailBlurHandler}
+                    onFocus={emailFocusHandler}
+                    id="email"
+                    placeholder="아이디(이메일)"
+                    type="text"
+                    value={enteredEmail}
+                  ></input>
+                  {!emailInputHasError && !emailFocus && emailBlur && (
+                    <span className={styles["auth-form__icon--check"]}></span>
+                  )}
+                </label>
               </div>
-            )}
+              {emailInputHasError && (
+                <div className={styles["error"]}>
+                  {emailInput ? (
+                    <p className={styles["red-text"]}>
+                      이메일을 올바르게 입력해주세요.
+                    </p>
+                  ) : (
+                    <p className={styles["red-text"]}>이메일을 입력하세요.</p>
+                  )}
+                </div>
+              )}
 
-            <div className={styles["auth-form__content"]}>
-              <label
-                htmlFor="passwd"
-                className={`
+              <div className={styles["auth-form__content"]}>
+                <label
+                  htmlFor="passwd"
+                  className={`
     ${styles["auth-form__label"]}
     ${stylesFocusPasswd}`}
-              >
-                <div>
-                  <span className={styles["auth-form__icon--passwd"]}></span>
-                </div>
-                <input
-                  onChange={passwdChangeHandler}
-                  onBlur={passwdBlurHandler}
-                  onFocus={passwdFocusHandler}
-                  id="passwd"
-                  placeholder="비밀번호"
-                  type="text"
-                  value={enteredPasswd}
-                ></input>
-                {!passwdInputHasError &&
-                  !passwdFocus &&
-                  passwdBlur &&
-                  passwdInput && (
-                    <span className={styles["auth-form__icon--check"]}></span>
-                  )}
-              </label>
-            </div>
-            {passwdData.map((data, index) => (
-              <div key={index} className={styles["error"]}>
-                <span className={styles[`${data.isColor}-icon`]}></span>
-                <p className={styles[`${data.isColor}-text`]}>{data.text}</p>
+                >
+                  <div>
+                    <span className={styles["auth-form__icon--passwd"]}></span>
+                  </div>
+                  <input
+                    onChange={passwdChangeHandler}
+                    onBlur={passwdBlurHandler}
+                    onFocus={passwdFocusHandler}
+                    id="passwd"
+                    placeholder="비밀번호"
+                    type="text"
+                    value={enteredPasswd}
+                  ></input>
+                  {!passwdInputHasError &&
+                    !passwdFocus &&
+                    passwdBlur &&
+                    passwdInput && (
+                      <span className={styles["auth-form__icon--check"]}></span>
+                    )}
+                </label>
               </div>
-            ))}
+              {passwdData.map((data, index) => (
+                <div key={index} className={styles["error"]}>
+                  <span className={styles[`${data.isColor}-icon`]}></span>
+                  <p className={styles[`${data.isColor}-text`]}>{data.text}</p>
+                </div>
+              ))}
 
-            <div className={styles["auth-form__content"]}>
-              <label
-                htmlFor="passwd-confirm"
-                className={`
+              <div className={styles["auth-form__content"]}>
+                <label
+                  htmlFor="passwd-confirm"
+                  className={`
     ${styles["auth-form__label"]}
     ${stylesFocusPasswdConfirm}`}
-              >
-                <div>
-                  <span
-                    className={styles["auth-form__icon--passwd--confirm"]}
-                  ></span>
-                </div>
-                <input
-                  onChange={passwdConfirmChangeHandler}
-                  onBlur={passwdConfirmBlurHandler}
-                  onFocus={passwdConfirmFocusHandler}
-                  id="passwd-confirm"
-                  placeholder="비밀번호 확인"
-                  type="text"
-                  value={enteredPasswdConfirm}
-                ></input>
-                {!passwdConfirmInputHasError &&
-                  !passwdConfirmFocus &&
-                  passwdConfirmBlur &&
-                  passwdConfirmInput &&
-                  enteredPasswdConfirm && (
-                    <span className={styles["auth-form__icon--check"]}></span>
-                  )}
-              </label>
-            </div>
-            {passwdConfirmData.map((data, index) => (
-              <div key={index} className={styles["error"]}>
-                <span className={styles[`${data.isColor}-icon`]}></span>
-                <p className={styles[`${data.isColor}-text`]}>{data.text}</p>
+                >
+                  <div>
+                    <span
+                      className={styles["auth-form__icon--passwd--confirm"]}
+                    ></span>
+                  </div>
+                  <input
+                    onChange={passwdConfirmChangeHandler}
+                    onBlur={passwdConfirmBlurHandler}
+                    onFocus={passwdConfirmFocusHandler}
+                    id="passwd-confirm"
+                    placeholder="비밀번호 확인"
+                    type="text"
+                    value={enteredPasswdConfirm}
+                  ></input>
+                  {!passwdConfirmInputHasError &&
+                    !passwdConfirmFocus &&
+                    passwdConfirmBlur &&
+                    passwdConfirmInput &&
+                    enteredPasswdConfirm && (
+                      <span className={styles["auth-form__icon--check"]}></span>
+                    )}
+                </label>
               </div>
-            ))}
+              {passwdConfirmData.map((data, index) => (
+                <div key={index} className={styles["error"]}>
+                  <span className={styles[`${data.isColor}-icon`]}></span>
+                  <p className={styles[`${data.isColor}-text`]}>{data.text}</p>
+                </div>
+              ))}
 
-            <div className={styles["auth-form__content"]}>
-              <label
-                htmlFor="name"
-                className={`
+              <div className={styles["auth-form__content"]}>
+                <label
+                  htmlFor="name"
+                  className={`
     ${styles["auth-form__label"]}
     ${stylesFocusName}
     ${stylesInputName}`}
-              >
-                <div>
-                  <span className={styles["auth-form__icon--name"]}></span>
-                </div>
-                <input
-                  onChange={nameChangeHandler}
-                  onBlur={nameBlurHandler}
-                  onFocus={nameFocusHandler}
-                  id="name"
-                  placeholder="이름"
-                  type="text"
-                  value={enteredName}
-                ></input>
-                {!nameInputHasError && !nameFocus && nameBlur && (
-                  <span className={styles["auth-form__icon--check"]}></span>
-                )}
-              </label>
-            </div>
-            {nameInputHasError && (
-              <div className={styles["error"]}>
-                {nameInput ? (
-                  <p className={styles["red-text"]}>
-                    이름을 정확히 입력하세요.
-                  </p>
-                ) : (
-                  <p className={styles["red-text"]}>이름을 입력하세요.</p>
-                )}
+                >
+                  <div>
+                    <span className={styles["auth-form__icon--name"]}></span>
+                  </div>
+                  <input
+                    onChange={nameChangeHandler}
+                    onBlur={nameBlurHandler}
+                    onFocus={nameFocusHandler}
+                    id="name"
+                    placeholder="이름"
+                    type="text"
+                    value={enteredName}
+                  ></input>
+                  {!nameInputHasError && !nameFocus && nameBlur && (
+                    <span className={styles["auth-form__icon--check"]}></span>
+                  )}
+                </label>
               </div>
-            )}
+              {nameInputHasError && (
+                <div className={styles["error"]}>
+                  {nameInput ? (
+                    <p className={styles["red-text"]}>
+                      이름을 정확히 입력하세요.
+                    </p>
+                  ) : (
+                    <p className={styles["red-text"]}>이름을 입력하세요.</p>
+                  )}
+                </div>
+              )}
 
-            <div className={styles["auth-form__content"]}>
-              <label
-                htmlFor="phone"
-                className={`
+              <div className={styles["auth-form__content"]}>
+                <label
+                  htmlFor="phone"
+                  className={`
     ${styles["auth-form__label"]}
     ${stylesFocusPhone}
     ${stylesInputPhone}`}
-              >
-                <div>
-                  <span className={styles["auth-form__icon--phone"]}></span>
-                </div>
-                <input
-                  onChange={phoneChangeHandler}
-                  onBlur={phoneBlurHandler}
-                  onFocus={phoneFocusHandler}
-                  id="phone"
-                  placeholder="휴대폰 번호"
-                  type="text"
-                  value={enteredPhone}
-                ></input>
-                {!phoneInputHasError && !phoneFocus && phoneBlur && (
-                  <span className={styles["auth-form__icon--check"]}></span>
-                )}
-              </label>
-            </div>
-            {phoneInputHasError && (
-              <div className={styles["error"]}>
-                {phoneInput ? (
-                  <p className={styles["red-text"]}>
-                    휴대폰 번호를 정확하게 입력하세요.
-                  </p>
-                ) : (
-                  <p className={styles["red-text"]}>
-                    휴대폰 번호를 입력하세요.
-                  </p>
-                )}
+                >
+                  <div>
+                    <span className={styles["auth-form__icon--phone"]}></span>
+                  </div>
+                  <input
+                    onChange={phoneChangeHandler}
+                    onBlur={phoneBlurHandler}
+                    onFocus={phoneFocusHandler}
+                    id="phone"
+                    placeholder="휴대폰 번호"
+                    type="text"
+                    value={enteredPhone}
+                  ></input>
+                  {!phoneInputHasError && !phoneFocus && phoneBlur && (
+                    <span className={styles["auth-form__icon--check"]}></span>
+                  )}
+                </label>
               </div>
-            )}
+              {phoneInputHasError && (
+                <div className={styles["error"]}>
+                  {phoneInput ? (
+                    <p className={styles["red-text"]}>
+                      휴대폰 번호를 정확하게 입력하세요.
+                    </p>
+                  ) : (
+                    <p className={styles["red-text"]}>
+                      휴대폰 번호를 입력하세요.
+                    </p>
+                  )}
+                </div>
+              )}
+            </div>
           </div>
 
           <section className={styles.terms}>
@@ -664,6 +698,14 @@ const JoinForm = () => {
                 </p>
               </div>
             </div>
+            {btnTouch && !essentCheck && (
+              <div className={styles["terms__error"]}>
+                <i className={styles["terms__error--icon"]}></i>
+                <p className={styles["terms__error--text"]}>
+                  필수 항목에 모두 동의해주세요
+                </p>
+              </div>
+            )}
             <div className={styles["terms__each"]}>
               <ul className={styles["terms__each--items"]}>
                 {essentItems.map((item, idx) => (

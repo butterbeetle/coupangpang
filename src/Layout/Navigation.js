@@ -14,9 +14,15 @@ const Navigation = () => {
         </ul>
         <ul>
           <li>
-            <Link to="/auth">로그인</Link>
+            <Link to="auth" state={{ isLogin: true }}>
+              로그인
+            </Link>
           </li>
-          <li>회원가입</li>
+          <li>
+            <Link to="auth" state={{ isLogin: false }}>
+              회원가입
+            </Link>
+          </li>
           <li>고객센터</li>
         </ul>
       </nav>

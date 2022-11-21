@@ -1,11 +1,17 @@
-import { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Fragment, useEffect, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import JoinForm from "./JoinForm";
 import styles from "./AuthForm.module.css";
 
 const AuthForm = () => {
-  const [isLogin, setIsLogin] = useState(false);
+  const { state } = useLocation();
+  // console.log(state);
+  const [isLogin, setIsLogin] = useState(state.isLogin);
+
+  useEffect(() => {
+    setIsLogin((prev) => (prev = state.isLogin));
+  }, [state]);
 
   return (
     <Fragment>
