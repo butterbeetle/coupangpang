@@ -479,8 +479,8 @@ const JoinForm = () => {
       } else {
         return res.json().then((data) => {
           if (data && data.error && data.error.message) {
+            console.log(data);
           }
-          console.log(data.error.message);
         });
       }
     });

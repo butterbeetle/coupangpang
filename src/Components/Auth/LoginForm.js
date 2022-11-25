@@ -1,14 +1,38 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
+  const [focus, setFocus] = useState(false);
+  const [blur, setBlur] = useState(false);
+
+  const focusHandler = () => {
+    setFocus((prev) => (prev = true));
+    setBlur((prev) => (prev = false));
+  };
+  const blurHandler = () => {
+    setFocus((prev) => (prev = false));
+    setBlur((prev) => (prev = true));
+  };
+
+  console.log("focus", focus, "blur", blur);
+
+  const submitHandler = (event) => {
+    event.preventDefault();
+    console.log("Submit");
+  };
+
   return (
     <Fragment>
       <main className={styles.login__main}>
-        <form>
+        <form onSubmit={submitHandler}>
           <div className={styles.login__main__id}>
-            <label htmlFor="id" className={styles.login__main__id__label}>
+            <label
+              htmlFor="id"
+              className={styles.login__main__id__label}
+              onFocus={focusHandler}
+              onBlur={blurHandler}
+            >
               <div>
                 <span className={styles.login__main__id__icon}></span>
               </div>
