@@ -1,4 +1,4 @@
-.login__main__id__icon {
+.login__form--id--icon {
   display: inline-block;
   width: 22px;
   height: 20px;
@@ -20,27 +20,22 @@
   background: url("../../assets/img/sprite-member.svg") no-repeat -105px -1px;
 }
 
-.login__main__id,
+.login__form--id {
+  margin: 0 auto;
+  width: 460px;
+}
+.login__form--id--main,
 .login__main__passwd {
-  width: 450px;
-  margin: 0 auto 15px;
+  margin: 0 auto 12px;
   border: 1px solid #ccc;
 }
-.login__main__id p,
-.login__main__passwd p {
-  position: relative;
-  left: -125px;
-  top: -5px;
-  font-size: 12px;
-  color: red;
-}
 
-.login__main__id__label,
+.login__form--label,
 .login__main__passwd__label {
   display: flex;
   position: relative;
 }
-.login__main__id__label div,
+.login__form--label div,
 .login__main__passwd__label div {
   display: flex;
   justify-content: center;
@@ -50,16 +45,30 @@
   border-right: 1px solid #ccc;
   background-color: #fafafa;
 }
-.login__main__id__label input,
+.login__form--label input,
 .login__main__passwd__label input {
   width: 100%;
   border: 0;
   text-indent: 15px;
 }
-.login__main__id__label input:focus,
+.login__form--label input:focus,
 .login__main__passwd__label input:focus {
   outline: none;
 }
+
+.login__form--error {
+  color: #e52528;
+  font-size: 12px;
+  margin: 5px 0 15px 15px;
+}
+
+.focus {
+  border-bottom: 2px solid #346aff;
+}
+.invalid {
+  border-bottom: 2px solid #e52528;
+}
+
 .login__main__util {
   display: flex;
   justify-content: space-between;
