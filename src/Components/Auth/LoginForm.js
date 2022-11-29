@@ -5,15 +5,17 @@ import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
   const {
+    watch,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
-  const onValid = (data) => {
-    console.log("onValid", data);
+  } = useForm({ mode: "onChange" });
+
+  const onSubmit = (data) => {
+    console.log("onSubmit", data);
   };
-  const test = (data) => {
-    console.log("test", data);
+  const onError = (error) => {
+    console.log("onError", error);
   };
 
   return (
@@ -26,7 +28,7 @@ const LoginForm = () => {
       <main className={styles["login"]}>
         <form
           className={styles["login__form"]}
-          onSubmit={handleSubmit(onValid, test)}
+          onSubmit={handleSubmit(onSubmit, onError)}
         >
           <div>
             <div className={styles["login__form--main"]}>
