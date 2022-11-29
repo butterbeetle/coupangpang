@@ -14,12 +14,12 @@ const Navigation = () => {
         </ul>
         <ul>
           <li>
-            <Link to="auth" state={{ isLogin: true }}>
+            <Link to="login" state={{ isLogin: true }}>
               로그인
             </Link>
           </li>
           <li>
-            <Link to="auth" state={{ isLogin: false }}>
+            <Link to="join" state={{ isLogin: false }}>
               회원가입
             </Link>
           </li>

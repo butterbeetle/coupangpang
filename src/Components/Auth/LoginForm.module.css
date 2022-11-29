@@ -1,16 +1,29 @@
+.login__header {
+  padding-top: 40px;
+  width: 200px;
+  margin: 0 auto 10px;
+}
+.login__header__logo {
+  display: inline-block;
+  width: 200px;
+  height: 50px;
+  background: url("../../img/header_img/logo_coupang.png") no-repeat;
+  background-size: 200px 50px;
+}
+
 .login__form--id--icon {
   display: inline-block;
   width: 22px;
   height: 20px;
   background: url("../../assets/img/sprite-member.svg") no-repeat 0px 0px;
 }
-.login__main__passwd__icon {
+.login__form--passwd--icon {
   display: inline-block;
   width: 22px;
   height: 20px;
   background: url("../../assets/img/sprite-member.svg") no-repeat -21px -1px;
 }
-.login__main__passwd__hide {
+.login__form--passwd--icon--sub {
   position: absolute;
   display: inline-block;
   right: 15px;
@@ -18,25 +31,23 @@
   width: 22px;
   height: 20px;
   background: url("../../assets/img/sprite-member.svg") no-repeat -105px -1px;
+  cursor: pointer;
 }
 
-.login__form--id {
+.login__form {
   margin: 0 auto;
   width: 460px;
 }
-.login__form--id--main,
-.login__main__passwd {
+.login__form--main {
   margin: 0 auto 12px;
   border: 1px solid #ccc;
-}
-
-.login__form--label,
-.login__main__passwd__label {
-  display: flex;
   position: relative;
 }
-.login__form--label div,
-.login__main__passwd__label div {
+
+.login__form--label {
+  display: flex;
+}
+.login__form--label div {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -45,14 +56,14 @@
   border-right: 1px solid #ccc;
   background-color: #fafafa;
 }
-.login__form--label input,
-.login__main__passwd__label input {
+.login__form--label input {
   width: 100%;
   border: 0;
-  text-indent: 15px;
+  text-indent: 12px;
+  font-weight: bold;
+  font-size: 14px;
 }
-.login__form--label input:focus,
-.login__main__passwd__label input:focus {
+.login__form--label input:focus {
   outline: none;
 }
 
@@ -134,4 +145,14 @@
   width: 100%;
   margin: 20px auto;
   border-top: 1px solid #ccc;
+}
+
+.login__footer {
+  font-size: 12px;
+  color: rgb(129, 129, 129);
+  width: 450px;
+  margin: 0 auto;
+  text-align: center;
+  padding-top: 5px;
+  padding-bottom: 25px;
 }

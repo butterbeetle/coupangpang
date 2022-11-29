@@ -1,92 +1,91 @@
 import { Fragment, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
-  // 현재 눌렀는지
-  const [isFocus, setIsFocus] = useState(false);
-  // 누르고 밖으로 나온거
-  const [isBlur, setIsBlur] = useState(false);
-  // 입력했는지?
-  const [isTouched, setIsTouched] = useState(false);
-
-  const [color, setColor] = useState("");
-
-  useEffect(() => {
-    setColor(
-      (prevColor) =>
-        (prevColor = isFocus
-          ? isTouched
-            ? styles["invalid"]
-            : styles["focus"]
-          : "")
-    );
-  }, [isFocus, isTouched]);
-
-  const focusHandler = () => {
-    setIsFocus((prev) => (prev = true));
-    setIsBlur((prev) => (prev = false));
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
+  const onValid = (data) => {
+    console.log("onValid", data);
   };
-  const blurHandler = () => {
-    setIsFocus((prev) => (prev = false));
-    setIsBlur((prev) => (prev = true));
+  const test = (data) => {
+    console.log("test", data);
   };
-  const changeHandler = (event) => {
-    setIsTouched(true);
-    console.log("Input", event.target.value);
-  };
-
-  const submitHandler = (event) => {
-    event.preventDefault();
-    console.log("Submit");
-  };
-  console.log(
-    "isFocus=>",
-    isFocus,
-    "isBlur=>",
-    isBlur,
-    "isTouched=>",
-    isTouched,
-    "color=>",
-    color
-  );
 
   return (
     <Fragment>
+      <header className={styles.login__header}>
+        <Link to="/">
+          <span className={styles.login__header__logo}> </span>
+        </Link>
+      </header>
       <main className={styles["login"]}>
-        <form className={styles["login__form"]} onSubmit={submitHandler}>
-          <div className={styles["login__form--id"]}>
-            <div className={styles["login__form--id--main"]}>
+        <form
+          className={styles["login__form"]}
+          onSubmit={handleSubmit(onValid, test)}
+        >
+          <div>
+            <div className={styles["login__form--main"]}>
               <label
-                htmlFor="id"
-                className={`${styles["login__form--label"]} ${color}`}
-                onFocus={focusHandler}
-                onBlur={blurHandler}
-                onChange={changeHandler}
+                htmlFor="email"
+                className={`${styles["login__form--label"]}`}
               >
                 <div>
                   <span className={styles["login__form--id--icon"]}></span>
                 </div>
-                <input id="id" placeholder="아이디(이메일)" type="text"></input>
+                <input
+                  {...register("email", {
+                    required: "아이디(이메일)를 입력해주세요.",
+                    pattern: {
+                      value:
+                        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+                      message: "아이디(이메일)는 이메일 형식으로 입력해주세요.",
+                    },
+                  })}
+                  type="text"
+                  name="email"
+                  placeholder="아이디(이메일)"
+                ></input>
               </label>
             </div>
-            <p className={styles["login__form--error"]}>
-              아이디(이메일)를 입력해주세요.
-            </p>
+            {errors.email && (
+              <p className={styles["login__form--error"]}>
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
-          <div className={styles.login__main__passwd}>
-            <label
-              htmlFor="passwd"
-              className={styles.login__main__passwd__label}
-            >
-              <div>
-                <span className={styles.login__main__passwd__icon}></span>
-              </div>
-              <input id="passwd" placeholder="비밀번호" type="password"></input>
-              <span className={styles.login__main__passwd__hide}></span>
-            </label>
-            {/* <p>비밀번호를 입력해주세요.</p> */}
+          <div>
+            <div className={styles["login__form--main"]}>
+              <label
+                htmlFor="password"
+                className={`${styles["login__form--label"]}`}
+              >
+                <div>
+                  <span className={styles["login__form--passwd--icon"]}></span>
+                </div>
+                <input
+                  {...register("password", {
+                    required: "비밀번호를 입력해주세요",
+                  })}
+                  type="text"
+                  name="password"
+                  placeholder="비밀번호"
+                ></input>
+                <span
+                  className={styles["login__form--passwd--icon--sub"]}
+                ></span>
+              </label>
+            </div>
+            {errors.password && (
+              <p className={styles["login__form--error"]}>
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <div className={styles.login__main__util}>
@@ -95,7 +94,7 @@ const LoginForm = () => {
               <label htmlFor="checkbox">자동로그인</label>
             </div>
             <div className={styles.login__main__util__find}>
-              <Link to="auth">
+              <Link to="/">
                 <p>아이디(이메일)/비밀번호 찾기</p>
                 <span></span>
               </Link>
@@ -105,7 +104,7 @@ const LoginForm = () => {
           <div className={styles.login__main__btn}>
             <button className={styles.login__main__btn__login}>로그인</button>
             <hr className={styles.line} />
-            <Link to="/auth" state={{ isLogin: false }}>
+            <Link to="/join" state={{ isLogin: false }}>
               <button className={styles.login__main__btn__join}>
                 회원가입
               </button>
@@ -113,6 +112,12 @@ const LoginForm = () => {
           </div>
         </form>
       </main>
+
+      <footer className={styles.login__footer}>
+        <div>
+          <p>©Coupang Corp. All rights reserved</p>
+        </div>
+      </footer>
     </Fragment>
   );
 };

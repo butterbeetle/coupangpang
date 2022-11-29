@@ -1,5 +1,6 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import AuthPage from "./pages/AuthPage";
+import JoinForm from "./Components/Auth/JoinForm";
+import LoginForm from "./Components/Auth/LoginForm";
 import Main from "./pages/Main";
 
 function App() {
@@ -7,7 +8,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Main />} />
-        <Route path="/auth" element={<AuthPage />} />
+        <Route path="/login" element={<LoginForm />} />
+        <Route path="/join" element={<JoinForm />} />
       </Routes>
     </BrowserRouter>
   );

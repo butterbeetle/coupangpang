@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./Footer.module.css";
 
 const Footer = () => {
@@ -94,13 +95,13 @@ const Footer = () => {
           </p>
           <ul className={styles.footer_copyright__logo}>
             <li>
-              <a href="/" title="쿠팡 페이스북"></a>
+              <Link to="/" title="쿠팡 페이스북"></Link>
             </li>
             <li>
-              <a href="/" title="쿠팡 뉴스룸"></a>
+              <Link href="/" title="쿠팡 뉴스룸"></Link>
             </li>
             <li>
-              <a href="/" title="쿠팡 인스타그램"></a>
+              <Link href="/" title="쿠팡 인스타그램"></Link>
             </li>
           </ul>
         </div>
