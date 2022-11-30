@@ -4,13 +4,25 @@ import { Link } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
+  const [emailFocus, setEmailFocus] = useState(false);
+  const [emailBlur, setEmailBlur] = useState(false);
+  const [emailColor, setEmailColor] = useState("");
+
   const {
     watch,
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({ mode: "onChange" });
+  } = useForm({ mode: "all" });
 
+  const focusHandler = () => {
+    setEmailFocus(true);
+    setEmailBlur(false);
+  };
+  const blurHandler = () => {
+    setEmailFocus(false);
+    setEmailBlur(true);
+  };
   const onSubmit = (data) => {
     console.log("onSubmit", data);
   };
@@ -18,6 +30,13 @@ const LoginForm = () => {
     console.log("onError", error);
   };
 
+  useEffect(() => {
+    console.log("Errors");
+  }, [errors]);
+
+  // console.log("formState", formState);
+  console.log("register", register("email"));
+  console.log(`errors(${Object.keys(errors).length}) : ${errors.email}`);
   return (
     <Fragment>
       <header className={styles.login__header}>
@@ -34,7 +53,9 @@ const LoginForm = () => {
             <div className={styles["login__form--main"]}>
               <label
                 htmlFor="email"
-                className={`${styles["login__form--label"]}`}
+                className={`${styles["login__form--label"]} ${emailColor}`}
+                onFocus={focusHandler}
+                onBlur={blurHandler}
               >
                 <div>
                   <span className={styles["login__form--id--icon"]}></span>
@@ -44,7 +65,7 @@ const LoginForm = () => {
                     required: "아이디(이메일)를 입력해주세요.",
                     pattern: {
                       value:
-                        /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
+                        /^[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
                       message: "아이디(이메일)는 이메일 형식으로 입력해주세요.",
                     },
                   })}
