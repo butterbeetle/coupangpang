@@ -19,12 +19,12 @@ const LoginForm = () => {
   } = useForm({ mode: "all" });
 
   const touchedHandler = (event) => {
-    const { name } = event.target;
-    setTouched({ ...touched, [name]: true });
+    const { id } = event.target;
+    setTouched({ ...touched, [id]: true });
   };
   const blurHandler = (event) => {
-    const { name } = event.target;
-    setTouched({ ...touched, [name]: false });
+    const { id } = event.target;
+    setTouched({ ...touched, [id]: false });
   };
 
   useEffect(() => {
@@ -47,6 +47,11 @@ const LoginForm = () => {
   const passwordVisibleHandler = () => {
     setVisibleText(passwordVisible ? "visible" : "invisible");
     setPasswordVisible((prevState) => !prevState);
+  };
+
+  const [autoLogin, setAutoLogin] = useState(false);
+  const autoLoginClickHandler = () => {
+    setAutoLogin((prevState) => !prevState);
   };
 
   const onSubmit = (data) => {
@@ -92,7 +97,7 @@ const LoginForm = () => {
                     },
                   })}
                   type="text"
-                  name="email"
+                  id="email"
                   placeholder="아이디(이메일)"
                 ></input>
               </label>
@@ -120,7 +125,7 @@ const LoginForm = () => {
                     required: "비밀번호를 입력해주세요",
                   })}
                   type={passwordVisible ? "text" : "password"}
-                  name="password"
+                  id="password"
                   placeholder="비밀번호"
                 ></input>
                 <span
@@ -139,17 +144,31 @@ const LoginForm = () => {
             )}
           </div>
 
-          <div className={styles.login__main__util}>
-            <div className={styles.login__main__util__auto}>
-              <input id="checkbox" type="checkbox"></input>
-              <label htmlFor="checkbox">자동로그인</label>
+          <div>
+            <div className={styles.login__main__util}>
+              <div className={styles.login__main__util__auto}>
+                <input
+                  onClick={autoLoginClickHandler}
+                  id="autoLogin"
+                  type="checkbox"
+                ></input>
+                <label htmlFor="autoLogin">자동로그인</label>
+              </div>
+              <div className={styles.login__main__util__find}>
+                <Link to="/">
+                  <p>아이디(이메일)/비밀번호 찾기</p>
+                  <span></span>
+                </Link>
+              </div>
             </div>
-            <div className={styles.login__main__util__find}>
-              <Link to="/">
-                <p>아이디(이메일)/비밀번호 찾기</p>
-                <span></span>
-              </Link>
-            </div>
+            {autoLogin && (
+              <div className={styles["login__main__util__auto--box"]}>
+                <i></i>
+                <span>
+                  개인 정보 보호를 위해 본인 기기에서만 이용해 주세요.
+                </span>
+              </div>
+            )}
           </div>
 
           <div className={styles.login__main__btn}>

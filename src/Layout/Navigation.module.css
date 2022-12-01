@@ -1,9 +1,11 @@
 .topBar {
+  background-color: #f0f0f0;
+}
+.topBar__main {
   width: 1020px;
   height: 30px;
   font-size: 11px;
   margin: 0 auto;
-  background-color: #f0f0f0;
 }
 
 .topBar nav {
