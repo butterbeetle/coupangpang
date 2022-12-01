@@ -23,7 +23,7 @@
   height: 20px;
   background: url("../../assets/img/sprite-member.svg") no-repeat -21px -1px;
 }
-.login__form--passwd--icon--sub {
+.login__form--passwd--icon--visible {
   position: absolute;
   display: inline-block;
   right: 15px;
@@ -31,6 +31,16 @@
   width: 22px;
   height: 20px;
   background: url("../../assets/img/sprite-member.svg") no-repeat -105px -1px;
+  cursor: pointer;
+}
+.login__form--passwd--icon--invisible {
+  position: absolute;
+  display: inline-block;
+  right: 15px;
+  top: 15px;
+  width: 22px;
+  height: 20px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -126px -1px;
   cursor: pointer;
 }
 

@@ -4,39 +4,59 @@ import { Link } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 
 const LoginForm = () => {
-  const [emailFocus, setEmailFocus] = useState(false);
-  const [emailBlur, setEmailBlur] = useState(false);
   const [emailColor, setEmailColor] = useState("");
+  const [passwordColor, setPasswordColor] = useState("");
+
+  const [touched, setTouched] = useState({
+    email: false,
+    password: false,
+  });
 
   const {
-    watch,
     register,
     handleSubmit,
     formState: { errors },
   } = useForm({ mode: "all" });
 
-  const focusHandler = () => {
-    setEmailFocus(true);
-    setEmailBlur(false);
+  const touchedHandler = (event) => {
+    const { name } = event.target;
+    setTouched({ ...touched, [name]: true });
   };
-  const blurHandler = () => {
-    setEmailFocus(false);
-    setEmailBlur(true);
+  const blurHandler = (event) => {
+    const { name } = event.target;
+    setTouched({ ...touched, [name]: false });
   };
+
+  useEffect(() => {
+    if (errors.email) {
+      setEmailColor(styles["invalid"]);
+    } else {
+      setEmailColor(touched.email ? styles["valid"] : "");
+    }
+
+    if (errors.password) {
+      setPasswordColor(styles["invalid"]);
+    } else {
+      setPasswordColor(touched.password ? styles["valid"] : "");
+    }
+  }, [touched, errors.email, errors.password]);
+
+  const [passwordVisible, setPasswordVisible] = useState(false);
+  const passwordVisibleHandler = (event) => {
+    console.log(event.target);
+    setPasswordVisible((prevState) => !prevState);
+  };
+
   const onSubmit = (data) => {
     console.log("onSubmit", data);
   };
   const onError = (error) => {
     console.log("onError", error);
   };
-
-  useEffect(() => {
-    console.log("Errors");
-  }, [errors]);
-
   // console.log("formState", formState);
-  console.log("register", register("email"));
-  console.log(`errors(${Object.keys(errors).length}) : ${errors.email}`);
+  // console.log("register", register("email"));
+  // console.log(`errors(${Object.keys(errors).length}) : ${errors}`);
+  console.log(passwordVisible);
   return (
     <Fragment>
       <header className={styles.login__header}>
@@ -54,7 +74,7 @@ const LoginForm = () => {
               <label
                 htmlFor="email"
                 className={`${styles["login__form--label"]} ${emailColor}`}
-                onFocus={focusHandler}
+                onFocus={touchedHandler}
                 onBlur={blurHandler}
               >
                 <div>
@@ -86,7 +106,9 @@ const LoginForm = () => {
             <div className={styles["login__form--main"]}>
               <label
                 htmlFor="password"
-                className={`${styles["login__form--label"]}`}
+                className={`${styles["login__form--label"]} ${passwordColor}`}
+                onFocus={touchedHandler}
+                onBlur={blurHandler}
               >
                 <div>
                   <span className={styles["login__form--passwd--icon"]}></span>
@@ -95,12 +117,14 @@ const LoginForm = () => {
                   {...register("password", {
                     required: "비밀번호를 입력해주세요",
                   })}
-                  type="text"
+                  type="password"
                   name="password"
                   placeholder="비밀번호"
                 ></input>
                 <span
-                  className={styles["login__form--passwd--icon--sub"]}
+                  onClick={passwordVisibleHandler}
+                  name="visible"
+                  className={styles["login__form--passwd--icon--visible"]}
                 ></span>
               </label>
             </div>
