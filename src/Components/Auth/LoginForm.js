@@ -42,8 +42,10 @@ const LoginForm = () => {
   }, [touched, errors.email, errors.password]);
 
   const [passwordVisible, setPasswordVisible] = useState(false);
-  const passwordVisibleHandler = (event) => {
-    console.log(event.target);
+  const [visibleText, setVisibleText] = useState("visible");
+
+  const passwordVisibleHandler = () => {
+    setVisibleText(passwordVisible ? "visible" : "invisible");
     setPasswordVisible((prevState) => !prevState);
   };
 
@@ -56,7 +58,7 @@ const LoginForm = () => {
   // console.log("formState", formState);
   // console.log("register", register("email"));
   // console.log(`errors(${Object.keys(errors).length}) : ${errors}`);
-  console.log(passwordVisible);
+  // console.log(passwordVisible);
   return (
     <Fragment>
       <header className={styles.login__header}>
@@ -117,14 +119,16 @@ const LoginForm = () => {
                   {...register("password", {
                     required: "비밀번호를 입력해주세요",
                   })}
-                  type="password"
+                  type={passwordVisible ? "text" : "password"}
                   name="password"
                   placeholder="비밀번호"
                 ></input>
                 <span
                   onClick={passwordVisibleHandler}
                   name="visible"
-                  className={styles["login__form--passwd--icon--visible"]}
+                  className={
+                    styles[`login__form--passwd--icon--${visibleText}`]
+                  }
                 ></span>
               </label>
             </div>
