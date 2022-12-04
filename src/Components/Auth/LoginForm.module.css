@@ -184,7 +184,7 @@
   color: #0074e9;
   font-size: 17px;
   font-weight: bold;
-  box-shadow: 0 -2px 0 inset #d9d9d9;
+  box-shadow: 0 -1px 0 inset #d9d9d9;
   cursor: pointer;
 }
 .line {

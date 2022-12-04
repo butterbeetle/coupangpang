@@ -52,19 +52,10 @@ const LoginForm = () => {
   };
 
   const [autoLogin, setAutoLogin] = useState(false);
-  const [toggle, setToggle] = useState(20);
   const autoLoginClickHandler = () => {
     setAutoLogin((prevState) => !prevState);
-    setToggle((prevToggle) => (prevToggle === 20 ? 0 : 20));
   };
 
-  const variants = {
-    initial: {
-      opacity: 0,
-      y: 20,
-    },
-    visible: { opacity: autoLogin ? 1 : 0, y: 0 },
-  };
   const onSubmit = (data) => {
     console.log("onSubmit", data);
   };
