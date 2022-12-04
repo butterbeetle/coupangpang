@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 
+import { motion } from "framer-motion";
+
 const LoginForm = () => {
   const [emailColor, setEmailColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
@@ -50,10 +52,19 @@ const LoginForm = () => {
   };
 
   const [autoLogin, setAutoLogin] = useState(false);
+  const [toggle, setToggle] = useState(20);
   const autoLoginClickHandler = () => {
     setAutoLogin((prevState) => !prevState);
+    setToggle((prevToggle) => (prevToggle === 20 ? 0 : 20));
   };
 
+  const variants = {
+    initial: {
+      opacity: 0,
+      y: 20,
+    },
+    visible: { opacity: autoLogin ? 1 : 0, y: 0 },
+  };
   const onSubmit = (data) => {
     console.log("onSubmit", data);
   };
@@ -64,6 +75,7 @@ const LoginForm = () => {
   // console.log("register", register("email"));
   // console.log(`errors(${Object.keys(errors).length}) : ${errors}`);
   // console.log(passwordVisible);
+
   return (
     <Fragment>
       <header className={styles.login__header}>
@@ -147,6 +159,15 @@ const LoginForm = () => {
           <div>
             <div className={styles.login__main__util}>
               <div className={styles.login__main__util__auto}>
+                <motion.i
+                  animate={{
+                    opacity: autoLogin ? 1 : 0,
+                    y: autoLogin ? 0 : 20,
+                  }}
+                  transition={{
+                    duration: 0.3,
+                  }}
+                ></motion.i>
                 <input
                   onClick={autoLoginClickHandler}
                   id="autoLogin"

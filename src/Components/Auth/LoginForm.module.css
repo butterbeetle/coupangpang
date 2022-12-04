@@ -95,14 +95,24 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 0 auto;
+  margin: 0 auto 5px;
   font-size: 12px;
+  position: relative;
+  overflow: hidden;
 }
 .login__main__util__auto {
   display: flex;
   align-items: center;
   font-size: 14px;
 }
+.login__main__util__auto i {
+  display: inline-block;
+  position: absolute;
+  width: 20px;
+  height: 15px;
+  background: url("../../assets/img/sprite-member.svg") no-repeat -80px -21px;
+}
+
 .login__main__util__auto label {
   cursor: pointer;
 }
@@ -110,6 +120,8 @@
   width: 25px;
   height: 25px;
   margin-left: 0;
+  margin-top: 0;
+  margin-bottom: 0;
   margin-right: 10px;
   border: 1px solid #ccc;
   box-shadow: 0 2px 10px -7px inset;
