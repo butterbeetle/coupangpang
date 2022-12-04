@@ -475,7 +475,7 @@ const JoinForm = () => {
       },
     }).then((res) => {
       if (res.ok) {
-        navigate("/auth", { state: { isLogin: true } });
+        navigate("/login");
       } else {
         return res.json().then((data) => {
           if (data && data.error && data.error.message) {

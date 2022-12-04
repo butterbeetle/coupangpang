@@ -1,6 +1,6 @@
 import { Fragment, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./LoginForm.module.css";
 
 import { motion } from "framer-motion";
@@ -56,8 +56,41 @@ const LoginForm = () => {
     setAutoLogin((prevState) => !prevState);
   };
 
+  const navigate = useNavigate();
   const onSubmit = (data) => {
-    console.log("onSubmit", data);
+    console.log("onSubmit", data, data.email, data.password);
+    const url =
+      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCnzUriRYYCPwUKN4YWiZsHDHKI-5TKBWk";
+    fetch(url, {
+      method: "POST",
+      body: JSON.stringify({
+        email: data.email,
+        password: data.password,
+        returnSecureToken: true,
+      }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        } else {
+          return res.json().then((data) => {
+            if (data && data.error && data.error.message) {
+              console.log(data);
+            }
+            throw new Error(data.error.message);
+          });
+        }
+      })
+      .then((data) => {
+        console.log(data);
+        navigate("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
   const onError = (error) => {
     console.log("onError", error);
