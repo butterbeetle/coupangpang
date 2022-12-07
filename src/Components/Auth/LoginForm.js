@@ -57,40 +57,32 @@ const LoginForm = () => {
   };
 
   const navigate = useNavigate();
-  const onSubmit = (data) => {
+
+  const onSubmit = async (data) => {
     console.log("onSubmit", data, data.email, data.password);
     const url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCnzUriRYYCPwUKN4YWiZsHDHKI-5TKBWk";
-    fetch(url, {
-      method: "POST",
-      body: JSON.stringify({
-        email: data.email,
-        password: data.password,
-        returnSecureToken: true,
-      }),
-      headers: {
-        "Content-Type": "application/json",
-      },
-    })
-      .then((res) => {
-        if (res.ok) {
-          return res.json();
-        } else {
-          return res.json().then((data) => {
-            if (data && data.error && data.error.message) {
-              console.log(data);
-            }
-            throw new Error(data.error.message);
-          });
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        navigate("/");
-      })
-      .catch((err) => {
-        console.log(err);
+    try {
+      const response = await fetch(url, {
+        method: "POST",
+        body: JSON.stringify({
+          email: data.email,
+          password: data.password,
+          returnSecureToken: true,
+        }),
+        headers: {
+          "Content-Type": "application/json",
+        },
       });
+      const responseData = await response.json();
+      if (!response.ok) {
+        throw new Error(responseData.error.message);
+      }
+
+      navigate("/");
+    } catch (error) {
+      console.log("Error:", error.message);
+    }
   };
   const onError = (error) => {
     console.log("onError", error);
