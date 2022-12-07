@@ -81,7 +81,7 @@
 .login__form--error {
   color: #e52528;
   font-size: 12px;
-  margin: 5px 0 15px 15px;
+  margin: 5px 10px 15px 15px;
 }
 
 .valid {

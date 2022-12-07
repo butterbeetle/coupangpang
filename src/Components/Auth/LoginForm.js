@@ -8,7 +8,7 @@ import { motion } from "framer-motion";
 const LoginForm = () => {
   const [emailColor, setEmailColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
-
+  const [submitError, setSubmitError] = useState("");
   const [touched, setTouched] = useState({
     email: false,
     password: false,
@@ -27,6 +27,7 @@ const LoginForm = () => {
   const blurHandler = (event) => {
     const { id } = event.target;
     setTouched({ ...touched, [id]: false });
+    setSubmitError(null);
   };
 
   useEffect(() => {
@@ -82,8 +83,12 @@ const LoginForm = () => {
       navigate("/");
     } catch (error) {
       console.log("Error:", error.message);
+      setSubmitError(
+        "이메일 또는 비밀번호를 다시 확인하세요. 쿠팡에 등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
+      );
     }
   };
+
   const onError = (error) => {
     console.log("onError", error);
   };
@@ -165,9 +170,9 @@ const LoginForm = () => {
                 ></span>
               </label>
             </div>
-            {errors.password && (
+            {(errors.password || submitError) && (
               <p className={styles["login__form--error"]}>
-                {errors.password.message}
+                {errors.password ? errors.password.message : submitError}
               </p>
             )}
           </div>
