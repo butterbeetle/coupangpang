@@ -181,9 +181,10 @@ const LoginForm = () => {
             <div className={styles.login__main__util}>
               <div className={styles.login__main__util__auto}>
                 <motion.i
+                  onClick={autoLoginClickHandler}
                   animate={{
                     opacity: autoLogin ? 1 : 0,
-                    y: autoLogin ? 0 : 20,
+                    y: autoLogin ? -20 : 0,
                   }}
                   transition={{
                     duration: 0.3,
@@ -194,7 +195,7 @@ const LoginForm = () => {
                   id="autoLogin"
                   type="checkbox"
                 ></input>
-                <label htmlFor="autoLogin">자동로그인</label>
+                <label htmlFor="autoLogin">로그인 상태 유지</label>
               </div>
               <div className={styles.login__main__util__find}>
                 <Link to="/">
