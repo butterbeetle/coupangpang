@@ -1,6 +1,8 @@
 import { Fragment, useEffect, useState } from "react";
+import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import useInput from "../../hooks/use-input";
+import { loggedActions } from "../../store";
 import { AuthModal } from "../../UI/AuthModal";
 import styles from "./JoinForm.module.css";
 
@@ -429,6 +431,8 @@ const JoinForm = () => {
     setModalInfo(null);
   };
 
+  const dispatch = useDispatch();
+
   const submitHandler = (event) => {
     event.preventDefault();
     setBtnTouch(true);
@@ -451,15 +455,15 @@ const JoinForm = () => {
     // resetNameInput();
     // resetPhoneInput();
 
-    console.log(
-      enteredEmail,
-      enteredPasswd,
-      enteredPasswdConfirm,
-      enteredName,
-      enteredPhone,
-      optionItems,
-      event
-    );
+    // console.log(
+    //   enteredEmail,
+    //   enteredPasswd,
+    //   enteredPasswdConfirm,
+    //   enteredName,
+    //   enteredPhone,
+    //   optionItems,
+    //   event
+    // );
 
     const url =
       "https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyCnzUriRYYCPwUKN4YWiZsHDHKI-5TKBWk";
@@ -475,6 +479,13 @@ const JoinForm = () => {
       },
     }).then((res) => {
       if (res.ok) {
+        dispatch(
+          loggedActions.register({
+            email: enteredEmail,
+            name: enteredName,
+            phone: enteredPhone,
+          })
+        );
         navigate("/login");
       } else {
         return res.json().then((data) => {

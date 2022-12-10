@@ -84,7 +84,7 @@ const LoginForm = () => {
         throw new Error(responseData.error.message);
       }
 
-      dispatch(loggedActions.login({ user_name: data.name }));
+      dispatch(loggedActions.login());
 
       navigate("/");
     } catch (error) {

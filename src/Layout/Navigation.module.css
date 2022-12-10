@@ -26,13 +26,17 @@
   cursor: pointer;
 }
 
-.topBar span {
-  padding-right: 5px;
-}
-
 .icon {
   display: inline-block;
   width: 10px;
   height: 10px;
+  margin-left: 3px;
   background: url("../img/header_img/header_img_collection.png") no-repeat -150px -31px;
+}
+
+.logout {
+  padding: 2px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  color: #888;
 }

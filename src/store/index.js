@@ -2,20 +2,26 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLogged: false,
-  user_name: null,
+  email: "",
+  name: "",
+  phone: "",
 };
 
 const loggedSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    login(state, action) {
+    register(state, action) {
+      state.email = action.payload.email;
+      state.name = action.payload.name;
+      state.phone = action.payload.phone;
+    },
+    login(state) {
       state.isLogged = true;
-      state.user_name = action.payload.user_name;
     },
     logout(state) {
       state.isLogged = false;
-      state.user_name = null;
+      state.userName = "";
     },
   },
 });
