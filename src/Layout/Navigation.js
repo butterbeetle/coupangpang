@@ -1,7 +1,11 @@
 import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
+import { useSelector } from "react-redux";
+
 const Navigation = () => {
+  const userName = useSelector((state) => state.logged.user_name);
+  console.log("userName:", userName);
   return (
     <section className={styles.topBar}>
       <div className={styles.topBar__main}>

@@ -5,6 +5,9 @@ import styles from "./LoginForm.module.css";
 
 import { motion } from "framer-motion";
 
+import { useDispatch } from "react-redux";
+import { loggedActions } from "../../store";
+
 const LoginForm = () => {
   const [emailColor, setEmailColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
@@ -58,6 +61,7 @@ const LoginForm = () => {
   };
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async (data) => {
     console.log("onSubmit", data, data.email, data.password);
@@ -79,6 +83,8 @@ const LoginForm = () => {
       if (!response.ok) {
         throw new Error(responseData.error.message);
       }
+
+      dispatch(loggedActions.login({ user_name: data.name }));
 
       navigate("/");
     } catch (error) {
