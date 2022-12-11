@@ -43,7 +43,7 @@
   color: #888;
 }
 
-.hovermenu {
+.hovermenu__left {
   position: absolute;
   top: 30px;
   left: 67px;
@@ -51,8 +51,15 @@
   background-color: #fff;
   box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
 }
-
-.hovermenu__ul {
+.hovermenu__right {
+  position: absolute;
+  top: 30px;
+  right: 50px;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+}
+.hovermenu--ul {
   padding: 8px 10px 10px;
   margin: 0;
   display: flex;
@@ -61,6 +68,6 @@
   font-size: 12px;
 }
 
-.hovermenu__ul li {
-  padding: 5px 5px 0;
+.hovermenu--ul li {
+  padding: 3px 5px 0;
 }

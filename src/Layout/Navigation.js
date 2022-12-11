@@ -6,16 +6,21 @@ import { Fragment, useState } from "react";
 import { loggedActions } from "../store";
 
 const Navigation = () => {
-  const [isHover, setIsHover] = useState(false);
+  const [isLeftHover, setIsLeftHover] = useState(false);
+  const [isRightHover, setIsRightHover] = useState(false);
 
-  const hoverHandler = () => {
-    setIsHover((prevState) => !prevState);
+  const leftHoverHandler = () => {
+    setIsLeftHover((prevState) => !prevState);
   };
 
-  let hoverSubMenu = isHover && (
+  const rightHoverHandler = () => {
+    setIsRightHover((prevState) => !prevState);
+  };
+
+  let leftHoverSubMenu = isLeftHover && (
     <Fragment>
-      <hovermenu className={styles["hovermenu"]}>
-        <ul className={styles["hovermenu__ul"]}>
+      <hovermenu className={styles["hovermenu__left"]}>
+        <ul className={styles["hovermenu--ul"]}>
           <li>오픈마켓</li>
           <li>여행·티켓</li>
           <li>로켓배송</li>
@@ -25,6 +30,18 @@ const Navigation = () => {
     </Fragment>
   );
 
+  let rightHoverSubMenu = isRightHover && (
+    <Fragment>
+      <hovermenu className={styles["hovermenu__right"]}>
+        <ul className={styles["hovermenu--ul"]}>
+          <li>자주묻는 질문 </li>
+          <li>1:1 채팅문의</li>
+          <li>고객의 소리</li>
+          <li>취소 / 반품 안내</li>
+        </ul>
+      </hovermenu>
+    </Fragment>
+  );
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.logged.name);
   const userEmail = useSelector((state) => state.logged.email);
@@ -33,7 +50,7 @@ const Navigation = () => {
   const isLogged = useSelector((state) => state.logged.isLogged);
 
   // console.log(userName, userEmail, userPhone, isLogged);
-  console.log(isHover);
+
   const logoutHandler = () => {
     dispatch(loggedActions.logout());
   };
@@ -67,15 +84,18 @@ const Navigation = () => {
         <nav className={styles["topbar__nav"]}>
           <ul className={styles["topbar__nav--ul"]}>
             <li>즐겨찾기</li>
-            <li onMouseOver={hoverHandler} onMouseOut={hoverHandler}>
+            <li onMouseOver={leftHoverHandler} onMouseOut={leftHoverHandler}>
               <span>입점신청</span>
               <i className={styles.icon}></i>
-              {hoverSubMenu}
+              {leftHoverSubMenu}
             </li>
           </ul>
           <ul className={styles["topbar__nav--ul"]}>
             {topbarMenu}
-            <li>고객센터</li>
+            <li onMouseOver={rightHoverHandler} onMouseOut={rightHoverHandler}>
+              <span>고객센터</span>
+              {rightHoverSubMenu}
+            </li>
           </ul>
         </nav>
       </div>
