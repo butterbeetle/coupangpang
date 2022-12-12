@@ -90,23 +90,18 @@ const Header = () => {
                   <Link to="/">헬스/건강식품</Link>
                   <i className={styles["select"]}></i>
                 </li>
-
-                {/* 
-                <li>주방용품</li>
-                <li>생활용품</li>
-                <li>홈인테리어</li>
-                <li>가전디지털</li>
-                <li>스포츠/레저</li>
-                <li>자동차용품</li>
-                <li>도서/음반/DVD</li>
-                <li>완구/취미</li>
-                <li>문구/오피스</li>
-                <li>반려동물용품</li>
-                <li>헬스/건강식품</li> */}
               </ul>
               <ul className={styles["category__list--first--sub"]}>
-                <li>여행/티켓</li>
-                <li>테마관</li>
+                <li>
+                  <i className={styles["travel"]}></i>
+                  <Link to="/">여행/티켓</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["theme"]}></i>
+                  <Link to="/">테마관</Link>
+                  <i className={styles["select"]}></i>
+                </li>
               </ul>
             </div>
             <div className={styles["category__list--second"]}>
