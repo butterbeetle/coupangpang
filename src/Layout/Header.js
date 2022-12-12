@@ -25,10 +25,73 @@ const Header = () => {
                   <Link to="/">뷰티</Link>
                   <i className={styles["select"]}></i>
                 </li>
+                <li>
+                  <i className={styles["child"]}></i>
+                  <Link to="/">출산/유아동</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["food"]}></i>
+                  <Link to="/">식품</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["kitchen"]}></i>
+                  <Link to="/">주방용품</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["life"]}></i>
+                  <Link to="/">생활용품</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["interior"]}></i>
+                  <Link to="/">홈인테리어</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["digital"]}></i>
+                  <Link to="/">가전디지털</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["sports"]}></i>
+                  <Link to="/">스포츠/레저</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["car"]}></i>
+                  <Link to="/">자동차용품</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["book"]}></i>
+                  <Link to="/">도서/음반/DVD</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["hobby"]}></i>
+                  <Link to="/">완구/취미</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["office"]}></i>
+                  <Link to="/">문구/오피스</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["pet"]}></i>
+                  <Link to="/">반려동물용품</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["health"]}></i>
+                  <Link to="/">헬스/건강식품</Link>
+                  <i className={styles["select"]}></i>
+                </li>
 
-                {/* <li>뷰티</li>
-                <li>출산/유아동</li>
-                <li>식품</li>
+                {/* 
                 <li>주방용품</li>
                 <li>생활용품</li>
                 <li>홈인테리어</li>

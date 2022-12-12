@@ -278,7 +278,7 @@
   display: inline-block;
   position: absolute;
   top: 13px;
-  right: 0;
+  right: 5px;
   width: 10px;
   height: 10px;
   background: url("../assets/img/header_img_collection.png") no-repeat -155px -18px;
@@ -287,11 +287,104 @@
   display: inline-block;
   width: 25px;
   height: 25px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -30px -30px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -30px;
 }
 .beauty {
   display: inline-block;
   width: 25px;
   height: 25px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -30px -115px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -115px;
+}
+.child {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -155px;
+}
+.food {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -195px;
+}
+.kitchen {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -280px;
+}
+.life {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -325px;
+}
+.interior {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -365px;
+}
+.digital {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -407px;
+}
+.sports {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -450px;
+}
+.car {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -785px;
+}
+.book {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -575px;
+}
+.hobby {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -741px;
+}
+.office {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -492px;
+}
+.pet {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -533px;
+}
+.health {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  padding-right: 5px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -870px;
 }
