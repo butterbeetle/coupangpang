@@ -3,6 +3,7 @@ import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
 import icon_new from "../img/header_img/ico_new.png";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   return (
@@ -12,6 +13,55 @@ const Header = () => {
         <section className={styles.header}>
           <div className={styles.category}>
             <p>카테고리</p>
+            <div className={styles["category__list--first"]}>
+              <ul className={styles["category__list--first--ul"]}>
+                <li>
+                  <i className={styles["fashion"]}></i>
+                  <Link to="/">패션의류/잡화</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+                <li>
+                  <i className={styles["beauty"]}></i>
+                  <Link to="/">뷰티</Link>
+                  <i className={styles["select"]}></i>
+                </li>
+
+                {/* <li>뷰티</li>
+                <li>출산/유아동</li>
+                <li>식품</li>
+                <li>주방용품</li>
+                <li>생활용품</li>
+                <li>홈인테리어</li>
+                <li>가전디지털</li>
+                <li>스포츠/레저</li>
+                <li>자동차용품</li>
+                <li>도서/음반/DVD</li>
+                <li>완구/취미</li>
+                <li>문구/오피스</li>
+                <li>반려동물용품</li>
+                <li>헬스/건강식품</li> */}
+              </ul>
+              <ul className={styles["category__list--first--sub"]}>
+                <li>여행/티켓</li>
+                <li>테마관</li>
+              </ul>
+            </div>
+            <div className={styles["category__list--second"]}>
+              <ul>
+                <li>여성패션</li>
+                <li>남성패션</li>
+                <li>남녀 공용 의류</li>
+                <li>유아동패션</li>
+              </ul>
+            </div>
+            <div className={styles["category__list--third"]}>
+              <ul>
+                <li>의류</li>
+                <li>속옷/잠옷</li>
+                <li>신발</li>
+                <li>가방/잡화</li>
+              </ul>
+            </div>
           </div>
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>
