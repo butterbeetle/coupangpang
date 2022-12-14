@@ -19,27 +19,27 @@ const Navigation = () => {
 
   let leftHoverSubMenu = isLeftHover && (
     <Fragment>
-      <hovermenu className={styles["hovermenu__left"]}>
+      <div className={styles["hovermenu__left"]}>
         <ul className={styles["hovermenu--ul"]}>
           <li>오픈마켓</li>
           <li>여행·티켓</li>
           <li>로켓배송</li>
           <li>제휴마케팅</li>
         </ul>
-      </hovermenu>
+      </div>
     </Fragment>
   );
 
   let rightHoverSubMenu = isRightHover && (
     <Fragment>
-      <hovermenu className={styles["hovermenu__right"]}>
+      <div className={styles["hovermenu__right"]}>
         <ul className={styles["hovermenu--ul"]}>
           <li>자주묻는 질문 </li>
           <li>1:1 채팅문의</li>
           <li>고객의 소리</li>
           <li>취소 / 반품 안내</li>
         </ul>
-      </hovermenu>
+      </div>
     </Fragment>
   );
   const dispatch = useDispatch();
