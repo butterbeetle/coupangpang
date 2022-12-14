@@ -1,18 +1,20 @@
-import { useState } from "react";
+import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./Category.module.css";
 
 const allCategoryItems = [
   {
-    categoryId: 1,
+    isHover: false,
     categoryIcon: "fashion",
     categoryName: "패션의류/잡화",
     categoryItems: [
       {
+        isHover: false,
         name: "여성패션",
         items: ["의류", "속옷/잠옷", "신발", "가방/잡화"],
       },
       {
+        isHover: false,
         name: "남성패션",
         items: ["의류", "속옷/잠옷", "신발", "가방/잡화"],
       },
@@ -172,11 +174,23 @@ const allCategoryItems = [
 
 const Category = () => {
   const [categoryHover, setCategoryHover] = useState(false);
+  const [categoryListHover, setCategoryListHover] = useState(false);
+  const [categoryListItemHover, setCategoryListItemHover] = useState(false);
 
   const categoryHoverHandler = () => {
     setCategoryHover((prevState) => !prevState);
   };
 
+  const categoryListHoverHandler = (id) => {
+    setCategoryListHover((prevState) => !prevState);
+  };
+
+  const categoryListItemHoverHandler = () => {
+    setCategoryListItemHover((prevState) => !prevState);
+  };
+
+  let test = categoryListItemHover ? "test" : "";
+  // console.log(categoryHover, categoryListHover);
   return (
     <div
       className={styles.category}
@@ -184,34 +198,52 @@ const Category = () => {
       onMouseOut={categoryHoverHandler}
     >
       <p className={styles["category--p"]}>카테고리</p>
-      <div className={styles["category__list--first"]}>
-        <ul className={styles["category__list--first--ul"]}>
-          {allCategoryItems.map((category) => (
-            <li>
-              <i className={styles[`${category.categoryIcon}`]}></i>
-              <Link to="/">{category.categoryName}</Link>
-              <i className={styles["select"]}></i>
-              <div className={styles["category__list--second"]}>
-                <ul>
-                  {category.categoryItems.map((item) => (
-                    <li>
-                      <Link to="/">{item.name}</Link>
-                      <i className={styles["select--second"]}></i>
-                      <div className={styles["category__list--third"]}>
-                        <ul>
-                          {item.items.map((item) => (
-                            <li>{item}</li>
-                          ))}
-                        </ul>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </li>
-          ))}
-        </ul>
-      </div>
+      {categoryHover && (
+        <div className={styles["category__list--first"]}>
+          <ul className={styles["category__list--first--ul"]}>
+            {allCategoryItems.map((category, index) => (
+              <li
+                onMouseOver={categoryListHoverHandler}
+                onMouseOut={categoryListHoverHandler}
+              >
+                <i className={styles[`${category.categoryIcon}`]}></i>
+                <Link to="/">{category.categoryName}</Link>
+                {categoryListHover && (
+                  <Fragment>
+                    <i className={styles["select"]}></i>
+                    <div className={styles["category__list--second"]}>
+                      <ul>
+                        {category.categoryItems.map((item) => (
+                          <li
+                            onMouseOver={categoryListItemHoverHandler}
+                            onMouseOut={categoryListItemHoverHandler}
+                          >
+                            <Link to="/">{item.name}</Link>
+                            {categoryListItemHover && (
+                              <Fragment>
+                                <i className={styles["select--second"]}></i>
+                                <div
+                                  className={styles["category__list--third"]}
+                                >
+                                  <ul>
+                                    {item.items.map((item) => (
+                                      <li>{item}</li>
+                                    ))}
+                                  </ul>
+                                </div>
+                              </Fragment>
+                            )}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </Fragment>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </div>
   );
 };
