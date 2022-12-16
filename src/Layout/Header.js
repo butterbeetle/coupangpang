@@ -4,7 +4,7 @@ import Navigation from "./Navigation";
 //Icon
 import icon_new from "../img/header_img/ico_new.png";
 // import { Link } from "react-router-dom";
-import Category from "./Category";
+import Catrgory from "./Category";
 
 const Header = () => {
   return (
@@ -12,7 +12,7 @@ const Header = () => {
       <Navigation />
       <header style={{ backgroundColor: "white" }}>
         <section className={styles.header}>
-          <Category />
+          <Catrgory />
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>
               <a href="/" title="Coupang - 내가 잘사는 이유">

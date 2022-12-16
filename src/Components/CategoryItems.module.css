@@ -1,0 +1,27 @@
+.menu-items {
+  font-size: 12px;
+}
+
+.menu-items button {
+  display: flex;
+  align-items: center;
+  color: inherit;
+  font-size: inherit;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  width: 100%;
+}
+
+button span {
+  margin-left: 3px;
+}
+
+.menu-items button {
+  text-align: left;
+  padding: 0.7rem 1rem;
+}
+
+.menu-items button:hover {
+  background-color: #f2f2f2;
+}
