@@ -7,12 +7,14 @@
   height: 110px;
   background: url("../assets/img/header_img_collection.png") no-repeat;
 }
+
 .category--p {
   font-size: 13px;
   position: relative;
   top: -8px;
   cursor: pointer;
   color: white;
+  margin-bottom: 13px;
 }
 
 .menus {
@@ -20,149 +22,11 @@
   flex-direction: column;
   z-index: 1;
   position: absolute;
-  top: 100px;
+  top: 110px;
   left: 0;
   width: 170px;
   background-color: #fff;
   box-shadow: 0px 3px 1px rgb(0 0 0 / 20%);
   border: 1px solid #ddd;
   margin: 0;
-}
-.select {
-  display: inline-block;
-  position: absolute;
-  top: 22px;
-  right: 5px;
-  width: 10px;
-  height: 10px;
-  background: url("../assets/img/header_img_collection.png") no-repeat -155px -18px;
-}
-.select--second {
-  display: inline-block;
-  position: absolute;
-  top: 22px;
-  left: 135px;
-  width: 10px;
-  height: 10px;
-  background: url("../assets/img/header_img_collection.png") no-repeat -155px -18px;
-}
-
-.fashion {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -30px;
-}
-.beauty {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -115px;
-}
-.child {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -155px;
-}
-.food {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -195px;
-}
-.kitchen {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -280px;
-}
-.life {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -325px;
-}
-.interior {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -365px;
-}
-.digital {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -407px;
-}
-.sports {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -450px;
-}
-.car {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -785px;
-}
-.book {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -575px;
-}
-.hobby {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -741px;
-}
-.office {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -492px;
-}
-.pet {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -533px;
-}
-.health {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -870px;
-}
-.travel {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -618px;
-}
-.theme {
-  display: inline-block;
-  width: 25px;
-  height: 25px;
-  padding-right: 5px;
-  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -912px;
 }

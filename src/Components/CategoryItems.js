@@ -7,7 +7,10 @@ const CategoryItems = ({ items, depth }) => {
   const [dropdown, setDropdown] = useState(false);
 
   let ref = useRef();
-  let padding = depth === 0 ? styles["first__dropdown"] : null;
+
+  let title = depth === 0 ? styles["title__padding"] : null;
+  let arrow =
+    depth === 0 ? styles["arrow"] : depth === 1 ? styles["arrow__depth"] : null;
 
   useEffect(() => {
     const handler = (event) => {
@@ -41,8 +44,11 @@ const CategoryItems = ({ items, depth }) => {
     >
       {items.submenu ? (
         <>
-          <button type="button" className={`${styles["fashion"]} ${padding}`}>
-            <Link to="/">{items.title}</Link>
+          <button type="button" className={`${styles[items.icon]}`}>
+            <Link className={title} to="/">
+              {items.title}
+            </Link>
+            <span className={arrow} />
           </button>
           <Dropdown
             depth={depth}
@@ -51,9 +57,14 @@ const CategoryItems = ({ items, depth }) => {
           />
         </>
       ) : (
-        <button>
-          <Link to="/">{items.title}</Link>
-        </button>
+        <>
+          <button type="button" className={`${styles[items.icon]}`}>
+            <Link className={title} to="/">
+              {items.title}
+            </Link>
+            <span className={arrow} />
+          </button>
+        </>
       )}
     </li>
   );
