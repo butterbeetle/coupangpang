@@ -11,17 +11,17 @@
   background-color: transparent;
   cursor: pointer;
   width: 100%;
-}
-
-button span {
-  margin-left: 3px;
-}
-
-.menu-items button {
   text-align: left;
-  padding: 0.7rem 1rem;
+  padding: 8px 15px;
 }
 
-.menu-items button:hover {
-  background-color: #f2f2f2;
+.first__dropdown {
+  padding-left: 20px;
+}
+
+.fashion {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -29px -30px;
 }

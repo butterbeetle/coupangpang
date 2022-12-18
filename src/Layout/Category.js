@@ -12,40 +12,40 @@ const categoryItems = [
         title: "여성패션",
         submenu: [
           { title: "의류" },
-          //       { title: "속옷/잠옷" },
-          //       { title: "신발" },
-          //       { title: "가방/잡화" },
+          { title: "속옷/잠옷" },
+          { title: "신발" },
+          { title: "가방/잡화" },
         ],
       },
-      //   {
-      //     title: "남성패션",
-      //     submenu: [
-      //       { title: "의류" },
-      //       { title: "속옷/잠옷" },
-      //       { title: "신발" },
-      //       { title: "가방/잡화" },
-      //     ],
-      //   },
-      // {
-      //   title: "남녀 공용 의류",
-      //   submenu: [
-      //     { title: "티셔츠" },
-      //     { title: "맨투맨/후드티" },
-      //     { title: "셔츠" },
-      //     { title: "바지" },
-      //     { title: "트레이닝복" },
-      //     { title: "후드집업/집업류" },
-      //     { title: "니트류/조끼" },
-      //     { title: "아우터" },
-      //     { title: "테마의류" },
-      //     { title: "커플룩/패밀리룩" },
-      //     { title: "빅사이즈" },
-      //   ],
-      // },
-      // {
-      //   title: "유아동패션",
-      //   submenu: [{ title: "베이비" }, { title: "여아" }, { title: "남아" }],
-      // },
+      {
+        title: "남성패션",
+        submenu: [
+          { title: "의류" },
+          { title: "속옷/잠옷" },
+          { title: "신발" },
+          { title: "가방/잡화" },
+        ],
+      },
+      {
+        title: "남녀 공용 의류",
+        submenu: [
+          { title: "티셔츠" },
+          { title: "맨투맨/후드티" },
+          { title: "셔츠" },
+          { title: "바지" },
+          { title: "트레이닝복" },
+          { title: "후드집업/집업류" },
+          { title: "니트류/조끼" },
+          { title: "아우터" },
+          { title: "테마의류" },
+          { title: "커플룩/패밀리룩" },
+          { title: "빅사이즈" },
+        ],
+      },
+      {
+        title: "유아동패션",
+        submenu: [{ title: "베이비" }, { title: "여아" }, { title: "남아" }],
+      },
     ],
   },
   {
@@ -62,17 +62,16 @@ const categoryItems = [
     title: "출산/유아동",
   },
   // {
-  //   categoryId: 2,
   //   icon: "beauty",
-  //   categoryName: "뷰티",
-  //   categoryItems: [
+  //   title: "뷰티",
+  //   submenu: [
   //     {
-  //       name: "명품뷰티",
-  //       items: [],
+  //       title: "명품뷰티",
+  //       submenu: [],
   //     },
   //     {
-  //       name: "스킨케어",
-  //       items: [
+  //       title: "스킨케어",
+  //       submenu: [
   //         "스킨",
   //         "로션",
   //         "에센스/세럼/앰플",
@@ -84,10 +83,10 @@ const categoryItems = [
   //         "선케어/태닝",
   //       ],
   //     },
-  //     { name: "클린/비건뷰티", items: ["스킨케어", "메잌업", "네일&툴"] },
+  //     { title: "클린/비건뷰티", submenu: ["스킨케어", "메잌업", "네일&툴"] },
   //     {
-  //       name: "클렌징/필링",
-  //       items: [
+  //       title: "클렌징/필링",
+  //       submenu: [
   //         "클렌징 폼",
   //         "클렌징 젤/파우더",
   //         "클렌징 비누",
@@ -100,10 +99,10 @@ const categoryItems = [
   //         "스크럽/필링",
   //       ],
   //     },
-  //     { name: "더마코스메틱", items: [] },
+  //     { title: "더마코스메틱", submenu: [] },
   //     {
-  //       name: "메이크업",
-  //       items: [
+  //       title: "메이크업",
+  //       submenu: [
   //         "베이스 메이크업",
   //         "아이 메이크업",
   //         "립 메이크업",
@@ -113,8 +112,8 @@ const categoryItems = [
   //       ],
   //     },
   //     {
-  //       name: "향수",
-  //       items: [
+  //       title: "향수",
+  //       submenu: [
   //         "여성향수",
   //         "남성향수",
   //         "남녀공용향수",
@@ -123,8 +122,8 @@ const categoryItems = [
   //       ],
   //     },
   //     {
-  //       name: "남성화장품",
-  //       items: [
+  //       title: "남성화장품",
+  //       submenu: [
   //         "남성스킨케어",
   //         "남성메이크업",
   //         "남성화장품세트",
@@ -134,8 +133,8 @@ const categoryItems = [
   //       ],
   //     },
   //     {
-  //       name: "네일",
-  //       items: [
+  //       title: "네일",
+  //       submenu: [
   //         "네일팁/스티커",
   //         "일반네일",
   //         "젤네일",
@@ -146,8 +145,8 @@ const categoryItems = [
   //       ],
   //     },
   //     {
-  //       name: "뷰티소품",
-  //       items: [
+  //       title: "뷰티소품",
+  //       submenu: [
   //         "화장솜/면봉",
   //         "아이소품",
   //         "페이스소품",
@@ -158,13 +157,13 @@ const categoryItems = [
   //       ],
   //     },
   //     {
-  //       name: "어린이화장품",
-  //       items: ["메이크업", "향수", "네일케어", "세트/키트"],
+  //       title: "어린이화장품",
+  //       submenu: ["메이크업", "향수", "네일케어", "세트/키트"],
   //     },
-  //     { name: "로드샵", items: [] },
+  //     { title: "로드샵", submenu: [] },
   //     {
-  //       name: "헤어",
-  //       items: [
+  //       title: "헤어",
+  //       submenu: [
   //         "샴푸",
   //         "린스/컨디셔너",
   //         "트리트먼트/팩/앰플",
@@ -175,15 +174,15 @@ const categoryItems = [
   //       ],
   //     },
   //     {
-  //       name: "바디",
-  //       items: [
+  //       title: "바디",
+  //       submenu: [
   //         "샤워/입욕용품",
   //         "바디로션/크림",
   //         "핸드/풋/데오",
   //         "제모/슬리밍/청결제",
   //       ],
   //     },
-  //     { name: "선물세트/키트", items: ["선물세트", "여행용키트"] },
+  //     { title: "선물세트/키트", submenu: ["선물세트", "여행용키트"] },
   //   ],
   // },
 ];
@@ -200,78 +199,5 @@ const Category = () => {
     </div>
   );
 };
-// const Category = () => {
-//   const [categoryHover, setCategoryHover] = useState(false);
-//   const [categoryListHover, setCategoryListHover] = useState(false);
-//   const [categoryListItemHover, setCategoryListItemHover] = useState(false);
-
-//   const categoryHoverHandler = () => {
-//     setCategoryHover((prevState) => !prevState);
-//   };
-
-//   const categoryListHoverHandler = (id) => {
-//     setCategoryListHover((prevState) => !prevState);
-//   };
-
-//   const categoryListItemHoverHandler = (idx) => {
-//     setCategoryListItemHover((prevState) => !prevState);
-//     console.log(idx);
-//   };
-
-//   let test = categoryListItemHover ? "test" : "";
-//   // console.log(categoryHover, categoryListHover);
-//   return (
-//     <div
-//       className={styles.category}
-//       onMouseOver={categoryHoverHandler}
-//       onMouseOut={categoryHoverHandler}
-//     >
-//       <p className={styles["category--p"]}>카테고리</p>
-//       {true && (
-//         <div className={styles["category__list--first"]}>
-//           <ul className={styles["category__list--first--ul"]}>
-//             {categoryItems.map((items, index) => (
-//               <li
-//                 onMouseOver={categoryListHoverHandler}
-//                 onMouseOut={categoryListHoverHandler}
-//               >
-//                 <i className={styles[`${items.icon}`]}></i>
-//                 <Link to="/">{items.title}</Link>
-//                 {true && (
-//                   <Fragment>
-//                     <i className={styles["select"]}></i>
-//                     <div className={styles["category__list--second"]}>
-//                       <ul>
-//                         {items.submenu.map((items, index) => (
-//                           <li>
-//                             <Link to="/">{items.title}</Link>
-//                             {true && (
-//                               <Fragment>
-//                                 <i className={styles["select--second"]}></i>
-//                                 <div
-//                                   className={styles["category__list--third"]}
-//                                 >
-//                                   <ul>
-//                                     {items.submenu.map((item) => (
-//                                       <li>{item}</li>
-//                                     ))}
-//                                   </ul>
-//                                 </div>
-//                               </Fragment>
-//                             )}
-//                           </li>
-//                         ))}
-//                       </ul>
-//                     </div>
-//                   </Fragment>
-//                 )}
-//               </li>
-//             ))}
-//           </ul>
-//         </div>
-//       )}
-//     </div>
-//   );
-// };
 
 export default Category;

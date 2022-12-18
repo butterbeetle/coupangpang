@@ -7,6 +7,7 @@ const CategoryItems = ({ items, depth }) => {
   const [dropdown, setDropdown] = useState(false);
 
   let ref = useRef();
+  let padding = depth === 0 ? styles["first__dropdown"] : null;
 
   useEffect(() => {
     const handler = (event) => {
@@ -23,7 +24,7 @@ const CategoryItems = ({ items, depth }) => {
 
   const onMouseEnter = () => {
     setDropdown(true);
-    console.log("Enter");
+    console.log("Enter", depth);
   };
 
   const onMouseLeave = () => {
@@ -40,7 +41,7 @@ const CategoryItems = ({ items, depth }) => {
     >
       {items.submenu ? (
         <>
-          <button type="button">
+          <button type="button" className={`${styles["fashion"]} ${padding}`}>
             <Link to="/">{items.title}</Link>
           </button>
           <Dropdown
