@@ -1,5 +1,5 @@
-import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useState } from "react";
+// import { Link } from "react-router-dom";
 import CategoryItems from "../Components/CategoryItems";
 import styles from "./Category.module.css";
 
@@ -1461,7 +1461,7 @@ const categoryItems = [
           { title: "휴대폰게임" },
         ],
       },
-      { title: "더보기", submenu: [{ title: "" }] },
+      { title: "더보기" },
     ],
   },
   {
@@ -1712,7 +1712,7 @@ const categoryItems = [
           { title: "헬스보충식품" },
         ],
       },
-      { title: "더보기", submenu: [{ title: "" }] },
+      { title: "더보기" },
     ],
   },
   {
@@ -2111,7 +2111,7 @@ const categoryItems = [
           { title: "비평/창작/이론" },
         ],
       },
-      { title: "더보기", submenu: [{ title: "" }] },
+      { title: "더보기" },
     ],
   },
   {
@@ -2871,7 +2871,7 @@ const categoryItems = [
           { title: "기타다이어트식품" },
         ],
       },
-      { title: "더보기", submenu: [{ title: "" }] },
+      { title: "더보기" },
     ],
   },
   {
@@ -3071,4 +3071,4 @@ const Category = () => {
   );
 };
 
-export default React.memo(Category);
+export default Category;

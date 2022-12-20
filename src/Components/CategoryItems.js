@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CategoryItems.module.css";
 import Dropdown from "./Dropdown";
@@ -8,10 +8,12 @@ const CategoryItems = ({ items, depth }) => {
 
   let ref = useRef();
 
-  const title = depth === 0 ? styles["title__padding"] : null;
+  const title = depth === 0 && styles["title__padding"];
+  const line = depth === 0 && styles["line"];
+
+  const more = items.title === "더보기" && styles["active"];
   const active = dropdown ? styles["active"] : null;
   const icon = dropdown ? items.icon + "__active" : items.icon;
-  const background = dropdown ? items.icon + "__bg" : null;
 
   const arrow =
     depth === 0 ? styles["arrow"] : depth === 1 ? styles["arrow__depth"] : null;
@@ -38,15 +40,15 @@ const CategoryItems = ({ items, depth }) => {
 
   return (
     <li
-      className={styles["menu-items"]}
+      className={`${styles["menu-items"]} ${line}`}
       ref={ref}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       {items.submenu ? (
-        <>
-          <button type="button" className={`${styles[icon]}`}>
-            <Link className={`${title} ${active}`} to="/">
+        <Fragment>
+          <button type="button" className={`${styles[icon]} `}>
+            <Link className={`${title} ${active} `} to="/">
               {items.title}
             </Link>
             {dropdown && <span className={arrow} />}
@@ -57,16 +59,15 @@ const CategoryItems = ({ items, depth }) => {
             dropdown={dropdown}
             icon={items.icon}
           />
-        </>
+        </Fragment>
       ) : (
-        <>
+        <Fragment>
           <button type="button" className={`${styles[items.icon]}`}>
-            <Link className={`${title} ${active}`} to="/">
+            <Link className={`${title} ${active} ${more}`} to="/">
               {items.title}
             </Link>
-            {dropdown && <span className={arrow} />}
           </button>
-        </>
+        </Fragment>
       )}
     </li>
   );
