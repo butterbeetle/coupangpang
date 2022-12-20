@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import React, { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
 import CategoryItems from "../Components/CategoryItems";
 import styles from "./Category.module.css";
@@ -3040,18 +3040,35 @@ const categoryItems = [
     ],
   },
 ];
+
 const Category = () => {
+  const [dropdown, setDropdown] = useState(false);
+
+  const onMouseEnter = () => {
+    setDropdown(true);
+  };
+
+  const onMouseLeave = () => {
+    setDropdown(false);
+  };
+
   return (
-    <div className={styles["category"]}>
+    <div
+      className={styles["category"]}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <p className={styles["category--p"]}>카테고리</p>
-      <ul className={styles["menus"]}>
-        {categoryItems.map((menu, idx) => {
-          const depth = 0;
-          return <CategoryItems items={menu} key={idx} depth={depth} />;
-        })}
-      </ul>
+      {dropdown && (
+        <ul className={styles["menus"]}>
+          {categoryItems.map((menu, idx) => {
+            const depth = 0;
+            return <CategoryItems items={menu} key={idx} depth={depth} />;
+          })}
+        </ul>
+      )}
     </div>
   );
 };
 
-export default Category;
+export default React.memo(Category);

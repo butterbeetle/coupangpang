@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CategoryItems.module.css";
 import Dropdown from "./Dropdown";
@@ -8,8 +8,12 @@ const CategoryItems = ({ items, depth }) => {
 
   let ref = useRef();
 
-  let title = depth === 0 ? styles["title__padding"] : null;
-  let arrow =
+  const title = depth === 0 ? styles["title__padding"] : null;
+  const active = dropdown ? styles["active"] : null;
+  const icon = dropdown ? items.icon + "__active" : items.icon;
+  const background = dropdown ? items.icon + "__bg" : null;
+
+  const arrow =
     depth === 0 ? styles["arrow"] : depth === 1 ? styles["arrow__depth"] : null;
 
   useEffect(() => {
@@ -20,19 +24,16 @@ const CategoryItems = ({ items, depth }) => {
     };
     document.addEventListener("mouseenter", handler);
     return () => {
-      // Cleanup the event listener
       document.removeEventListener("mouseenter", handler);
     };
   }, [dropdown]);
 
   const onMouseEnter = () => {
     setDropdown(true);
-    console.log("Enter", depth);
   };
 
   const onMouseLeave = () => {
     setDropdown(false);
-    console.log("Leave");
   };
 
   return (
@@ -44,25 +45,26 @@ const CategoryItems = ({ items, depth }) => {
     >
       {items.submenu ? (
         <>
-          <button type="button" className={`${styles[items.icon]}`}>
-            <Link className={title} to="/">
+          <button type="button" className={`${styles[icon]}`}>
+            <Link className={`${title} ${active}`} to="/">
               {items.title}
             </Link>
-            <span className={arrow} />
+            {dropdown && <span className={arrow} />}
           </button>
           <Dropdown
             depth={depth}
             submenus={items.submenu}
             dropdown={dropdown}
+            icon={items.icon}
           />
         </>
       ) : (
         <>
           <button type="button" className={`${styles[items.icon]}`}>
-            <Link className={title} to="/">
+            <Link className={`${title} ${active}`} to="/">
               {items.title}
             </Link>
-            <span className={arrow} />
+            {dropdown && <span className={arrow} />}
           </button>
         </>
       )}
@@ -70,4 +72,4 @@ const CategoryItems = ({ items, depth }) => {
   );
 };
 
-export default CategoryItems;
+export default React.memo(CategoryItems);

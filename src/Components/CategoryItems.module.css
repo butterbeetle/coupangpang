@@ -20,6 +20,11 @@
   padding-left: 40px;
 }
 
+.active {
+  color: blue;
+  text-decoration: underline;
+}
+
 .arrow {
   display: inline-block;
   position: absolute;
@@ -140,4 +145,107 @@
   width: 25px;
   height: 100%;
   background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -912px;
+}
+
+.fashion__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -28px;
+}
+.beauty__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -112px;
+}
+.child__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -155px;
+}
+.food__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -195px;
+}
+.kitchen__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -280px;
+}
+.life__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -325px;
+}
+.interior__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -365px;
+}
+.digital__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -407px;
+}
+.sports__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -450px;
+}
+.car__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -785px;
+}
+.book__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -575px;
+}
+.hobby__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -741px;
+}
+.office__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -492px;
+}
+.pet__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -533px;
+}
+.health__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -870px;
+}
+.travel__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -618px;
+}
+.theme__active {
+  display: inline-block;
+  width: 25px;
+  height: 100%;
+  background: url("../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -912px;
 }
