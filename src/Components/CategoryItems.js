@@ -3,13 +3,13 @@ import { Link } from "react-router-dom";
 import styles from "./CategoryItems.module.css";
 import Dropdown from "./Dropdown";
 
-const CategoryItems = ({ items, depth }) => {
+const CategoryItems = ({ items, depth, type }) => {
   const [dropdown, setDropdown] = useState(false);
 
   let ref = useRef();
 
-  const title = depth === 0 && styles["title__padding"];
-  const line = depth === 0 && styles["line"];
+  const title = type === 1 ? null : depth === 0 && styles["title__padding"];
+  const line = type === 1 ? null : depth === 0 && styles["line"];
 
   const more = items.title === "더보기" && styles["active"];
   const active = dropdown ? styles["active"] : null;

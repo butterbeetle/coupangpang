@@ -1,12 +1,72 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
 import icon_new from "../img/header_img/ico_new.png";
-// import { Link } from "react-router-dom";
 import Catrgory from "./Category";
+import CategoryItems from "../Components/CategoryItems";
+import { Link } from "react-router-dom";
+
+import { motion } from "framer-motion";
+
+const searchTagItems = [
+  { title: "전체" },
+  { title: "여성패션" },
+  { title: "남성패션" },
+  { title: "남녀 공용 의류" },
+  { title: "유아동패션" },
+  { title: "뷰티" },
+  { title: "출산/유아동" },
+  { title: "식품" },
+  { title: "주방용품" },
+  { title: "생활용품" },
+  { title: "홈인테리어" },
+  { title: "가전디지털" },
+  { title: "스포츠/레저" },
+  { title: "자동차용품" },
+  { title: "도서/음반/DVD" },
+  { title: "완구/취미" },
+  { title: "문구/오피스" },
+  { title: "반려동물용품" },
+  { title: "헬스/건강식품" },
+  { title: "국내여행" },
+  { title: "해외여행" },
+  { title: "22 겨울 패션 스토어" },
+  { title: "로켓설치" },
+  { title: "공간별 집꾸미기" },
+  { title: "헬스케어 전문관" },
+  { title: "쿠팡 Only" },
+  { title: "싱글라이프" },
+  { title: "악기전문관" },
+  { title: "결혼준비" },
+  { title: "아트/공예" },
+  { title: "홈카페" },
+  { title: "실버스토어" },
+];
 
 const Header = () => {
+  const [dropdown, setDropdown] = useState(false);
+
+  const viewPortHeight = window.innerHeight - 100;
+
+  const onClickHandler = () => {
+    setDropdown((prevState) => !prevState);
+  };
+
+  const variants = {
+    open: {
+      display: "block",
+      opacity: 1,
+      height: viewPortHeight > 1030 ? 1030 : viewPortHeight,
+    },
+    close: {
+      opacity: 1,
+      height: 0,
+      transitionEnd: {
+        display: "none",
+      },
+    },
+  };
   return (
     <Fragment>
       <Navigation />
@@ -15,13 +75,40 @@ const Header = () => {
           <Catrgory />
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>
-              <a href="/" title="Coupang - 내가 잘사는 이유">
+              <Link to="/" title="Coupang - 내가 잘사는 이유">
                 <i className={styles.searchBox__mainBox__logo}></i>
-              </a>
+              </Link>
               <div className={styles.searchBox__mainBox__bar}>
-                <div className={styles.searchBox__mainBox__bar__category}>
+                <div
+                  className={styles.searchBox__mainBox__bar__category}
+                  onClick={onClickHandler}
+                >
                   <p>전체</p>
-                  <i className={styles.icon}></i>
+                  {dropdown ? (
+                    <i className={styles["icon-up"]}></i>
+                  ) : (
+                    <i className={styles["icon-down"]}></i>
+                  )}
+
+                  <motion.ul
+                    variants={variants}
+                    initial="close"
+                    animate={dropdown ? "open" : "close"}
+                    transition={{ type: "tween" }}
+                    className={styles["menus"]}
+                  >
+                    {searchTagItems.map((menu, idx) => {
+                      const depth = 0;
+                      return (
+                        <CategoryItems
+                          items={menu}
+                          key={idx}
+                          depth={depth}
+                          type={1}
+                        />
+                      );
+                    })}
+                  </motion.ul>
                 </div>
                 <form className={styles.searchBox__mainBox__bar__form}>
                   <input placeholder="찾고 싶은 상품을 검색해보세요!" />
