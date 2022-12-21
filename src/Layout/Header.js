@@ -44,15 +44,28 @@ const searchTagItems = [
   { title: "실버스토어" },
 ];
 
+const myCoupangItems = [
+  { title: "주문목록" },
+  { title: "취소/반품" },
+  { title: "찜 리스트" },
+];
+
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
+  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
 
   const viewPortHeight = window.innerHeight - 100;
 
   const onClickHandler = () => {
     setDropdown((prevState) => !prevState);
   };
+  const onMouseEnter = () => {
+    setMyCoupangDropdown(true);
+  };
 
+  const onMouseLeave = () => {
+    setMyCoupangDropdown(false);
+  };
   const variants = {
     open: {
       display: "block",
@@ -117,9 +130,29 @@ const Header = () => {
                 </form>
               </div>
               <ul className={styles.searchBox__mainBox__user}>
-                <li>
+                <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                   <div className={styles.searchBox__mainBox__user__info}>
                     <p>마이쿠팡</p>
+                    {myCoupangDropdown && (
+                      <div className={styles["myCoupang-dropdown"]}>
+                        <i className={styles["speech-icon"]}></i>
+                        <ul
+                          className={`${styles["menus"]} ${styles["my-coupang"]}`}
+                        >
+                          {myCoupangItems.map((menu, idx) => {
+                            const depth = 0;
+                            return (
+                              <CategoryItems
+                                items={menu}
+                                key={idx}
+                                depth={depth}
+                                type={1}
+                              />
+                            );
+                          })}
+                        </ul>
+                      </div>
+                    )}
                   </div>
                 </li>
                 <li>

@@ -30,9 +30,7 @@
   background: url("../img/header_img/logo_coupang.png") no-repeat;
   background-size: cover;
 }
-.none {
-  display: none;
-}
+
 .menus {
   display: none;
   flex-direction: column;
@@ -49,7 +47,23 @@
   border: 1px solid #ddd;
   margin: 0;
 }
-
+.speech-icon {
+  display: inline-block;
+  position: absolute;
+  width: 10px;
+  height: 11px;
+  top: 19px;
+  left: 30px;
+  z-index: 4;
+  background: url("../assets/img/header_img_collection.png") no-repeat -143px -40px;
+}
+.my-coupang {
+  left: -15px;
+  top: 25px;
+  width: fit-content;
+  padding: 8px 0;
+  z-index: 3;
+}
 .searchBox__mainBox__bar {
   display: flex;
   width: 510px;
@@ -114,6 +128,7 @@
   width: 30px;
   height: 30px;
   background: url("../assets/img/header_img_collection.png") no-repeat -123px -75px;
+  cursor: pointer;
 }
 
 .searchBox__mainBox__user {
@@ -130,7 +145,7 @@
 .searchBox__mainBox__user p {
   display: inline-block;
   position: relative;
-  top: 30px;
+  top: 28px;
   left: -9px;
 }
 .searchBox__mainBox__user__info {
@@ -139,6 +154,13 @@
   height: 35px;
   background: url("../assets/img/header_img_collection.png") no-repeat -112px -36px;
 }
+.myCoupang-dropdown {
+  position: relative;
+  left: -20px;
+  height: 40px;
+  width: 70px;
+}
+
 .searchBox__mainBox__user__cart {
   width: 40px;
   height: 40px;
