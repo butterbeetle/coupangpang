@@ -50,6 +50,8 @@ const myCoupangItems = [
   { title: "찜 리스트" },
 ];
 
+const cartItems = [];
+
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);

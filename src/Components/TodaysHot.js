@@ -1,52 +1,45 @@
 import styles from "./TodaysHot.module.css";
 //banner img
-import big_banner1 from "../img/banner/today_hot_big_banner1.jpg";
-import today_item1 from "../img/banner/today_hot_banner_item1.png";
-import today_item2 from "../img/banner/today_hot_banner_item2.png";
-import today_item3 from "../img/banner/today_hot_banner_item3.png";
-import today_item4 from "../img/banner/today_hot_banner_item4.png";
-import today_item5 from "../img/banner/today_hot_banner_item5.png";
-import today_item6 from "../img/banner/today_hot_banner_item6.png";
+import big_banner1 from "../assets/img/banner/big_banner1.jpg";
+import big_banner2 from "../assets/img/banner/big_banner2.jpg";
+import small_banner1 from "../assets/img/banner/small_banner1.png";
+import small_banner2 from "../assets/img/banner/small_banner2.png";
+
+import TodayItems from "./TodayItems";
+import { useEffect, useState } from "react";
+
+const todayHotItems = [
+  {
+    url: "/",
+    small_banner_src: small_banner1,
+    big_banner_src: big_banner1,
+  },
+  {
+    url: "/",
+    small_banner_src: small_banner2,
+    big_banner_src: big_banner2,
+  },
+];
 
 const TodaysHot = () => {
+  const [test, setTest] = useState([0, 0, 0, 0, 0, 0]);
+
+  let idx = 0;
+
+  useEffect(() => {
+    const switchTest = () => {
+      // if (idx > 5) idx = 0;
+      console.log("TEST...", idx++);
+    };
+    setInterval(switchTest, 2000);
+  }, [idx]);
+
   return (
-    <section className={styles.todayhot}>
-      <img
-        className={styles.todayhot__bg_banner}
-        src={big_banner1}
-        alt="큰 배너1"
-      />
-      <ul className={styles.todayhot__banner_items}>
-        <li>
-          <a href="/">
-            <img src={today_item1} alt="배너1" />
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <img src={today_item2} alt="배너2" />
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <img src={today_item3} alt="배너3" />
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <img src={today_item4} alt="배너4" />
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <img src={today_item5} alt="배너5" />
-          </a>
-        </li>
-        <li>
-          <a href="/">
-            <img src={today_item6} alt="배너6" />
-          </a>
-        </li>
+    <section className={styles["today"]}>
+      <ul className={styles["today-items"]}>
+        {todayHotItems.map((item, idx) => {
+          return <TodayItems key={idx} item={item} idx={idx} />;
+        })}
       </ul>
     </section>
   );

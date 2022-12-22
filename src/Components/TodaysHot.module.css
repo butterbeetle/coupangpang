@@ -1,4 +1,4 @@
-.todayhot {
+.today {
   width: 1020px;
   height: 450px;
   margin: 0 auto;
@@ -6,23 +6,10 @@
   position: relative;
   justify-content: center;
 }
-.todayhot__bg_banner {
-  position: absolute;
-}
-.todayhot ul {
-  position: relative;
+.today-items {
   top: 20px;
   left: 400px;
   display: flex;
   flex-direction: column;
   align-items: flex-end;
-  z-index: 2;
-}
-
-.todayhot__banner_items img {
-  vertical-align: top;
-}
-.todayhot__banner_items img:hover {
-  outline: 2px solid #4285f4;
-  outline-offset: -2px;
 }
