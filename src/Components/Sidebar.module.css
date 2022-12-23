@@ -1,0 +1,15 @@
+.sidebar {
+  border: 1px solid pink;
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  margin: 40px 0 0 490px;
+  width: 200px;
+  height: 500px;
+}
+.sidebar__contents {
+  border: 1px solid red;
+  left: 0;
+  width: 100px;
+  height: 200px;
+}
