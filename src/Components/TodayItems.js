@@ -17,7 +17,7 @@ const TodayItems = ({ item, idx, activeItem, itemNumber, isActive }) => {
   useEffect(() => {
     if (idx !== activeItem) {
       setAutoBorder(false);
-    } else if (activeItem === null) {
+    } else {
       setAutoBorder(true);
     }
   }, [idx, activeItem]);
@@ -29,21 +29,23 @@ const TodayItems = ({ item, idx, activeItem, itemNumber, isActive }) => {
 
   const onMouseLeave = () => {
     setManualBorder(false);
-    isActive(idx);
   };
 
   const hoverStyles = autoBorder || manualBorder ? styles["hover"] : null;
   const show = autoBorder || manualBorder ? styles["show"] : null;
 
   return (
-    <li key={idx} className={styles["today-item"]}>
+    <li
+      key={idx}
+      className={styles["today-item"]}
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+    >
       <Link to={item.url}>
         <img
           className={`${styles["today-item-small"]} ${hoverStyles}`}
           src={item.small_banner_src}
           alt={"작은 배너" + idx}
-          onMouseEnter={onMouseEnter}
-          onMouseLeave={onMouseLeave}
         />
         <img
           className={`${styles["today-item-big"]} ${show}`}

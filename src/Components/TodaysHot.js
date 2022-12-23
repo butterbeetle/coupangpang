@@ -74,12 +74,16 @@ const useTest = (initValue, ms) => {
     setCount(0);
   }, []);
 
-  return { count, start, stop, reset };
+  const test = useCallback((num) => {
+    setCount(num);
+  }, []);
+
+  return { count, start, stop, reset, test };
 };
 
 const TodaysHot = () => {
   const [activeItem, setActiveItem] = useState(0);
-  const { count, start, stop, reset } = useTest(0, 2000);
+  const { count, start, stop, reset, test } = useTest(0, 2000);
 
   useEffect(() => {
     if (count > 5) {
@@ -90,8 +94,11 @@ const TodaysHot = () => {
 
   const isActive = (num) => {
     setActiveItem(num);
+    test(num);
   };
-  console.log(count, activeItem);
+
+  // console.log(count, activeItem);
+
   return (
     <section
       className={styles["today"]}
