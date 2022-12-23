@@ -1,35 +1,55 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./TodayItems.module.css";
 
-const TodayItems = ({ item, idx }) => {
-  const [hover, setHover] = useState(false);
+const TodayItems = ({ item, idx, activeItem, itemNumber, isActive }) => {
+  const [autoBorder, setAutoBorder] = useState(false);
+  const [manualBorder, setManualBorder] = useState(false);
+
+  useEffect(() => {
+    if (idx === itemNumber) {
+      setAutoBorder(true);
+    } else {
+      setAutoBorder(false);
+    }
+  }, [idx, itemNumber]);
+
+  useEffect(() => {
+    if (idx !== activeItem) {
+      setAutoBorder(false);
+    } else if (activeItem === null) {
+      setAutoBorder(true);
+    }
+  }, [idx, activeItem]);
 
   const onMouseEnter = () => {
-    setHover(true);
+    setManualBorder(true);
+    isActive(idx);
   };
 
   const onMouseLeave = () => {
-    setHover(false);
+    setManualBorder(false);
+    isActive(idx);
   };
+
+  const hoverStyles = autoBorder || manualBorder ? styles["hover"] : null;
+  const show = autoBorder || manualBorder ? styles["show"] : null;
 
   return (
     <li key={idx} className={styles["today-item"]}>
       <Link to={item.url}>
         <img
-          className={styles["today-item-small"]}
+          className={`${styles["today-item-small"]} ${hoverStyles}`}
           src={item.small_banner_src}
           alt={"작은 배너" + idx}
           onMouseEnter={onMouseEnter}
           onMouseLeave={onMouseLeave}
         />
-        (
         <img
-          className={styles["today-item-big"]}
+          className={`${styles["today-item-big"]} ${show}`}
           src={item.big_banner_src}
           alt={"큰 배너" + idx}
         />
-        )
       </Link>
     </li>
   );
