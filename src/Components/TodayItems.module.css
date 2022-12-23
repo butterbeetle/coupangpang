@@ -5,6 +5,7 @@
   top: 30px;
   right: -410px;
   box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+  border-top: 1px solid #eee;
 }
 .hover {
   outline: 2px solid #4285f4;

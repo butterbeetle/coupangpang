@@ -14,7 +14,8 @@ import small_banner5 from "../assets/img/banner/small_banner5.png";
 import small_banner6 from "../assets/img/banner/small_banner6.png";
 
 import TodayItems from "./TodayItems";
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import useInterval from "../hooks/useInterval";
 
 const todayHotItems = [
   {
@@ -49,41 +50,9 @@ const todayHotItems = [
   },
 ];
 
-const useTest = (initValue, ms) => {
-  const [count, setCount] = useState(initValue);
-  const intervalRef = useRef(null);
-
-  const start = useCallback(() => {
-    if (intervalRef.current !== null) {
-      return;
-    }
-    intervalRef.current = setInterval(() => {
-      setCount((c) => c + 1);
-    }, ms);
-  }, [ms]);
-
-  const stop = useCallback(() => {
-    if (intervalRef.current === null) {
-      return;
-    }
-    clearInterval(intervalRef.current);
-    intervalRef.current = null;
-  }, []);
-
-  const reset = useCallback(() => {
-    setCount(0);
-  }, []);
-
-  const test = useCallback((num) => {
-    setCount(num);
-  }, []);
-
-  return { count, start, stop, reset, test };
-};
-
 const TodaysHot = () => {
-  const [activeItem, setActiveItem] = useState(0);
-  const { count, start, stop, reset, test } = useTest(0, 2000);
+  const [activeItem] = useState(0);
+  const { count, start, stop, reset, resetNum } = useInterval(0, 2000);
 
   useEffect(() => {
     if (count > 5) {
@@ -93,8 +62,7 @@ const TodaysHot = () => {
   }, [count, reset, start]);
 
   const isActive = (num) => {
-    setActiveItem(num);
-    test(num);
+    resetNum(num);
   };
 
   // console.log(count, activeItem);
