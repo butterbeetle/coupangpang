@@ -1,16 +1,16 @@
-.contents__discovery--title {
+.discovery {
+  margin: 0px auto;
+}
+.discovery__title {
   display: inline-block;
   width: 350px;
   height: 50px;
-  background: url("../img/widget/coupang_widget_main.png") no-repeat 0px -60px;
+  background: url("../assets/img/widget/coupang_widget_main.png") no-repeat 0px -60px;
 }
-.contents__discovery {
-  margin: 0px auto;
-}
-.contents__discovery--items {
+.discovery__items {
   border: 1px solid #ccc;
 }
-.contents__discovery--items--grid {
+.discovery__grid {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   grid-template-rows: repeat(3, minmax(300px, 1fr));
@@ -20,43 +20,4 @@
     "g g h i";
   gap: 10px;
   margin: 10px;
-}
-.item:hover {
-  border: 1px solid #0096e4;
-}
-.today_item1 {
-  grid-area: a;
-  border: 1px solid #ccc;
-}
-.today_item2 {
-  grid-area: b;
-  border: 1px solid #ccc;
-}
-.today_item3 {
-  grid-area: c;
-  border: 1px solid #ccc;
-}
-.today_item4 {
-  grid-area: d;
-  border: 1px solid #ccc;
-}
-.today_item5 {
-  grid-area: e;
-  border: 1px solid #ccc;
-}
-.today_item6 {
-  grid-area: f;
-  border: 1px solid #ccc;
-}
-.today_item7 {
-  grid-area: g;
-  border: 1px solid #ccc;
-}
-.today_item8 {
-  grid-area: h;
-  border: 1px solid #ccc;
-}
-.today_item9 {
-  grid-area: i;
-  border: 1px solid #ccc;
 }

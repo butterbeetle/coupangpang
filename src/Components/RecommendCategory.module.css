@@ -6,13 +6,13 @@
   display: block;
   width: 75px;
   height: 15px;
-  background: url("../img/widget/coupang_widget.png") no-repeat -39px -43px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
 }
 .review_star {
   display: block;
   width: 90%;
   height: 15px;
-  background: url("../img/widget/coupang_widget.png") no-repeat -39px -58px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
 }
 
 .now_recommend_ad_title {
@@ -31,7 +31,7 @@
   margin: 40px 0 20px 0;
   width: 290px;
   height: 50px;
-  background: url("../img/widget/coupang_widget_main.png") no-repeat 0px -125px;
+  background: url("../assets/img/widget/coupang_widget_main.png") no-repeat 0px -125px;
 }
 
 .category_items {

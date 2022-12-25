@@ -16,7 +16,7 @@
 .today_shopping_title_box span {
   font-size: 24px;
   font-weight: 600;
-  background: url("../img/Icon/icon-shopping-bag@3x.png") no-repeat;
+  background: url("../assets/img/Icon/icon-shopping-bag@3x.png") no-repeat;
   background-size: contain;
   padding-left: 42px;
 }
@@ -46,13 +46,13 @@
   display: block;
   width: 75px;
   height: 15px;
-  background: url("../img/widget/coupang_widget.png") no-repeat -39px -43px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
 }
 .review_star {
   display: block;
   width: 90%;
   height: 15px;
-  background: url("../img/widget/coupang_widget.png") no-repeat -39px -58px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
 }
 .ad_box {
   display: flex;
@@ -92,13 +92,13 @@
   display: block;
   width: 40px;
   height: 40px;
-  background: url("../img/widget/coupang_widget.png") no-repeat -38px -1px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -38px -1px;
 }
 .now_recommend_ad_next_button {
   display: block;
   width: 40px;
   height: 40px;
-  background: url("../img/widget/coupang_widget.png") no-repeat 0px -1px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat 0px -1px;
 }
 .now_recommend_ad_items ul {
   display: flex;
