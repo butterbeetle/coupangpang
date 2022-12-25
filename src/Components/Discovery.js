@@ -2,15 +2,15 @@ import styles from "./Discovery.module.css";
 import DiscoveryItems from "./DiscoveryItems";
 
 const discoveryItems = [
-  { idx: "01", url: "/" },
-  { idx: "02", url: "/" },
-  { idx: "03", url: "/" },
-  { idx: "04", url: "/" },
-  { idx: "05", url: "/" },
-  { idx: "06", url: "/" },
-  { idx: "07", url: "/" },
-  { idx: "08", url: "/" },
-  { idx: "09", url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
+  { url: "/" },
 ];
 
 const Discovery = () => {
@@ -20,8 +20,8 @@ const Discovery = () => {
         <span className={styles["discovery__title"]} />
         <div className={styles["discovery__items"]}>
           <div className={styles["discovery__grid"]}>
-            {discoveryItems.map((item) => (
-              <DiscoveryItems url={item.url} idx={item.idx} />
+            {discoveryItems.map((item, idx) => (
+              <DiscoveryItems url={item.url} idx={idx + 1} />
             ))}
           </div>
         </div>

@@ -1,37 +1,57 @@
-.today_recommend_box {
+.recommend {
   margin: 0px auto;
 }
 
-.today_recommend_box {
-  height: auto;
-}
-.category_recommend_box {
-  height: 300px;
-}
-
+.recommend__contents,
 .today_shopping_box {
-  margin-top: 15px;
-  padding-top: 25px;
+  margin-top: 40px;
 }
-.today_shopping_title_box span {
+.recommend__title {
+  margin-bottom: 25px;
+}
+.recommend__title span {
   font-size: 24px;
   font-weight: 600;
+  padding-left: 42px;
   background: url("../assets/img/Icon/icon-shopping-bag@3x.png") no-repeat;
   background-size: contain;
-  padding-left: 42px;
 }
-.today_shopping_items_box ul {
+.recommend__items--ul {
   display: flex;
-  padding: 0;
+  margin: 0;
 }
-.today_shopping_items_box li {
-  width: 100%;
+.recommend__item {
+  margin: 0 1px;
 }
-.today_shopping_items_box img {
-  width: 200px;
-  height: 200px;
-  border: 1px solid pink;
+.recommend__item-infos {
+  position: relative;
 }
+.recommend__item-discount {
+  position: absolute;
+  display: table;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  text-align: center;
+  width: 50px;
+  height: 30px;
+  left: 0;
+  top: 0;
+}
+.recommend__item-discount p {
+  display: table-cell;
+  vertical-align: middle;
+}
+.recommend__item-info {
+  width: auto;
+  padding: 6px 6px 4px;
+}
+.recommend__items img {
+  width: 194px;
+  height: 194px;
+}
+.recommend__item-title,
 .shopping_item_title {
   display: block;
   font-size: 14px;
@@ -39,21 +59,38 @@
   text-overflow: ellipsis;
   white-space: nowrap;
   word-break: break-all;
-  width: 180px;
-  height: 20px;
+  width: 170px;
 }
+.recommend_item-price {
+  color: red;
+  font-weight: 600;
+  font-size: 14px;
+}
+.recommend_item-review {
+  display: flex;
+  align-items: center;
+}
+.recommend_item-review-count {
+  font-weight: 600;
+  font-size: 12px;
+  color: #878787;
+  padding-left: 3px;
+}
+.empty-star,
 .empty_star {
   display: block;
   width: 75px;
   height: 15px;
   background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
 }
+.review-star,
 .review_star {
   display: block;
   width: 90%;
   height: 15px;
   background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
 }
+
 .ad_box {
   display: flex;
   justify-content: flex-end;

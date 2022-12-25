@@ -19,12 +19,12 @@ const DiscoveryItems = ({ url, idx }) => {
   );
   return (
     <div
-      className={`${styles["discovery__item"]} ${styles["grid__item" + idx]}`}
+      className={`${styles["discovery__item"]} ${styles["grid__item0" + idx]}`}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <Link to={url}>
-        <span className={`${styles["discovery__item--img" + idx]}`} />
+        <span className={`${styles["discovery__item--img0" + idx]}`} />
         {buyButton}
       </Link>
     </div>
