@@ -1,0 +1,110 @@
+.recommend__item {
+  margin: 0 1px;
+}
+
+.recommend__item-infos {
+  position: relative;
+}
+.recommend__item-discount {
+  position: absolute;
+  display: table;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  text-align: center;
+  width: 50px;
+  height: 30px;
+  left: 0;
+  top: 0;
+}
+.recommend__item-discount p {
+  display: table-cell;
+  vertical-align: middle;
+}
+.recommend__item-info {
+  width: auto;
+  padding: 6px 6px 4px;
+}
+.recommend__items img {
+  width: 194px;
+  height: 194px;
+}
+.recommend__item-title {
+  display: block;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  width: 170px;
+  padding-bottom: 2px;
+}
+.recommend_item-price-unit {
+  font-weight: 600;
+  font-size: 12px;
+  color: red;
+}
+.recommend_item-price {
+  font-family: "tahoma";
+  font-size: 14px;
+}
+.recommend_item-price-free {
+  color: #888;
+  font-weight: 400;
+}
+
+.recommend_item-delivary {
+  display: inline-block;
+  width: 55px;
+  height: 13px;
+  background: url("../assets/img/badges/rocket_delivary.png") no-repeat;
+  background-size: cover;
+  margin-left: 5px;
+}
+.recommend_item-rocket-buy {
+  margin-top: 3px;
+  display: inline-block;
+  width: 70px;
+  height: 17px;
+  background: url("../assets/img/badges/rocket_buy.png") no-repeat;
+  background-size: cover;
+}
+.recommend_item-rocket-delivary {
+  margin-top: 3px;
+  display: inline-block;
+  width: 70px;
+  height: 17px;
+  background: url("../assets/img/badges/rocket_delivary.png") no-repeat;
+  background-size: cover;
+}
+.recommend_item-rocket-install {
+  margin-top: 3px;
+  display: inline-block;
+  width: 70px;
+  height: 17px;
+  background: url("../assets/img/badges/rocket_install.png") no-repeat;
+  background-size: cover;
+}
+
+.recommend__item-review {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+.recommend__item-review-count {
+  font-weight: 600;
+  font-size: 12px;
+  color: #878787;
+  padding-left: 3px;
+}
+.empty-star {
+  display: block;
+  width: 75px;
+  height: 15px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+}
+.review-star {
+  display: block;
+  height: 15px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
+}
