@@ -15,7 +15,7 @@ const recommendItems = [
     title: "맛있게 매운 선화동실비김치 800g + 매운실비파김치 500g 세트",
     discount: 21,
     price: 16900,
-    delivary_type: "free",
+    badge: null,
     review_score: 5,
     review_count: 842,
   },
@@ -24,8 +24,8 @@ const recommendItems = [
     title:
       "신일 캠핑용 휴대용 부탄 가스 난로 캠핑 낚시 소형 미니 히터 SCG-GA1350, 신일 캠핑 가스히터(크림화이트)",
     discount: null,
-    price: null,
-    delivary_type: "rocket_buy",
+    price: 112233,
+    badge: "rocket_buy",
     review_score: 4.5,
     review_count: 152,
   },
@@ -33,8 +33,8 @@ const recommendItems = [
     img: recommend_item03,
     title: "제스파 수면참견 안마기 무선 목어깨 베개마사지기, ZP2366",
     discount: 33,
-    price: null,
-    delivary_type: "rocket_delivary",
+    price: 69700,
+    badge: "rocket_delivary",
     review_score: 4.5,
     review_count: 2524,
   },
@@ -42,8 +42,8 @@ const recommendItems = [
     img: recommend_item04,
     title: "맛있게 매운 선화동실비김치 800g + 매운실비파김치 500g 세트",
     discount: 21,
-    price: null,
-    delivary_type: "rocket_install",
+    price: 2100,
+    badge: "rocket_install",
     review_score: 4,
     review_count: 831,
   },
@@ -52,8 +52,8 @@ const recommendItems = [
     title:
       "제스파 AI 음성인식 조그다이얼 자동 안마의자 + 전용 러그 세트 방문설치, ZPC2095, 살구색",
     discount: 55,
-    price: null,
-    delivary_type: "free",
+    price: 253340,
+    badge: "free_delivary",
     review_score: 5,
     review_count: 194,
   },
@@ -92,16 +92,14 @@ const Recommend = () => {
                 title={item.title}
                 discount={item.discount}
                 price={item.price}
-                delivary_type={item.delivary_type}
+                badge={item.badge}
                 review_score={item.review_score}
                 review_count={item.review_count}
               />
             ))}
           </ul>
         </div>
-        <div className={styles.ad_box}>
-          <span>광고</span>
-        </div>
+        <span className={styles["description"]}>광고</span>
       </div>
 
       <div className={styles.now_recommend_ad_box}>

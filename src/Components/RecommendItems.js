@@ -6,30 +6,35 @@ const RecommendItems = ({
   title,
   discount,
   price,
-  delivary_type,
+  badge,
   review_score,
   review_count,
 }) => {
+  const priceComma = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const score = review_score * 20 + "%";
   const count = review_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
-  let badge = null;
+  let badgeStyles = null;
+  let freeStyles = null;
 
-  switch (delivary_type) {
-    case "free":
+  console.log(badge, badgeStyles);
+  switch (badge) {
+    case null:
+      break;
+    case "free_delivary":
+      freeStyles = styles["recommend_item-free"];
       break;
     case "rocket_buy":
-      badge = styles["recommend_item-rocket-buy"];
+      badgeStyles = styles["recommend_item-rocket-buy"];
       break;
     case "rocket_delivary":
-      badge = styles["recommend_item-rocket-delivary"];
+      badgeStyles = styles["recommend_item-rocket-delivary"];
       break;
     case "rocket_install":
-      badge = styles["recommend_item-rocket-install"];
+      badgeStyles = styles["recommend_item-rocket-install"];
       break;
     default:
   }
-
   return (
     <li className={styles["recommend__item"]}>
       <Link href="/">
@@ -42,16 +47,23 @@ const RecommendItems = ({
           )}
           <div className={styles["recommend__item-info"]}>
             <span className={styles["recommend__item-title"]}>{title}</span>
-            {badge === null ? (
-              <span className={styles["recommend_item-price-unit"]}>
-                <span className={`${styles["recommend_item-price"]} }`}>
-                  {price}
-                </span>
-                원
-                <span className={styles["recommend_item-delivary"]} />
+
+            {badge === null && (
+              <span className={`${styles["recommend_item-price-unit"]}`}>
+                <>
+                  <span className={`${styles["recommend_item-price"]} }`}>
+                    {priceComma}
+                  </span>
+                  원
+                  <span className={styles["recommend_item-delivary"]} />
+                </>
               </span>
-            ) : (
-              <span className={badge} />
+            )}
+
+            {badge !== null && (
+              <span className={`${badgeStyles}  ${freeStyles}`}>
+                {badge === "free_delivary" && "무료배송"}
+              </span>
             )}
             <div className={styles["recommend__item-review"]}>
               <span className={styles["empty-star"]}>

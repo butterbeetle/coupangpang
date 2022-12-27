@@ -40,6 +40,7 @@
   padding-bottom: 2px;
 }
 .recommend_item-price-unit {
+  display: block;
   font-weight: 600;
   font-size: 12px;
   color: red;
@@ -48,8 +49,9 @@
   font-family: "tahoma";
   font-size: 14px;
 }
-.recommend_item-price-free {
+.recommend_item-free {
   color: #888;
+  font-size: 14px;
   font-weight: 400;
 }
 
