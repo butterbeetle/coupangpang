@@ -10,6 +10,29 @@
   margin-top: 40px;
   padding-bottom: 80px;
   border-bottom: 1px solid #eee;
+  min-height: 330px;
+}
+.arrow-button {
+  position: absolute;
+  top: 45%;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  background: url("../assets/img/btn-arrow-black.png") no-repeat;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 1;
+}
+.arrow-button:hover {
+  opacity: 0.7;
+  transition: 0.4s ease-in-out;
+}
+.next {
+  right: 1px;
+}
+.prev {
+  left: 1px;
+  transform: scaleX(-1);
 }
 .description {
   position: absolute;
@@ -29,7 +52,9 @@
   background: url("../assets/img/Icon/icon-shopping-bag@3x.png") no-repeat;
   background-size: contain;
 }
+
 .recommend__items--ul {
+  position: absolute;
   display: flex;
   margin: 0;
 }

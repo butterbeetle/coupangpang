@@ -9,6 +9,9 @@ import recommend_item04 from "../assets/img/recommendItems/recommend_item04.png"
 import recommend_item05 from "../assets/img/recommendItems/recommend_item05.png";
 import recommend_item06 from "../assets/img/recommendItems/recommend_item06.jpg";
 
+import { motion, AnimatePresence } from "framer-motion";
+import { useState } from "react";
+
 const recommendItems = [
   {
     img: recommend_item01,
@@ -57,15 +60,15 @@ const recommendItems = [
     review_score: 5,
     review_count: 194,
   },
-  // {
-  //   img: recommend_item05,
-  //   title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
-  //   discount: 55,
-  //   price: null,
-  //   delivary_type: "free",
-  //   review_score: 4.5,
-  //   review_count: 111,
-  // },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
   // {
   //   img: recommend_item06,
   //   title: "바른컴퓨터 게이밍 컴퓨터 풀세트 모니터포함 PC 롤 서든어택 배틀그라운드 피파, 기본형, BAF-F11",
@@ -78,6 +81,44 @@ const recommendItems = [
 ];
 
 const Recommend = () => {
+  const [index, setIndex] = useState(0);
+  const [playing, setPlaying] = useState(false);
+  const [back, setBack] = useState(false);
+
+  const togglePlaying = () => setPlaying((prev) => !prev);
+
+  const offset = 5;
+  const totalItems = recommendItems.length;
+  const maxIndex = Math.ceil(totalItems / offset) - 1;
+
+  const incraseIndex = () => {
+    if (playing) return;
+    togglePlaying();
+    setBack(false);
+    setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+  };
+  const decraseIndex = () => {
+    if (playing) return;
+    togglePlaying();
+    setBack(true);
+    setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
+  };
+
+  const slides = {
+    hidden: () => {
+      console.log(index, "hidden", back);
+      return { x: back ? -980 : 980 };
+    },
+    visible: {
+      x: 0,
+    },
+
+    exit: () => {
+      console.log(index, "exit", back);
+      return { x: back ? 980 : -980 };
+    },
+  };
+
   return (
     <article className={styles["recommend"]}>
       <div className={styles["recommend__contents"]}>
@@ -85,19 +126,41 @@ const Recommend = () => {
           <span>오늘의 쇼핑 제안</span>
         </div>
         <div className={styles["recommend__items"]}>
-          <ul className={styles["recommend__items--ul"]}>
-            {recommendItems.map((item) => (
-              <RecommendItems
-                img={item.img}
-                title={item.title}
-                discount={item.discount}
-                price={item.price}
-                badge={item.badge}
-                review_score={item.review_score}
-                review_count={item.review_count}
-              />
-            ))}
-          </ul>
+          <span
+            onClick={decraseIndex}
+            className={`${styles["arrow-button"]} ${styles["prev"]}`}
+          />
+          <span
+            onClick={incraseIndex}
+            className={`${styles["arrow-button"]} ${styles["next"]}`}
+          />
+          <AnimatePresence initial={false} onExitComplete={togglePlaying}>
+            <motion.ul
+              key={index}
+              custom={{ back }}
+              variants={slides}
+              initial="hidden"
+              animate="visible"
+              exit="exit"
+              transition={{ type: "tween", duration: 0.5 }}
+              className={styles["recommend__items--ul"]}
+            >
+              {recommendItems
+                .slice(offset * index, offset * index + offset)
+                .map((item, itemIndex) => (
+                  <RecommendItems
+                    key={itemIndex}
+                    img={item.img}
+                    title={item.title}
+                    discount={item.discount}
+                    price={item.price}
+                    badge={item.badge}
+                    review_score={item.review_score}
+                    review_count={item.review_count}
+                  />
+                ))}
+            </motion.ul>
+          </AnimatePresence>
         </div>
         <span className={styles["description"]}>광고</span>
       </div>

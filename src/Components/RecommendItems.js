@@ -17,7 +17,7 @@ const RecommendItems = ({
   let badgeStyles = null;
   let freeStyles = null;
 
-  console.log(badge, badgeStyles);
+  // console.log(badge, badgeStyles);
   switch (badge) {
     case null:
       break;

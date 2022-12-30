@@ -21,7 +21,7 @@ const Discovery = () => {
         <div className={styles["discovery__items"]}>
           <div className={styles["discovery__grid"]}>
             {discoveryItems.map((item, idx) => (
-              <DiscoveryItems url={item.url} idx={idx + 1} />
+              <DiscoveryItems key={idx} url={item.url} idx={idx + 1} />
             ))}
           </div>
         </div>
