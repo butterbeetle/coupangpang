@@ -2,17 +2,18 @@
   font-family: "tahoma";
   src: url(../assets/fonts/Tahoma_Regular_font.ttf);
 }
-.recommend {
+.personalized-ads {
   margin: 0px auto;
 }
-.recommend__contents {
+.personalized-ads__contents {
   position: relative;
   margin-top: 40px;
   padding-bottom: 80px;
   border-bottom: 1px solid #eee;
   min-height: 330px;
+  overflow: hidden;
 }
-.arrow-button {
+.personalized-ads__items-button {
   position: absolute;
   top: 45%;
   display: inline-block;
@@ -23,7 +24,7 @@
   opacity: 0.5;
   z-index: 1;
 }
-.arrow-button:hover {
+.personalized-ads__items-button:hover {
   opacity: 0.7;
   transition: 0.4s ease-in-out;
 }
@@ -42,29 +43,29 @@
   bottom: 0;
   right: 0;
 }
-.recommend__title {
+
+.personalized-ads__title {
   margin-bottom: 25px;
 }
-.recommend__title span {
+.personalized-ads__title span {
   font-size: 24px;
   font-weight: 600;
   padding-left: 42px;
   background: url("../assets/img/Icon/icon-shopping-bag@3x.png") no-repeat;
   background-size: contain;
 }
-
-.recommend__items--ul {
+.personalized-ads__items--ul {
   position: absolute;
   display: flex;
   margin: 0;
 }
-.recommend__item {
+.personalized-ads__item {
   margin: 0 1px;
 }
-.recommend__item-infos {
+.personalized-ads__item-infos {
   position: relative;
 }
-.recommend__item-discount {
+.personalized-ads__item-discount {
   position: absolute;
   display: table;
   font-size: 16px;
@@ -77,19 +78,19 @@
   left: 0;
   top: 0;
 }
-.recommend__item-discount p {
+.personalized-ads__item-discount p {
   display: table-cell;
   vertical-align: middle;
 }
-.recommend__item-info {
+.personalized-ads__item-info {
   width: auto;
   padding: 6px 6px 4px;
 }
-.recommend__items img {
+.personalized-ads__items img {
   width: 194px;
   height: 194px;
 }
-.recommend__item-title,
+.personalized-ads__item-title,
 .shopping_item_title {
   display: block;
   font-size: 14px;
@@ -99,20 +100,20 @@
   width: 170px;
   padding-bottom: 2px;
 }
-.recommend_item-price-unit {
+.personalized-ads_item-price-unit {
   font-weight: 600;
   font-size: 12px;
   color: red;
 }
-.recommend_item-price {
+.personalized-ads_item-price {
   font-family: "tahoma";
   font-size: 14px;
 }
-.recommend_item-price-free {
+.personalized-ads_item-price-free {
   color: #888;
   font-weight: 400;
 }
-.recommend_item-delivary {
+.personalized-ads_item-delivary {
   display: inline-block;
   width: 55px;
   height: 13px;
@@ -120,7 +121,7 @@
   background-size: cover;
   margin-left: 5px;
 }
-.recommend_item-rocket-buy {
+.personalized-ads_item-rocket-buy {
   margin-top: 3px;
   display: inline-block;
   width: 75px;
@@ -128,89 +129,77 @@
   background: url("../assets/img/badges/rocket_buy.png") no-repeat;
   background-size: cover;
 }
-.recommend_item-review {
+.personalized-ads_item-review {
   display: flex;
   align-items: center;
   padding-top: 4px;
 }
-.recommend_item-review-count {
+.personalized-ads_item-review-count {
   font-weight: 600;
   font-size: 12px;
   color: #878787;
   padding-left: 3px;
 }
-.empty-star,
-.empty_star {
+.empty-star {
   display: block;
   width: 75px;
   height: 15px;
   background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
 }
-.review-star,
-.review_star {
+.review-star {
   display: block;
   width: 90%;
   height: 15px;
   background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
 }
 
-.now_recommend_ad_box {
+.related-ads__contents {
   padding-top: 40px;
   position: relative;
+  min-height: 330px;
 }
-.now_recommend_ad_title_box span:nth-child(1) {
+.related-ads__title-main {
   font-size: 18px;
   font-weight: 600;
 }
-.now_recommend_ad_title_box span:nth-child(2) {
+.related-ads__title-ads {
   font-size: 14px;
-  color: #ccc;
+  color: #555;
   padding-left: 10px;
 }
-.now_recommend_ad_title_box span:nth-child(3) {
+.exclamation-mark {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: -3px;
+  background: url("../assets/img/ad_icon.svg") no-repeat;
+  margin-left: 3px;
+}
+.related-ads__title-pages {
   position: absolute;
   right: 0;
   display: inline-block;
   font-size: 16px;
 }
 
-.now_recommend_ad_items_box {
+.related-ads__items {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.now_recommend_ad_prev_button {
+.related-ads__items-button {
   display: block;
+  position: absolute;
   width: 40px;
   height: 40px;
-  background: url("../assets/img/widget/coupang_widget.png") no-repeat -38px -1px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -77px -1px;
 }
-.now_recommend_ad_next_button {
-  display: block;
-  width: 40px;
-  height: 40px;
-  background: url("../assets/img/widget/coupang_widget.png") no-repeat 0px -1px;
-}
-.now_recommend_ad_items ul {
+.related-ads__items ul {
   display: flex;
   padding: 0;
 }
-.now_recommend_ad_items li {
-  width: 100%;
-  padding: 0 12px;
-}
-.now_recommend_ad_items img {
+.related-ads__items img {
   width: 160px;
   height: 160px;
   border: 1px solid pink;
-}
-.now_recommend_ad_title {
-  display: block;
-  font-size: 14px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  word-break: break-all;
-  width: 160px;
-  height: 20px;
 }

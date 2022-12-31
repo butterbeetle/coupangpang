@@ -1,5 +1,6 @@
 import styles from "./Recommend.module.css";
 import RecommendItems from "./RecommendItems";
+
 import today_shopping_item from "../img/today_shopping_item/today_shopping_item1.jpg";
 
 import recommend_item01 from "../assets/img/recommendItems/recommend_item01.jpg";
@@ -12,7 +13,7 @@ import recommend_item06 from "../assets/img/recommendItems/recommend_item06.jpg"
 import { motion, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 
-const recommendItems = [
+const personalizedAdsItems = [
   {
     img: recommend_item01,
     title: "맛있게 매운 선화동실비김치 800g + 매운실비파김치 500g 세트",
@@ -162,7 +163,7 @@ const Recommend = () => {
   const togglePlaying = () => setPlaying((prev) => !prev);
 
   const offset = 5;
-  const totalItems = recommendItems.length;
+  const totalItems = personalizedAdsItems.length;
   const maxIndex = Math.ceil(totalItems / offset) - 1;
 
   const prev = () => {
@@ -172,12 +173,12 @@ const Recommend = () => {
     setBack(false);
   };
 
-  const decraseIndex = () => {
+  const decreaseIndex = () => {
     if (playing) return;
     togglePlaying();
     setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
-  const incraseIndex = () => {
+  const increaseIndex = () => {
     if (playing) return;
     togglePlaying();
     setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
@@ -185,7 +186,7 @@ const Recommend = () => {
 
   const slides = {
     init: () => {
-      console.log(index, "나오는 방향", "back:", back, back ? -980 : 980);
+      // console.log(index, "나오는 방향", "back:", back, back ? -980 : 980);
       return { x: back ? -980 : 980 };
     },
     center: {
@@ -193,27 +194,27 @@ const Recommend = () => {
     },
 
     exit: () => {
-      console.log(index, "사라지는 방향", "back:", back, back ? -980 : 980);
+      // console.log(index, "사라지는 방향", "back:", back, back ? -980 : 980);
       return { x: back ? 980 : -980 };
     },
   };
 
   return (
-    <article className={styles["recommend"]}>
-      <div className={styles["recommend__contents"]}>
-        <div className={styles["recommend__title"]}>
+    <article className={styles["personalized-ads"]}>
+      <div className={styles["personalized-ads__contents"]}>
+        <div className={styles["personalized-ads__title"]}>
           <span>오늘의 쇼핑 제안</span>
         </div>
-        <div className={styles["recommend__items"]}>
+        <div className={styles["personalized-ads__items"]}>
           <span
             onMouseEnter={prev}
-            onClick={decraseIndex}
-            className={`${styles["arrow-button"]} ${styles["prev"]}`}
+            onClick={decreaseIndex}
+            className={`${styles["personalized-ads__items-button"]} ${styles["prev"]}`}
           />
           <span
             onMouseEnter={next}
-            onClick={incraseIndex}
-            className={`${styles["arrow-button"]} ${styles["next"]}`}
+            onClick={increaseIndex}
+            className={`${styles["personalized-ads__items-button"]} ${styles["next"]}`}
           />
           <AnimatePresence initial={false} onExitComplete={togglePlaying}>
             <motion.ul
@@ -224,9 +225,9 @@ const Recommend = () => {
               animate="center"
               exit="exit"
               transition={{ type: "tween", duration: 0.5 }}
-              className={styles["recommend__items--ul"]}
+              className={styles["personalized-ads__items--ul"]}
             >
-              {recommendItems
+              {personalizedAdsItems
                 .slice(offset * index, offset * index + offset)
                 .map((item, itemIndex) => (
                   <RecommendItems
@@ -246,108 +247,38 @@ const Recommend = () => {
         <span className={styles["description"]}>광고</span>
       </div>
 
-      <div className={styles.now_recommend_ad_box}>
-        <div className={styles.now_recommend_ad_title_box}>
-          <span>지금 이 상품이 필요하신가요?</span>
-          <span>광고</span>
-          <span>1/3</span>
+      <div className={styles["related-ads__contents"]}>
+        <div className={styles["related-ads__title"]}>
+          <span className={styles["related-ads__title-main"]}>
+            지금 이 상품이 필요하신가요?
+          </span>
+          <span className={styles["related-ads__title-ads"]}>광고</span>
+          <i className={styles["exclamation-mark"]}></i>
+          <span className={styles["related-ads__title-pages"]}>
+            <strong>1</strong>/3
+          </span>
         </div>
-        <div className={styles.now_recommend_ad_items_box}>
-          <div>
-            <span className={styles.now_recommend_ad_prev_button}></span>
-          </div>
-          <div className={styles.now_recommend_ad_items}>
-            <ul>
-              <li>
-                <div>
-                  <a href="/">
-                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
-                    <div>
-                      <span className={styles.now_recommend_ad_title}>
-                        TCL 4K QLED 안드로이드 안드로이드
-                      </span>
-                    </div>
-                    <div>
-                      <span className={styles.empty_star}>
-                        <span className={styles.review_star} />
-                      </span>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <a href="/">
-                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
-                    <div>
-                      <span className={styles.now_recommend_ad_title}>
-                        TCL 4K QLED 안드로이드 안드로이드
-                      </span>
-                    </div>
-                    <div>
-                      <span className={styles.empty_star}>
-                        <span className={styles.review_star} />
-                      </span>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <a href="/">
-                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
-                    <div>
-                      <span className={styles.now_recommend_ad_title}>
-                        TCL 4K QLED 안드로이드 안드로이드
-                      </span>
-                    </div>
-                    <div>
-                      <span className={styles.empty_star}>
-                        <span className={styles.review_star} />
-                      </span>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <a href="/">
-                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
-                    <div>
-                      <span className={styles.now_recommend_ad_title}>
-                        TCL 4K QLED 안드로이드 안드로이드
-                      </span>
-                    </div>
-                    <div>
-                      <span className={styles.empty_star}>
-                        <span className={styles.review_star} />
-                      </span>
-                    </div>
-                  </a>
-                </div>
-              </li>
-              <li>
-                <div>
-                  <a href="/">
-                    <img src={today_shopping_item} alt="오늘의 쇼핑 제안1" />
-                    <div>
-                      <span className={styles.now_recommend_ad_title}>
-                        TCL 4K QLED 안드로이드 안드로이드
-                      </span>
-                    </div>
-                    <div>
-                      <span className={styles.empty_star}>
-                        <span className={styles.review_star} />
-                      </span>
-                    </div>
-                  </a>
-                </div>
-              </li>
-            </ul>
-          </div>
-          <div>
-            <span className={styles.now_recommend_ad_next_button}></span>
-          </div>
+        <div className={styles["related-ads__items"]}>
+          <span
+            className={`${styles["related-ads__items-button"]} ${styles["prev"]}`}
+          />
+          <span
+            className={`${styles["related-ads__items-button"]} ${styles["next"]}`}
+          />
+          <ul>
+            {[1, 2, 3, 4, 5].map((item, itemIndex) => (
+              <RecommendItems
+                key={itemIndex}
+                img={today_shopping_item}
+                title={"test"}
+                discount={null}
+                price={699000}
+                badge={null}
+                review_score={4.5}
+                review_count={746}
+              />
+            ))}
+          </ul>
         </div>
       </div>
 
