@@ -69,15 +69,89 @@ const recommendItems = [
     review_score: 3,
     review_count: 111,
   },
-  // {
-  //   img: recommend_item06,
-  //   title: "바른컴퓨터 게이밍 컴퓨터 풀세트 모니터포함 PC 롤 서든어택 배틀그라운드 피파, 기본형, BAF-F11",
-  //   discount: 65,
-  //   price: null,
-  //   delivary_type: "free",
-  //   review_score: 5,
-  //   review_count: 1736,
-  // },
+
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
+  {
+    img: recommend_item06,
+    title: "[코지마 본사] 칼더 익스트림 안마의자 CMC-L500(G), 브라운, CMC-L500",
+    discount: 3,
+    price: 123456,
+    badge: "free_delivary",
+    review_score: 3,
+    review_count: 111,
+  },
 ];
 
 const Recommend = () => {
@@ -91,30 +165,35 @@ const Recommend = () => {
   const totalItems = recommendItems.length;
   const maxIndex = Math.ceil(totalItems / offset) - 1;
 
-  const incraseIndex = () => {
-    if (playing) return;
-    togglePlaying();
-    setBack(false);
-    setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
+  const prev = () => {
+    setBack(true);
   };
+  const next = () => {
+    setBack(false);
+  };
+
   const decraseIndex = () => {
     if (playing) return;
     togglePlaying();
-    setBack(true);
     setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
+  };
+  const incraseIndex = () => {
+    if (playing) return;
+    togglePlaying();
+    setIndex((prev) => (prev === maxIndex ? 0 : prev + 1));
   };
 
   const slides = {
-    hidden: () => {
-      console.log(index, "hidden", back);
+    init: () => {
+      console.log(index, "나오는 방향", "back:", back, back ? -980 : 980);
       return { x: back ? -980 : 980 };
     },
-    visible: {
+    center: {
       x: 0,
     },
 
     exit: () => {
-      console.log(index, "exit", back);
+      console.log(index, "사라지는 방향", "back:", back, back ? -980 : 980);
       return { x: back ? 980 : -980 };
     },
   };
@@ -127,10 +206,12 @@ const Recommend = () => {
         </div>
         <div className={styles["recommend__items"]}>
           <span
+            onMouseEnter={prev}
             onClick={decraseIndex}
             className={`${styles["arrow-button"]} ${styles["prev"]}`}
           />
           <span
+            onMouseEnter={next}
             onClick={incraseIndex}
             className={`${styles["arrow-button"]} ${styles["next"]}`}
           />
@@ -139,8 +220,8 @@ const Recommend = () => {
               key={index}
               custom={{ back }}
               variants={slides}
-              initial="hidden"
-              animate="visible"
+              initial="init"
+              animate="center"
               exit="exit"
               transition={{ type: "tween", duration: 0.5 }}
               className={styles["recommend__items--ul"]}
