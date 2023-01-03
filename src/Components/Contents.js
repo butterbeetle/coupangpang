@@ -1,15 +1,15 @@
 import styles from "./Contents.module.css";
 import Sidebar from "./Sidebar";
 import Discovery from "./Discovery";
-import Recommend from "./Recommend";
 import RecommendCategory from "./RecommendCategory";
+import Advertisement from "./Advertisement";
 
 const Contents = () => {
   return (
     <section className={styles["contents"]}>
       <Sidebar />
       <Discovery />
-      <Recommend />
+      <Advertisement />
       <RecommendCategory />
     </section>
   );

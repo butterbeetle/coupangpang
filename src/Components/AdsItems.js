@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
-import styles from "./RecommendItems.module.css";
+import styles from "./AdsItems.module.css";
 
-const RecommendItems = ({
+const AdsItems = ({
+  item_type,
   img,
   title,
   discount,
@@ -15,66 +16,65 @@ const RecommendItems = ({
   const count = review_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
   let badgeStyles = null;
-  let freeStyles = null;
 
-  // console.log(badge, badgeStyles);
   switch (badge) {
     case null:
       break;
     case "free_delivary":
-      freeStyles = styles["recommend_item-free"];
+      badgeStyles = styles["badge-free"];
       break;
     case "rocket_buy":
-      badgeStyles = styles["recommend_item-rocket-buy"];
+      badgeStyles = styles["badge-rocket-buy"];
       break;
     case "rocket_delivary":
-      badgeStyles = styles["recommend_item-rocket-delivary"];
+      badgeStyles = styles["badge-rocket-delivary"];
       break;
     case "rocket_install":
-      badgeStyles = styles["recommend_item-rocket-install"];
+      badgeStyles = styles["badge-rocket-install"];
       break;
     default:
   }
+
   return (
-    <li className={styles["recommend__item"]}>
+    <li className={`${styles[item_type + "-item"]}`}>
       <Link href="/">
-        <div className={styles["recommend__item-infos"]}>
+        <div className={styles["infos"]}>
           <img src={img} alt="오늘의 쇼핑 제안1" />
           {discount && (
-            <span className={styles["recommend__item-discount"]}>
+            <span className={styles["discount"]}>
               <p>{discount}%</p>
             </span>
           )}
-          <div className={styles["recommend__item-info"]}>
-            <span className={styles["recommend__item-title"]}>{title}</span>
+          <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>
+            <div
+              className={`${styles["title"]} ${styles[item_type + "-title"]}`}
+            >
+              <span>{title}</span>
+            </div>
 
             {badge === null && (
-              <span className={`${styles["recommend_item-price-unit"]}`}>
+              <span className={`${styles["price-unit"]}`}>
                 <>
-                  <span className={`${styles["recommend_item-price"]} }`}>
-                    {priceComma}
-                  </span>
+                  <span className={`${styles["price"]} }`}>{priceComma}</span>
                   원
-                  <span className={styles["recommend_item-delivary"]} />
+                  <span className={styles["badge-delivary"]} />
                 </>
               </span>
             )}
 
             {badge !== null && (
-              <span className={`${badgeStyles}  ${freeStyles}`}>
+              <span className={`${badgeStyles}`}>
                 {badge === "free_delivary" && "무료배송"}
               </span>
             )}
-            <div className={styles["recommend__item-review"]}>
+            <div className={styles["review"]}>
               <span className={styles["empty-star"]}>
                 <span
                   className={styles["review-star"]}
                   style={{ width: score }}
                 />
               </span>
-              <span className={styles["recommend__item-review-count"]}>
-                ({count})
-              </span>
+              <span className={styles["review-count"]}>({count})</span>
             </div>
           </div>
         </div>
@@ -83,4 +83,4 @@ const RecommendItems = ({
   );
 };
 
-export default RecommendItems;
+export default AdsItems;

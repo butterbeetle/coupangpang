@@ -1,11 +1,13 @@
-.recommend__item {
+.personalized-item {
   margin: 0 1px;
 }
-
-.recommend__item-infos {
+.related-item {
+  margin: 0 10px;
+}
+.infos {
   position: relative;
 }
-.recommend__item-discount {
+.discount {
   position: absolute;
   display: table;
   font-size: 16px;
@@ -18,44 +20,60 @@
   left: 0;
   top: 0;
 }
-.recommend__item-discount p {
+.discount p {
   display: table-cell;
   vertical-align: middle;
 }
-.recommend__item-info {
-  width: auto;
-  padding: 6px 6px 4px;
+.info {
+  padding: 6px 12px 4px;
 }
-.recommend__items img {
+.related-info {
+  padding: 12px 0 0 0;
+}
+
+.ads__items img {
   width: 194px;
   height: 194px;
 }
-.recommend__item-title {
+.title {
   display: block;
+  overflow: hidden;
+  font-weight: normal;
+  text-overflow: ellipsis;
+}
+.title:hover {
+  text-decoration: underline;
+  color: #346aff;
+}
+.personalized-title {
+  width: 170px;
   font-size: 14px;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 170px;
-  padding-bottom: 2px;
 }
-.recommend_item-price-unit {
+.related-title {
+  display: -webkit-box;
+  font-size: 12px;
+  width: 145px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+}
+.price-unit {
   display: block;
   font-weight: 600;
   font-size: 12px;
   color: red;
 }
-.recommend_item-price {
+.price {
   font-family: "tahoma";
   font-size: 14px;
 }
-.recommend_item-free {
+.badge-free {
   color: #888;
   font-size: 14px;
   font-weight: 400;
 }
 
-.recommend_item-delivary {
+.badge-delivary {
   display: inline-block;
   width: 55px;
   height: 13px;
@@ -63,7 +81,7 @@
   background-size: cover;
   margin-left: 5px;
 }
-.recommend_item-rocket-buy {
+.badge-rocket-buy {
   margin-top: 3px;
   display: inline-block;
   width: 70px;
@@ -71,7 +89,7 @@
   background: url("../assets/img/badges/rocket_buy.png") no-repeat;
   background-size: cover;
 }
-.recommend_item-rocket-delivary {
+.badge-rocket-delivary {
   margin-top: 3px;
   display: inline-block;
   width: 70px;
@@ -79,7 +97,7 @@
   background: url("../assets/img/badges/rocket_delivary.png") no-repeat;
   background-size: cover;
 }
-.recommend_item-rocket-install {
+.badge-rocket-install {
   margin-top: 3px;
   display: inline-block;
   width: 70px;
@@ -88,12 +106,12 @@
   background-size: cover;
 }
 
-.recommend__item-review {
+.review {
   display: flex;
   align-items: center;
   padding-top: 4px;
 }
-.recommend__item-review-count {
+.review-count {
   font-weight: 600;
   font-size: 12px;
   color: #878787;

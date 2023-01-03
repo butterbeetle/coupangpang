@@ -90,16 +90,7 @@
   width: 194px;
   height: 194px;
 }
-.personalized-ads__item-title,
-.shopping_item_title {
-  display: block;
-  font-size: 14px;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  width: 170px;
-  padding-bottom: 2px;
-}
+
 .personalized-ads_item-price-unit {
   font-weight: 600;
   font-size: 12px;
@@ -158,6 +149,10 @@
   position: relative;
   min-height: 330px;
 }
+.related-ads__title {
+  position: relative;
+  margin-bottom: 20px;
+}
 .related-ads__title-main {
   font-size: 18px;
   font-weight: 600;
@@ -176,12 +171,13 @@
   margin-left: 3px;
 }
 .related-ads__title-pages {
+  font-family: tahoma;
   position: absolute;
   right: 0;
   display: inline-block;
-  font-size: 16px;
+  font-size: 14px;
+  top: 5px;
 }
-
 .related-ads__items {
   display: flex;
   justify-content: center;
@@ -190,6 +186,7 @@
 .related-ads__items-button {
   display: block;
   position: absolute;
+  top: 54%;
   width: 40px;
   height: 40px;
   background: url("../assets/img/widget/coupang_widget.png") no-repeat -77px -1px;
@@ -201,5 +198,4 @@
 .related-ads__items img {
   width: 160px;
   height: 160px;
-  border: 1px solid pink;
 }
