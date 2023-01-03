@@ -58,6 +58,7 @@
   -webkit-line-clamp: 3;
 }
 .price-unit {
+  margin: 8px 0;
   display: block;
   font-weight: 600;
   font-size: 12px;
@@ -73,7 +74,23 @@
   font-weight: 400;
 }
 
-.badge-delivary {
+.rocket_fresh {
+  display: inline-block;
+  width: 63px;
+  height: 13px;
+  background: url("../assets/img/badges/rocket_fresh.png") no-repeat;
+  background-size: cover;
+  margin-left: 5px;
+}
+.jet_delivary {
+  display: inline-block;
+  width: 55px;
+  height: 13px;
+  background: url("../assets/img/badges/jet_delivary.png") no-repeat;
+  background-size: cover;
+  margin-left: 5px;
+}
+.rocket_delivary {
   display: inline-block;
   width: 55px;
   height: 13px;
@@ -81,6 +98,7 @@
   background-size: cover;
   margin-left: 5px;
 }
+
 .badge-rocket-buy {
   margin-top: 3px;
   display: inline-block;

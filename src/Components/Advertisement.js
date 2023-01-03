@@ -236,100 +236,99 @@ const relatedAdsItems = [
     review_score: 5,
     review_count: 11,
   },
-  // {
-  //   img: related_Ads_Item_06,
-  //   title: "프레시가든 공기정화식물 안스리움+해초바구니 세트, 레드",
-  //   discount: null,
-  //   price: 38900,
-  //   badge: "rocket_fresh",
-  //   review_score: 5,
-  //   review_count: 420,
-  // },
-  // {
-  //   img: related_Ads_Item_07,
-  //   title: "스칸디아모스 인테리어 편백나무화분, 04_모스그린",
-  //   discount: null,
-  //   price: 19500,
-  //   badge: "null",
-  //   review_score: 5,
-  //   review_count: 22,
-  // },
-  // {
-  //   img: related_Ads_Item_08,
-  //   title: "이벤트용 시들지않는 안개꽃다발, 핑크",
-  //   discount: null,
-  //   price: 36900,
-  //   badge: "zet_delivary",
-  //   review_score: 5,
-  //   review_count: 88,
-  // },
-  // {
-  //   img: related_Ads_Item_09,
-  //   title: "동그리 토분, 19 cm",
-  //   discount: null,
-  //   price: 9350,
-  //   badge: "null",
-  //   review_score: 5,
-  //   review_count: 79,
-  // },
-  // {
-  //   img: related_Ads_Item_10,
-  //   title:
-  //     "핸드메이드 원목 플랜테리어 LED 밝기조절 무드등 사각 화분 이오난사, 멀바우브라운",
-  //   discount: null,
-  //   price: 56900,
-  //   badge: "rocket_delivary",
-  //   review_score: 5,
-  //   review_count: 21,
-  // },
-
-  // {
-  //   img: related_Ads_Item_11,
-  //   title:
-  //     "메이크정글 공기정화식물 디퓨저팟 고무나무 식물 기프트 세트, 네이비, 1세트",
-  //   discount: null,
-  //   price: 19000,
-  //   badge: "rocket_fresh",
-  //   review_score: 5,
-  //   review_count: 296,
-  // },
-  // {
-  //   img: related_Ads_Item_12,
-  //   title: "나루플랜트 플라워베어 장미곰돌이 조화 로즈베어 여자친구 선물, 레드",
-  //   discount: null,
-  //   price: 28900,
-  //   badge: "rocket_delivary",
-  //   review_score: 5,
-  //   review_count: 71,
-  // },
-  // {
-  //   img: related_Ads_Item_13,
-  //   title: "금장미 용돈박스 돈케이크 + 케이스 + 쇼핑백, 골드",
-  //   discount: null,
-  //   price: 36900,
-  //   badge: "zet_delivary",
-  //   review_score: 5,
-  //   review_count: 22,
-  // },
-  // {
-  //   img: related_Ads_Item_14,
-  //   title: "스칸디아모스 포레스트 화분, 스프링그린",
-  //   discount: null,
-  //   price: 29700,
-  //   badge: "zet_delivary",
-  //   review_score: 5,
-  //   review_count: 298,
-  // },
-  // {
-  //   img: related_Ads_Item_15,
-  //   title:
-  //     "메이크정글 공기정화식물 디퓨저팟 호야 식물 기프트 세트, 옐로우, 1세트",
-  //   discount: null,
-  //   price: 19000,
-  //   badge: "rocket_fresh",
-  //   review_score: 5,
-  //   review_count: 136,
-  // },
+  {
+    img: related_Ads_Item_06,
+    title: "프레시가든 공기정화식물 안스리움+해초바구니 세트, 레드",
+    discount: null,
+    price: 38900,
+    badge: "rocket_fresh",
+    review_score: 5,
+    review_count: 420,
+  },
+  {
+    img: related_Ads_Item_07,
+    title: "스칸디아모스 인테리어 편백나무화분, 04_모스그린",
+    discount: null,
+    price: 19500,
+    badge: "null",
+    review_score: 5,
+    review_count: 22,
+  },
+  {
+    img: related_Ads_Item_08,
+    title: "이벤트용 시들지않는 안개꽃다발, 핑크",
+    discount: null,
+    price: 36900,
+    badge: "zet_delivary",
+    review_score: 5,
+    review_count: 88,
+  },
+  {
+    img: related_Ads_Item_09,
+    title: "동그리 토분, 19 cm",
+    discount: null,
+    price: 9350,
+    badge: "null",
+    review_score: 5,
+    review_count: 79,
+  },
+  {
+    img: related_Ads_Item_10,
+    title:
+      "핸드메이드 원목 플랜테리어 LED 밝기조절 무드등 사각 화분 이오난사, 멀바우브라운",
+    discount: null,
+    price: 56900,
+    badge: "rocket_delivary",
+    review_score: 5,
+    review_count: 21,
+  },
+  {
+    img: related_Ads_Item_11,
+    title:
+      "메이크정글 공기정화식물 디퓨저팟 고무나무 식물 기프트 세트, 네이비, 1세트",
+    discount: null,
+    price: 19000,
+    badge: "rocket_fresh",
+    review_score: 5,
+    review_count: 296,
+  },
+  {
+    img: related_Ads_Item_12,
+    title: "나루플랜트 플라워베어 장미곰돌이 조화 로즈베어 여자친구 선물, 레드",
+    discount: null,
+    price: 28900,
+    badge: "rocket_delivary",
+    review_score: 5,
+    review_count: 71,
+  },
+  {
+    img: related_Ads_Item_13,
+    title: "금장미 용돈박스 돈케이크 + 케이스 + 쇼핑백, 골드",
+    discount: null,
+    price: 36900,
+    badge: "zet_delivary",
+    review_score: 5,
+    review_count: 22,
+  },
+  {
+    img: related_Ads_Item_14,
+    title: "스칸디아모스 포레스트 화분, 스프링그린",
+    discount: null,
+    price: 29700,
+    badge: "zet_delivary",
+    review_score: 5,
+    review_count: 298,
+  },
+  {
+    img: related_Ads_Item_15,
+    title:
+      "메이크정글 공기정화식물 디퓨저팟 호야 식물 기프트 세트, 옐로우, 1세트",
+    discount: null,
+    price: 19000,
+    badge: "rocket_fresh",
+    review_score: 5,
+    review_count: 136,
+  },
 ];
 
 const Advertisement = () => {
@@ -444,19 +443,21 @@ const Advertisement = () => {
             className={`${styles["related-ads__items-button"]} ${styles["next"]}`}
           />
           <ul>
-            {relatedAdsItems.map((item, itemIndex) => (
-              <AdsItems
-                key={itemIndex}
-                item_type="related"
-                img={item.img}
-                title={item.title}
-                discount={item.discount}
-                price={item.price}
-                badge={item.badge}
-                review_score={item.review_score}
-                review_count={item.review_count}
-              />
-            ))}
+            {relatedAdsItems
+              .slice(offset * index, offset * index + offset)
+              .map((item, itemIndex) => (
+                <AdsItems
+                  key={itemIndex}
+                  item_type="related"
+                  img={item.img}
+                  title={item.title}
+                  discount={item.discount}
+                  price={item.price}
+                  badge={item.badge}
+                  review_score={item.review_score}
+                  review_count={item.review_count}
+                />
+              ))}
           </ul>
         </div>
       </div>

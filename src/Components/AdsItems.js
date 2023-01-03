@@ -34,7 +34,7 @@ const AdsItems = ({
       break;
     default:
   }
-
+  console.log(item_type, badge);
   return (
     <li className={`${styles[item_type + "-item"]}`}>
       <Link href="/">
@@ -52,17 +52,17 @@ const AdsItems = ({
               <span>{title}</span>
             </div>
 
-            {badge === null && (
+            {item_type !== "personalized" && (
               <span className={`${styles["price-unit"]}`}>
                 <>
                   <span className={`${styles["price"]} }`}>{priceComma}</span>
                   원
-                  <span className={styles["badge-delivary"]} />
+                  <span className={`${styles[badge]}`} />
                 </>
               </span>
             )}
 
-            {badge !== null && (
+            {item_type !== "related" && (
               <span className={`${badgeStyles}`}>
                 {badge === "free_delivary" && "무료배송"}
               </span>
