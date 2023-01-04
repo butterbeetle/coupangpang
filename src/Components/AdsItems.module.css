@@ -41,9 +41,13 @@
   font-weight: normal;
   text-overflow: ellipsis;
 }
-.title:hover {
+
+.personalized-hover {
   text-decoration: underline;
   color: #346aff;
+}
+.related-hover {
+  text-decoration: underline;
 }
 .personalized-title {
   width: 170px;

@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./AdsItems.module.css";
 
@@ -11,6 +12,7 @@ const AdsItems = ({
   review_score,
   review_count,
 }) => {
+  const [hoverStyles, setHoverStyles] = useState("");
   const priceComma = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const score = review_score * 20 + "%";
   const count = review_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -35,8 +37,18 @@ const AdsItems = ({
     default:
   }
 
+  const onMouseEnter = () => {
+    setHoverStyles(item_type + "-hover");
+  };
+  const onMouseLeave = () => {
+    setHoverStyles(null);
+  };
   return (
-    <li className={`${styles[item_type + "-item"]}`}>
+    <li
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
+      className={`${styles[item_type + "-item"]}`}
+    >
       <Link href="/">
         <div className={styles["infos"]}>
           <img src={img} alt="오늘의 쇼핑 제안1" />
@@ -47,7 +59,9 @@ const AdsItems = ({
           )}
           <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>
             <div
-              className={`${styles["title"]} ${styles[item_type + "-title"]}`}
+              className={`${styles["title"]} ${styles[item_type + "-title"]} ${
+                styles[hoverStyles]
+              }`}
             >
               <span>{title}</span>
             </div>
