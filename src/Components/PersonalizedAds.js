@@ -234,7 +234,7 @@ const PersonalizedAds = () => {
             initial="init"
             animate="center"
             exit="exit"
-            transition={{ type: "tween", duration: 0.5 }}
+            transition={{ type: "tween", duration: 0.8 }}
             className={styles["personalized-ads__items--ul"]}
           >
             {personalizedAdsItems
