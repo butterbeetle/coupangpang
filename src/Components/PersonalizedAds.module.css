@@ -1,0 +1,137 @@
+.personalized-ads__contents {
+  position: relative;
+  margin-top: 40px;
+  padding-bottom: 80px;
+  border-bottom: 1px solid #eee;
+  min-height: 330px;
+  overflow: hidden;
+}
+.personalized-ads__items-button {
+  position: absolute;
+  top: 45%;
+  display: inline-block;
+  width: 42px;
+  height: 42px;
+  background: url("../assets/img/btn-arrow-black.png") no-repeat;
+  cursor: pointer;
+  opacity: 0.5;
+  z-index: 1;
+}
+.personalized-ads__items-button:hover {
+  opacity: 0.7;
+  transition: 0.4s ease-in-out;
+}
+.personalized-ads__title {
+  margin-bottom: 25px;
+}
+.personalized-ads__title span {
+  font-size: 24px;
+  font-weight: 600;
+  padding-left: 42px;
+  background: url("../assets/img/Icon/icon-shopping-bag@3x.png") no-repeat;
+  background-size: contain;
+}
+.personalized-ads__items--ul {
+  position: absolute;
+  display: flex;
+  margin: 0;
+}
+.personalized-ads__item {
+  margin: 0 1px;
+}
+.personalized-ads__item-infos {
+  position: relative;
+}
+.personalized-ads__item-discount {
+  position: absolute;
+  display: table;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: red;
+  text-align: center;
+  width: 50px;
+  height: 30px;
+  left: 0;
+  top: 0;
+}
+.personalized-ads__item-discount p {
+  display: table-cell;
+  vertical-align: middle;
+}
+.personalized-ads__item-info {
+  width: auto;
+  padding: 6px 6px 4px;
+}
+.personalized-ads__items img {
+  width: 194px;
+  height: 194px;
+}
+.personalized-ads_item-price-unit {
+  font-weight: 600;
+  font-size: 12px;
+  color: red;
+}
+.personalized-ads_item-price {
+  font-family: "tahoma";
+  font-size: 14px;
+}
+.personalized-ads_item-price-free {
+  color: #888;
+  font-weight: 400;
+}
+.personalized-ads_item-delivary {
+  display: inline-block;
+  width: 55px;
+  height: 13px;
+  background: url("../assets/img/badges/rocket_delivary.png") no-repeat;
+  background-size: cover;
+  margin-left: 5px;
+}
+.personalized-ads_item-rocket-buy {
+  margin-top: 3px;
+  display: inline-block;
+  width: 75px;
+  height: 18px;
+  background: url("../assets/img/badges/rocket_buy.png") no-repeat;
+  background-size: cover;
+}
+.personalized-ads_item-review {
+  display: flex;
+  align-items: center;
+  padding-top: 4px;
+}
+.personalized-ads_item-review-count {
+  font-weight: 600;
+  font-size: 12px;
+  color: #878787;
+  padding-left: 3px;
+}
+
+.next {
+  right: 1px;
+}
+.prev {
+  left: 1px;
+  transform: scaleX(-1);
+}
+.description {
+  position: absolute;
+  font-size: 12px;
+  padding-bottom: 20px;
+  color: #ccc;
+  bottom: 0;
+  right: 0;
+}
+.empty-star {
+  display: block;
+  width: 75px;
+  height: 15px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+}
+.review-star {
+  display: block;
+  width: 90%;
+  height: 15px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
+}

@@ -1,17 +1,3 @@
-@font-face {
-  font-family: "tahoma";
-  src: url(../assets/fonts/Tahoma_Regular_font.ttf);
-}
-.contents {
-  margin: 0px auto;
-}
-.next {
-  right: 1px;
-}
-.prev {
-  left: 1px;
-  transform: scaleX(-1);
-}
 .related-ads__contents {
   padding-top: 40px;
   position: relative;
@@ -69,4 +55,24 @@
 .related-ads__items img {
   width: 160px;
   height: 160px;
+}
+
+.next {
+  right: 1px;
+}
+.prev {
+  left: 1px;
+  transform: scaleX(-1);
+}
+.empty-star {
+  display: block;
+  width: 75px;
+  height: 15px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+}
+.review-star {
+  display: block;
+  width: 90%;
+  height: 15px;
+  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
 }

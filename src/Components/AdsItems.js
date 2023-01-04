@@ -34,7 +34,7 @@ const AdsItems = ({
       break;
     default:
   }
-  console.log(item_type, badge);
+
   return (
     <li className={`${styles[item_type + "-item"]}`}>
       <Link href="/">
