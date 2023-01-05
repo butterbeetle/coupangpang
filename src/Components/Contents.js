@@ -1,8 +1,8 @@
 import styles from "./Contents.module.css";
 import Sidebar from "./Sidebar";
-import Discovery from "./Discovery";
+import Discovery from "./Discovery/Discovery";
+import Advertisement from "./Advertisement/Advertisement";
 import RecommendCategory from "./RecommendCategory";
-import Advertisement from "./Advertisement";
 
 const Contents = () => {
   return (

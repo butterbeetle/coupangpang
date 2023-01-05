@@ -3,23 +3,23 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./PersonalizedAds.module.css";
 import AdsItems from "./AdsItems";
 
-import personalized_Ads_Item_01 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_01.jpg";
-import personalized_Ads_Item_02 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_02.jpg";
-import personalized_Ads_Item_03 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_03.jpg";
-import personalized_Ads_Item_04 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_04.png";
-import personalized_Ads_Item_05 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_05.png";
+import personalized_Ads_Item_01 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_01.jpg";
+import personalized_Ads_Item_02 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_02.jpg";
+import personalized_Ads_Item_03 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_03.jpg";
+import personalized_Ads_Item_04 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_04.png";
+import personalized_Ads_Item_05 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_05.png";
 
-import personalized_Ads_Item_06 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_06.jpg";
-import personalized_Ads_Item_07 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_07.jpg";
-import personalized_Ads_Item_08 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_08.jpg";
-import personalized_Ads_Item_09 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_09.jpg";
-import personalized_Ads_Item_10 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_10.jpg";
+import personalized_Ads_Item_06 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_06.jpg";
+import personalized_Ads_Item_07 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_07.jpg";
+import personalized_Ads_Item_08 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_08.jpg";
+import personalized_Ads_Item_09 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_09.jpg";
+import personalized_Ads_Item_10 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_10.jpg";
 
-import personalized_Ads_Item_11 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_11.jpg";
-import personalized_Ads_Item_12 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_12.jpg";
-import personalized_Ads_Item_13 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_13.jpg";
-import personalized_Ads_Item_14 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_14.jpg";
-import personalized_Ads_Item_15 from "../assets/img/personalizedAdsItems/personalized_Ads_Item_15.jpg";
+import personalized_Ads_Item_11 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_11.jpg";
+import personalized_Ads_Item_12 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_12.jpg";
+import personalized_Ads_Item_13 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_13.jpg";
+import personalized_Ads_Item_14 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_14.jpg";
+import personalized_Ads_Item_15 from "../../assets/img/personalizedAdsItems/personalized_Ads_Item_15.jpg";
 
 const personalizedAdsItems = [
   {

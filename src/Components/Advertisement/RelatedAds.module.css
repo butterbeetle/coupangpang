@@ -20,7 +20,7 @@
   width: 15px;
   height: 15px;
   vertical-align: -3px;
-  background: url("../assets/img/ad_icon.svg") no-repeat;
+  background: url("../../assets/img/ad_icon.svg") no-repeat;
   margin-left: 3px;
 }
 .related-ads__title-pages {
@@ -50,13 +50,13 @@
   top: 45%;
   width: 40px;
   height: 40px;
-  background: url("../assets/img/widget/coupang_widget.png") no-repeat -76px -1px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -76px -1px;
   cursor: pointer;
 }
 .related-ads__items-button:hover {
   width: 40px;
   height: 40px;
-  background: url("../assets/img/widget/coupang_widget.png") no-repeat 0 -1px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat 0 -1px;
 }
 .related-ads__items img {
   width: 160px;
@@ -74,11 +74,11 @@
   display: block;
   width: 75px;
   height: 15px;
-  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
 }
 .review-star {
   display: block;
   width: 90%;
   height: 15px;
-  background: url("../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
 }
