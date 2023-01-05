@@ -2,7 +2,8 @@
 .trending-item {
   margin: 0 1px;
 }
-.related-item {
+.related-item,
+.promotion-item {
   margin: 0 10px;
 }
 .infos {
@@ -25,11 +26,25 @@
   display: table-cell;
   vertical-align: middle;
 }
+.promotion-discount {
+  color: #cb1400;
+  font-weight: 700;
+  font-size: 12px;
+}
+.promotion-discount-badge {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 4px;
+  vertical-align: -2px;
+  background: url("../../assets/img/badges/discount-badge.png") no-repeat;
+}
 .info {
   padding: 6px 12px 4px;
 }
-.related-info {
-  padding: 12px 0 0 0;
+.related-info,
+.promotion-info {
+  padding: 6px 0 0 0;
 }
 
 .ads__items img {
@@ -48,7 +63,8 @@
   text-decoration: underline;
   color: #346aff;
 }
-.related-hover {
+.related-hover,
+.promotion-hover {
   text-decoration: underline;
 }
 .personalized-title,
@@ -57,12 +73,16 @@
   font-size: 14px;
   white-space: nowrap;
 }
-.related-title {
+.related-title,
+.promotion-title {
   display: -webkit-box;
   font-size: 12px;
   width: 145px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
+}
+.promotion-title {
+  -webkit-line-clamp: 2;
 }
 .price-unit {
   margin: 8px 0;

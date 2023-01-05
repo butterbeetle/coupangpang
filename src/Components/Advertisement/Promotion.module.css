@@ -1,0 +1,88 @@
+.contents {
+  padding-top: 40px;
+  position: relative;
+}
+.title {
+  position: relative;
+  margin-bottom: 30px;
+}
+.title-main {
+  font-size: 24px;
+  font-weight: 600;
+}
+.title-emphatic {
+  color: #cb1400;
+  margin-left: 6px;
+}
+.title-ads {
+  font-size: 14px;
+  color: #555;
+  padding-left: 10px;
+}
+.exclamation-mark {
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  vertical-align: -3px;
+  background: url("../../assets/img/ad_icon.svg") no-repeat;
+  margin-left: 3px;
+}
+.title-pages {
+  font-family: tahoma;
+  position: absolute;
+  right: 0;
+  display: inline-block;
+  font-size: 14px;
+  top: 5px;
+}
+.items {
+  position: relative;
+  width: 900px;
+  min-height: 330px;
+  overflow: hidden;
+  margin: 0 auto;
+}
+.items--ul {
+  position: absolute;
+  display: flex;
+  margin: 0;
+  transform: translate(-50%, -50%);
+}
+.items-button {
+  display: block;
+  position: absolute;
+  top: 45%;
+  width: 40px;
+  height: 40px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -76px -1px;
+  cursor: pointer;
+}
+.items-button:hover {
+  width: 40px;
+  height: 40px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat 0 -1px;
+}
+.items img {
+  width: 160px;
+  height: 160px;
+}
+
+.next {
+  right: 1px;
+}
+.prev {
+  left: 1px;
+  transform: scaleX(-1);
+}
+.empty-star {
+  display: block;
+  width: 75px;
+  height: 15px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+}
+.review-star {
+  display: block;
+  width: 90%;
+  height: 15px;
+  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
+}

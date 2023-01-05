@@ -43,6 +43,21 @@ const AdsItems = ({
   const onMouseLeave = () => {
     setHoverStyles(null);
   };
+
+  let discountJsx =
+    item_type === "promotion" ? (
+      <span className={styles["promotion-discount"]}>
+        <span className={styles["promotion-discount-badge"]} />
+        지금 {discount}% 할인 중
+      </span>
+    ) : (
+      <span className={styles["discount"]}>
+        <p>{discount}%</p>
+      </span>
+    );
+
+  if (item_type === "promotion") console.log(discountJsx);
+
   return (
     <li
       onMouseEnter={onMouseEnter}
@@ -52,11 +67,7 @@ const AdsItems = ({
       <Link href="/">
         <div className={styles["infos"]}>
           <img src={img} alt="오늘의 쇼핑 제안1" />
-          {discount && (
-            <span className={styles["discount"]}>
-              <p>{discount}%</p>
-            </span>
-          )}
+          {discount > 0 && discountJsx}
           <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>
             <div
               className={`${styles["title"]} ${styles[item_type + "-title"]} ${
@@ -69,9 +80,10 @@ const AdsItems = ({
             {item_type !== "personalized" && item_type !== "trending" && (
               <span className={`${styles["price-unit"]}`}>
                 <>
-                  <span className={`${styles["price"]} }`}>{priceComma}</span>
-                  원
-                  <span className={`${styles[badge]}`} />
+                  <span className={`${styles["price"]} }`}>{priceComma}</span>원
+                  {item_type !== "promotion" && (
+                    <span className={`${styles[badge]}`} />
+                  )}
                 </>
               </span>
             )}

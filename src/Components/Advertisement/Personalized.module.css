@@ -1,4 +1,4 @@
-.personalized-ads__contents {
+.contents {
   position: relative;
   margin-top: 40px;
   padding-bottom: 80px;
@@ -6,7 +6,7 @@
   min-height: 330px;
   overflow: hidden;
 }
-.personalized-ads__items-button {
+.items-button {
   position: absolute;
   top: 45%;
   display: inline-block;
@@ -17,32 +17,32 @@
   opacity: 0.5;
   z-index: 1;
 }
-.personalized-ads__items-button:hover {
+.items-button:hover {
   opacity: 0.7;
   transition: 0.4s ease-in-out;
 }
-.personalized-ads__title {
+.title {
   margin-bottom: 25px;
 }
-.personalized-ads__title span {
+.title span {
   font-size: 24px;
   font-weight: 600;
   padding-left: 42px;
   background: url("../../assets/img/Icon/icon-shopping-bag@3x.png") no-repeat;
   background-size: contain;
 }
-.personalized-ads__items--ul {
+.items--ul {
   position: absolute;
   display: flex;
   margin: 0;
 }
-.personalized-ads__item {
+.item {
   margin: 0 1px;
 }
-.personalized-ads__item-infos {
+.item-infos {
   position: relative;
 }
-.personalized-ads__item-discount {
+.item-discount {
   position: absolute;
   display: table;
   font-size: 16px;
@@ -55,15 +55,15 @@
   left: 0;
   top: 0;
 }
-.personalized-ads__item-discount p {
+.item-discount p {
   display: table-cell;
   vertical-align: middle;
 }
-.personalized-ads__item-info {
+.item-info {
   width: auto;
   padding: 6px 6px 4px;
 }
-.personalized-ads__items img {
+.items img {
   width: 194px;
   height: 194px;
 }

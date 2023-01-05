@@ -1,16 +1,16 @@
-.related-ads__contents {
+.contents {
   padding-top: 40px;
   position: relative;
 }
-.related-ads__title {
+.title {
   position: relative;
   margin-bottom: 30px;
 }
-.related-ads__title-main {
+.title-main {
   font-size: 18px;
   font-weight: 600;
 }
-.related-ads__title-ads {
+.title-ads {
   font-size: 14px;
   color: #555;
   padding-left: 10px;
@@ -23,7 +23,7 @@
   background: url("../../assets/img/ad_icon.svg") no-repeat;
   margin-left: 3px;
 }
-.related-ads__title-pages {
+.title-pages {
   font-family: tahoma;
   position: absolute;
   right: 0;
@@ -31,20 +31,20 @@
   font-size: 14px;
   top: 5px;
 }
-.related-ads__items {
+.items {
   position: relative;
   width: 900px;
   min-height: 330px;
   overflow: hidden;
   margin: 0 auto;
 }
-.related-ads__items--ul {
+.items--ul {
   position: absolute;
   display: flex;
   margin: 0;
   transform: translate(-50%, -50%);
 }
-.related-ads__items-button {
+.items-button {
   display: block;
   position: absolute;
   top: 45%;
@@ -53,12 +53,12 @@
   background: url("../../assets/img/widget/coupang_widget.png") no-repeat -76px -1px;
   cursor: pointer;
 }
-.related-ads__items-button:hover {
+.items-button:hover {
   width: 40px;
   height: 40px;
   background: url("../../assets/img/widget/coupang_widget.png") no-repeat 0 -1px;
 }
-.related-ads__items img {
+.items img {
   width: 160px;
   height: 160px;
 }

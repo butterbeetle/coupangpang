@@ -1,14 +1,15 @@
-import PersonalizedAds from "./PersonalizedAds";
-import TrendingAds from "./TrendingAds";
-import RelatedAds from "./RelatedAds";
+import Personalized from "./Personalized";
+import Trending from "./Trending";
+import Related from "./Related";
+import Promotion from "./Promotion";
 
 const Advertisement = () => {
   return (
     <>
-      <PersonalizedAds />
-      <TrendingAds />
-      <RelatedAds />
-      <RelatedAds />
+      <Personalized />
+      <Trending />
+      <Related />
+      <Promotion />
     </>
   );
 };
