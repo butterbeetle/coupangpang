@@ -66,7 +66,7 @@ const AdsItems = ({
               <span>{title}</span>
             </div>
 
-            {item_type !== "personalized" && (
+            {item_type !== "personalized" && item_type !== "trending" && (
               <span className={`${styles["price-unit"]}`}>
                 <>
                   <span className={`${styles["price"]} }`}>{priceComma}</span>

@@ -1,4 +1,5 @@
-.personalized-item {
+.personalized-item,
+.trending-item {
   margin: 0 1px;
 }
 .related-item {
@@ -42,14 +43,16 @@
   text-overflow: ellipsis;
 }
 
-.personalized-hover {
+.personalized-hover,
+.trending-hover {
   text-decoration: underline;
   color: #346aff;
 }
 .related-hover {
   text-decoration: underline;
 }
-.personalized-title {
+.personalized-title,
+.trending-title {
   width: 170px;
   font-size: 14px;
   white-space: nowrap;

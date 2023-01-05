@@ -1,11 +1,12 @@
 import PersonalizedAds from "./PersonalizedAds";
+import TrendingAds from "./TrendingAds";
 import RelatedAds from "./RelatedAds";
 
 const Advertisement = () => {
   return (
     <>
       <PersonalizedAds />
-      <PersonalizedAds />
+      <TrendingAds />
       <RelatedAds />
       <RelatedAds />
     </>
