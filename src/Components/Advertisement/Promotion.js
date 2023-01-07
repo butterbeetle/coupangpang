@@ -3,163 +3,167 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Promotion.module.css";
 import AdsItems from "./AdsItems";
 
-import promotionItem_01 from "../../assets/img/relatedItems/relatedItem_01.jpg";
-import promotionItem_02 from "../../assets/img/relatedItems/relatedItem_02.png";
-import promotionItem_03 from "../../assets/img/relatedItems/relatedItem_03.jpg";
-import promotionItem_04 from "../../assets/img/relatedItems/relatedItem_04.gif";
-import promotionItem_05 from "../../assets/img/relatedItems/relatedItem_05.jpg";
-import promotionItem_06 from "../../assets/img/relatedItems/relatedItem_06.jpg";
-import promotionItem_07 from "../../assets/img/relatedItems/relatedItem_07.jpg";
-import promotionItem_08 from "../../assets/img/relatedItems/relatedItem_08.png";
-import promotionItem_09 from "../../assets/img/relatedItems/relatedItem_09.jpg";
-import promotionItem_10 from "../../assets/img/relatedItems/relatedItem_10.jpg";
-import promotionItem_11 from "../../assets/img/relatedItems/relatedItem_11.jpg";
-import promotionItem_12 from "../../assets/img/relatedItems/relatedItem_12.jpg";
-import promotionItem_13 from "../../assets/img/relatedItems/relatedItem_13.jpg";
-import promotionItem_14 from "../../assets/img/relatedItems/relatedItem_14.jpg";
-import promotionItem_15 from "../../assets/img/relatedItems/relatedItem_15.jpg";
+import promotionItem_01 from "../../assets/img/promotionItems/promotionItem01.jpg";
+import promotionItem_02 from "../../assets/img/promotionItems/promotionItem02.jpg";
+import promotionItem_03 from "../../assets/img/promotionItems/promotionItem03.jpg";
+import promotionItem_04 from "../../assets/img/promotionItems/promotionItem04.jpg";
+import promotionItem_05 from "../../assets/img/promotionItems/promotionItem05.jpg";
+import promotionItem_06 from "../../assets/img/promotionItems/promotionItem06.png";
+import promotionItem_07 from "../../assets/img/promotionItems/promotionItem07.jpg";
+import promotionItem_08 from "../../assets/img/promotionItems/promotionItem08.jpeg";
+import promotionItem_09 from "../../assets/img/promotionItems/promotionItem09.jpg";
+import promotionItem_10 from "../../assets/img/promotionItems/promotionItem10.jpg";
+import promotionItem_11 from "../../assets/img/promotionItems/promotionItem11.jpg";
+import promotionItem_12 from "../../assets/img/promotionItems/promotionItem12.jpg";
+import promotionItem_13 from "../../assets/img/promotionItems/promotionItem13.jpg";
+import promotionItem_14 from "../../assets/img/promotionItems/promotionItem14.png";
+import promotionItem_15 from "../../assets/img/promotionItems/promotionItem15.png";
 
 const promotionItems = [
   {
     img: promotionItem_01,
-    title:
-      "[ 아르띠콜로 장미꽃 편지지 LED 무드등 ] 로맨틱 홀로그램 여자 친구 기념일 고백 선물 특별한 여친 생일 선물 꽃다발, 블루+편지지",
-    discount: 55,
-    price: 15000,
-    badge: "jet_delivary",
-    review_score: 5,
-    review_count: 51,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    price: 16280,
+    badge: null,
+    review_score: 4.5,
+    review_count: 555,
   },
   {
     img: promotionItem_02,
-    title:
-      "[ 전국 당일 3시간 배송 ] 꽃다발 / 꽃바구니 전지역 3시간 배송! 전국꽃배달 (주)화신플라워, 13. 핑크톤바구니",
-    discount: 55,
-    price: 40000,
-    badge: "null",
+    title: "미완성잡화점 홈데코 빈티지 하이틴 감성 포스터 엽서 B 세트",
+    discount: 40,
+    price: 7110,
+    badge: null,
     review_score: 5,
     review_count: 12,
   },
   {
     img: promotionItem_03,
-    title: "LED 이터널로즈 프리저브드 플라워 무드등 2종, Red&beauty 13cm",
-    discount: 55,
-    price: 21900,
+    title:
+      "[오후3시 당일발송] 일월 최신모델 23년형 초절전 워셔블 카본매트 70W 1인용 싱글 캠핑 침대 탄소매트 (90X180cm)",
+    discount: 19,
+    price: 44710,
     badge: "null",
-    review_score: 5,
-    review_count: 55,
+    review_score: 4.5,
+    review_count: 100,
   },
   {
     img: promotionItem_04,
     title:
-      "떡케이크 비누꽃다발 선물세트 ( 평일 15시이전 주문 당일출고-상세페이지 참고 ) 칠순 생일 기념 승진, 떡케이크 (원)C + 꽃다발",
-    discount: 55,
-    price: 44900,
-    badge: "null",
-    review_score: 5,
-    review_count: 72,
+      "갑조네 몬스테라아단소니 구멍몬스테라 오블리쿠아 공기정화식물 인테리어 화분 실내공기정화",
+    discount: 66,
+    price: 5100,
+    badge: null,
+    review_score: 4,
+    review_count: 1570,
   },
   {
     img: promotionItem_05,
-    title: "신비즈 장미 조화 부케 12송이 2p, 화이트핑크 2p",
-    discount: 55,
-    price: 15000,
-    badge: "jet_delivary",
-    review_score: 5,
-    review_count: 11,
+    title: "Modlauna 초고출력 헤어 드라이어 2000W, D087",
+    discount: 41,
+    price: 27140,
+    badge: null,
+    review_score: 4.5,
+    review_count: 86,
   },
   {
     img: promotionItem_06,
-    title: "프레시가든 공기정화식물 안스리움+해초바구니 세트, 레드",
-    discount: 55,
-    price: 38900,
-    badge: "rocket_fresh",
-    review_score: 5,
-    review_count: 420,
+    title:
+      "촉촉하족 실리콘 발 뒷꿈치 보호 패드 힐링 보습 풋패드 남여공용, 양발 뒤꿈치패드(스킨) 1세트",
+    discount: 26,
+    price: 5010,
+    badge: null,
+    review_score: 4.5,
+    review_count: 168,
   },
   {
     img: promotionItem_07,
-    title: "스칸디아모스 인테리어 편백나무화분, 04_모스그린",
-    discount: 55,
-    price: 19500,
-    badge: "null",
-    review_score: 5,
-    review_count: 22,
+    title: "듀얼하드 i7 게이밍 컴퓨터 롤 피파 배그 조립컴퓨터",
+    discount: 13,
+    price: 426810,
+    badge: null,
+    review_score: 4,
+    review_count: 36,
   },
   {
     img: promotionItem_08,
-    title: "이벤트용 시들지않는 안개꽃다발, 핑크",
-    discount: 55,
-    price: 36900,
-    badge: "zet_delivary",
-    review_score: 5,
-    review_count: 88,
+    title: "행운스타 레이저펜 레이저 점 빼는 잡티 제거기 9단 조절 CG009",
+    discount: 26,
+    price: 15710,
+    badge: null,
+    review_score: 4.5,
+    review_count: 19,
   },
   {
     img: promotionItem_09,
-    title: "동그리 토분, 19 cm",
-    discount: 55,
-    price: 9350,
-    badge: "null",
+    title:
+      "아란아트 귀여운일러스트그림액자 코끼리그림 부엉이그림 아이방꾸미기, 05 화목토끼",
+    discount: 15,
+    price: 13850,
+    badge: null,
     review_score: 5,
-    review_count: 79,
+    review_count: 51,
   },
   {
     img: promotionItem_10,
     title:
-      "핸드메이드 원목 플랜테리어 LED 밝기조절 무드등 사각 화분 이오난사, 멀바우브라운",
-    discount: 55,
-    price: 56900,
-    badge: "rocket_delivary",
-    review_score: 5,
-    review_count: 21,
+      "1+1 겨울 코듀로이 양털 슬리퍼 거실 실내화, 옐로우(여성), 그레이(남성)",
+    discount: 29,
+    price: 8410,
+    badge: null,
+    review_score: 4.5,
+    review_count: 973,
   },
+
   {
     img: promotionItem_11,
     title:
-      "메이크정글 공기정화식물 디퓨저팟 고무나무 식물 기프트 세트, 네이비, 1세트",
-    discount: 55,
-    price: 19000,
-    badge: "rocket_fresh",
-    review_score: 5,
-    review_count: 296,
+      "HPT07 스틱형 미니 소형 휴대용 눈 마사지기 두피 목 안마기 포터블 진동기 안구마사지 지압건, 레드",
+    discount: 10,
+    price: 5890,
+    badge: null,
+    review_score: 4,
+    review_count: 140,
   },
   {
     img: promotionItem_12,
-    title: "나루플랜트 플라워베어 장미곰돌이 조화 로즈베어 여자친구 선물, 레드",
-    discount: 55,
-    price: 28900,
-    badge: "rocket_delivary",
-    review_score: 5,
-    review_count: 71,
+    title:
+      "세잔느화실 해바라기일러스트2 캔버스액자 풍수 해바라기 액자 풍수그림 그림액자 현관 거실 액자형 돈들어오는 그림",
+    discount: 35,
+    price: 14400,
+    badge: null,
+    review_score: 4.5,
+    review_count: 1403,
   },
   {
     img: promotionItem_13,
-    title: "금장미 용돈박스 돈케이크 + 케이스 + 쇼핑백, 골드",
-    discount: 55,
-    price: 36900,
-    badge: "zet_delivary",
+    title: "쿠칭아일랜드 돈벼락 재물가득 부자되는 골드액자, 부자되는황금돈나무",
+    discount: 52,
+    price: 23650,
+    badge: null,
     review_score: 5,
-    review_count: 22,
+    review_count: 284,
   },
   {
     img: promotionItem_14,
-    title: "스칸디아모스 포레스트 화분, 스프링그린",
-    discount: 55,
-    price: 29700,
-    badge: "zet_delivary",
+    title:
+      "쿠칭아일랜드 더커진 돈벼락 재물가득 부자되는 골드액자 40x60cm 돈나무액자, 큰부자되는황금돈나무",
+    discount: 56,
+    price: 38160,
+    badge: null,
     review_score: 5,
-    review_count: 298,
+    review_count: 66,
   },
   {
     img: promotionItem_15,
     title:
-      "메이크정글 공기정화식물 디퓨저팟 호야 식물 기프트 세트, 옐로우, 1세트",
-    discount: 55,
-    price: 19000,
-    badge: "rocket_fresh",
-    review_score: 5,
-    review_count: 136,
+      "씨에카 똑딱이 단추 펀치 + 단추100개 세트 수선 단추펜치 단추달기 세트 DIY, 단추 펀치 + 단추 100개",
+    discount: 18,
+    price: 12580,
+    badge: null,
+    review_score: 4.5,
+    review_count: 128,
   },
 ];
 
