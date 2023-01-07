@@ -81,6 +81,24 @@
   min-height: 599px;
   border: 1px solid #ddd;
 }
+.promotion-button {
+  display: block;
+  z-index: 1;
+  position: absolute;
+  top: 44%;
+  width: 30px;
+  height: 50px;
+  background: url("../assets/img/widget/pc_bestcategory_v2_setting.png")
+    no-repeat 0 -15px;
+  cursor: pointer;
+}
+.prev {
+  left: 0;
+}
+.next {
+  right: 0;
+  transform: scaleX(-1);
+}
 .promotion__thumnail {
   margin: 0;
 }

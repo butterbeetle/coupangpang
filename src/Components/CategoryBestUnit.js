@@ -3,8 +3,24 @@ import today_shopping_item from "../img/today_shopping_item/today_shopping_item1
 import best_title1 from "../img/best_title/best_title_womanclothe2.png";
 import best_thumnail1 from "../img/best_title_thumnail/category_best_woman_thumbnail.jpg";
 import { Link } from "react-router-dom";
+import { useState } from "react";
 
 const CategoryBestUnit = () => {
+  const [buttonHover, setButtonHover] = useState(false);
+  const onMouseEnter = () => {
+    setButtonHover(true);
+  };
+  const onMouseLeave = () => {
+    setButtonHover(false);
+  };
+
+  let buttonJsx = buttonHover && (
+    <>
+      <span className={`${styles["promotion-button"]} ${styles["prev"]} `} />
+      <span className={`${styles["promotion-button"]} ${styles["next"]} `} />
+    </>
+  );
+
   return (
     <article className={styles["contents"]}>
       <span className={styles["title"]} />
@@ -26,7 +42,12 @@ const CategoryBestUnit = () => {
             <li>#에코백</li>
           </ul>
         </div>
-        <div className={styles["promotion"]}>
+        <div
+          onMouseEnter={onMouseEnter}
+          onMouseLeave={onMouseLeave}
+          className={styles["promotion"]}
+        >
+          {buttonJsx}
           <ul className={styles["promotion__thumnail"]}>
             <li>
               <Link to="/">
