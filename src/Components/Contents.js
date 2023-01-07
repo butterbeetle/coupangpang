@@ -2,7 +2,7 @@ import styles from "./Contents.module.css";
 import Sidebar from "./Sidebar";
 import Discovery from "./Discovery/Discovery";
 import Advertisement from "./Advertisement/Advertisement";
-import RecommendCategory from "./RecommendCategory";
+import CategoryBestUnit from "./CategoryBestUnit";
 
 const Contents = () => {
   return (
@@ -10,7 +10,7 @@ const Contents = () => {
       <Sidebar />
       <Discovery />
       <Advertisement />
-      <RecommendCategory />
+      <CategoryBestUnit />
     </section>
   );
 };
