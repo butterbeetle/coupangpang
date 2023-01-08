@@ -159,19 +159,22 @@
 .test:last-child {
   margin: 0;
 }
-.test2 {
-  width: auto;
-}
 
+.test3 {
+  width: 547px;
+  min-height: 600px;
+  overflow: hidden;
+}
 .test3 ul {
   display: flex;
   flex-wrap: wrap;
-  padding: 5px 0 0 0;
-  margin: 0;
+  padding: 0;
+  margin: 0 auto;
 }
 .test3 li {
   width: fit-content;
-  padding: 25px 12px 70px;
+  padding: 20px 8px 79px 12px;
+  border-bottom: 1px solid #ddd;
 }
 
 .test3 img {

@@ -56,8 +56,6 @@ const AdsItems = ({
       </span>
     );
 
-  if (item_type === "promotion") console.log(discountJsx);
-
   return (
     <li
       onMouseEnter={onMouseEnter}
