@@ -77,8 +77,8 @@
 .promotion {
   position: relative;
   margin-left: 145px;
-  width: 324px;
-  min-height: 599px;
+  width: 325px;
+  min-height: 600px;
   border: 1px solid #ddd;
 }
 .promotion-button {
@@ -89,7 +89,7 @@
   width: 30px;
   height: 50px;
   background: url("../assets/img/widget/pc_bestcategory_v2_setting.png")
-    no-repeat 0 -15px;
+    no-repeat 0px -15px;
   cursor: pointer;
 }
 .prev {
@@ -104,6 +104,15 @@
 }
 .promotion__thumnail li {
   position: absolute;
+}
+.promotion__thumnail li img {
+  vertical-align: top;
+}
+.none {
+  display: none;
+}
+.active {
+  display: block;
 }
 .promotion__caption {
   z-index: 1;
@@ -140,10 +149,16 @@
   width: 10px;
   height: 10px;
   background: url("../assets/img/widget/pc_bestcategory_v2_setting.png")
-    no-repeat -50px -113px;
+    no-repeat 0px -113px;
   margin-right: 10px;
 }
-
+.index {
+  background: url("../assets/img/widget/pc_bestcategory_v2_setting.png")
+    no-repeat -50px -113px;
+}
+.test:last-child {
+  margin: 0;
+}
 .test2 {
   width: auto;
 }
