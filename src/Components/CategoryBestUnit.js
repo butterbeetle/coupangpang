@@ -15,6 +15,7 @@ import womanClothes_07 from "../assets/img/categoryBestUnit/womanClothes/womanCl
 import testttt from "../assets/img/categoryBestUnit/womanClothes/1.png";
 
 import useInterval from "../hooks/useInterval";
+import AdsItems from "./Advertisement/AdsItems";
 
 // const bestUnitItems = [
 //   {
@@ -106,6 +107,66 @@ const UnitItems = [
       title: "디자이너 브랜드 ~53%",
       description: "키르시 / 로라로라 / 리올그",
     },
+  },
+];
+const testItems = [
+  {
+    img: testttt,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    price: 16280,
+    badge: "rocket_delivary",
+    review_score: 4.5,
+    review_count: 555,
+  },
+  {
+    img: testttt,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    discount_type: "즉시할인가",
+    price: 16280,
+    badge: "jet_delivary",
+    review_score: 4.5,
+    review_count: 555,
+  },
+  {
+    img: testttt,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    discount_type: "와우할인가",
+    price: 16280,
+    badge: null,
+    review_score: 4.5,
+    review_count: 555,
+  },
+  {
+    img: testttt,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    price: 16280,
+    badge: "rocket_delivary",
+    review_score: 4.5,
+    review_count: 555,
+  },
+  {
+    img: testttt,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    discount_type: "와우할인가",
+    price: 16280,
+    badge: "jet_delivary",
+    review_score: 4.5,
+    review_count: 555,
+  },
+  {
+    img: testttt,
+    title: "골드해바라기 3송이, 5.골드 해바라기 세송이",
+    discount: 0,
+    discount_type: "즉시할인가",
+    price: 16280,
+    badge: "rocket_delivary",
+    review_score: 4.5,
+    review_count: 555,
   },
 ];
 const CategoryBestUnit = () => {
@@ -212,108 +273,22 @@ const CategoryBestUnit = () => {
           </ul>
         </div>
 
-        <div className={styles.test3}>
+        <div className={styles["items"]}>
           <ul>
-            <li>
-              <a href="/">
-                <img src={testttt} alt="오늘의 쇼핑 제안1" />
-                <div>
-                  <span className={styles.now_recommend_ad_title}>
-                    TCL 4K QLED 안드로이드 안드로이드
-                  </span>
-                </div>
-                <div>
-                  <span className={styles.empty_star}>
-                    <span className={styles.review_star} />
-                  </span>
-                </div>
-              </a>
-            </li>
-            <li>
-              <div>
-                <a href="/">
-                  <img src={testttt} alt="오늘의 쇼핑 제안1" />
-                  <div>
-                    <span className={styles.now_recommend_ad_title}>
-                      TCL 4K QLED 안드로이드 안드로이드
-                    </span>
-                  </div>
-                  <div>
-                    <span className={styles.empty_star}>
-                      <span className={styles.review_star} />
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div>
-                <a href="/">
-                  <img src={testttt} alt="오늘의 쇼핑 제안1" />
-                  <div>
-                    <span className={styles.now_recommend_ad_title}>
-                      TCL 4K QLED 안드로이드 안드로이드
-                    </span>
-                  </div>
-                  <div>
-                    <span className={styles.empty_star}>
-                      <span className={styles.review_star} />
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div>
-                <a href="/">
-                  <img src={testttt} alt="오늘의 쇼핑 제안1" />
-                  <div>
-                    <span className={styles.now_recommend_ad_title}>
-                      TCL 4K QLED 안드로이드 안드로이드
-                    </span>
-                  </div>
-                  <div>
-                    <span className={styles.empty_star}>
-                      <span className={styles.review_star} />
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div>
-                <a href="/">
-                  <img src={testttt} alt="오늘의 쇼핑 제안1" />
-                  <div>
-                    <span className={styles.now_recommend_ad_title}>
-                      TCL 4K QLED 안드로이드 안드로이드
-                    </span>
-                  </div>
-                  <div>
-                    <span className={styles.empty_star}>
-                      <span className={styles.review_star} />
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </li>
-            <li>
-              <div>
-                <a href="/">
-                  <img src={testttt} alt="오늘의 쇼핑 제안1" />
-                  <div>
-                    <span className={styles.now_recommend_ad_title}>
-                      TCL 4K QLED 안드로이드 안드로이드
-                    </span>
-                  </div>
-                  <div>
-                    <span className={styles.empty_star}>
-                      <span className={styles.review_star} />
-                    </span>
-                  </div>
-                </a>
-              </div>
-            </li>
+            {testItems.map((item, itemIndex) => (
+              <AdsItems
+                key={itemIndex}
+                item_type="bestUnit"
+                img={item.img}
+                title={item.title}
+                discount={item.discount}
+                discount_type={item.discount_type}
+                price={item.price}
+                badge={item.badge}
+                review_score={item.review_score}
+                review_count={item.review_count}
+              />
+            ))}
           </ul>
         </div>
       </div>

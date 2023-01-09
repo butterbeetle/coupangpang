@@ -7,6 +7,7 @@ const AdsItems = ({
   img,
   title,
   discount,
+  discount_type = null,
   price,
   badge,
   review_score,
@@ -66,6 +67,9 @@ const AdsItems = ({
         <div className={styles["infos"]}>
           <img src={img} alt="오늘의 쇼핑 제안1" />
           {discount > 0 && discountJsx}
+          {item_type === "bestUnit" && (
+            <div className={styles["discount-type"]}>{discount_type}</div>
+          )}
           <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>
             <div
               className={`${styles["title"]} ${styles[item_type + "-title"]} ${
@@ -76,9 +80,13 @@ const AdsItems = ({
             </div>
 
             {item_type !== "personalized" && item_type !== "trending" && (
-              <span className={`${styles["price-unit"]}`}>
+              <span
+                className={`${styles["price-unit"]} ${
+                  item_type === "bestUnit" ? styles["price-best"] : null
+                }`}
+              >
                 <>
-                  <span className={`${styles["price"]} }`}>{priceComma}</span>원
+                  <span className={`${styles["price"]} `}>{priceComma}</span>원
                   {item_type !== "promotion" && (
                     <span className={`${styles[badge]}`} />
                   )}
@@ -86,20 +94,22 @@ const AdsItems = ({
               </span>
             )}
 
-            {item_type !== "related" && (
+            {item_type !== "related" && item_type !== "bestUnit" && (
               <span className={`${badgeStyles}`}>
                 {badge === "free_delivary" && "무료배송"}
               </span>
             )}
-            <div className={styles["review"]}>
-              <span className={styles["empty-star"]}>
-                <span
-                  className={styles["review-star"]}
-                  style={{ width: score }}
-                />
-              </span>
-              <span className={styles["review-count"]}>({count})</span>
-            </div>
+            {item_type !== "bestUnit" && (
+              <div className={styles["review"]}>
+                <span className={styles["empty-star"]}>
+                  <span
+                    className={styles["review-star"]}
+                    style={{ width: score }}
+                  />
+                </span>
+                <span className={styles["review-count"]}>({count})</span>
+              </div>
+            )}
           </div>
         </div>
       </Link>

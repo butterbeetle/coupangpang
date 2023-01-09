@@ -43,7 +43,8 @@
   padding: 6px 12px 4px;
 }
 .related-info,
-.promotion-info {
+.promotion-info,
+.bestUnit-info {
   padding: 6px 0 0 0;
 }
 
@@ -59,7 +60,8 @@
 }
 
 .personalized-hover,
-.trending-hover {
+.trending-hover,
+.bestUnit-hover {
   text-decoration: underline;
   color: #346aff;
 }
@@ -74,14 +76,16 @@
   white-space: nowrap;
 }
 .related-title,
-.promotion-title {
+.promotion-title,
+.bestUnit-title {
   display: -webkit-box;
   font-size: 12px;
   width: 145px;
   -webkit-box-orient: vertical;
   -webkit-line-clamp: 3;
 }
-.promotion-title {
+.promotion-title,
+.bestUnit-title {
   -webkit-line-clamp: 2;
 }
 .price-unit {
@@ -94,6 +98,14 @@
 .price {
   font-family: "tahoma";
   font-size: 14px;
+}
+.price-best {
+  color: black;
+}
+.discount-type {
+  font-size: 12px;
+  color: #ae0000;
+  margin: 2px 0 -3px;
 }
 .badge-free {
   color: #888;
