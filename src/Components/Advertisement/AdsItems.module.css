@@ -2,6 +2,9 @@
 .trending-item {
   margin: 0 1px;
 }
+.bestUnit-item {
+  margin: 0;
+}
 .related-item,
 .promotion-item {
   margin: 0 10px;
