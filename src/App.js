@@ -3,7 +3,10 @@ import JoinForm from "./Components/Auth/JoinForm";
 import LoginForm from "./Components/Auth/LoginForm";
 import Main from "./pages/Main";
 
+import { firestore } from "./firebase-config";
+
 function App() {
+  console.log(firestore);
   return (
     <BrowserRouter>
       <Routes>

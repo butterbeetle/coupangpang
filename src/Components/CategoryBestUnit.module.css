@@ -10,9 +10,10 @@
   background: url("../assets/img/widget/coupang_widget_main.png") no-repeat 0px -125px;
 }
 .main {
+  position: relative;
   border-top: 2px solid #f6699e;
   display: flex;
-  margin-bottom: 25px;
+  margin-bottom: 20px;
 }
 
 .category {

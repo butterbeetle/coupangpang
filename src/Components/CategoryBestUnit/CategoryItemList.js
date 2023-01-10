@@ -308,7 +308,7 @@ const CategoryItemList = () => {
   const offset = 6;
   const totalItems = testItems.length;
   const maxIndex = Math.ceil(totalItems / offset) - 1;
-  console.log(maxIndex);
+
   const onMouseEnter = () => {
     setBtnHover(true);
   };

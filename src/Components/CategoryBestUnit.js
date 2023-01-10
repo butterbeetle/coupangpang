@@ -27,8 +27,8 @@ import best_title1 from "../img/best_title/best_title_womanclothe2.png";
 const CategoryBestUnit = () => {
   return (
     <article className={styles["best-unit"]}>
+      <span className={styles["title"]} />
       <div className={styles["contents"]}>
-        <span className={styles["title"]} />
         <div className={styles["main"]}>
           <div className={styles["category"]}>
             <img src={best_title1} alt="Title" />
