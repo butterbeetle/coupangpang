@@ -1,6 +1,8 @@
 .best-unit {
-  width: 1020px;
-  margin: 0px auto;
+  position: relative;
+  margin: 0 auto;
+  width: 1068px;
+  padding-left: 48px;
 }
 .title {
   display: inline-block;

@@ -15,11 +15,11 @@ const discoveryItems = [
 
 const Discovery = () => {
   return (
-    <article className={styles["discovery"]}>
-      <div>
-        <span className={styles["discovery__title"]} />
-        <div className={styles["discovery__items"]}>
-          <div className={styles["discovery__grid"]}>
+    <article className={styles["main"]}>
+      <div className={styles["contents"]}>
+        <span className={styles["title"]} />
+        <div className={styles["items"]}>
+          <div className={styles["grid"]}>
             {discoveryItems.map((item, idx) => (
               <DiscoveryItems key={idx} url={item.url} idx={idx + 1} />
             ))}

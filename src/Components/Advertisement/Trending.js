@@ -218,52 +218,54 @@ const TrendingAds = () => {
   };
 
   return (
-    <div className={styles["contents"]}>
-      <div className={styles["title"]}>
-        <span>좋아할만한 카테고리 상품</span>
+    <article className={styles["main"]}>
+      <div className={styles["contents"]}>
+        <div className={styles["title"]}>
+          <span>좋아할만한 카테고리 상품</span>
+        </div>
+        <div className={styles["items"]}>
+          <span
+            onMouseEnter={prev}
+            onClick={decreaseIndex}
+            className={`${styles["items-button"]} ${styles["prev"]}`}
+          />
+          <span
+            onMouseEnter={next}
+            onClick={increaseIndex}
+            className={`${styles["items-button"]} ${styles["next"]}`}
+          />
+          <AnimatePresence initial={false} onExitComplete={togglePlaying}>
+            <motion.ul
+              key={index}
+              custom={{ back }}
+              variants={slides}
+              initial="init"
+              animate="center"
+              exit="exit"
+              transition={{ type: "tween", duration: 0.6 }}
+              className={styles["items--ul"]}
+            >
+              {trendingItems
+                .slice(offset * index, offset * index + offset)
+                .map((item, itemIndex) => (
+                  <AdsItems
+                    key={itemIndex}
+                    item_type="trending"
+                    img={item.img}
+                    title={item.title}
+                    discount={item.discount}
+                    price={item.price}
+                    badge={item.badge}
+                    review_score={item.review_score}
+                    review_count={item.review_count}
+                  />
+                ))}
+            </motion.ul>
+          </AnimatePresence>
+        </div>
+        <span className={styles["description"]}>광고</span>
       </div>
-      <div className={styles["items"]}>
-        <span
-          onMouseEnter={prev}
-          onClick={decreaseIndex}
-          className={`${styles["items-button"]} ${styles["prev"]}`}
-        />
-        <span
-          onMouseEnter={next}
-          onClick={increaseIndex}
-          className={`${styles["items-button"]} ${styles["next"]}`}
-        />
-        <AnimatePresence initial={false} onExitComplete={togglePlaying}>
-          <motion.ul
-            key={index}
-            custom={{ back }}
-            variants={slides}
-            initial="init"
-            animate="center"
-            exit="exit"
-            transition={{ type: "tween", duration: 0.6 }}
-            className={styles["items--ul"]}
-          >
-            {trendingItems
-              .slice(offset * index, offset * index + offset)
-              .map((item, itemIndex) => (
-                <AdsItems
-                  key={itemIndex}
-                  item_type="trending"
-                  img={item.img}
-                  title={item.title}
-                  discount={item.discount}
-                  price={item.price}
-                  badge={item.badge}
-                  review_score={item.review_score}
-                  review_count={item.review_count}
-                />
-              ))}
-          </motion.ul>
-        </AnimatePresence>
-      </div>
-      <span className={styles["description"]}>광고</span>
-    </div>
+    </article>
   );
 };
 

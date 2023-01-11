@@ -212,57 +212,59 @@ const Promotion = () => {
   };
 
   return (
-    <div className={styles["contents"]}>
-      <div className={styles["title"]}>
-        <span className={styles["title-main"]}>
-          오늘의
-          <span className={styles["title-emphatic"]}>판매자 특가</span>
-        </span>
-        <span className={styles["title-pages"]}>
-          <strong>{index + 1}</strong>/3
-        </span>
+    <article className={styles["main"]}>
+      <div className={styles["contents"]}>
+        <div className={styles["title"]}>
+          <span className={styles["title-main"]}>
+            오늘의
+            <span className={styles["title-emphatic"]}>판매자 특가</span>
+          </span>
+          <span className={styles["title-pages"]}>
+            <strong>{index + 1}</strong>/3
+          </span>
+        </div>
+        <span
+          onMouseEnter={prev}
+          onClick={decreaseIndex}
+          className={`${styles["items-button"]} ${styles["prev"]}`}
+        />
+        <span
+          onMouseEnter={next}
+          onClick={increaseIndex}
+          className={`${styles["items-button"]} ${styles["next"]}`}
+        />
+        <div className={styles["items"]}>
+          <AnimatePresence initial={false} onExitComplete={togglePlaying}>
+            <motion.ul
+              key={index}
+              custom={{ back }}
+              variants={slides}
+              initial="init"
+              animate="center"
+              exit="exit"
+              transition={{ type: "tween", duration: 0.6 }}
+              className={styles["items--ul"]}
+            >
+              {promotionItems
+                .slice(offset * index, offset * index + offset)
+                .map((item, itemIndex) => (
+                  <AdsItems
+                    key={itemIndex}
+                    item_type="promotion"
+                    img={item.img}
+                    title={item.title}
+                    discount={item.discount}
+                    price={item.price}
+                    badge={item.badge}
+                    review_score={item.review_score}
+                    review_count={item.review_count}
+                  />
+                ))}
+            </motion.ul>
+          </AnimatePresence>
+        </div>
       </div>
-      <span
-        onMouseEnter={prev}
-        onClick={decreaseIndex}
-        className={`${styles["items-button"]} ${styles["prev"]}`}
-      />
-      <span
-        onMouseEnter={next}
-        onClick={increaseIndex}
-        className={`${styles["items-button"]} ${styles["next"]}`}
-      />
-      <div className={styles["items"]}>
-        <AnimatePresence initial={false} onExitComplete={togglePlaying}>
-          <motion.ul
-            key={index}
-            custom={{ back }}
-            variants={slides}
-            initial="init"
-            animate="center"
-            exit="exit"
-            transition={{ type: "tween", duration: 0.6 }}
-            className={styles["items--ul"]}
-          >
-            {promotionItems
-              .slice(offset * index, offset * index + offset)
-              .map((item, itemIndex) => (
-                <AdsItems
-                  key={itemIndex}
-                  item_type="promotion"
-                  img={item.img}
-                  title={item.title}
-                  discount={item.discount}
-                  price={item.price}
-                  badge={item.badge}
-                  review_score={item.review_score}
-                  review_count={item.review_count}
-                />
-              ))}
-          </motion.ul>
-        </AnimatePresence>
-      </div>
-    </div>
+    </article>
   );
 };
 

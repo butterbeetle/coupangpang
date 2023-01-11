@@ -51,6 +51,52 @@ const CategoryBestUnit = () => {
           <CategoryItemList />
         </div>
       </div>
+      <div className={styles["contents"]}>
+        <div className={styles["main"]}>
+          <div className={styles["category"]}>
+            <img src={best_title1} alt="Title" />
+            <Link to="/">
+              <span className={styles["shortcut"]}>{"바로가기 >"}</span>
+            </Link>
+          </div>
+          <div className={styles["keyword"]}>
+            <h4>HOT키워드</h4>
+            <ul>
+              <li>#반팔 티셔츠</li>
+              <li>#원피스</li>
+              <li>#청바지</li>
+              <li>#에코백</li>
+              <li>#샌들</li>
+              <li>#에코백</li>
+            </ul>
+          </div>
+          <CategoryPromotion />
+          <CategoryItemList />
+        </div>
+      </div>
+      <div className={styles["contents"]}>
+        <div className={styles["main"]}>
+          <div className={styles["category"]}>
+            <img src={best_title1} alt="Title" />
+            <Link to="/">
+              <span className={styles["shortcut"]}>{"바로가기 >"}</span>
+            </Link>
+          </div>
+          <div className={styles["keyword"]}>
+            <h4>HOT키워드</h4>
+            <ul>
+              <li>#반팔 티셔츠</li>
+              <li>#원피스</li>
+              <li>#청바지</li>
+              <li>#에코백</li>
+              <li>#샌들</li>
+              <li>#에코백</li>
+            </ul>
+          </div>
+          <CategoryPromotion />
+          <CategoryItemList />
+        </div>
+      </div>
     </article>
   );
 };
