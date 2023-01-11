@@ -1,6 +1,7 @@
 import { initializeApp } from "firebase/app";
-import "firebase/compat/firestore";
-import firebase from "firebase/compat/app";
+
+import { getFirestore } from "firebase/firestore";
+import { getStorage } from "firebase/storage";
 
 const firebaseConfig = {
   apiKey: process.env.REACT_APP_APIKEY,
@@ -11,8 +12,10 @@ const firebaseConfig = {
   appId: process.env.REACT_APP_APP_ID,
 };
 
-firebase.initializeApp(firebaseConfig);
+const app = initializeApp(firebaseConfig);
 
-const firestore = firebase.firestore();
+const firestore = getFirestore(app);
 
-export { firestore };
+const storage = getStorage(app);
+
+export { firestore, storage };
