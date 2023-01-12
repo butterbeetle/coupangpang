@@ -1,0 +1,13 @@
+.menu {
+  position: fixed;
+  top: 10px;
+  width: 34px;
+  margin-left: -48px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.menu ul {
+  margin: 0;
+}

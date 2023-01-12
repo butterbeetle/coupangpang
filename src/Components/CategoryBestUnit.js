@@ -5,6 +5,7 @@ import CategoryPromotion from "./CategoryBestUnit/CategoryPromotion";
 import CategoryItemList from "./CategoryBestUnit/CategoryItemList";
 
 import best_title1 from "../img/best_title/best_title_womanclothe2.png";
+import SideMenu from "./CategoryBestUnit/SideMenu";
 // const bestUnitItems = [
 //   {
 //     title:"woman-clothes",
@@ -27,6 +28,7 @@ import best_title1 from "../img/best_title/best_title_womanclothe2.png";
 const CategoryBestUnit = () => {
   return (
     <article className={styles["best-unit"]}>
+      <SideMenu />
       <span className={styles["title"]} />
       <div className={styles["contents"]}>
         <div className={styles["main"]}>
