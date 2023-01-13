@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./SideMenu.module.css";
 import SideMenuItem from "./SideMenuItem";
 
@@ -95,6 +96,12 @@ const menuItems = [
   },
 ];
 const SideMenu = () => {
+  const [click, setClick] = useState(false);
+
+  const onClick = () => {
+    setClick((prev) => !prev);
+  };
+
   return (
     <div className={styles["menu"]}>
       <ul>
@@ -102,6 +109,25 @@ const SideMenu = () => {
           <SideMenuItem index={index} title={item.title} style={item.styles} />
         ))}
       </ul>
+      <span onClick={onClick} className={styles["setting"]} />
+      <div className={styles["setting-category"]}>
+        <div className={styles["setting-category__title"]}>
+          <p className={styles["title"]}>카테고리 설정하기</p>
+          <p className={styles["description"]}>
+            보고싶은 카테고리의 순서를 바꿔보세요.
+          </p>
+          <button className={styles["reset"]}>초기화</button>
+        </div>
+        <ul className={styles["second"]}>
+          <li>a</li>
+          <li>b</li>
+          <li>c</li>
+        </ul>
+        <div className={styles["buttons"]}>
+          <button className={styles["cancel"]}>취소</button>
+          <button className={styles["confirm"]}>확인</button>
+        </div>
+      </div>
     </div>
   );
 };
