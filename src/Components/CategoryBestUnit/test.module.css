@@ -1,0 +1,9 @@
+.list {
+  height: 38px;
+  margin-top: -1px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.list:last-child {
+  border: 0;
+}

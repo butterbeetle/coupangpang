@@ -40,7 +40,7 @@ const CategoryBestUnit = () => {
   return (
     <article className={styles["best-unit"]} ref={test2}>
       <button onClick={scrollSection}>test</button>
-      {/* <SideMenu /> */}
+      <SideMenu />
       <span className={styles["title"]} />
       <div className={styles["contents"]}>
         <div className={styles["main"]}>
