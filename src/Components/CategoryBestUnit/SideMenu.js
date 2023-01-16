@@ -4,7 +4,7 @@ import SideMenuItem from "./SideMenuItem";
 
 import { Reorder } from "framer-motion";
 import Test from "./test";
-//18
+
 const menuItems = [
   {
     key: 0,
@@ -123,12 +123,12 @@ const SideMenu = () => {
   const onClick = () => {
     setClick((prev) => !prev);
   };
-  console.log(menus);
+
   return (
     <div className={styles["menu"]}>
       <ul>
-        {menuItems.map((item, index) => (
-          <SideMenuItem index={index} title={item.title} style={item.styles} />
+        {menus.map((menu) => (
+          <SideMenuItem key={menu.key} title={menu.title} item={menu} />
         ))}
       </ul>
       <span onClick={onClick} className={styles["setting"]} />
@@ -147,13 +147,6 @@ const SideMenu = () => {
             onReorder={setMenus}
           >
             {menus.map((menu) => (
-              // <Reorder.Item
-              //   className={styles["list"]}
-              //   key={menu.key}
-              //   value={menu}
-              // >
-              //   {menu.title}
-              // </Reorder.Item>
               <Test key={menu.key} title={menu.title} item={menu} />
             ))}
           </Reorder.Group>

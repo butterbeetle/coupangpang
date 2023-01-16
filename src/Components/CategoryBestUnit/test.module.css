@@ -1,9 +1,15 @@
 .list {
+  position: relative;
+  cursor: grab;
   height: 38px;
   margin-top: -1px;
+  background-color: #fff;
+}
+.none {
   border-top: 1px solid #ddd;
   border-bottom: 1px solid #ddd;
 }
-.list:last-child {
-  border: 0;
+.active {
+  border: 1px solid #ddd;
+  box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.3);
 }

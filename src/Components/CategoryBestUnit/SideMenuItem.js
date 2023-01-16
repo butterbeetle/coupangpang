@@ -1,7 +1,7 @@
 import { useState } from "react";
 import styles from "./SideMenuItem.module.css";
 
-const SideMenuItem = ({ index, title, style }) => {
+const SideMenuItem = ({ item }) => {
   const [hover, setHover] = useState(false);
 
   const onMouseEnter = () => {
@@ -13,20 +13,22 @@ const SideMenuItem = ({ index, title, style }) => {
 
   return (
     <li
+      key={item.key}
       className={styles["list"]}
-      key={index}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
       <span
         className={`
         ${styles["icon"]} 
-        ${hover ? styles[style + "-hover"] : styles[style]} 
-        ${hover ? styles[style + "-color"] : ""}`}
+        ${hover ? styles[item.styles + "-hover"] : styles[item.styles]} 
+        ${hover ? styles[item.styles + "-color"] : ""}`}
       />
       {hover && (
-        <span className={`${styles["title"]} ${styles[style + "-title"]}`}>
-          {title}
+        <span
+          className={`${styles["title"]} ${styles[item.styles + "-title"]}`}
+        >
+          {item.title}
         </span>
       )}
     </li>

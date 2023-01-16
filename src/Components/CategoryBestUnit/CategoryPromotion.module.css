@@ -39,7 +39,6 @@
   display: block;
 }
 .promotion__caption {
-  z-index: 1;
   position: absolute;
   display: block;
   width: 280px;
