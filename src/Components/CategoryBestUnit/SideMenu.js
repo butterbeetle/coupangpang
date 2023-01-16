@@ -124,6 +124,10 @@ const SideMenu = () => {
     setClick((prev) => !prev);
   };
 
+  const resetItems = () => {
+    setMenus(menuItems);
+  };
+
   return (
     <div className={styles["menu"]}>
       <ul>
@@ -133,28 +137,33 @@ const SideMenu = () => {
       </ul>
       <span onClick={onClick} className={styles["setting"]} />
       {click && (
-        <div className={styles["setting-category"]}>
-          <div className={styles["setting-category__title"]}>
-            <p className={styles["title"]}>카테고리 설정하기</p>
-            <p className={styles["description"]}>
-              보고싶은 카테고리의 순서를 바꿔보세요.
-            </p>
-            <button className={styles["reset"]}>초기화</button>
+        <>
+          <div className={styles["setting-category"]}>
+            <i className={styles["box-tail"]} />
+            <div className={styles["setting-category__title"]}>
+              <p className={styles["title"]}>카테고리 설정하기</p>
+              <p className={styles["description"]}>
+                보고싶은 카테고리의 순서를 바꿔보세요.
+              </p>
+              <button onClick={resetItems} className={styles["reset"]}>
+                초기화
+              </button>
+            </div>
+            <Reorder.Group
+              className={styles["menus"]}
+              values={menus}
+              onReorder={setMenus}
+            >
+              {menus.map((menu) => (
+                <Test key={menu.key} title={menu.title} item={menu} />
+              ))}
+            </Reorder.Group>
+            <div className={styles["buttons"]}>
+              <button className={styles["cancel"]}>취소</button>
+              <button className={styles["confirm"]}>확인</button>
+            </div>
           </div>
-          <Reorder.Group
-            className={styles["menus"]}
-            values={menus}
-            onReorder={setMenus}
-          >
-            {menus.map((menu) => (
-              <Test key={menu.key} title={menu.title} item={menu} />
-            ))}
-          </Reorder.Group>
-          <div className={styles["buttons"]}>
-            <button className={styles["cancel"]}>취소</button>
-            <button className={styles["confirm"]}>확인</button>
-          </div>
-        </div>
+        </>
       )}
     </div>
   );

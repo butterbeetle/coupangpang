@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "./SideMenuItem.module.css";
+import icons from "./ItemsIcon.module.css";
 
 const SideMenuItem = ({ item }) => {
   const [hover, setHover] = useState(false);
@@ -21,13 +22,10 @@ const SideMenuItem = ({ item }) => {
       <span
         className={`
         ${styles["icon"]} 
-        ${hover ? styles[item.styles + "-hover"] : styles[item.styles]} 
-        ${hover ? styles[item.styles + "-color"] : ""}`}
+        ${hover ? icons[item.styles + "-hover"] : icons[item.styles]} `}
       />
       {hover && (
-        <span
-          className={`${styles["title"]} ${styles[item.styles + "-title"]}`}
-        >
+        <span className={`${styles["title"]} ${icons[item.styles + "-color"]}`}>
           {item.title}
         </span>
       )}
