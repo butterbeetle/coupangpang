@@ -1,45 +1,52 @@
-import { Reorder } from "framer-motion";
+import { Reorder, useDragControls } from "framer-motion";
 import { useState } from "react";
 import styles from "./test.module.css";
 import icons from "./ItemsIcon.module.css";
 
 const Test = ({ item }) => {
-  const [active, setActive] = useState(false);
+  const controls = useDragControls();
+  const [isDrag, setIsDrag] = useState(false);
   const [isCheck, setIsCheck] = useState(true);
 
   const onDragStart = () => {
-    setActive((prev) => (prev = true));
+    setIsDrag((prev) => (prev = true));
   };
   const onDragEnd = () => {
-    setActive((prev) => (prev = false));
+    setIsDrag((prev) => (prev = false));
   };
-  const onClick = () => {
+  const onChange = () => {
     setIsCheck((prev) => !prev);
   };
+  console.log(isCheck);
   return (
     <Reorder.Item
       className={`${styles["list"]} ${
-        active ? styles["active"] : styles["none"]
+        isDrag ? styles["active"] : styles["none"]
       }`}
       onDragStart={onDragStart}
       onDragEnd={onDragEnd}
       key={item.key}
       value={item}
+      dragListener={false}
+      dragControls={controls}
     >
       <label
-        htmlFor={item.styles}
         className={`${isCheck ? styles["checked"] : styles["unchecked"]}`}
+        htmlFor={item.styles}
       >
         <input
-          onClick={onClick}
-          checked={isCheck}
+          checked={isCheck ? true : false}
+          onChange={onChange}
           type="checkbox"
           id={item.styles}
         />
         <i className={`${styles["icon"]} ${icons[item.styles]}`} />
         <span>{item.title}</span>
-        <i className={styles["control"]} />
       </label>
+      <i
+        className={styles["control"]}
+        onPointerDown={(e) => controls.start(e)}
+      />
     </Reorder.Item>
   );
 };

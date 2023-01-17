@@ -119,19 +119,21 @@ const menuItems = [
 const SideMenu = () => {
   const [click, setClick] = useState(false);
   const [menus, setMenus] = useState(menuItems);
+  const [Items, setItems] = useState(menuItems);
 
   const onClick = () => {
     setClick((prev) => !prev);
   };
-
+  const onConfirm = () => {
+    setItems(menus);
+  };
   const resetItems = () => {
     setMenus(menuItems);
   };
-
   return (
     <div className={styles["menu"]}>
       <ul>
-        {menus.map((menu) => (
+        {Items.map((menu) => (
           <SideMenuItem key={menu.key} title={menu.title} item={menu} />
         ))}
       </ul>
@@ -159,8 +161,12 @@ const SideMenu = () => {
               ))}
             </Reorder.Group>
             <div className={styles["buttons"]}>
-              <button className={styles["cancel"]}>취소</button>
-              <button className={styles["confirm"]}>확인</button>
+              <button onClick={onClick} className={styles["cancel"]}>
+                취소
+              </button>
+              <button onClick={onConfirm} className={styles["confirm"]}>
+                확인
+              </button>
             </div>
           </div>
         </>

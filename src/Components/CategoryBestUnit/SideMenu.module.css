@@ -20,6 +20,7 @@
   background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat 0 -267px;
   background-color: #fafaff;
+  cursor: pointer;
 }
 .setting-category {
   z-index: 1;
