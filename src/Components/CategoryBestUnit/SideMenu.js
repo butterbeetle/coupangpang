@@ -135,13 +135,14 @@ const SideMenu = () => {
   };
   //취소
   const onCancel = () => {
-    setClick((prev) => !prev);
     setSettingItems(saveItems);
+    onClick();
   };
   //확인 (sideMenu <- setting)
   const onConfirm = () => {
     setSideBarItems(settingItems);
     setSaveItems(settingItems);
+    onClick();
   };
   //체크 해제
   const visibleHandler = (key) => {
