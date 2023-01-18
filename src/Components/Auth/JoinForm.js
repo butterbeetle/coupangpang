@@ -121,6 +121,7 @@ const passwdConfirmInit = [
 ];
 
 const JoinForm = () => {
+  //TODO : 회원가입 페이지 useForm 써서 깔끔하게 변경하기
   const {
     value: enteredEmail,
     isValid: enteredEmailIsValid,

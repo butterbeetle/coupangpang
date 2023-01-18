@@ -3,7 +3,7 @@ import styles from "./SideMenu.module.css";
 import SideMenuItem from "./SideMenuItem";
 
 import { Reorder } from "framer-motion";
-import Test from "./test";
+import SideMenuSettingItem from "./SideMenuSettingItem";
 
 const defaultItems = [
   {
@@ -118,9 +118,9 @@ const defaultItems = [
 
 const SideMenu = () => {
   const [click, setClick] = useState(false);
+  //TODO : Item 3개 나중에 합치거나 더 깔끄미하게 수정하기
   const [sideBarItems, setSideBarItems] = useState(defaultItems);
   const [settingItems, setSettingItems] = useState(defaultItems);
-
   const [saveItems, setSaveItems] = useState(defaultItems);
 
   // 설정창 열기/닫기
@@ -185,7 +185,7 @@ const SideMenu = () => {
               onReorder={setSettingItems}
             >
               {settingItems.map((menu) => (
-                <Test
+                <SideMenuSettingItem
                   key={menu.key}
                   title={menu.title}
                   item={menu}

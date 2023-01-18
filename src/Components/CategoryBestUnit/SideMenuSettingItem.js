@@ -1,6 +1,6 @@
 import { Reorder, useDragControls } from "framer-motion";
 import { useState } from "react";
-import styles from "./test.module.css";
+import styles from "./SideMenuSettingItem.module.css";
 import icons from "./ItemsIcon.module.css";
 
 const Test = ({ item, visibleHandler }) => {
