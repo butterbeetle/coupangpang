@@ -22,31 +22,32 @@
   background-color: #fafaff;
   cursor: pointer;
 }
-.setting-category {
-  z-index: 1;
-  background-color: #fff;
-  position: absolute;
-  top: 0;
-  left: 40px;
-  width: 300px;
-  border: 1px solid #ddd;
-  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
-  font-size: 12px;
-  /* drag 방지 */
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
 .box-tail {
-  left: -7px;
-  bottom: 20%;
+  right: -12px;
+  z-index: 2;
+  bottom: 2%;
   display: inline-block;
   position: absolute;
   width: 9px;
   height: 12px;
   background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat -93px -65px;
+}
+.setting-category {
+  z-index: 1;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 43px;
+  width: 300px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  font-size: 12px;
+  /* item drag 시 text drag 되어서 퍼렁색 되는 것 방지 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 .setting-category__title {
   padding: 15px 0 0 20px;

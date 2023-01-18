@@ -163,11 +163,12 @@ const SideMenu = () => {
             )
         )}
       </ul>
-      <span onClick={onClick} className={styles["setting"]} />
+      <span onClick={onClick} className={styles["setting"]}>
+        <i className={styles["box-tail"]} />
+      </span>
       {click && (
         <>
           <div className={styles["setting-category"]}>
-            <i className={styles["box-tail"]} />
             <div className={styles["setting-category__title"]}>
               <p className={styles["title"]}>카테고리 설정하기</p>
               <p className={styles["description"]}>
