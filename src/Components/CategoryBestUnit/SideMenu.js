@@ -5,7 +5,7 @@ import SideMenuItem from "./SideMenuItem";
 import { Reorder } from "framer-motion";
 import Test from "./test";
 
-const menuItems = [
+const defaultItems = [
   {
     key: 0,
     title: "여성패션",
@@ -118,24 +118,50 @@ const menuItems = [
 
 const SideMenu = () => {
   const [click, setClick] = useState(false);
-  const [menus, setMenus] = useState(menuItems);
-  const [Items, setItems] = useState(menuItems);
+  const [sideBarItems, setSideBarItems] = useState(defaultItems);
+  const [settingItems, setSettingItems] = useState(defaultItems);
 
+  const [saveItems, setSaveItems] = useState(defaultItems);
+
+  // 설정창 열기/닫기
   const onClick = () => {
     setClick((prev) => !prev);
   };
-  const onConfirm = () => {
-    setItems(menus);
-  };
+
+  //초기화 (setting <- default)
   const resetItems = () => {
-    setMenus(menuItems);
+    setSaveItems(settingItems);
+    setSettingItems(defaultItems);
   };
+  //취소
+  const onCancel = () => {
+    setClick((prev) => !prev);
+    setSettingItems(saveItems);
+  };
+  //확인 (sideMenu <- setting)
+  const onConfirm = () => {
+    setSideBarItems(settingItems);
+    setSaveItems(settingItems);
+  };
+  //체크 해제
+  const visibleHandler = (key) => {
+    setSettingItems(
+      settingItems.map((item) =>
+        item.key === key ? { ...item, visible: !item.visible } : item
+      )
+    );
+    setSaveItems(settingItems);
+  };
+
   return (
     <div className={styles["menu"]}>
       <ul>
-        {Items.map((menu) => (
-          <SideMenuItem key={menu.key} title={menu.title} item={menu} />
-        ))}
+        {sideBarItems.map(
+          (item) =>
+            item.visible && (
+              <SideMenuItem key={item.key} title={item.title} item={item} />
+            )
+        )}
       </ul>
       <span onClick={onClick} className={styles["setting"]} />
       {click && (
@@ -153,15 +179,20 @@ const SideMenu = () => {
             </div>
             <Reorder.Group
               className={styles["menus"]}
-              values={menus}
-              onReorder={setMenus}
+              values={settingItems}
+              onReorder={setSettingItems}
             >
-              {menus.map((menu) => (
-                <Test key={menu.key} title={menu.title} item={menu} />
+              {settingItems.map((menu) => (
+                <Test
+                  key={menu.key}
+                  title={menu.title}
+                  item={menu}
+                  visibleHandler={visibleHandler}
+                />
               ))}
             </Reorder.Group>
             <div className={styles["buttons"]}>
-              <button onClick={onClick} className={styles["cancel"]}>
+              <button onClick={onCancel} className={styles["cancel"]}>
                 취소
               </button>
               <button onClick={onConfirm} className={styles["confirm"]}>

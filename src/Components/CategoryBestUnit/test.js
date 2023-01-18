@@ -3,10 +3,9 @@ import { useState } from "react";
 import styles from "./test.module.css";
 import icons from "./ItemsIcon.module.css";
 
-const Test = ({ item }) => {
+const Test = ({ item, visibleHandler }) => {
   const controls = useDragControls();
   const [isDrag, setIsDrag] = useState(false);
-  const [isCheck, setIsCheck] = useState(true);
 
   const onDragStart = () => {
     setIsDrag((prev) => (prev = true));
@@ -15,9 +14,9 @@ const Test = ({ item }) => {
     setIsDrag((prev) => (prev = false));
   };
   const onChange = () => {
-    setIsCheck((prev) => !prev);
+    visibleHandler(item.key);
   };
-  console.log(isCheck);
+
   return (
     <Reorder.Item
       className={`${styles["list"]} ${
@@ -31,11 +30,11 @@ const Test = ({ item }) => {
       dragControls={controls}
     >
       <label
-        className={`${isCheck ? styles["checked"] : styles["unchecked"]}`}
+        className={`${item.visible ? styles["checked"] : styles["unchecked"]}`}
         htmlFor={item.styles}
       >
         <input
-          checked={isCheck ? true : false}
+          checked={item.visible ? true : false}
           onChange={onChange}
           type="checkbox"
           id={item.styles}
