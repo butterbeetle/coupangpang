@@ -1,0 +1,42 @@
+.main {
+  position: relative;
+  border-top: 2px solid #f6699e;
+  display: flex;
+  margin-bottom: 20px;
+}
+
+.category {
+  position: absolute;
+  padding: 45px 0 0 25px;
+}
+.category img {
+  width: 110px;
+  margin-bottom: 5px;
+}
+.shortcut {
+  display: block;
+  color: #888;
+  font-size: 11px;
+}
+.keyword {
+  position: absolute;
+  width: 124px;
+  bottom: 0;
+  padding: 20px 10px 20px;
+  border-bottom: 1px solid #ddd;
+}
+.keyword h4 {
+  margin: 0 0 10px;
+}
+.keyword ul {
+  margin: 0 0;
+}
+.keyword li {
+  border: 1px solid #ccc;
+  width: fit-content;
+  color: #de6090;
+  margin: 0 5px 5px 0;
+  font-size: 12px;
+  padding: 5px 10px;
+  cursor: pointer;
+}

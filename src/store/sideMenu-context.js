@@ -1,27 +1,4 @@
-import { useRef } from "react";
-import styles from "./CategoryBestUnit.module.css";
-
-import SideMenu from "./CategoryBestUnit/SideMenu";
-import Contents from "./CategoryBestUnit/Contents";
-
-// const bestUnitItems = [
-//   {
-//     title:"woman-clothes",
-//     keyword:[],
-//     items:[
-//       {
-//         url:"/",
-//         title:best_title1,
-//         thumnail:best_thumnail1,
-//         caption:{
-//           title:"겨울 패션 할인 ~80%",
-//           description:"1월 패션위크"
-//         }
-//       }
-//     ],
-
-//   }
-// ]
+import React from "react";
 
 const defaultItems = [
   {
@@ -134,16 +111,28 @@ const defaultItems = [
   },
 ];
 
-const CategoryBestUnit = () => {
-  const mainOffset = useRef(null);
+const SideMenuContext = React.createContext({
+  mainOffset: null,
+  contentsOffset: null,
+});
 
+export const SideMenuContextProvider = ({ children }) => {
+  const scrollToSection = () => {
+    window.scrollTo({
+      // top: mainOffset.current.offsetTop + contentOffset.current.offsetTop + 600,
+      top: 600,
+      behavior: "auto",
+    });
+  };
   return (
-    <article className={styles["best-unit"]} ref={mainOffset}>
-      <span className={styles["title"]} />
-      <SideMenu />
-      <Contents />
-      <Contents />
-    </article>
+    <SideMenuContext.Provider
+      value={{
+        scrollToSection: scrollToSection,
+      }}
+    >
+      {children}
+    </SideMenuContext.Provider>
   );
 };
-export default CategoryBestUnit;
+
+export default SideMenuContext;

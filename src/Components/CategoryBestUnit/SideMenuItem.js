@@ -1,8 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./SideMenuItem.module.css";
 import icons from "./ItemsIcon.module.css";
+import SideMenuContext from "../../store/sideMenu-context";
 
 const SideMenuItem = ({ item }) => {
+  const SideMenuCtx = useContext(SideMenuContext);
   const [hover, setHover] = useState(false);
 
   const onMouseEnter = () => {

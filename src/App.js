@@ -8,20 +8,35 @@ import { firestore, storage } from "./firebase-config";
 import { useEffect, useState } from "react";
 
 function App() {
-  const [url, setUrl] = useState("");
-  const path = ref(storage, "images/2.jpg");
+  // const [url, setUrl] = useState("");
+  // const path = ref(storage, "images/2.jpg");
 
-  useEffect(() => {
-    const test = async () => {
-      const reponse = await getDownloadURL(path);
-      setUrl(reponse);
-    };
-    test();
-  }, [path]);
+  // useEffect(() => {
+  //   const test = async () => {
+  //     const reponse = await getDownloadURL(path);
+  //     setUrl(reponse);
+  //   };
+  //   test();
+  // }, [path]);
+
+  // const [aSrc, setASrc] = useState("");
+  // useEffect(() => {
+  //   let test = fetch("/characters/an", {
+  //     headers: {
+  //       "Content-Type": `application/json`,
+  //     },
+  //   });
+  //   test
+  //     .then((r) => r.json())
+  //     .then((d) => {
+  //       console.log(d.data.item.images.card);
+  //       setASrc(d.data.item.images.card);
+  //     });
+  // }, []);
 
   return (
     <>
-      {/* <img src={url} alt=""></img> */}
+      {/* <img src={aSrc} alt=""></img> */}
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
