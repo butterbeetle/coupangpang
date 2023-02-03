@@ -361,7 +361,7 @@ const CategoryItemList = () => {
           ))}
       </ul>
       <ul className={styles["promotion__dot"]}>
-        {[0, 1, 2, 3, 4].map((item, itemindex) => (
+        {[0, 1, 2, 3, 4].map((_, itemindex) => (
           <li
             key={itemindex}
             className={` ${

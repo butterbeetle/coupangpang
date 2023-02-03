@@ -19,21 +19,6 @@ function App() {
   //   test();
   // }, [path]);
 
-  // const [aSrc, setASrc] = useState("");
-  // useEffect(() => {
-  //   let test = fetch("/characters/an", {
-  //     headers: {
-  //       "Content-Type": `application/json`,
-  //     },
-  //   });
-  //   test
-  //     .then((r) => r.json())
-  //     .then((d) => {
-  //       console.log(d.data.item.images.card);
-  //       setASrc(d.data.item.images.card);
-  //     });
-  // }, []);
-
   return (
     <>
       {/* <img src={aSrc} alt=""></img> */}

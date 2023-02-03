@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import useInterval from "../../hooks/useInterval";
 import styles from "./CategoryPromotion.module.css";
 
-import best_title1 from "../../img/best_title/best_title_womanclothe2.png";
 import womanClothes_00 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_00.jpg";
 import womanClothes_01 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_01.jpg";
 import womanClothes_02 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_02.jpg";
@@ -16,7 +15,6 @@ import womanClothes_07 from "../../assets/img/categoryBestUnit/womanClothes/woma
 const UnitItems = [
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_00,
     caption: {
       title: "여성 필수템, 원피스 할인",
@@ -25,7 +23,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_01,
     caption: {
       title: "겨울 필수 패딩 점퍼 할인",
@@ -34,7 +31,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_02,
     caption: {
       title: "신발 69% 추가 할인",
@@ -43,7 +39,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_03,
     caption: {
       title: "여성의류 최대 68% 할인",
@@ -52,7 +47,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_04,
     caption: {
       title: "모두의 클래식, 코트 할인",
@@ -61,7 +55,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_05,
     caption: {
       title: "겨울 패션 할인 ~80%",
@@ -70,7 +63,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_06,
     caption: {
       title: "가방&ACC 할인~80%",
@@ -79,7 +71,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    title: best_title1,
     thumnail: womanClothes_07,
     caption: {
       title: "디자이너 브랜드 ~53%",
@@ -160,7 +151,7 @@ const CategoryPromotion = () => {
         ))}
       </ul>
       <ul className={styles["promotion__dot"]}>
-        {UnitItems.map((item, itemindex) => (
+        {UnitItems.map((_, itemindex) => (
           <li
             key={itemindex}
             className={` ${
