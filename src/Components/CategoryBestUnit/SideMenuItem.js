@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import styles from "./SideMenuItem.module.css";
 import icons from "./ItemsIcon.module.css";
 import { SideMenuContext } from "../../store/sideMenu-context";
@@ -6,6 +6,10 @@ import { SideMenuContext } from "../../store/sideMenu-context";
 const SideMenuItem = (props) => {
   const sideCtx = useContext(SideMenuContext);
   const [hover, setHover] = useState(false);
+  const [scroll, setScroll] = useState(false);
+  const [scrollY, setScrollY] = useState(0);
+
+  const offset = sideCtx.arr;
 
   const onMouseEnter = () => {
     setHover(true);
@@ -17,6 +21,26 @@ const SideMenuItem = (props) => {
   const onClick = () => {
     sideCtx.scrollOffset(props.idx);
   };
+
+  const scrollHandler = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener("scroll", scrollHandler);
+    };
+    watch();
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  });
+
+  useEffect(() => {
+    if (offset[props.idx] <= scrollY && scrollY < offset[props.idx] + 610) {
+      setScroll(true);
+    } else setScroll(false);
+  }, [scrollY, offset, props.idx]);
 
   return (
     <li
@@ -30,8 +54,11 @@ const SideMenuItem = (props) => {
         className={`
         ${styles["icon"]} 
         ${
-          hover ? icons[props.item.styles + "-hover"] : icons[props.item.styles]
-        } `}
+          hover || scroll
+            ? icons[props.item.styles + "-hover"]
+            : icons[props.item.styles]
+        } 
+        `}
       />
       {hover && (
         <span

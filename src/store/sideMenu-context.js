@@ -235,6 +235,7 @@ export const SideMenuContext = React.createContext({
   sideBarItems: items,
   settingItems: items,
   saveItems: items,
+  arr: offsets,
   setSettingItems: () => {},
   onReset: () => {},
   onCancel: () => {},
@@ -249,6 +250,7 @@ export const SideMenuProvider = ({ children }) => {
   const [sideBarItems, setSideBarItems] = useState(items);
   const [settingItems, setSettingItems] = useState(items);
   const [saveItems, setSaveItems] = useState(items);
+  const [arr] = useState(offsets);
 
   // 설정창 열기/닫기
   const onClick = () => {
@@ -286,7 +288,7 @@ export const SideMenuProvider = ({ children }) => {
     // console.log(offsets, index, offsets[index]);
     window.scroll({
       top: offsets[index] + 10,
-      behavior: "smooth",
+      // behavior: "smooth",
     });
   };
 
@@ -295,6 +297,7 @@ export const SideMenuProvider = ({ children }) => {
     sideBarItems,
     settingItems,
     saveItems,
+    arr,
     onReset: resetItems,
     onCancel: onCancel,
     onConfirm: onConfirm,
