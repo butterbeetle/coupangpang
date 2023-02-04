@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const items = [
   {
@@ -236,6 +236,7 @@ export const SideMenuContext = React.createContext({
   settingItems: items,
   saveItems: items,
   arr: offsets,
+  scrollY: 0,
   setSettingItems: () => {},
   onReset: () => {},
   onCancel: () => {},
@@ -292,12 +293,28 @@ export const SideMenuProvider = ({ children }) => {
     });
   };
 
+  const [scrollY, setScrollY] = useState(0);
+  const scrollHandler = () => {
+    setScrollY(window.pageYOffset);
+  };
+
+  useEffect(() => {
+    const watch = () => {
+      window.addEventListener("scroll", scrollHandler);
+    };
+    watch();
+    return () => {
+      window.removeEventListener("scroll", scrollHandler);
+    };
+  });
+
   const contextValue = {
     click,
     sideBarItems,
     settingItems,
     saveItems,
     arr,
+    scrollY,
     onReset: resetItems,
     onCancel: onCancel,
     onConfirm: onConfirm,

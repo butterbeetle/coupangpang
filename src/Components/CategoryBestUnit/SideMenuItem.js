@@ -7,8 +7,8 @@ const SideMenuItem = (props) => {
   const sideCtx = useContext(SideMenuContext);
   const [hover, setHover] = useState(false);
   const [scroll, setScroll] = useState(false);
-  const [scrollY, setScrollY] = useState(0);
 
+  const scrollY = sideCtx.scrollY;
   const offset = sideCtx.arr;
 
   const onMouseEnter = () => {
@@ -21,20 +21,6 @@ const SideMenuItem = (props) => {
   const onClick = () => {
     sideCtx.scrollOffset(props.idx);
   };
-
-  const scrollHandler = () => {
-    setScrollY(window.pageYOffset);
-  };
-
-  useEffect(() => {
-    const watch = () => {
-      window.addEventListener("scroll", scrollHandler);
-    };
-    watch();
-    return () => {
-      window.removeEventListener("scroll", scrollHandler);
-    };
-  });
 
   useEffect(() => {
     if (offset[props.idx] <= scrollY && scrollY < offset[props.idx] + 610) {
