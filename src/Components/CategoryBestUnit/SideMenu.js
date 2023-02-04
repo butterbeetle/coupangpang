@@ -13,14 +13,19 @@ const SideMenu = () => {
     <div className={styles["menu"]}>
       <ul>
         {sideCtx.sideBarItems.map(
-          (item) =>
+          (item, idx) =>
             item.visible && (
-              <SideMenuItem key={item.key} title={item.title} item={item} />
+              <SideMenuItem
+                key={item.key}
+                title={item.title}
+                item={item}
+                idx={idx}
+              />
             )
         )}
       </ul>
       <span onClick={sideCtx.onClick} className={styles["setting"]}>
-        <i className={styles["box-tail"]} />
+        {sideCtx.click && <i className={styles["box-tail"]} />}
       </span>
       {sideCtx.click && (
         <>

@@ -225,6 +225,11 @@ const items = [
   },
 ];
 
+// 3300 부터 600씩 늘어나게 18개
+const offsets = Array(18)
+  .fill(3400)
+  .map((arr, i) => (arr += 600 * i));
+
 export const SideMenuContext = React.createContext({
   click: false,
   sideBarItems: items,
@@ -236,6 +241,7 @@ export const SideMenuContext = React.createContext({
   onConfirm: () => {},
   onVisible: () => {},
   onClick: () => {},
+  scrollOffset: () => {},
 });
 
 export const SideMenuProvider = ({ children }) => {
@@ -243,6 +249,7 @@ export const SideMenuProvider = ({ children }) => {
   const [sideBarItems, setSideBarItems] = useState(items);
   const [settingItems, setSettingItems] = useState(items);
   const [saveItems, setSaveItems] = useState(items);
+
   // 설정창 열기/닫기
   const onClick = () => {
     setClick((prev) => !prev);
@@ -260,7 +267,7 @@ export const SideMenuProvider = ({ children }) => {
   };
   //확인 (sideMenu <- setting)
   const onConfirm = () => {
-    setSideBarItems(settingItems);
+    setSideBarItems(settingItems.filter((item) => item.visible));
     setSaveItems(settingItems);
     onClick();
   };
@@ -274,6 +281,15 @@ export const SideMenuProvider = ({ children }) => {
     setSaveItems(settingItems);
   };
 
+  //offset 설정
+  const scrollOffset = (index) => {
+    // console.log(offsets, index, offsets[index]);
+    window.scroll({
+      top: offsets[index] + 10,
+      behavior: "smooth",
+    });
+  };
+
   const contextValue = {
     click,
     sideBarItems,
@@ -285,6 +301,7 @@ export const SideMenuProvider = ({ children }) => {
     onVisible: visibleHandler,
     onClick: onClick,
     setSettingItems,
+    scrollOffset,
   };
 
   return (
