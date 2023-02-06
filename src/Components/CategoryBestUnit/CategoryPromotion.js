@@ -3,19 +3,9 @@ import { useEffect, useState } from "react";
 import useInterval from "../../hooks/useInterval";
 import styles from "./CategoryPromotion.module.css";
 
-import womanClothes_00 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_00.jpg";
-import womanClothes_01 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_01.jpg";
-import womanClothes_02 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_02.jpg";
-import womanClothes_03 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_03.jpg";
-import womanClothes_04 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_04.jpg";
-import womanClothes_05 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_05.jpg";
-import womanClothes_06 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_06.jpg";
-import womanClothes_07 from "../../assets/img/categoryBestUnit/womanClothes/womanClothes_07.png";
-
 const UnitItems = [
   {
     url: "/",
-    thumnail: womanClothes_00,
     caption: {
       title: "여성 필수템, 원피스 할인",
       description: "1월 패션위크",
@@ -23,7 +13,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_01,
     caption: {
       title: "겨울 필수 패딩 점퍼 할인",
       description: "1월 패션위크",
@@ -31,7 +20,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_02,
     caption: {
       title: "신발 69% 추가 할인",
       description: "1월 패션위크",
@@ -39,7 +27,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_03,
     caption: {
       title: "여성의류 최대 68% 할인",
       description: "1월 패션위크",
@@ -47,7 +34,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_04,
     caption: {
       title: "모두의 클래식, 코트 할인",
       description: "1월 패션위크",
@@ -55,7 +41,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_05,
     caption: {
       title: "겨울 패션 할인 ~80%",
       description: "1월 패션위크",
@@ -63,7 +48,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_06,
     caption: {
       title: "가방&ACC 할인~80%",
       description: "1월 패션위크",
@@ -71,7 +55,6 @@ const UnitItems = [
   },
   {
     url: "/",
-    thumnail: womanClothes_07,
     caption: {
       title: "디자이너 브랜드 ~53%",
       description: "키르시 / 로라로라 / 리올그",
@@ -139,7 +122,10 @@ const CategoryPromotion = () => {
             }`}
           >
             <Link to="/">
-              <img src={item.thumnail} alt="thumnail" />
+              <img
+                src={require(`../../assets/img/categoryBestUnit/womanClothes/womanClothes_0${itemindex}.jpg`)}
+                alt={`${itemindex}`}
+              />
             </Link>
             <span className={styles["promotion__caption"]}>
               <p className={styles["promotino__caption-title"]}>
