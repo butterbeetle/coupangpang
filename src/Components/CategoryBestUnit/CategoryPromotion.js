@@ -1122,6 +1122,7 @@ const items = {
     },
   ],
 };
+
 const CategoryPromotion = ({ category }) => {
   const [btnHover, setBtnHover] = useState(false);
   const { count, start, stop, reset, resetNum } = useInterval(0, 2000);
