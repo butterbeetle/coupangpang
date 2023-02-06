@@ -5,7 +5,6 @@ import styles from "./Contents.module.css";
 import { Link } from "react-router-dom";
 
 const Contents = ({ items }) => {
-  console.log(items.keywords);
   return (
     <div className={styles["contents"]}>
       <div className={styles["main"]}>
@@ -19,7 +18,7 @@ const Contents = ({ items }) => {
           <h4>HOT키워드</h4>
           <ul>
             {items.keywords.map((keyword) => (
-              <li key={items.id}>{`#${keyword}`}</li>
+              <li key={keyword.key}>{`#${keyword}`}</li>
             ))}
           </ul>
         </div>

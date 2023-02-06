@@ -6,10 +6,13 @@ import reduxStore from "./store";
 
 import "./index.css";
 import App from "./App";
+import SideMenuProvider from "./store/sideMenu-context";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={reduxStore}>
-    <App />
+    <SideMenuProvider>
+      <App />
+    </SideMenuProvider>
   </Provider>
 );
