@@ -107,7 +107,9 @@ const CategoryPromotion = () => {
     resetNum((prev) => (prev === 0 ? 7 : prev - 1));
     stop();
   };
-
+  const onclick = (index) => {
+    resetNum(index);
+  };
   let button = btnHover && (
     <>
       <span
@@ -153,6 +155,7 @@ const CategoryPromotion = () => {
       <ul className={styles["promotion__dot"]}>
         {UnitItems.map((_, itemindex) => (
           <li
+            onClick={() => onclick(itemindex)}
             key={itemindex}
             className={` ${
               count === itemindex ? styles["selected"] : styles["dot"]

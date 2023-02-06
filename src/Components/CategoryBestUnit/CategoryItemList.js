@@ -322,7 +322,9 @@ const CategoryItemList = () => {
   const decreaseIndex = () => {
     setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
-
+  const onclick = (index) => {
+    setIndex(index);
+  };
   let button = btnHover && (
     <>
       <span
@@ -363,6 +365,7 @@ const CategoryItemList = () => {
       <ul className={styles["promotion__dot"]}>
         {[0, 1, 2, 3, 4].map((_, itemindex) => (
           <li
+            onClick={() => onclick(itemindex)}
             key={itemindex}
             className={` ${
               index === itemindex ? styles["selected"] : styles["dot"]

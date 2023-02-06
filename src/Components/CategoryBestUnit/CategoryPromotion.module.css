@@ -73,6 +73,7 @@
   background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat 0px -113px;
   margin-right: 10px;
+  cursor: pointer;
 }
 .selected {
   width: 10px;
@@ -80,6 +81,7 @@
   background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat -50px -113px;
   margin-right: 10px;
+  cursor: pointer;
 }
 .dot:last-child {
   margin: 0;
