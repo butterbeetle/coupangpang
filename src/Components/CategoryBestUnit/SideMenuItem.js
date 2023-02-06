@@ -49,7 +49,7 @@ const SideMenuItem = (props) => {
       {hover && (
         <span
           className={`${styles["title"]} ${
-            icons[props.item.styles + "-color"]
+            icons[props.item.styles + "-bgcolor"]
           }`}
         >
           {props.item.title}
