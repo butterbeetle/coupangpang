@@ -26,7 +26,7 @@ const Contents = ({ items }) => {
             ))}
           </ul>
         </div>
-        <CategoryPromotion />
+        <CategoryPromotion category={items.styles} />
         <CategoryItemList />
       </div>
     </div>

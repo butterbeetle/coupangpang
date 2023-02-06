@@ -47,7 +47,6 @@
   left: 23px;
   text-align: center;
   color: #fff;
-  background-color: #f6699e;
 }
 .promotion__caption-title {
   font-weight: 600;
@@ -82,7 +81,4 @@
     no-repeat -50px -113px;
   margin-right: 10px;
   cursor: pointer;
-}
-.dot:last-child {
-  margin: 0;
 }

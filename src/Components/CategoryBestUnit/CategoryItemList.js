@@ -2,7 +2,7 @@ import { useState } from "react";
 import AdsItems from "../Advertisement/AdsItems";
 import styles from "./CategoryItemList.module.css";
 
-import testttt from "../../assets/img/categoryBestUnit/womanClothes/1.png";
+import testttt from "../../assets/img/categoryBestUnit/woman-clothes/1.png";
 
 const testItems = [
   {
