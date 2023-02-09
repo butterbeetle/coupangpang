@@ -306,17 +306,15 @@ const CategoryItemList = ({ category }) => {
           ))}
       </ul>
       <ul className={styles["promotion__dot"]}>
-        {items[`${category}`]
-          .slice(offset * index, offset * index + offset)
-          .map((_, itemindex) => (
-            <li
-              onClick={() => onclick(itemindex)}
-              key={itemindex}
-              className={` ${
-                index === itemindex ? styles["selected"] : styles["dot"]
-              }`}
-            ></li>
-          ))}
+        {items[`${category}`].slice(0, maxIndex + 1).map((_, itemindex) => (
+          <li
+            onClick={() => onclick(itemindex)}
+            key={itemindex}
+            className={` ${
+              index === itemindex ? styles["selected"] : styles["dot"]
+            }`}
+          ></li>
+        ))}
       </ul>
     </div>
   );
