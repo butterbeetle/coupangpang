@@ -23,7 +23,7 @@ const SideMenuItem = (props) => {
   };
 
   useEffect(() => {
-    if (offset[props.idx] <= scrollY && scrollY < offset[props.idx] + 610) {
+    if (offset[props.idx] <= scrollY && scrollY < offset[props.idx] + 600) {
       setScroll(true);
     } else setScroll(false);
   }, [scrollY, offset, props.idx]);
@@ -49,7 +49,7 @@ const SideMenuItem = (props) => {
       {hover && (
         <span
           className={`${styles["title"]} ${
-            icons[props.item.styles + "-color"]
+            icons[props.item.styles + "-bgcolor"]
           }`}
         >
           {props.item.title}
