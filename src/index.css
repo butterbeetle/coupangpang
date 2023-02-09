@@ -3,6 +3,27 @@
   font-family: "tahoma";
   src: url(./assets/fonts/Tahoma_Regular_font.ttf);
 }
+:root {
+  --color-woman-clothes: #f6699e;
+  --color-man-clothes: #1992df;
+  --color-beauty: #7e57c2;
+  --color-child: #00aad4;
+  --color-food: #ee9200;
+  --color-kitchen: #62ab66;
+  --color-living: #9d7a6d;
+  --color-interior: #dd6641;
+  --color-digital: #5868be;
+  --color-sports: #83be41;
+  --color-car: #254e98;
+  --color-hobby: #3e8d86;
+  --color-office: #97563e;
+  --color-book: #b74b4b;
+  --color-pets: #ab47bc;
+  --color-travel: #00b599;
+  --color-child-fashion: #00aab4;
+  --color-health: #d22e60;
+}
+
 html,
 body {
   margin: 0;

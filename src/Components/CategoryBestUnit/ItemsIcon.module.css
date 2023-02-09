@@ -76,146 +76,258 @@
 .woman-clothes-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px 0;
-  background-color: #f6699e;
+  background-color: var(--color-woman-clothes);
 }
 .man-clothes-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -50px;
-  background-color: #1992df;
+  background-color: var(--color-man-clothes);
 }
 .beauty-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -100px;
-  background-color: #7e57c2;
+  background-color: var(--color-beauty);
 }
 .child-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -150px;
-  background-color: #00aad4;
+  background-color: var(--color-child);
 }
 .food-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -200px;
-  background-color: #ee9200;
+  background-color: var(--color-food);
 }
 .kitchen-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -250px;
-  background-color: #62ab66;
+  background-color: var(--color-kitchen);
 }
 .living-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -300px;
-  background-color: #9d7a6d;
+  background-color: var(--color-living);
 }
 .interior-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -350px;
-  background-color: #dd6641;
+  background-color: var(--color-interior);
 }
 .digital-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -400px;
-  background-color: #5868be;
+  background-color: var(--color-digital);
 }
 .sports-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -450px;
-  background-color: #83be41;
+  background-color: var(--color-sports);
 }
 .car-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -750px;
-  background-color: #254e98;
+  background-color: var(--color-car);
 }
 .hobby-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -700px;
-  background-color: #3e8d86;
+  background-color: var(--color-hobby);
 }
 .office-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -500px;
-  background-color: #97563e;
+  background-color: var(--color-office);
 }
 .book-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -600px;
-  background-color: #b74b4b;
+  background-color: var(--color-book);
 }
 .pets-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -550px;
-  background-color: #ab47bc;
+  background-color: var(--color-pets);
 }
 .travel-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -650px;
-  background-color: #00b599;
+  background-color: var(--color-travel);
 }
 .child-fashion-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -800px;
-  background-color: #00aab4;
+  background-color: var(--color-child-fashion);
 }
 .health-hover {
   background: url("../../assets/img/categoryBestUnit/pc_bestcategory_v4.png")
     no-repeat -50px -850px;
-  background-color: #d22e60;
+  background-color: var(--color-health);
 }
 
-/* colors */
+/* bgcolors */
+.woman-clothes-bgcolor {
+  background-color: var(--color-woman-clothes);
+}
+.man-clothes-bgcolor {
+  background-color: var(--color-man-clothes);
+}
+.beauty-bgcolor {
+  background-color: var(--color-beauty);
+}
+.child-bgcolor {
+  background-color: var(--color-child);
+}
+.food-bgcolor {
+  background-color: var(--color-food);
+}
+.kitchen-bgcolor {
+  background-color: var(--color-kitchen);
+}
+.living-bgcolor {
+  background-color: var(--color-living);
+}
+.interior-bgcolor {
+  background-color: var(--color-interior);
+}
+.digital-bgcolor {
+  background-color: var(--color-digital);
+}
+.sports-bgcolor {
+  background-color: var(--color-sports);
+}
+.car-bgcolor {
+  background-color: var(--color-car);
+}
+.hobby-bgcolor {
+  background-color: var(--color-hobby);
+}
+.office-bgcolor {
+  background-color: var(--color-office);
+}
+.book-bgcolor {
+  background-color: var(--color-book);
+}
+.pets-bgcolor {
+  background-color: var(--color-pets);
+}
+.travel-bgcolor {
+  background-color: var(--color-travel);
+}
+.child-fashion-bgcolor {
+  background-color: var(--color-child-fashion);
+}
+.health-bgcolor {
+  background-color: var(--color-health);
+}
+
+/* color */
 .woman-clothes-color {
-  background-color: #f6699e;
+  color: var(--color-woman-clothes);
 }
 .man-clothes-color {
-  background-color: #1992df;
+  color: var(--color-man-clothes);
 }
 .beauty-color {
-  background-color: #7e57c2;
+  color: var(--color-beauty);
 }
 .child-color {
-  background-color: #00aad4;
+  color: var(--color-child);
 }
 .food-color {
-  background-color: #ee9200;
+  color: var(--color-food);
 }
 .kitchen-color {
-  background-color: #62ab66;
+  color: var(--color-kitchen);
 }
 .living-color {
-  background-color: #9d7a6d;
+  color: var(--color-living);
 }
 .interior-color {
-  background-color: #dd6641;
+  color: var(--color-interior);
 }
 .digital-color {
-  background-color: #5868be;
+  color: var(--color-digital);
 }
 .sports-color {
-  background-color: #83be41;
+  color: var(--color-sports);
 }
 .car-color {
-  background-color: #254e98;
+  color: var(--color-car);
 }
 .hobby-color {
-  background-color: #3e8d86;
+  color: var(--color-hobby);
 }
 .office-color {
-  background-color: #97563e;
+  color: var(--color-office);
 }
 .book-color {
-  background-color: #b74b4b;
+  color: var(--color-book);
 }
 .pets-color {
-  background-color: #ab47bc;
+  color: var(--color-pets);
 }
 .travel-color {
-  background-color: #00b599;
+  color: var(--color-travel);
 }
 .child-fashion-color {
-  background-color: #00aab4;
+  color: var(--color-child-fashion);
 }
 .health-color {
-  background-color: #d22e60;
+  color: var(--color-health);
+}
+
+/* border top */
+.woman-clothes-border {
+  border-top: 2px solid var(--color-woman-clothes);
+}
+.man-clothes-border {
+  border-top: 2px solid var(--color-man-clothes);
+}
+.beauty-border {
+  border-top: 2px solid var(--color-beauty);
+}
+.child-border {
+  border-top: 2px solid var(--color-child);
+}
+.food-border {
+  border-top: 2px solid var(--color-food);
+}
+.kitchen-border {
+  border-top: 2px solid var(--color-kitchen);
+}
+.living-border {
+  border-top: 2px solid var(--color-living);
+}
+.interior-border {
+  border-top: 2px solid var(--color-interior);
+}
+.digital-border {
+  border-top: 2px solid var(--color-digital);
+}
+.sports-border {
+  border-top: 2px solid var(--color-sports);
+}
+.car-border {
+  border-top: 2px solid var(--color-car);
+}
+.hobby-border {
+  border-top: 2px solid var(--color-hobby);
+}
+.office-border {
+  border-top: 2px solid var(--color-office);
+}
+.book-border {
+  border-top: 2px solid var(--color-book);
+}
+.pets-border {
+  border-top: 2px solid var(--color-pets);
+}
+.travel-border {
+  border-top: 2px solid var(--color-travel);
+}
+.child-fashion-border {
+  border-top: 2px solid var(--color-child-fashion);
+}
+.health-border {
+  border-top: 2px solid var(--color-health);
 }

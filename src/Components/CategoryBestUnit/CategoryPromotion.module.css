@@ -47,7 +47,6 @@
   left: 23px;
   text-align: center;
   color: #fff;
-  background-color: #f6699e;
 }
 .promotion__caption-title {
   font-weight: 600;
@@ -73,6 +72,7 @@
   background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat 0px -113px;
   margin-right: 10px;
+  cursor: pointer;
 }
 .selected {
   width: 10px;
@@ -80,7 +80,5 @@
   background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat -50px -113px;
   margin-right: 10px;
-}
-.dot:last-child {
-  margin: 0;
+  cursor: pointer;
 }

@@ -67,9 +67,7 @@ const AdsItems = ({
         <div className={styles["infos"]}>
           <img src={img} alt="오늘의 쇼핑 제안1" />
           {discount > 0 && discountJsx}
-          {item_type === "bestUnit" && (
-            <div className={styles["discount-type"]}>{discount_type}</div>
-          )}
+
           <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>
             <div
               className={`${styles["title"]} ${styles[item_type + "-title"]} ${
@@ -78,7 +76,9 @@ const AdsItems = ({
             >
               <span>{title}</span>
             </div>
-
+            {item_type === "bestUnit" && (
+              <div className={styles["discount-type"]}>{discount_type}</div>
+            )}
             {item_type !== "personalized" && item_type !== "trending" && (
               <span
                 className={`${styles["price-unit"]} ${

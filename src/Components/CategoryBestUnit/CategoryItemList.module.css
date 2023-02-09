@@ -32,6 +32,7 @@
 .items li {
   padding: 20px 18px 30px 18px;
   border-bottom: 1px solid #ddd;
+  cursor: pointer;
 }
 
 .items img {

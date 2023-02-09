@@ -3,6 +3,7 @@
   margin: 0 1px;
 }
 .bestUnit-item {
+  min-height: 250px;
   margin: 0;
 }
 .related-item,
