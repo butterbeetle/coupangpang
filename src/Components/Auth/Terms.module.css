@@ -56,7 +56,7 @@
 .items {
   padding: 0 0 0 20px;
 }
-.items label {
+.check {
   display: flex;
   cursor: pointer;
 }

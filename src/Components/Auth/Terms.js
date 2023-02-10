@@ -75,25 +75,36 @@ const terms = [
 ];
 
 const Terms = () => {
-  const [items, setItems] = useState([...terms]);
+  const [termItems, setTermItems] = useState(terms);
   // 모두 체크용
   const [all, setAll] = useState(false);
 
-  const allCheckHandler = () => {
-    const arr = [...items];
-
-    // 전부 체크 되어 있을 경우
-    if (arr.filter((item) => item.isCheck).length === items.length) {
+  useEffect(() => {
+    const arr = [...termItems];
+    if (arr.filter((item) => item.isCheck).length === termItems.length) {
+      setAll(true);
+    } else {
       setAll(false);
+    }
+  }, [termItems]);
+
+  const allCheckHandler = () => {
+    const arr = [...termItems];
+    if (arr.filter((item) => item.isCheck).length === termItems.length) {
       arr.forEach((item) => (item.isCheck = false));
     } else {
-      // 하나라도 체크 안되어 있을 경우
-      setAll(true);
       arr.forEach((item) => (item.isCheck = true));
     }
+    setTermItems(arr);
   };
 
-  console.log("items", items);
+  const checkHadnler = (id) => {
+    const arr = [...termItems];
+    const index = termItems.findIndex((item) => item.id === id);
+    arr[index].isCheck = !arr[index].isCheck;
+    setTermItems(arr);
+  };
+
   return (
     <section className={styles["main"]}>
       <div className={styles["all"]} onClick={allCheckHandler}>
@@ -117,17 +128,20 @@ const Terms = () => {
       }
       <div className={styles["terms"]}>
         <ul className={styles["items"]}>
-          {items.map((item, idx) => (
+          {termItems.map((item, idx) => (
             <li key={idx} className={styles["item"]}>
               <div className={styles["box"]}>
-                <label htmlFor={item.id}>
+                <div
+                  className={styles["check"]}
+                  onClick={() => checkHadnler(item.id)}
+                >
                   {item.isCheck ? (
                     <i className={styles["on"]}></i>
                   ) : (
                     <i className={styles["off"]}></i>
                   )}
                   <p>{item.text}</p>
-                </label>
+                </div>
                 {item.isArrow ? (
                   <button className={styles["arrow"]}></button>
                 ) : (
