@@ -76,7 +76,6 @@ const terms = [
 
 const Terms = () => {
   const [termItems, setTermItems] = useState(terms);
-  // 모두 체크용
   const [all, setAll] = useState(false);
 
   useEffect(() => {
@@ -98,11 +97,59 @@ const Terms = () => {
     setTermItems(arr);
   };
 
-  const checkHadnler = (id) => {
-    const arr = [...termItems];
+  const checkHandler = (id) => {
     const index = termItems.findIndex((item) => item.id === id);
-    arr[index].isCheck = !arr[index].isCheck;
-    setTermItems(arr);
+    if (termItems[index].required) {
+      const arr = [...termItems];
+      arr[index].isCheck = !arr[index].isCheck;
+      setTermItems(arr);
+    } else {
+      const arr = [...termItems];
+      switch (arr[index].id) {
+        case "marketing":
+          arr[index].isCheck = !arr[index].isCheck;
+          arr.forEach((item, idx) => {
+            if (idx >= index) {
+              item.isCheck = arr[index].isCheck ? true : false;
+            }
+          });
+          break;
+        case "SMS":
+          const markIndex = termItems.findIndex(
+            (item) => item.id === "marketing"
+          );
+          if (!arr[markIndex].isCheck) arr[markIndex].isCheck = true;
+          arr[index].isCheck = !arr[index].isCheck;
+          arr.forEach((item, idx) => {
+            if (idx >= index) {
+              item.isCheck = arr[index].isCheck ? true : false;
+            }
+          });
+          break;
+        case "SMS_email":
+        case "SMS_sms":
+        case "SMS_app":
+          const marktingIndex = termItems.findIndex(
+            (item) => item.id === "marketing"
+          );
+          if (!arr[marktingIndex].isCheck) arr[marktingIndex].isCheck = true;
+          const smsIndex = termItems.findIndex((item) => item.id === "SMS");
+          arr[index].isCheck = !arr[index].isCheck;
+          const arrfilter = arr
+            .filter(
+              (item) =>
+                item.id === "SMS_email" ||
+                item.id === "SMS_sms" ||
+                item.id === "SMS_app"
+            )
+            .filter((item) => item.isCheck);
+          arr[smsIndex].isCheck = arrfilter.length > 0 ? true : false;
+
+          break;
+        default:
+      }
+      setTermItems(arr);
+    }
   };
 
   return (
@@ -133,7 +180,7 @@ const Terms = () => {
               <div className={styles["box"]}>
                 <div
                   className={styles["check"]}
-                  onClick={() => checkHadnler(item.id)}
+                  onClick={() => checkHandler(item.id)}
                 >
                   {item.isCheck ? (
                     <i className={styles["on"]}></i>
