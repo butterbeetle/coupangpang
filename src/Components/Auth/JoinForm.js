@@ -75,26 +75,21 @@ const JoinForm = () => {
         /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
         "이메일을 올바르게 입력해주세요."
       ),
-    // .when("checkEmail", {
-    //   is: true,
-    //   then: yup.string().test({
-    //     message: () =>
-    //       "이미 가입된 이메일 주소입니다. 다른 이메일을 입력하여 주세요.",
-    //     test: async (values) => {
-    //       if (values) {
-    //         console.log("1");
-    //         try {
-    //           const auth = getAuth();
-    //           await fetchSignInMethodsForEmail(auth, values).then((result) =>
-    //             console.log("TEST", result)
-    //           );
-    //         } catch (error) {
-    //           console.log("ERROR");
-    //         }
+    // .test(
+    //   "emailCheck",
+    //   "이미 가입된 이메일 주소입니다. 다른 이메일을 입력하여 주세요.",
+    //   async (values) => {
+    //     if (values) {
+    //       try {
+    //         const auth = getAuth();
+    //         const res = await fetchSignInMethodsForEmail(auth, values);
+    //         return res[0] ? false : true;
+    //       } catch (error) {
+    //         //NOTHING
     //       }
-    //     },
-    //   }),
-    // }),
+    //     }
+    //   }
+    // ),
     password: yup
       .string()
       .required()
@@ -124,7 +119,6 @@ const JoinForm = () => {
         "휴대폰 번호를 정확하게 입력하세요."
       ),
   });
-
   const {
     register,
     handleSubmit,
