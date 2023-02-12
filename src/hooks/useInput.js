@@ -5,10 +5,10 @@ const useInput = () => {
   const [click, setClick] = useState(false);
 
   const clickHandler = () => {
-    if (!touched) setTouched(true);
     setClick(true);
   };
   const blurHandler = () => {
+    if (!touched) setTouched(true);
     setClick(false);
   };
 

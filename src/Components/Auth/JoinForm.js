@@ -75,21 +75,41 @@ const JoinForm = () => {
         /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i,
         "이메일을 올바르게 입력해주세요."
       ),
+    // .when("checkEmail", {
+    //   is: true,
+    //   then: yup.string().test({
+    //     message: () =>
+    //       "이미 가입된 이메일 주소입니다. 다른 이메일을 입력하여 주세요.",
+    //     test: async (values) => {
+    //       if (values) {
+    //         console.log("1");
+    //         try {
+    //           const auth = getAuth();
+    //           await fetchSignInMethodsForEmail(auth, values).then((result) =>
+    //             console.log("TEST", result)
+    //           );
+    //         } catch (error) {
+    //           console.log("ERROR");
+    //         }
+    //       }
+    //     },
+    //   }),
+    // }),
     password: yup
       .string()
       .required()
       .min(8)
       .max(20)
+      .matches(
+        /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/,
+        "영문/숫자/특수문자 2가지 이상 조합 (8~20자)"
+      )
       .test(
         "contiguous",
         "3개 이상 연속되거나 동일한 문자/숫자 제외",
         (value) => {
           return !isContiguous(value, 3);
         }
-      )
-      .matches(
-        /^(?!((?:[A-Za-z]+)|(?:[~!@#$%^&*()_+=]+)|(?:[0-9]+))$)[A-Za-z\d~!@#$%^&*()_+=]{8,20}$/,
-        "영문/숫자/특수문자 2가지 이상 조합 (8~20자)"
       ),
     passwordConfirm: yup
       .string()
@@ -212,30 +232,25 @@ const JoinForm = () => {
                 )}
               </label>
             </div>
-            {passwordTouched && (
-              <div className={styles["error-box"]}>
-                {errors.password ? (
-                  Object.entries(errors.password.types).map(
-                    ([type, message]) =>
-                      (type === "matches" || type === "contiguous") && (
-                        <>
-                          <span key={type} className={styles[`red-icon`]} />
-                          <p key={type} className={styles["error-text"]}>
-                            {message}
-                          </p>
-                        </>
-                      )
-                  )
-                ) : (
-                  <>
-                    <span className={styles[`green-icon`]} />
-                    <p className={styles["green-text"]}>
-                      사용 가능한 비밀번호입니다.
-                    </p>
-                  </>
-                )}
-              </div>
-            )}
+            {passwordTouched &&
+              (errors.password ? (
+                Object.entries(errors.password.types).map(
+                  ([type, message]) =>
+                    (type === "matches" || type === "contiguous") && (
+                      <div key={type} className={styles["error-box"]}>
+                        <span className={styles[`red-icon`]} />
+                        <p className={styles["error-text"]}>{message}</p>
+                      </div>
+                    )
+                )
+              ) : (
+                <div className={styles["error-box"]}>
+                  <span className={styles[`green-icon`]} />
+                  <p className={styles["green-text"]}>
+                    사용 가능한 비밀번호입니다.
+                  </p>
+                </div>
+              ))}
 
             <div
               onClick={passwordConfirmClickHandler}
