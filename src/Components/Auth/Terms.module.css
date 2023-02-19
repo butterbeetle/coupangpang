@@ -84,7 +84,6 @@
 .error {
   display: flex;
   align-items: center;
-  padding-left: 12px;
 }
 .error--text {
   display: inline-block;

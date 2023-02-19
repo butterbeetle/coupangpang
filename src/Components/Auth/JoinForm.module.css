@@ -121,6 +121,7 @@
 }
 
 .green-icon {
+  margin-left: 12px;
   margin-right: 5px;
   display: inline-block;
   width: 12px;
@@ -129,6 +130,7 @@
   background-size: cover;
 }
 .red-icon {
+  margin-left: 12px;
   margin-right: 5px;
   display: inline-block;
   width: 12px;
@@ -139,17 +141,18 @@
 .error-box {
   display: flex;
   align-items: center;
-  padding-left: 12px;
   height: 20px;
   margin-top: 12px;
 }
 .green-text {
   font-size: 11px;
   color: #00891a;
+  padding-left: 6px;
 }
 .error-text {
   font-size: 11px;
   color: #e52528;
+  padding-left: 6px;
 }
 
 .login__footer {

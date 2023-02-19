@@ -1,6 +1,5 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useForm } from "react-hook-form";
-import { useDispatch } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { yupResolver } from "@hookform/resolvers/yup";
 import styles from "./JoinForm.module.css";
@@ -10,7 +9,7 @@ import useInput from "../../hooks/useInput";
 import {
   getAuth,
   createUserWithEmailAndPassword,
-  fetchSignInMethodsForEmail,
+  // fetchSignInMethodsForEmail,
 } from "firebase/auth";
 
 const isContiguous = (str = "", limit = 3) => {
@@ -157,15 +156,24 @@ const JoinForm = () => {
     : "";
 
   const navigate = useNavigate();
-  const dispatch = useDispatch();
+  const [submitTouched, setSubmitTouched] = useState(false);
+  const [termsError, setTermsError] = useState(true);
 
+  const submitHandler = () => {
+    if (!submitTouched) {
+      setSubmitTouched(true);
+    }
+  };
   const onSubmit = async (data) => {
+    if (termsError) {
+      return;
+    }
     const auth = getAuth();
     try {
       await createUserWithEmailAndPassword(auth, data.email, data.password);
+      navigate("/login");
     } catch (error) {
       console.log(data.email, error.code);
-      // 있으면 배열, 없으면 빈배열
     }
   };
 
@@ -334,8 +342,14 @@ const JoinForm = () => {
               <p className={styles["error-text"]}>{errors.phone.message}</p>
             )}
 
-            <Terms />
-            <button className={styles["button"]}>동의하고 가입하기</button>
+            <Terms
+              submitTouched={submitTouched}
+              setTermsError={setTermsError}
+              termsError={termsError}
+            />
+            <button onClick={submitHandler} className={styles["button"]}>
+              동의하고 가입하기
+            </button>
           </form>
         </section>
       </main>

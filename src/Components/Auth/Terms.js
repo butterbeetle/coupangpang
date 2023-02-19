@@ -74,7 +74,7 @@ const terms = [
   },
 ];
 
-const Terms = () => {
+const Terms = (props) => {
   const [termItems, setTermItems] = useState(terms);
   const [all, setAll] = useState(false);
 
@@ -85,7 +85,18 @@ const Terms = () => {
     } else {
       setAll(false);
     }
-  }, [termItems]);
+
+    const requiredValid = () => {
+      if (
+        termItems.filter((item) => item.required && item.isCheck).length === 5
+      ) {
+        props.setTermsError((prev) => (prev = false));
+      } else {
+        props.setTermsError((prev) => (prev = true));
+      }
+    };
+    requiredValid();
+  }, [termItems, props]);
 
   const allCheckHandler = () => {
     const arr = [...termItems];
@@ -151,7 +162,7 @@ const Terms = () => {
       setTermItems(arr);
     }
   };
-  console.log("trems:", termItems);
+
   return (
     <section className={styles["main"]}>
       <div className={styles["all"]} onClick={allCheckHandler}>
@@ -165,14 +176,12 @@ const Terms = () => {
           거부하시는 경우에도 서비스 이용이 가능합니다
         </p>
       </div>
-      {
-        // <div className={styles["error"]}>
-        //   <i className={styles["error--icon"]}></i>
-        //   <p className={styles["error--text"]}>
-        //     필수 항목에 모두 동의해주세요
-        //   </p>
-        // </div>
-      }
+      {props.termsError && props.submitTouched && (
+        <div className={styles["error"]}>
+          <i className={styles["error--icon"]}></i>
+          <p className={styles["error--text"]}>필수 항목에 모두 동의해주세요</p>
+        </div>
+      )}
       <div className={styles["terms"]}>
         <ul className={styles["items"]}>
           {termItems.map((item, idx) => (
