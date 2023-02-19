@@ -90,9 +90,9 @@ const Terms = (props) => {
       if (
         termItems.filter((item) => item.required && item.isCheck).length === 5
       ) {
-        props.setTermsError((prev) => (prev = false));
+        props.setTermsError(false);
       } else {
-        props.setTermsError((prev) => (prev = true));
+        props.setTermsError(true);
       }
     };
     requiredValid();

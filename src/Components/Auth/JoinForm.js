@@ -6,11 +6,14 @@ import styles from "./JoinForm.module.css";
 import Terms from "./Terms";
 import * as yup from "yup";
 import useInput from "../../hooks/useInput";
+
 import {
   getAuth,
   createUserWithEmailAndPassword,
   // fetchSignInMethodsForEmail,
 } from "firebase/auth";
+import { firestore } from "../../firebase-config";
+import { collection, addDoc } from "firebase/firestore";
 
 const isContiguous = (str = "", limit = 3) => {
   if (!str.trim()) return false;
@@ -170,10 +173,24 @@ const JoinForm = () => {
     }
     const auth = getAuth();
     try {
-      await createUserWithEmailAndPassword(auth, data.email, data.password);
+      const res = await createUserWithEmailAndPassword(
+        auth,
+        data.email,
+        data.password
+      );
+      console.log("res", res);
+      console.log("data", data);
+      const docRef = await addDoc(collection(firestore, "users"), {
+        email: data.email,
+        name: data.name,
+        password: data.password,
+        passwordConfirm: data.passwordConfirm,
+        phone: data.phone,
+      });
+      console.log("Document written with ID: ", docRef.id);
       navigate("/login");
     } catch (error) {
-      console.log(data.email, error.code);
+      console.log(error);
     }
   };
 
