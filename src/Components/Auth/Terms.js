@@ -151,7 +151,7 @@ const Terms = () => {
       setTermItems(arr);
     }
   };
-
+  console.log("trems:", termItems);
   return (
     <section className={styles["main"]}>
       <div className={styles["all"]} onClick={allCheckHandler}>

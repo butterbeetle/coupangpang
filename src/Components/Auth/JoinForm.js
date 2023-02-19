@@ -166,9 +166,6 @@ const JoinForm = () => {
     } catch (error) {
       console.log(data.email, error.code);
       // 있으면 배열, 없으면 빈배열
-      fetchSignInMethodsForEmail(auth, "test@test.com").then((result) =>
-        console.log(result)
-      );
     }
   };
 
@@ -226,9 +223,8 @@ const JoinForm = () => {
                 )}
               </label>
             </div>
-            {passwordTouched &&
-              (errors.password ? (
-                Object.entries(errors.password.types).map(
+            {errors.password
+              ? Object.entries(errors.password.types).map(
                   ([type, message]) =>
                     (type === "matches" || type === "contiguous") && (
                       <div key={type} className={styles["error-box"]}>
@@ -237,14 +233,14 @@ const JoinForm = () => {
                       </div>
                     )
                 )
-              ) : (
-                <div className={styles["error-box"]}>
-                  <span className={styles[`green-icon`]} />
-                  <p className={styles["green-text"]}>
-                    사용 가능한 비밀번호입니다.
-                  </p>
-                </div>
-              ))}
+              : passwordTouched && (
+                  <div className={styles["error-box"]}>
+                    <span className={styles[`green-icon`]} />
+                    <p className={styles["green-text"]}>
+                      사용 가능한 비밀번호입니다.
+                    </p>
+                  </div>
+                )}
 
             <div
               onClick={passwordConfirmClickHandler}
@@ -271,24 +267,23 @@ const JoinForm = () => {
                   )}
               </label>
             </div>
-            {passwordConfirmTouched && (
+
+            {errors.passwordConfirm ? (
               <div className={styles["error-box"]}>
-                {errors.passwordConfirm ? (
-                  <>
-                    <span className={styles[`red-icon`]} />
-                    <p className={styles["error-text"]}>
-                      {errors.passwordConfirm.message}
-                    </p>
-                  </>
-                ) : (
-                  <>
-                    <span className={styles[`green-icon`]} />
-                    <p className={styles["green-text"]}>
-                      새 비밀번호가 일치합니다.
-                    </p>
-                  </>
-                )}
+                <span className={styles[`red-icon`]} />
+                <p className={styles["error-text"]}>
+                  {errors.passwordConfirm.message}
+                </p>
               </div>
+            ) : (
+              passwordConfirmTouched && (
+                <div className={styles["error-box"]}>
+                  <span className={styles[`green-icon`]} />
+                  <p className={styles["green-text"]}>
+                    새 비밀번호가 일치합니다.
+                  </p>
+                </div>
+              )
             )}
 
             <div
