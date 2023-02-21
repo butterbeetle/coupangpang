@@ -68,7 +68,7 @@ const LoginForm = () => {
   const dispatch = useDispatch();
 
   const onSubmit = (data) => {
-    console.log("onSubmit", data, data.email, data.password);
+    // console.log("onSubmit", data, data.email, data.password);
 
     const auth = getAuth();
 
@@ -79,6 +79,15 @@ const LoginForm = () => {
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
           console.log("Document data:", docSnap.data());
+          dispatch(
+            loggedActions.register({
+              email: docSnap.data().email,
+              name: docSnap.data().name,
+              phone: docSnap.data().phone,
+            })
+          );
+          dispatch(loggedActions.login());
+          navigate("/");
         } else {
           throw new Error();
         }

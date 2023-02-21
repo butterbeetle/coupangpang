@@ -21,7 +21,9 @@ const loggedSlice = createSlice({
     },
     logout(state) {
       state.isLogged = false;
-      state.userName = "";
+      state.email = "";
+      state.name = "";
+      state.phone = "";
     },
   },
 });
