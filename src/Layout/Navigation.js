@@ -44,12 +44,9 @@ const Navigation = () => {
   );
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.logged.name);
-  const userEmail = useSelector((state) => state.logged.email);
-  const userPhone = useSelector((state) => state.logged.phone);
-
   const isLogged = useSelector((state) => state.logged.isLogged);
 
-  // console.log(userName, userEmail, userPhone, isLogged);
+  console.log("Navi", userName, isLogged);
 
   const logoutHandler = () => {
     dispatch(loggedActions.logout());
