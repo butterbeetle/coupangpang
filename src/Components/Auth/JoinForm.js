@@ -13,7 +13,7 @@ import {
   // fetchSignInMethodsForEmail,
 } from "firebase/auth";
 import { firestore } from "../../firebase-config";
-import { collection, addDoc } from "firebase/firestore";
+import { doc, setDoc } from "firebase/firestore";
 
 const isContiguous = (str = "", limit = 3) => {
   if (!str.trim()) return false;
@@ -167,31 +167,24 @@ const JoinForm = () => {
       setSubmitTouched(true);
     }
   };
+
   const onSubmit = async (data) => {
     if (termsError) {
       return;
     }
+
     const auth = getAuth();
-    try {
-      const res = await createUserWithEmailAndPassword(
-        auth,
-        data.email,
-        data.password
-      );
-      console.log("res", res);
-      console.log("data", data);
-      const docRef = await addDoc(collection(firestore, "users"), {
-        email: data.email,
-        name: data.name,
-        password: data.password,
-        passwordConfirm: data.passwordConfirm,
-        phone: data.phone,
+    createUserWithEmailAndPassword(auth, data.email, data.password)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+        await setDoc(doc(firestore, "users", user.uid), data);
+        navigate("/login");
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
       });
-      console.log("Document written with ID: ", docRef.id);
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
-    }
   };
 
   return (
