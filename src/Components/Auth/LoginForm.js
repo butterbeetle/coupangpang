@@ -78,7 +78,7 @@ const LoginForm = () => {
         const docRef = doc(firestore, "users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          console.log("Document data:", docSnap.data());
+          // console.log("Document data:", docSnap.data());
           dispatch(
             loggedActions.register({
               email: docSnap.data().email,
@@ -100,7 +100,7 @@ const LoginForm = () => {
   };
 
   const onError = (error) => {
-    console.log("onError", error);
+    // console.log("onError", error);
   };
 
   return (
