@@ -8,6 +8,10 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { loggedActions } from "../../store";
 
+import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { firestore } from "../../firebase-config";
+import { doc, getDoc } from "firebase/firestore";
+
 const LoginForm = () => {
   const [emailColor, setEmailColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
@@ -63,45 +67,41 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const onSubmit = async (data) => {
-    console.log("onSubmit", data, data.email, data.password);
-    const url =
-      "https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=AIzaSyCnzUriRYYCPwUKN4YWiZsHDHKI-5TKBWk";
-    try {
-      const response = await fetch(url, {
-        method: "POST",
-        body: JSON.stringify({
-          email: data.email,
-          password: data.password,
-          returnSecureToken: true,
-        }),
-        headers: {
-          "Content-Type": "application/json",
-        },
+  const onSubmit = (data) => {
+    // console.log("onSubmit", data, data.email, data.password);
+
+    const auth = getAuth();
+
+    signInWithEmailAndPassword(auth, data.email, data.password)
+      .then(async (userCredential) => {
+        const user = userCredential.user;
+        const docRef = doc(firestore, "users", user.uid);
+        const docSnap = await getDoc(docRef);
+        if (docSnap.exists()) {
+          // console.log("Document data:", docSnap.data());
+          dispatch(
+            loggedActions.register({
+              email: docSnap.data().email,
+              name: docSnap.data().name,
+              phone: docSnap.data().phone,
+            })
+          );
+          dispatch(loggedActions.login());
+          navigate("/");
+        } else {
+          throw new Error();
+        }
+      })
+      .catch(() => {
+        setSubmitError(
+          "이메일 또는 비밀번호를 다시 확인하세요. 쿠팡에 등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
+        );
       });
-      const responseData = await response.json();
-      if (!response.ok) {
-        throw new Error(responseData.error.message);
-      }
-
-      dispatch(loggedActions.login());
-
-      navigate("/");
-    } catch (error) {
-      console.log("Error:", error.message);
-      setSubmitError(
-        "이메일 또는 비밀번호를 다시 확인하세요. 쿠팡에 등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
-      );
-    }
   };
 
   const onError = (error) => {
-    console.log("onError", error);
+    // console.log("onError", error);
   };
-  // console.log("formState", formState);
-  // console.log("register", register("email"));
-  // console.log(`errors(${Object.keys(errors).length}) : ${errors}`);
-  // console.log(passwordVisible);
 
   return (
     <Fragment>

@@ -174,8 +174,11 @@
   color: white;
   font-size: 17px;
   font-weight: bold;
-  box-shadow: 0 -2px 0 inset #004891;
+  box-shadow: inset 0 -2px 0 #004891;
   cursor: pointer;
+}
+.login__main__btn__login:active {
+  box-shadow: inset 0.1rem 0.12rem 0.2rem #004891;
 }
 .login__main__btn__join {
   width: 100%;
@@ -185,8 +188,11 @@
   color: #0074e9;
   font-size: 17px;
   font-weight: bold;
-  box-shadow: 0 -1px 0 inset #d9d9d9;
+  box-shadow: inset 0 -1px 0 #d9d9d9;
   cursor: pointer;
+}
+.login__main__btn__join:active {
+  box-shadow: inset 0 0.12rem 0.2rem #d9d9d9;
 }
 .line {
   width: 100%;
