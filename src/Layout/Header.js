@@ -50,8 +50,6 @@ const myCoupangItems = [
   { title: "찜 리스트" },
 ];
 
-const cartItems = [];
-
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
@@ -85,8 +83,8 @@ const Header = () => {
   return (
     <Fragment>
       <Navigation />
-      <header style={{ backgroundColor: "white" }}>
-        <section className={styles.header}>
+      <header className={styles["header"]}>
+        <section className={styles["contents"]}>
           <Catrgory />
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>

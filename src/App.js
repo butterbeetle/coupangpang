@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import JoinForm from "./Components/Auth/JoinForm";
 import LoginForm from "./Components/Auth/LoginForm";
 import Main from "./pages/Main";
+import Products from "./pages/Products";
 
 import { ref, getDownloadURL } from "firebase/storage";
 import { firestore, storage } from "./firebase-config";
@@ -25,6 +26,7 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
+          <Route path="/products/:productId" element={<Products />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/join" element={<JoinForm />} />
         </Routes>
