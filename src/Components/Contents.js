@@ -3,6 +3,7 @@ import Sidebar from "./Sidebar";
 import Discovery from "./Discovery/Discovery";
 import Advertisement from "./Advertisement/Advertisement";
 import CategoryBestUnit from "./CategoryBestUnit";
+import SideMenuProvider from "../store/sideMenu-context";
 
 const Contents = () => {
   return (
@@ -10,7 +11,9 @@ const Contents = () => {
       <Sidebar />
       <Discovery />
       <Advertisement />
-      <CategoryBestUnit />
+      <SideMenuProvider>
+        <CategoryBestUnit />
+      </SideMenuProvider>
     </section>
   );
 };
