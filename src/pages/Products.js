@@ -1,4 +1,4 @@
-import Product from "../Components/Details/Product";
+import Product from "../Components/Product/Product";
 import Layout from "../Layout/Layout";
 
 const Detail = () => {
