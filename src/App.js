@@ -4,9 +4,9 @@ import LoginForm from "./Components/Auth/LoginForm";
 import Main from "./pages/Main";
 import Products from "./pages/Products";
 
-import { ref, getDownloadURL } from "firebase/storage";
-import { firestore, storage } from "./firebase-config";
-import { useEffect, useState } from "react";
+// import { ref, getDownloadURL } from "firebase/storage";
+// import { firestore, storage } from "./firebase-config";
+// import { useEffect, useState } from "react";
 
 function App() {
   // const [url, setUrl] = useState("");
