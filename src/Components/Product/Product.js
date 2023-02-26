@@ -13,7 +13,9 @@ const Product = () => {
         </div>
         <div className={styles["product__info"]}>
           <ProductImage />
-          <div className={styles["product__text"]}>text</div>
+          <div className={styles["product__text"]}>
+            <div></div>
+          </div>
         </div>
       </div>
     </section>

@@ -29,36 +29,34 @@ const ProductImage = () => {
 
   return (
     <div className={styles["product__images"]}>
-      <ul>
-        {imgs.map(({ id, src }) => (
-          <>
-            <div
-              className={styles["product__image"]}
-              key={id}
-              onMouseEnter={() => hoverHandler(id)}
-            >
-              <div className={`${styles["product__image--small"]} `}>
-                <img src={src} alt={`item${id}`} />
-                <i className={`${imgIndex === id ? styles["border"] : ""}`} />
-              </div>
-            </div>
-            <div
-              className={`${styles["product__image--big"]} ${
-                imgIndex === id ? styles["active"] : ""
-              }`}
-            >
+      {imgs.map(({ id, src }) => (
+        <>
+          <div
+            className={styles["product__image"]}
+            key={id}
+            onMouseEnter={() => hoverHandler(id)}
+          >
+            <div className={`${styles["product__image--small"]} `}>
               <img src={src} alt={`item${id}`} />
+              <i className={`${imgIndex === id ? styles["border"] : ""}`} />
             </div>
-            <div
-              className={`${styles["product__image--zoom"]} ${
-                imgIndex === id ? styles["active"] : ""
-              }`}
-            >
-              <ReactImageZoom {...props} img={src} />
-            </div>
-          </>
-        ))}
-      </ul>
+          </div>
+          <div
+            className={`${styles["product__image--big"]} ${
+              imgIndex === id ? styles["active"] : ""
+            }`}
+          >
+            <img src={src} alt={`item${id}`} />
+          </div>
+          <div
+            className={`${styles["product__image--zoom"]} ${
+              imgIndex === id ? styles["active"] : ""
+            }`}
+          >
+            <ReactImageZoom {...props} img={src} />
+          </div>
+        </>
+      ))}
     </div>
   );
 };

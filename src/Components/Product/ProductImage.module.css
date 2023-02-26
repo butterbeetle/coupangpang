@@ -4,18 +4,18 @@
   border: 0.1rem solid pink;
   width: 50%;
   display: flex;
+  flex-direction: column;
 }
-.product__images ul {
-  margin: 0;
-}
-.product__images ul img {
+.product__images img {
   width: 100%;
   height: 100%;
 }
 .product__image {
   position: relative;
+  width: 3.12rem;
 }
 .product__image--small {
+  position: relative;
   margin-bottom: 0.25rem;
   width: 3.12rem;
   height: 3.12rem;
