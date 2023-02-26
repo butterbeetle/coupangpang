@@ -1,7 +1,7 @@
 import styles from "./Product.module.css";
 // import { useParams } from "react-router";
 import ProductImage from "./ProductImage";
-import { FiHeart } from "react-icons/fi";
+import { FiHeart, FiThumbsUp } from "react-icons/fi";
 import { BsFillShareFill, BsCoin } from "react-icons/bs";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 
@@ -59,6 +59,30 @@ const Product = () => {
                   <p>최대 544원 적립</p>
                 </div>
               </div>
+            </div>
+            <div className={styles["product__info--delivary"]}>
+              <p className={styles["delivary--type"]}>무료배송</p>
+              <p className={styles["delivary--date"]}>금요일 3/3 도착 예정</p>
+            </div>
+            <div className={styles["product__info--seller"]}>
+              <div className={styles["seller--personal"]}>
+                <p className={styles["seller--title"]}>판매자:</p>
+                <p className={styles["seller--name"]}>
+                  (사)해남고구마생산자협회
+                </p>
+                <div className={styles["seller--prod"]} />
+              </div>
+              <div className={styles["seller--evaluation"]}>
+                <p className={styles["seller--title"]}>판매자 평가</p>
+                <FiThumbsUp className={styles["thumbs"]} />
+                <p className={styles["evaluation--rate"]}>83%</p>
+                <p className={styles["evaluation--count"]}>(19,329)</p>
+                <AiOutlineInfoCircle className={styles["i"]} />
+              </div>
+            </div>
+            <div className={styles["product__info--delivery--company"]}>
+              배송사:
+              <p>롯데택배</p>
             </div>
           </div>
         </div>
