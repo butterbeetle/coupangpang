@@ -15,6 +15,7 @@
 .product__infos {
   width: 100%;
   display: flex;
+  margin-bottom: 2.8rem;
 }
 
 .product__info {
@@ -382,4 +383,30 @@
   margin: 0;
   margin-left: 1.6rem;
   cursor: pointer;
+}
+
+/* 제품 상세 title */
+.tab__title {
+  display: flex;
+  width: 100%;
+  border-top: 0.15rem solid #555;
+  border-bottom: 0.1rem solid #ccc;
+  border-left: 0.1rem solid #ccc;
+  box-sizing: border-box;
+}
+.tab__title li {
+  cursor: pointer;
+  padding: 0.9rem 0;
+  width: 25%;
+  text-align: center;
+  border-right: 0.1rem solid #ccc;
+  background-color: #fafafa;
+  color: #555;
+  font-weight: bold;
+}
+.tab__title li:first-child {
+  color: #111;
+  background-color: #fff;
+  margin-bottom: -0.1rem;
+  border-bottom: 0.1rem solid #fff;
 }

@@ -146,6 +146,20 @@ const Product = () => {
           </div>
         </div>
       </div>
+      <div>{/* 함께 비교하면 좋을 상품 */}</div>
+      <div className={styles["product__tab"]}>
+        <ul className={styles["tab__title"]}>
+          <li>상품상세</li>
+          <li>상품평</li>
+          <li>상품문의</li>
+          <li>배송/교환/반품 안내</li>
+        </ul>
+        <ul className={styles["tab__contents"]}>
+          <li>
+            <div>asd</div>
+          </li>
+        </ul>
+      </div>
     </section>
   );
 };
