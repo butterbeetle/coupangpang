@@ -1,7 +1,6 @@
 .product__images {
   position: relative;
   box-sizing: border-box;
-  border: 0.1rem solid pink;
   width: 50%;
   display: flex;
   flex-direction: column;

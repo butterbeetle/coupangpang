@@ -1,8 +1,10 @@
 import styles from "./Product.module.css";
-// import { useParams } from "react-router";
 import ProductImage from "./ProductImage";
+import { useParams } from "react-router";
+
+/* 아이콘 */
 import { AiOutlineInfoCircle } from "react-icons/ai";
-import { BsFillShareFill, BsCoin } from "react-icons/bs";
+import { BsFillShareFill, BsCoin, BsChatLeftText } from "react-icons/bs";
 import { FiHeart, FiThumbsUp } from "react-icons/fi";
 import {
   IoIosArrowUp,
@@ -11,7 +13,7 @@ import {
 } from "react-icons/io";
 
 const Product = () => {
-  // const { productId } = useParams();
+  const { productId } = useParams();
 
   return (
     <section className={styles["product"]}>
@@ -131,6 +133,15 @@ const Product = () => {
                   바로 구매 <IoIosArrowForward />
                 </button>
               </div>
+            </div>
+            <div className={styles["product__info--desc"]}>
+              <ul>
+                <li>쿠팡상품번호: {productId}</li>
+              </ul>
+            </div>
+            <div className={styles["product__info--inquiry"]}>
+              <BsChatLeftText />
+              <p>상품정보에 문제가 있나요?</p>
             </div>
           </div>
         </div>
