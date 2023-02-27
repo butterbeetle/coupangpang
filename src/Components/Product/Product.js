@@ -84,6 +84,27 @@ const Product = () => {
               배송사:
               <p>롯데택배</p>
             </div>
+            <div className={styles["product__info--cash"]}>
+              <div className={styles["cash__header"]}>
+                <div className={styles["cash__title"]}>
+                  <BsCoin />
+                  <p>캐시적립 혜택</p>
+                  <AiOutlineInfoCircle />
+                </div>
+                <div>
+                  <p>최대 544원 적립</p>
+                </div>
+              </div>
+              <div className={styles["cash__promotion"]}>
+                <p>쿠페이 머니 결제 시 1% 적립</p>
+                <p>[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립</p>
+                <p>
+                  [로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립{" "}
+                  <strong>2922일 남음</strong>
+                </p>
+                <button>로켓와우 무료체험 신청하기</button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
