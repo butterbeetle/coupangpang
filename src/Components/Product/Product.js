@@ -1,9 +1,14 @@
 import styles from "./Product.module.css";
 // import { useParams } from "react-router";
 import ProductImage from "./ProductImage";
-import { FiHeart, FiThumbsUp } from "react-icons/fi";
-import { BsFillShareFill, BsCoin } from "react-icons/bs";
 import { AiOutlineInfoCircle } from "react-icons/ai";
+import { BsFillShareFill, BsCoin } from "react-icons/bs";
+import { FiHeart, FiThumbsUp } from "react-icons/fi";
+import {
+  IoIosArrowUp,
+  IoIosArrowDown,
+  IoIosArrowForward,
+} from "react-icons/io";
 
 const Product = () => {
   // const { productId } = useParams();
@@ -92,7 +97,9 @@ const Product = () => {
                   <AiOutlineInfoCircle />
                 </div>
                 <div>
-                  <p>최대 544원 적립</p>
+                  <p>
+                    최대 <strong>544원</strong> 적립
+                  </p>
                 </div>
               </div>
               <div className={styles["cash__promotion"]}>
@@ -102,10 +109,29 @@ const Product = () => {
                   [로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립{" "}
                   <strong>2922일 남음</strong>
                 </p> */}
-                <button>쿠페이 머니 충전하기</button>
+                <button type="button">쿠페이 머니 충전하기</button>
               </div>
             </div>
-            <div></div>
+            <div className={styles["product__info--buy"]}>
+              <div className={styles["buy--amount"]}>
+                <input type="text" value="1" />
+                <div className={styles["button--bag"]}>
+                  <button type="button">
+                    <IoIosArrowUp />
+                  </button>
+                  <button type="button">
+                    <IoIosArrowDown />
+                  </button>
+                </div>
+              </div>
+              <div className={styles["buy--cart"]}>
+                <button type="button">장바구니 담기</button>
+                <div></div>
+                <button type="button">
+                  바로 구매 <IoIosArrowForward />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </div>
