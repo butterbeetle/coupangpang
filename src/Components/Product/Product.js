@@ -97,14 +97,15 @@ const Product = () => {
               </div>
               <div className={styles["cash__promotion"]}>
                 <p>쿠페이 머니 결제 시 1% 적립</p>
-                <p>[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립</p>
+                {/* <p>[로켓와우 + 쿠페이 계좌이체] 결제 시 2% 적립</p>
                 <p>
                   [로켓와우 + 쿠페이 머니] 결제 시 4% 추가적립{" "}
                   <strong>2922일 남음</strong>
-                </p>
-                <button>로켓와우 무료체험 신청하기</button>
+                </p> */}
+                <button>쿠페이 머니 충전하기</button>
               </div>
             </div>
+            <div></div>
           </div>
         </div>
       </div>

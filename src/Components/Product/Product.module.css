@@ -232,8 +232,9 @@
 
 /* 캐시적립 */
 .product__info--cash {
-  padding: 1.12rem 0;
+  padding: 0.8rem 0;
   font-size: 0.9rem;
+  border-bottom: 0.1rem solid #eee;
 }
 .cash__header {
   display: flex;
