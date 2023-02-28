@@ -11,7 +11,7 @@ import {
   IoIosArrowDown,
   IoIosArrowForward,
 } from "react-icons/io";
-
+import { RiErrorWarningFill } from "react-icons/ri";
 const Product = () => {
   const { productId } = useParams();
 
@@ -156,7 +156,61 @@ const Product = () => {
         </ul>
         <ul className={styles["tab__contents"]}>
           <li>
-            <div>asd</div>
+            <div>
+              <p className={styles["detail__title"]}>필수 표기정보</p>
+              <div className={styles["detail__info"]}>
+                <div className={styles["unit"]}>
+                  <div>품목 또는 명칭</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>포장단위별 내용물의 용량(중량),수량,크기</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>생산자(수입자)</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>원산지</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>제조연월일, 소비기한 또는 품질유지기한</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>세부 품목군별 표시사항</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>수입식품 문구 여부</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>상품구성</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>보관방법,취급방법</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>소비자안전을 위한 주의사항</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+                <div className={styles["unit"]}>
+                  <div>소비자상담관련 전화번호</div>
+                  <div>상품 상세페이지 참조</div>
+                </div>
+              </div>
+              {/* 필수 표기정보 더보기 만들곳 */}
+            </div>
+            <div className={styles["warning__banner"]}>
+              <RiErrorWarningFill />
+              판매자가 현금거래를 요구하면 거부하시고 즉시 사기 거래 신고센터
+              (02-2621-4699)에 신고하시기 바랍니다.
+            </div>
           </li>
         </ul>
       </div>
