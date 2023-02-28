@@ -166,7 +166,7 @@ const Product = () => {
           <li>배송/교환/반품 안내</li>
         </ul>
         <ul className={styles["tab__contents"]}>
-          <li className={styles["product__detail"]}>
+          <li className={styles["contents__detail"]}>
             <div>
               <p className={styles["detail__title"]}>필수 표기정보</p>
               <div className={styles["detail__info"]}>
@@ -240,6 +240,17 @@ const Product = () => {
                   상품정보 더보기
                   {seeMore ? <IoIosArrowUp /> : <IoIosArrowDown />}
                 </div>
+              </div>
+            </div>
+          </li>
+          <li className={styles["contents__review"]}>
+            <div className={styles["review__header"]}>
+              <p>상품평 운영원칙</p>
+              <p>상품평</p>
+            </div>
+            <div className={styles["review__main"]}>
+              <div className={styles["review__nothing"]}>
+                등록된 상품평이 없습니다.
               </div>
             </div>
           </li>

@@ -500,3 +500,36 @@
   height: 1.1rem;
   margin-left: 0.2rem;
 }
+
+/* 상품평 */
+.contents__review {
+  margin-top: 2rem;
+}
+.review__header {
+  position: relative;
+  border-top: 0.1rem solid #414141;
+}
+.review__header p {
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+.review__header p:first-child {
+  margin: 1.75rem 0 0 0;
+  position: absolute;
+  top: 0.6rem;
+  right: 0;
+  font-size: 0.75rem;
+  font-weight: 100;
+  color: #346aff;
+}
+.review__main {
+  font-size: 0.75rem;
+  margin-top: 5.7rem;
+}
+.review__nothing {
+  border-top: 0.15rem solid #777;
+  margin: 0 auto;
+  padding-top: 1.8rem;
+  padding-bottom: 5rem;
+  text-align: center;
+}
