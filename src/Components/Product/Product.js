@@ -12,8 +12,19 @@ import {
   IoIosArrowForward,
 } from "react-icons/io";
 import { RiErrorWarningFill } from "react-icons/ri";
+
+/* 테스트 이미지 */
+import detail_image01 from "../../assets/img/test/test_detail1.jpg";
+import detail_image02 from "../../assets/img/test/test_detail2.png";
+import detail_image03 from "../../assets/img/test/test_detail3.png";
+import { useState } from "react";
+
 const Product = () => {
   const { productId } = useParams();
+  const [seeMore, setSeeMore] = useState(false);
+  const seeMoreHandler = () => {
+    setSeeMore((prev) => !prev);
+  };
 
   return (
     <section className={styles["product"]}>
@@ -155,7 +166,7 @@ const Product = () => {
           <li>배송/교환/반품 안내</li>
         </ul>
         <ul className={styles["tab__contents"]}>
-          <li>
+          <li className={styles["product__detail"]}>
             <div>
               <p className={styles["detail__title"]}>필수 표기정보</p>
               <div className={styles["detail__info"]}>
@@ -210,6 +221,26 @@ const Product = () => {
               <RiErrorWarningFill />
               판매자가 현금거래를 요구하면 거부하시고 즉시 사기 거래 신고센터
               (02-2621-4699)에 신고하시기 바랍니다.
+            </div>
+            <div className={styles["detail__images"]}>
+              <div
+                className={`${styles["detail__image"]} ${
+                  seeMore ? "" : styles["hide__overflow"]
+                }`}
+              >
+                <img src={detail_image01} alt="" />
+                <img src={detail_image02} alt="" />
+                <img src={detail_image03} alt="" />
+              </div>
+              <div className={styles["detail__more"]}>
+                <div
+                  onClick={seeMoreHandler}
+                  className={styles["detail__more--button"]}
+                >
+                  상품정보 더보기
+                  {seeMore ? <IoIosArrowUp /> : <IoIosArrowDown />}
+                </div>
+              </div>
             </div>
           </li>
         </ul>

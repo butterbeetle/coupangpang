@@ -457,10 +457,46 @@
   padding: 1rem 0.75rem;
   color: #e12705;
   background-color: #fce9e6;
-  margin-top: 1.9rem;
+  margin: 1.9rem 0 1rem 0;
 }
 .warning__banner svg {
   width: 1.3rem;
   height: 1.3rem;
   margin-right: 0.6rem;
+}
+
+/* 제품 이미지 */
+.detail__images {
+  font-size: 0.85rem;
+}
+
+.detail__image {
+  width: 48.75rem;
+  margin: 0 auto 1.1rem;
+}
+.hide__overflow {
+  max-height: 75rem;
+  overflow: hidden;
+}
+.detail__image img {
+  display: block;
+}
+.detail__more {
+  display: flex;
+  font-weight: bold;
+}
+.detail__more--button {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  color: #346aff;
+  border-radius: 0.2rem;
+  margin: 0 auto;
+  padding: 1.25rem 5rem;
+  border: 0.1rem solid #346aff;
+}
+.detail__more--button svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-left: 0.2rem;
 }
