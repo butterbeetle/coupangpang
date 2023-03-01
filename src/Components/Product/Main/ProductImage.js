@@ -3,14 +3,14 @@ import ReactImageZoom from "react-image-zoom";
 import styles from "./ProductImage.module.css";
 
 const imgs = [
-  { id: 0, src: require(`../../assets/img/test/test.jpg`) },
-  { id: 1, src: require(`../../assets/img/test/test1.jpg`) },
-  { id: 2, src: require(`../../assets/img/test/test2.jpg`) },
-  { id: 3, src: require(`../../assets/img/test/test3.jpg`) },
-  { id: 4, src: require(`../../assets/img/test/test4.jpg`) },
-  { id: 5, src: require(`../../assets/img/test/test5.jpg`) },
-  { id: 6, src: require(`../../assets/img/test/test6.jpg`) },
-  { id: 7, src: require(`../../assets/img/test/test7.jpg`) },
+  { id: 0, src: require(`../../../assets/img/test/test.jpg`) },
+  { id: 1, src: require(`../../../assets/img/test/test1.jpg`) },
+  { id: 2, src: require(`../../../assets/img/test/test2.jpg`) },
+  { id: 3, src: require(`../../../assets/img/test/test3.jpg`) },
+  { id: 4, src: require(`../../../assets/img/test/test4.jpg`) },
+  { id: 5, src: require(`../../../assets/img/test/test5.jpg`) },
+  { id: 6, src: require(`../../../assets/img/test/test6.jpg`) },
+  { id: 7, src: require(`../../../assets/img/test/test7.jpg`) },
 ];
 
 const ProductImage = () => {
