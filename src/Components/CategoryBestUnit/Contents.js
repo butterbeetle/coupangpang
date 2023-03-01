@@ -18,10 +18,10 @@ const Contents = ({ items }) => {
         <div className={styles["keyword"]}>
           <h4>HOT키워드</h4>
           <ul>
-            {items.keywords.map((keyword) => (
+            {items.keywords.map((keyword, idx) => (
               <li
                 className={icons[items.styles + "-color"]}
-                key={keyword.key}
+                key={idx}
               >{`#${keyword}`}</li>
             ))}
           </ul>
