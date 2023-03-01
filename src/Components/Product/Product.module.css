@@ -623,7 +623,8 @@
 }
 .notice__delivary__info,
 .notice__delivary__return,
-.notice__delivary__limit {
+.notice__delivary__limit,
+.notice__delivary__seller {
   margin-bottom: 2.8rem;
 }
 .notice__grid {
@@ -690,5 +691,9 @@
 }
 .escrow {
   font-size: 0.75rem;
+  color: #888;
+}
+.minor__notice {
+  font-size: 0.68rem;
   color: #888;
 }
