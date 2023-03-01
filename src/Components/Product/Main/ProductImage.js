@@ -30,7 +30,7 @@ const ProductImage = () => {
   return (
     <div className={styles["product__images"]}>
       {imgs.map(({ id, src }) => (
-        <>
+        <div key={id}>
           <div
             className={styles["product__image"]}
             key={id}
@@ -55,7 +55,7 @@ const ProductImage = () => {
           >
             <ReactImageZoom {...props} img={src} />
           </div>
-        </>
+        </div>
       ))}
     </div>
   );
