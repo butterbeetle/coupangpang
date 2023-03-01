@@ -92,6 +92,8 @@ const ProductTabContents = () => {
             </div>
           </div>
         </div>
+        {/* 이런 상품은 어때요? */}
+        {/* 다른 고객이 함께 본 상품 */}
       </li>
       <li className={styles["contents__review"]}>
         <div className={styles["review__header"]}>
@@ -103,6 +105,7 @@ const ProductTabContents = () => {
             등록된 상품평이 없습니다.
           </div>
         </div>
+        {/* 4점 이상 리뷰가 좋은 상품*/}
       </li>
       <li className={styles["contents__enquiry"]}>
         <div className={styles["enquiry__main"]}>
@@ -387,6 +390,7 @@ const ProductTabContents = () => {
             책임은 각 판매자에 있습니다.
           </p>
         </div>
+        {/* 연관 추천 상품 */}
       </li>
     </ul>
   );
