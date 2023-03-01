@@ -602,3 +602,93 @@
   top: 0;
   right: 0;
 }
+
+/* 배송/교환/반품 안내 */
+.contents__notice {
+  margin-top: 2.5rem;
+}
+.contents__notice h5 {
+  font-size: 0.9rem;
+  margin: 0;
+  margin-bottom: 0.6rem;
+}
+.contents__notice li {
+  font-size: 0.75rem;
+}
+.contents__notice ul {
+  margin-bottom: 0.8rem;
+}
+.contents__notice p {
+  margin: 0;
+}
+.notice__delivary__info,
+.notice__delivary__return,
+.notice__delivary__limit {
+  margin-bottom: 2.8rem;
+}
+.notice__grid {
+  display: grid;
+  margin-top: 0.3rem;
+  border-top: 0.13rem solid #eee;
+  border-bottom: 0.1rem solid #eee;
+  align-items: center;
+  grid-template-columns: 1fr;
+  font-size: 0.75rem;
+}
+.notice__item {
+  box-sizing: border-box;
+  display: flex;
+  height: 100%;
+  border-bottom: 0.1rem solid #eee;
+}
+.grid__2 {
+  grid-template-columns: 1fr 1fr;
+}
+.row__2 {
+  align-items: center;
+  grid-row: span 2;
+}
+.column__2 {
+  grid-column: span 2;
+}
+.notice__title {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  background: #fafafa;
+  height: 100%;
+  width: 9rem;
+  padding: 0.75rem 1rem;
+}
+.notice__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0.75rem 1rem;
+  width: 19.6rem;
+}
+.notice__width {
+  width: 85%;
+}
+.limit__text {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+.indent {
+  display: inline-block;
+  padding-left: 0.75rem;
+}
+.notice__service__join {
+  display: flex;
+}
+.notice__service__join p {
+  margin-left: 0.7rem;
+  margin-bottom: 0.5rem;
+  color: #346aff;
+  font-size: 0.7rem;
+  cursor: pointer;
+}
+.escrow {
+  font-size: 0.75rem;
+  color: #888;
+}
