@@ -88,12 +88,16 @@
 .price__discount__rate {
   color: black;
 }
+.price__discount p {
+  margin-right: 0.2rem;
+}
 .price__origin {
   text-decoration: line-through;
 }
 .price__sale {
   display: flex;
   align-items: center;
+  color: #768695;
 }
 .price__coupon {
   display: flex;

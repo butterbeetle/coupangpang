@@ -10,9 +10,51 @@ import {
   IoIosArrowDown,
   IoIosArrowForward,
 } from "react-icons/io";
+import { useEffect, useState } from "react";
 
 const ProductInfo = () => {
   const { productId } = useParams();
+  // 가격
+  const [originPrice] = useState(10500);
+  const [price, setPrice] = useState(originPrice);
+  // 할인률
+  const [originDiscount] = useState(47);
+  const [discount, setDiscount] = useState(originDiscount);
+  // 개수
+  const [qty, setQty] = useState(1);
+
+  const qtyChangeHandler = (e) => {
+    const value = Number(e.target.value);
+    if (Number.isNaN(value) || value < 1) return;
+    if (value > 999) {
+      setQty(999);
+      return;
+    }
+    setQty(value);
+  };
+  const qtyBlurHandler = (e) => {
+    if (e.target.value === "0") {
+      setQty(1);
+    }
+    setPrice(originPrice * qty);
+  };
+  const qtyIncrease = () => {
+    if (qty === 999) return;
+    setQty((prev) => prev + 1);
+    setPrice(originPrice * qty);
+  };
+
+  const qtyDecrease = () => {
+    if (qty === 1) return;
+    setQty((prev) => prev - 1);
+    setPrice(originPrice * qty);
+  };
+
+  useEffect(() => {
+    setPrice(originPrice * qty);
+    setDiscount(parseInt(originDiscount / qty));
+  }, [originPrice, originDiscount, qty]);
+
   return (
     <div className={styles["product__info"]}>
       <div className={styles["product__info--header"]}>
@@ -36,22 +78,30 @@ const ProductInfo = () => {
       </div>
       <div className={styles["product__info--price"]}>
         <div className={styles["price__discount"]}>
-          <p className={styles["price__discount__rate"]}>32%</p>
-          <p className={styles["price__origin"]}>16,000원</p>
+          <p className={styles["price__discount__rate"]}>{discount}%</p>
+          <p className={styles["price__origin"]}>{price.toLocaleString()}원</p>
           <AiOutlineInfoCircle />
         </div>
         <div className={styles["price__sale"]}>
-          <p className={styles["price__total"]}>13,000원</p>
+          <p className={styles["price__total"]}>{price.toLocaleString()}원</p>
           <p className={styles["price__info"]}>쿠팡판매가</p>
         </div>
         <div className={styles["price__coupon"]}>
-          <p className={styles["price__total"]}>10,870원</p>
+          <p className={styles["price__total"]}>
+            {(price - price * discount * 0.01).toLocaleString()}원
+          </p>
           <p className={styles["price__info"]}>와우할인가</p>
         </div>
         <div>
           <div className={styles["price__badge"]}>
             <BsCoin />
-            <p>최대 544원 적립</p>
+            <p>
+              최대{" "}
+              {parseInt(
+                (price - price * discount * 0.01) * 0.01
+              ).toLocaleString()}
+              원 적립
+            </p>
           </div>
         </div>
       </div>
@@ -102,12 +152,17 @@ const ProductInfo = () => {
       </div>
       <div className={styles["product__info--buy"]}>
         <div className={styles["buy--amount"]}>
-          <input type="text" value="1" />
+          <input
+            type="text"
+            value={qty}
+            onChange={qtyChangeHandler}
+            onBlur={qtyBlurHandler}
+          />
           <div className={styles["button--bag"]}>
-            <button type="button">
+            <button type="button" onClick={qtyIncrease}>
               <IoIosArrowUp />
             </button>
-            <button type="button">
+            <button type="button" onClick={qtyDecrease}>
               <IoIosArrowDown />
             </button>
           </div>
