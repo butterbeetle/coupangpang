@@ -3,7 +3,7 @@ import styles from "./Navigation.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useState } from "react";
-import { loggedActions } from "../store";
+import { loggedActions } from "../store/login-slice";
 
 const Navigation = () => {
   const [isLeftHover, setIsLeftHover] = useState(false);

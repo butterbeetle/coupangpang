@@ -8,6 +8,7 @@ import CategoryItems from "../Components/CategoryItems";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
 
 const searchTagItems = [
   { title: "전체" },
@@ -53,8 +54,15 @@ const myCoupangItems = [
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
-
   const viewPortHeight = window.innerHeight - 100;
+
+  /* 장바구니 전체 수량 */
+  const cartQuantity = useSelector((state) => state.cart.totalQuantity);
+  /* 장바구니 전체 가격 */
+  const cartAmount = useSelector((state) => state.cart.totalAmount);
+  /* 장바구니에 있는 Item 정보 */
+  const cartItems = useSelector((state) => state.cart.items);
+  console.log(cartItems, cartAmount);
 
   const onClickHandler = () => {
     setDropdown((prevState) => !prevState);
@@ -162,7 +170,7 @@ const Header = () => {
                 </li>
               </ul>
               <p className={styles.searchBox__mainBox__user__cart__counter}>
-                0
+                {cartQuantity}
               </p>
             </div>
             <ul className={styles.searchBox__gnbMenu}>

@@ -12,13 +12,23 @@ import {
 } from "react-icons/io";
 import { useEffect, useState } from "react";
 
+import { useDispatch } from "react-redux";
+import { cartActions } from "../../../store/cart-slice";
+
+const DUMMY_PRODUCT = {
+  id: 4,
+  price: 10500,
+  discount: 47,
+  title: "진품인증 받은 해남고구마",
+};
+
 const ProductInfo = () => {
   const { productId } = useParams();
   // 가격
-  const [originPrice] = useState(10500);
+  const [originPrice] = useState(DUMMY_PRODUCT.price);
   const [price, setPrice] = useState(originPrice);
   // 할인률
-  const [originDiscount] = useState(47);
+  const [originDiscount] = useState(DUMMY_PRODUCT.discount);
   const [discount, setDiscount] = useState(originDiscount);
   // 개수
   const [qty, setQty] = useState(1);
@@ -55,12 +65,22 @@ const ProductInfo = () => {
     setDiscount(parseInt(originDiscount / qty));
   }, [originPrice, originDiscount, qty]);
 
+  const dispatch = useDispatch();
+
+  const addToCartHandler = () => {
+    dispatch(
+      cartActions.addItemToCart({
+        id: DUMMY_PRODUCT.id,
+        title: DUMMY_PRODUCT.title,
+        price: price,
+        quantity: qty,
+      })
+    );
+  };
   return (
     <div className={styles["product__info"]}>
       <div className={styles["product__info--header"]}>
-        <p className={styles["product__info--title"]}>
-          진품인증 받은 해남고구마
-        </p>
+        <p className={styles["product__info--title"]}>{DUMMY_PRODUCT.title}</p>
         <div className={styles["review"]}>
           <span className={styles["empty-star"]}>
             <span className={styles["review-star"]} style={{ width: "80%" }} />
@@ -136,7 +156,14 @@ const ProductInfo = () => {
           </div>
           <div>
             <p>
-              최대 <strong>544원</strong> 적립
+              최대{" "}
+              <strong>
+                {parseInt(
+                  (price - price * discount * 0.01) * 0.01
+                ).toLocaleString()}
+                원
+              </strong>{" "}
+              적립
             </p>
           </div>
         </div>
@@ -168,7 +195,9 @@ const ProductInfo = () => {
           </div>
         </div>
         <div className={styles["buy--cart"]}>
-          <button type="button">장바구니 담기</button>
+          <button type="button" onClick={addToCartHandler}>
+            장바구니 담기
+          </button>
           <div></div>
           <button type="button">
             바로 구매 <IoIosArrowForward />

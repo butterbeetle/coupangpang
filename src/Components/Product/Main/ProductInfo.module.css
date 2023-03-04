@@ -280,7 +280,6 @@
   color: #111;
   outline: none;
   border: 0;
-  border-right: 0.1rem solid #ccc;
   width: 3.4rem;
   height: 1.5rem;
   text-align: center;
@@ -298,6 +297,7 @@
   text-align: center;
   background-color: #fff;
   border: 0;
+  border-left: 1px solid #ccc;
   border-bottom: 1px solid #ccc;
 }
 .button--bag button svg {
