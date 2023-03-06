@@ -32,7 +32,6 @@ const searchTagItems = [
   { title: "헬스/건강식품" },
   { title: "국내여행" },
   { title: "해외여행" },
-  { title: "22 겨울 패션 스토어" },
   { title: "로켓설치" },
   { title: "공간별 집꾸미기" },
   { title: "헬스케어 전문관" },
@@ -54,7 +53,7 @@ const myCoupangItems = [
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
   const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
-  const viewPortHeight = window.innerHeight - 100;
+  const viewPortHeight = window.innerHeight - 125;
 
   /* 장바구니 전체 수량 */
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);

@@ -23,6 +23,7 @@ const cartSlice = createSlice({
           quantity: newItem.quantity,
         });
       } else {
+        state.totalQuantity--;
         existingItem.totalPrice += newItem.price;
         existingItem.quantity += newItem.quantity;
       }

@@ -16,10 +16,10 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 
 const DUMMY_PRODUCT = {
-  id: 4,
+  title: "진품인증 받은 해남고구마",
   price: 10500,
   discount: 47,
-  title: "진품인증 받은 해남고구마",
+  maxQuantity: 999,
 };
 
 const ProductInfo = () => {
@@ -31,49 +31,49 @@ const ProductInfo = () => {
   const [originDiscount] = useState(DUMMY_PRODUCT.discount);
   const [discount, setDiscount] = useState(originDiscount);
   // 개수
-  const [qty, setQty] = useState(1);
+  const [quantity, setQuantity] = useState(1);
 
-  const qtyChangeHandler = (e) => {
+  const quantityChangeHandler = (e) => {
     const value = Number(e.target.value);
     if (Number.isNaN(value) || value < 1) return;
     if (value > 999) {
-      setQty(999);
+      setQuantity(999);
       return;
     }
-    setQty(value);
+    setQuantity(value);
   };
-  const qtyBlurHandler = (e) => {
+  const quantityBlurHandler = (e) => {
     if (e.target.value === "0") {
-      setQty(1);
+      setQuantity(1);
     }
-    setPrice(originPrice * qty);
+    setPrice(originPrice * quantity);
   };
-  const qtyIncrease = () => {
-    if (qty === 999) return;
-    setQty((prev) => prev + 1);
-    setPrice(originPrice * qty);
+  const quantityIncrease = () => {
+    if (quantity === 999) return;
+    setQuantity((prev) => prev + 1);
+    setPrice(originPrice * quantity);
   };
 
-  const qtyDecrease = () => {
-    if (qty === 1) return;
-    setQty((prev) => prev - 1);
-    setPrice(originPrice * qty);
+  const quantityDecrease = () => {
+    if (quantity === 1) return;
+    setQuantity((prev) => prev - 1);
+    setPrice(originPrice * quantity);
   };
 
   useEffect(() => {
-    setPrice(originPrice * qty);
-    setDiscount(parseInt(originDiscount / qty));
-  }, [originPrice, originDiscount, qty]);
+    setPrice(originPrice * quantity);
+    setDiscount(parseInt(originDiscount / quantity));
+  }, [originPrice, originDiscount, quantity]);
 
   const dispatch = useDispatch();
 
   const addToCartHandler = () => {
     dispatch(
       cartActions.addItemToCart({
-        id: DUMMY_PRODUCT.id,
+        id: productId,
         title: DUMMY_PRODUCT.title,
         price: price,
-        quantity: qty,
+        quantity: quantity,
       })
     );
   };
@@ -181,15 +181,15 @@ const ProductInfo = () => {
         <div className={styles["buy--amount"]}>
           <input
             type="text"
-            value={qty}
-            onChange={qtyChangeHandler}
-            onBlur={qtyBlurHandler}
+            value={quantity}
+            onChange={quantityChangeHandler}
+            onBlur={quantityBlurHandler}
           />
           <div className={styles["button--bag"]}>
-            <button type="button" onClick={qtyIncrease}>
+            <button type="button" onClick={quantityIncrease}>
               <IoIosArrowUp />
             </button>
-            <button type="button" onClick={qtyDecrease}>
+            <button type="button" onClick={quantityDecrease}>
               <IoIosArrowDown />
             </button>
           </div>
