@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useCallback, useEffect, useRef, useState } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
@@ -9,6 +9,7 @@ import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 const searchTagItems = [
   { title: "전체" },
@@ -52,8 +53,8 @@ const myCoupangItems = [
 
 const Header = () => {
   const [dropdown, setDropdown] = useState(false);
-  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
   const viewPortHeight = window.innerHeight - 125;
+  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
 
   /* 장바구니 전체 수량 */
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
@@ -63,15 +64,9 @@ const Header = () => {
   const cartItems = useSelector((state) => state.cart.items);
   console.log(cartItems, cartAmount);
 
+  /* 드롭다운 표시 */
   const onClickHandler = () => {
     setDropdown((prevState) => !prevState);
-  };
-  const onMouseEnter = () => {
-    setMyCoupangDropdown(true);
-  };
-
-  const onMouseLeave = () => {
-    setMyCoupangDropdown(false);
   };
   const variants = {
     open: {
@@ -87,6 +82,19 @@ const Header = () => {
       },
     },
   };
+  /* 마이쿠팡 마우스오버 시 */
+  const onMouseEnter = () => {
+    setMyCoupangDropdown(true);
+  };
+  const onMouseLeave = () => {
+    setMyCoupangDropdown(false);
+  };
+
+  /* 외부 클릭 시 드롭다운 메뉴 닫힘 */
+  const outsideRef = useOutsideClick(() => {
+    setDropdown(false);
+  });
+
   return (
     <Fragment>
       <Navigation />
@@ -100,6 +108,7 @@ const Header = () => {
               </Link>
               <div className={styles.searchBox__mainBox__bar}>
                 <div
+                  ref={outsideRef}
                   className={styles.searchBox__mainBox__bar__category}
                   onClick={onClickHandler}
                 >
