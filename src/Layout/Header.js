@@ -1,4 +1,4 @@
-import { Fragment, useCallback, useEffect, useRef, useState } from "react";
+import { Fragment, useState } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
@@ -52,9 +52,8 @@ const myCoupangItems = [
 ];
 
 const Header = () => {
-  const [dropdown, setDropdown] = useState(false);
-  const viewPortHeight = window.innerHeight - 125;
-  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
+  /* 로그인 확인 */
+  const isLogged = useSelector((state) => state.logged.isLogged);
 
   /* 장바구니 전체 수량 */
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
@@ -62,9 +61,12 @@ const Header = () => {
   const cartAmount = useSelector((state) => state.cart.totalAmount);
   /* 장바구니에 있는 Item 정보 */
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(cartItems, cartAmount);
+  // console.log(cartItems, cartAmount);
 
   /* 드롭다운 표시 */
+  const [dropdown, setDropdown] = useState(false);
+  const viewPortHeight = window.innerHeight - 125;
+
   const onClickHandler = () => {
     setDropdown((prevState) => !prevState);
   };
@@ -83,6 +85,8 @@ const Header = () => {
     },
   };
   /* 마이쿠팡 마우스오버 시 */
+  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
+
   const onMouseEnter = () => {
     setMyCoupangDropdown(true);
   };
@@ -148,7 +152,7 @@ const Header = () => {
               <ul className={styles.searchBox__mainBox__user}>
                 <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                   <div className={styles.searchBox__mainBox__user__info}>
-                    <p>마이쿠팡</p>
+                    <p className={styles["mycoupang"]}>마이쿠팡</p>
                     {myCoupangDropdown && (
                       <div className={styles["myCoupang-dropdown"]}>
                         <i className={styles["speech-icon"]}></i>
@@ -172,14 +176,20 @@ const Header = () => {
                   </div>
                 </li>
                 <li>
-                  <div className={styles.searchBox__mainBox__user__cart}>
-                    <p>장바구니</p>
-                  </div>
+                  <Link to="/cart">
+                    <div className={styles.searchBox__mainBox__user__cart}>
+                      <p className={styles["mycart"]}>장바구니</p>
+                      <p
+                        className={
+                          styles.searchBox__mainBox__user__cart__counter
+                        }
+                      >
+                        {cartQuantity}
+                      </p>
+                    </div>
+                  </Link>
                 </li>
               </ul>
-              <p className={styles.searchBox__mainBox__user__cart__counter}>
-                {cartQuantity}
-              </p>
             </div>
             <ul className={styles.searchBox__gnbMenu}>
               <li className={styles.searchBox__gnbMenu__delivery}>

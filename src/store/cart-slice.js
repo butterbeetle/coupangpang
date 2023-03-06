@@ -14,7 +14,6 @@ const cartSlice = createSlice({
       state.totalQuantity++;
       state.changed = true;
       if (!existingItem) {
-        // 리덕스 툴킷이 내부적으로 기존 상태를 조작하지 않도록 보장하므로 툴킷을 사용하면  push가능
         state.items.push({
           id: newItem.id,
           name: newItem.title,

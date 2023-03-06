@@ -1,6 +1,7 @@
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import JoinForm from "./Components/Auth/JoinForm";
 import LoginForm from "./Components/Auth/LoginForm";
+import CartView from "./Components/Cart/CartView";
 import Main from "./pages/Main";
 import Products from "./pages/Products";
 
@@ -29,6 +30,7 @@ function App() {
           <Route path="/products/:productId" element={<Products />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/join" element={<JoinForm />} />
+          <Route path="/cart" element={<CartView />} />
         </Routes>
       </BrowserRouter>
     </>
