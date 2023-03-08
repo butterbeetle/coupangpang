@@ -2,8 +2,12 @@
   list-style: none;
   text-decoration: none;
 }
-
 .header {
+  background-color: #fff;
+  border-bottom: 0.1rem solid #eee;
+}
+.contents {
+  position: relative;
   width: 1020px;
   height: 115px;
   margin: 0 auto;
@@ -11,10 +15,9 @@
 }
 
 .searchBox {
-  margin: 0;
-  top: 15px;
-  left: 30px;
-  position: relative;
+  position: absolute;
+  top: 1.8rem;
+  right: -3rem;
 }
 .searchBox__mainBox {
   display: flex;
@@ -22,23 +25,24 @@
 }
 .searchBox__mainBox ul {
   display: flex;
+  margin: 0;
 }
 .searchBox__mainBox__logo {
   display: inline-block;
   width: 180px;
   height: 40px;
-  background: url("../img/header_img/logo_coupang.png") no-repeat;
+  background: url("../assets/img/main-header/logo_coupang.png") no-repeat;
   background-size: cover;
 }
 
 .menus {
   display: none;
   flex-direction: column;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
-  top: 55px;
-  left: 201px;
-  width: 152px;
+  top: 39px;
+  left: 200px;
+  width: 135px;
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;
@@ -46,6 +50,11 @@
   box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
   border: 1px solid #ddd;
   margin: 0;
+  padding: 0.7rem 0;
+}
+.menus li {
+  padding: 0.1rem 0;
+  font-size: 0.75rem;
 }
 .speech-icon {
   display: inline-block;
@@ -142,7 +151,8 @@
   font-size: 12px;
   margin: 0 10px;
 }
-.searchBox__mainBox__user p {
+.mycoupang,
+.mycart {
   display: inline-block;
   position: relative;
   top: 28px;
@@ -162,66 +172,61 @@
 }
 
 .searchBox__mainBox__user__cart {
+  position: relative;
   width: 40px;
   height: 40px;
   background: url("../assets/img/header_img_collection.png") no-repeat -112px 0px;
 }
 .searchBox__mainBox__user__cart__counter {
   display: block;
-  position: relative;
+  position: absolute;
   font-size: 12px;
-  color: white;
-  top: -15px;
-  left: -42px;
+  color: #fff;
+  top: -0.65rem;
+  right: 0.55rem;
 }
 
 .searchBox__gnbMenu {
   font-size: 12px;
   position: relative;
   padding: 0;
-  top: -12px;
   display: flex;
 }
 .searchBox__gnbMenu li {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-left: 2px;
+  margin-right: 0.7rem;
 }
 .searchBox__gnbMenu li a {
-  margin: 0 8px 0 23px;
+  padding-left: 0.2rem;
+  margin: 0 0 0 1.3rem;
 }
 .searchBox__gnbMenu img {
   width: 10px;
 }
 .searchBox__gnbMenu__delivery {
-  width: fit-content;
   height: 30px;
   background: url("../assets/img/header_img_collection.png") no-repeat 0px -118px;
 }
 .searchBox__gnbMenu__fresh {
-  width: fit-content;
   height: 30px;
   background: url("../img/header_img/rocket_fresh.png") no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__biz {
-  width: fit-content;
   height: 30px;
   background: url("../img/header_img/logoBizonlyBrown.png") no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__overseas {
-  width: fit-content;
   height: 30px;
   background: url("../img/header_img/Overseas.png") no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__promotion {
-  width: fit-content;
   height: 30px;
   background: url("../img/header_img/icon_government_promotion.png") no-repeat
     0px 5px;
 }
 .searchBox__gnbMenu__travel {
-  width: fit-content;
   height: 30px;
   background: url("../img/header_img/icon_travel.png") no-repeat 0px 5px;
 }

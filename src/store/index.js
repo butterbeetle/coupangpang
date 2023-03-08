@@ -1,39 +1,12 @@
-import { configureStore, createSlice } from "@reduxjs/toolkit";
-
-const initialState = {
-  isLogged: false,
-  email: "",
-  name: "",
-  phone: "",
-};
-
-const loggedSlice = createSlice({
-  name: "user",
-  initialState,
-  reducers: {
-    register(state, action) {
-      state.email = action.payload.email;
-      state.name = action.payload.name;
-      state.phone = action.payload.phone;
-    },
-    login(state) {
-      state.isLogged = true;
-    },
-    logout(state) {
-      state.isLogged = false;
-      state.email = "";
-      state.name = "";
-      state.phone = "";
-    },
-  },
-});
+import { configureStore } from "@reduxjs/toolkit";
+import cartSlice from "./cart-slice";
+import loggedSlice from "./login-slice";
 
 const store = configureStore({
   reducer: {
     logged: loggedSlice.reducer,
+    cart: cartSlice.reducer,
   },
 });
-
-export const loggedActions = loggedSlice.actions;
 
 export default store;

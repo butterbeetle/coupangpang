@@ -6,7 +6,7 @@ import styles from "./LoginForm.module.css";
 import { motion } from "framer-motion";
 
 import { useDispatch } from "react-redux";
-import { loggedActions } from "../../store";
+import { loggedActions } from "../../store/login-slice";
 
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { firestore } from "../../firebase-config";

@@ -3,7 +3,7 @@ import styles from "./Navigation.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useState } from "react";
-import { loggedActions } from "../store";
+import { loggedActions } from "../store/login-slice";
 
 const Navigation = () => {
   const [isLeftHover, setIsLeftHover] = useState(false);
@@ -46,7 +46,7 @@ const Navigation = () => {
   const userName = useSelector((state) => state.logged.name);
   const isLogged = useSelector((state) => state.logged.isLogged);
 
-  console.log("Navi", userName, isLogged);
+  // console.log("Navi", userName, isLogged);
 
   const logoutHandler = () => {
     dispatch(loggedActions.logout());
