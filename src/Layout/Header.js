@@ -8,6 +8,8 @@ import CategoryItems from "../Components/CategoryItems";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
+import { useSelector } from "react-redux";
+import useOutsideClick from "../hooks/useOutsideClick";
 
 const searchTagItems = [
   { title: "전체" },
@@ -31,7 +33,6 @@ const searchTagItems = [
   { title: "헬스/건강식품" },
   { title: "국내여행" },
   { title: "해외여행" },
-  { title: "22 겨울 패션 스토어" },
   { title: "로켓설치" },
   { title: "공간별 집꾸미기" },
   { title: "헬스케어 전문관" },
@@ -50,23 +51,24 @@ const myCoupangItems = [
   { title: "찜 리스트" },
 ];
 
-const cartItems = [];
-
 const Header = () => {
-  const [dropdown, setDropdown] = useState(false);
-  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
+  /* 로그인 확인 */
+  const isLogged = useSelector((state) => state.logged.isLogged);
 
-  const viewPortHeight = window.innerHeight - 100;
+  /* 장바구니 전체 수량 */
+  const cartQuantity = useSelector((state) => state.cart.totalQuantity);
+  /* 장바구니 전체 가격 */
+  const cartAmount = useSelector((state) => state.cart.totalAmount);
+  /* 장바구니에 있는 Item 정보 */
+  const cartItems = useSelector((state) => state.cart.items);
+  // console.log(cartItems, cartAmount);
+
+  /* 드롭다운 표시 */
+  const [dropdown, setDropdown] = useState(false);
+  const viewPortHeight = window.innerHeight - 125;
 
   const onClickHandler = () => {
     setDropdown((prevState) => !prevState);
-  };
-  const onMouseEnter = () => {
-    setMyCoupangDropdown(true);
-  };
-
-  const onMouseLeave = () => {
-    setMyCoupangDropdown(false);
   };
   const variants = {
     open: {
@@ -82,11 +84,26 @@ const Header = () => {
       },
     },
   };
+  /* 마이쿠팡 마우스오버 시 */
+  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
+
+  const onMouseEnter = () => {
+    setMyCoupangDropdown(true);
+  };
+  const onMouseLeave = () => {
+    setMyCoupangDropdown(false);
+  };
+
+  /* 외부 클릭 시 드롭다운 메뉴 닫힘 */
+  const outsideRef = useOutsideClick(() => {
+    setDropdown(false);
+  });
+
   return (
     <Fragment>
       <Navigation />
-      <header style={{ backgroundColor: "white" }}>
-        <section className={styles.header}>
+      <header className={styles["header"]}>
+        <section className={styles["contents"]}>
           <Catrgory />
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>
@@ -95,6 +112,7 @@ const Header = () => {
               </Link>
               <div className={styles.searchBox__mainBox__bar}>
                 <div
+                  ref={outsideRef}
                   className={styles.searchBox__mainBox__bar__category}
                   onClick={onClickHandler}
                 >
@@ -134,7 +152,7 @@ const Header = () => {
               <ul className={styles.searchBox__mainBox__user}>
                 <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
                   <div className={styles.searchBox__mainBox__user__info}>
-                    <p>마이쿠팡</p>
+                    <p className={styles["mycoupang"]}>마이쿠팡</p>
                     {myCoupangDropdown && (
                       <div className={styles["myCoupang-dropdown"]}>
                         <i className={styles["speech-icon"]}></i>
@@ -158,14 +176,20 @@ const Header = () => {
                   </div>
                 </li>
                 <li>
-                  <div className={styles.searchBox__mainBox__user__cart}>
-                    <p>장바구니</p>
-                  </div>
+                  <Link to="/cart">
+                    <div className={styles.searchBox__mainBox__user__cart}>
+                      <p className={styles["mycart"]}>장바구니</p>
+                      <p
+                        className={
+                          styles.searchBox__mainBox__user__cart__counter
+                        }
+                      >
+                        {cartQuantity}
+                      </p>
+                    </div>
+                  </Link>
                 </li>
               </ul>
-              <p className={styles.searchBox__mainBox__user__cart__counter}>
-                0
-              </p>
             </div>
             <ul className={styles.searchBox__gnbMenu}>
               <li className={styles.searchBox__gnbMenu__delivery}>
