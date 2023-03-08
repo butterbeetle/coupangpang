@@ -3,9 +3,13 @@ import Footer from "../../Layout/Footer";
 import styles from "./CartView.module.css";
 
 /* 아이콘 */
-import { BsCart4 } from "react-icons/bs";
-import { AiOutlineRight } from "react-icons/ai";
-import { MdAddCircle, MdPauseCircle } from "react-icons/md";
+import { BsCart4, BsXSquare } from "react-icons/bs";
+import { AiOutlineRight, AiOutlinePlusSquare } from "react-icons/ai";
+import {
+  MdAddCircle,
+  MdPauseCircle,
+  MdPausePresentation,
+} from "react-icons/md";
 import { FaCopyright } from "react-icons/fa";
 
 /* redux */
@@ -18,6 +22,7 @@ const CartView = () => {
   /* 장바구니에 있는 Item 정보 */
   const cartItems = useSelector((state) => state.cart.items);
   // console.log(cartItems);
+
   return (
     <section className={styles["cart"]}>
       <header className={styles["header"]}>
@@ -86,8 +91,37 @@ const CartView = () => {
                     </Link>
                   </div>
                   <div className={styles["item__etc"]}>
-                    <div>목요일3/9 도착 예정</div>
-                    <div>58710원</div>
+                    <div>목요일 3/9 도착 예정</div>
+                    <div className={styles["item__quantity"]}>
+                      <span className={styles["item__quantity__origin"]}>
+                        3,300원
+                      </span>
+                      <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10+</option>
+                      </select>
+                      <span className={styles["item__quantity__total__price"]}>
+                        3,300원
+                      </span>
+                      <BsXSquare />
+                    </div>
+                  </div>
+                  {/* 수량변경 */}
+                  <div className={styles["item__cash"]}>
+                    <span className={styles["item__cash__container"]}>
+                      <div className={styles["item__cash__circle"]}>
+                        <FaCopyright />
+                      </div>
+                      최대 10,000원 적립
+                    </span>
                   </div>
                 </div>
                 <div className={styles["item__total__price"]}>58710원</div>
@@ -122,7 +156,30 @@ const CartView = () => {
               <h3>캐시적립 혜택</h3>
               <span>쿠페이 머니 결제 시 1% 적립</span>
             </div>
-            <div className={styles["total"]}></div>
+            <div className={styles["total"]}>
+              <div className={styles["total__container"]}>
+                총 상품가격
+                <span className={styles["total__price"]}>0</span>원
+                <AiOutlinePlusSquare className={styles["plus-square"]} />총
+                배송비
+                <span className={styles["total__price"]}>0</span>원
+                <MdPausePresentation className={styles["equal-square"]} />총
+                주문금액
+                <span
+                  className={`${styles["total__price"]} ${styles["total__price__final"]}`}
+                >
+                  0원
+                </span>
+              </div>
+            </div>
+            <div className={styles["button"]}>
+              <Link className={styles["button__shopping"]} to="/">
+                계속 쇼핑하기
+              </Link>
+              <Link className={styles["button__buy"]} to="/">
+                구매하기
+              </Link>
+            </div>
           </main>
         </div>
       </main>
