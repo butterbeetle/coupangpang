@@ -59,8 +59,6 @@ let isInitial = true;
 const Header = () => {
   /* 로그인 확인 */
   const logged = useSelector((state) => state.logged);
-  const token = useSelector((state) => state.logged.token);
-  const uid = useSelector((state) => state.logged.uid);
   const isLogged = useSelector((state) => state.logged.isLogged);
 
   const cart = useSelector((state) => state.cart);
@@ -70,21 +68,20 @@ const Header = () => {
   const cartAmount = useSelector((state) => state.cart.totalAmount);
   /* 장바구니에 있는 Item 정보 */
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(logged, cart, token);
+  console.log(logged, cart);
 
-  //setDoc(doc(firestore, "users", user.uid), data);
-  useEffect(() => {
-    const sendCartData = async () => {
-      await setDoc(doc(firestore, "cart", uid), cart);
-    };
-    if (isInitial || !isLogged) {
-      isInitial = false;
-      return;
-    }
-    sendCartData().catch((error) => {
-      console.log(error);
-    });
-  }, [cart, uid, isLogged]);
+  // useEffect(() => {
+  //   const sendCartData = async () => {
+  //     await setDoc(doc(firestore, "cart", uid), cart);
+  //   };
+  //   if (isInitial || !isLogged) {
+  //     isInitial = false;
+  //     return;
+  //   }
+  //   sendCartData().catch((error) => {
+  //     console.log(error);
+  //   });
+  // }, [cart, isLogged]);
 
   /* 드롭다운 표시 */
   const [dropdown, setDropdown] = useState(false);

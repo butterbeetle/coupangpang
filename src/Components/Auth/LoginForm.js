@@ -12,6 +12,7 @@ import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { firestore } from "../../firebase-config";
 import { doc, getDoc } from "firebase/firestore";
 
+import { useCookies } from "react-cookie";
 const LoginForm = () => {
   const [emailColor, setEmailColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
@@ -67,11 +68,11 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  const [cookies, setCookie, removeCookie] = useCookies();
   const onSubmit = (data) => {
     // console.log("onSubmit", data, data.email, data.password);
 
     const auth = getAuth();
-
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(async (userCredential) => {
         const user = userCredential.user;
@@ -87,14 +88,24 @@ const LoginForm = () => {
           //   "Token:",
           //   token
           // );
-          console.log(token.expiresIn, token.refreshToken, token.idToken);
+          // console.log(token.expiresIn, token.refreshToken, token.idToken);
+          const today = new Date();
+          const expires = new Date(today.setDate(today.getDate() + 14));
+          setCookie("token", token.refreshToken, {
+            path: "/",
+            expires: expires,
+          });
+          setCookie("uid", user.uid, {
+            path: "/",
+            expires: expires,
+          });
+          sessionStorage.setItem("token", token.idToken);
+          sessionStorage.setItem("expires", token.expiresIn);
           dispatch(
             loggedActions.register({
               email: docSnap.data().email,
               name: docSnap.data().name,
               phone: docSnap.data().phone,
-              uid: user.uid,
-              token,
             })
           );
           dispatch(loggedActions.login());
@@ -103,7 +114,8 @@ const LoginForm = () => {
           throw new Error();
         }
       })
-      .catch(() => {
+      .catch((e) => {
+        console.log(e);
         setSubmitError(
           "이메일 또는 비밀번호를 다시 확인하세요. 쿠팡에 등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
         );
