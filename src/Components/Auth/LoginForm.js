@@ -75,15 +75,26 @@ const LoginForm = () => {
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(async (userCredential) => {
         const user = userCredential.user;
+        const token = userCredential._tokenResponse;
         const docRef = doc(firestore, "users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          // console.log("Document data:", docSnap.data());
+          // console.log(
+          //   "Document data:",
+          //   docSnap.data(),
+          //   "UID:",
+          //   user.uid,
+          //   "Token:",
+          //   token
+          // );
+          console.log(token.expiresIn, token.refreshToken, token.idToken);
           dispatch(
             loggedActions.register({
               email: docSnap.data().email,
               name: docSnap.data().name,
               phone: docSnap.data().phone,
+              uid: user.uid,
+              token,
             })
           );
           dispatch(loggedActions.login());

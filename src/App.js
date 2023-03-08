@@ -27,9 +27,9 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Main />} />
-          <Route path="/products/:productId" element={<Products />} />
           <Route path="/login" element={<LoginForm />} />
           <Route path="/join" element={<JoinForm />} />
+          <Route path="/products/:productId" element={<Products />} />
           <Route path="/cart" element={<CartView />} />
         </Routes>
       </BrowserRouter>

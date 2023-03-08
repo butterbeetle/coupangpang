@@ -5,6 +5,8 @@ const initialState = {
   email: "",
   name: "",
   phone: "",
+  uid: "",
+  token: {},
 };
 
 const loggedSlice = createSlice({
@@ -15,6 +17,8 @@ const loggedSlice = createSlice({
       state.email = action.payload.email;
       state.name = action.payload.name;
       state.phone = action.payload.phone;
+      state.uid = action.payload.uid;
+      state.token = action.payload.token;
     },
     login(state) {
       state.isLogged = true;
@@ -24,6 +28,7 @@ const loggedSlice = createSlice({
       state.email = "";
       state.name = "";
       state.phone = "";
+      state.uid = "";
     },
   },
 });
