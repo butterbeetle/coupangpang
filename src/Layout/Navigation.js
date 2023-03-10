@@ -2,10 +2,12 @@ import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Fragment, useState } from "react";
+import { Fragment, useEffect, useState } from "react";
 import { loggedActions } from "../store/login-slice";
+import { getAuth, signOut } from "firebase/auth";
 
 const Navigation = () => {
+  const auth = getAuth();
   const [isLeftHover, setIsLeftHover] = useState(false);
   const [isRightHover, setIsRightHover] = useState(false);
 
@@ -48,7 +50,33 @@ const Navigation = () => {
 
   // console.log("Navi", userName, isLogged);
 
+  useEffect(() => {
+    const name = sessionStorage.getItem("name");
+    if (name) {
+      dispatch(loggedActions.register({ name }));
+      dispatch(loggedActions.login());
+    }
+  }, [dispatch]);
+
+  // useEffect(() => {
+  //   auth.onAuthStateChanged((user) => {
+  //     if (user) {
+  //       console.log(user);
+  //       dispatch(
+  //         loggedActions.register({
+  //           email: user.email,
+  //           name: user.displayName,
+  //         })
+  //       );
+  //       dispatch(loggedActions.login());
+  //     } else {
+  //       console.log("logout");
+  //     }
+  //   });
+  // }, [auth, dispatch]);
+
   const logoutHandler = () => {
+    signOut(auth);
     dispatch(loggedActions.logout());
   };
 

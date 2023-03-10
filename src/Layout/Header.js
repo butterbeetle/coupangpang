@@ -14,6 +14,8 @@ import useOutsideClick from "../hooks/useOutsideClick";
 /* 장바구니 firebase에 저장 */
 import { firestore } from "../firebase-config";
 import { doc, setDoc } from "firebase/firestore";
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 const searchTagItems = [
   { title: "전체" },
   { title: "여성패션" },
@@ -68,7 +70,6 @@ const Header = () => {
   const cartAmount = useSelector((state) => state.cart.totalAmount);
   /* 장바구니에 있는 Item 정보 */
   const cartItems = useSelector((state) => state.cart.items);
-  console.log(logged, cart);
 
   // useEffect(() => {
   //   const sendCartData = async () => {
