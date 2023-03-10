@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useState } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
@@ -11,11 +11,6 @@ import { motion } from "framer-motion";
 import { useSelector } from "react-redux";
 import useOutsideClick from "../hooks/useOutsideClick";
 
-/* 장바구니 firebase에 저장 */
-import { firestore } from "../firebase-config";
-import { doc, setDoc } from "firebase/firestore";
-
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 const searchTagItems = [
   { title: "전체" },
   { title: "여성패션" },
@@ -56,33 +51,9 @@ const myCoupangItems = [
   { title: "찜 리스트" },
 ];
 
-let isInitial = true;
-
 const Header = () => {
-  /* 로그인 확인 */
-  const logged = useSelector((state) => state.logged);
-  const isLogged = useSelector((state) => state.logged.isLogged);
-
-  const cart = useSelector((state) => state.cart);
   /* 장바구니 전체 수량 */
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
-  /* 장바구니 전체 가격 */
-  const cartAmount = useSelector((state) => state.cart.totalAmount);
-  /* 장바구니에 있는 Item 정보 */
-  const cartItems = useSelector((state) => state.cart.items);
-
-  // useEffect(() => {
-  //   const sendCartData = async () => {
-  //     await setDoc(doc(firestore, "cart", uid), cart);
-  //   };
-  //   if (isInitial || !isLogged) {
-  //     isInitial = false;
-  //     return;
-  //   }
-  //   sendCartData().catch((error) => {
-  //     console.log(error);
-  //   });
-  // }, [cart, isLogged]);
 
   /* 드롭다운 표시 */
   const [dropdown, setDropdown] = useState(false);
