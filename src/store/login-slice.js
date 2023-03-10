@@ -2,9 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLogged: false,
-  email: "",
+  uid: "",
   name: "",
-  phone: "",
+  // email: "",
+  // phone: "",
 };
 
 const loggedSlice = createSlice({
@@ -12,18 +13,20 @@ const loggedSlice = createSlice({
   initialState,
   reducers: {
     register(state, action) {
-      state.email = action.payload.email;
+      state.uid = action.payload.uid;
       state.name = action.payload.name;
-      state.phone = action.payload.phone;
+      // state.email = action.payload.email;
+      // state.phone = action.payload.phone;
     },
     login(state) {
       state.isLogged = true;
     },
     logout(state) {
       state.isLogged = false;
-      state.email = "";
+      state.uid = "";
       state.name = "";
-      state.phone = "";
+      // state.email = "";
+      // state.phone = "";
     },
   },
 });

@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
 import { loggedActions } from "../store/login-slice";
 import { getAuth, signOut } from "firebase/auth";
+import { cartActions } from "../store/cart-slice";
 
 const Navigation = () => {
   const auth = getAuth();
@@ -31,7 +32,6 @@ const Navigation = () => {
       </div>
     </Fragment>
   );
-
   let rightHoverSubMenu = isRightHover && (
     <Fragment>
       <div className={styles["hovermenu__right"]}>
@@ -44,6 +44,7 @@ const Navigation = () => {
       </div>
     </Fragment>
   );
+
   const dispatch = useDispatch();
   const userName = useSelector((state) => state.logged.name);
   const isLogged = useSelector((state) => state.logged.isLogged);
@@ -76,8 +77,11 @@ const Navigation = () => {
   // }, [auth, dispatch]);
 
   const logoutHandler = () => {
+    sessionStorage.removeItem("uid");
+    sessionStorage.removeItem("name");
     signOut(auth);
     dispatch(loggedActions.logout());
+    dispatch(cartActions.resetItemToCart());
   };
 
   let topbarMenu = isLogged ? (

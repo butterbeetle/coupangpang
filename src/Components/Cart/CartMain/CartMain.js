@@ -12,17 +12,15 @@ import {
 import { FaCopyright } from "react-icons/fa";
 
 /* 테스트이미지 */
-import testImg from "../../assets/img/test/test.jpg";
+import testImg from "../../../assets/img/test/test.jpg";
 
 /* firebase */
-import { firestore } from "../../firebase-config";
+import { firestore } from "../../../firebase-config";
 import { doc, setDoc } from "firebase/firestore";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 /* redux */
 import { useSelector } from "react-redux";
-
-let isInitial = true;
 
 const CartMain = () => {
   /* 로그인 확인 */
@@ -34,7 +32,7 @@ const CartMain = () => {
   const cartAmount = useSelector((state) => state.cart.totalAmount);
   /* 장바구니에 있는 Item 정보 */
   const cartItems = useSelector((state) => state.cart.items);
-  // console.log(cartItems);
+  console.log(cartItems);
 
   // useEffect(() => {
   //   const sendCartData = async () => {
@@ -94,58 +92,60 @@ const CartMain = () => {
             <div className={styles["items__delivary_type"]}>
               판매자배송 상품
             </div>
-            <div className={styles["items__box"]}>
-              <div className={styles["item__check"]}>
-                <input type={"checkbox"} />
-              </div>
-              <div className={styles["item__img"]}>
-                <Link to={"/"}>
-                  <img src={testImg} alt="" />
-                </Link>
-              </div>
-              <div className={styles["item__info"]}>
-                <div className={styles["item__title"]}>
+            {cartItems.map((item) => (
+              <div key={item.id} className={styles["items__box"]}>
+                <div className={styles["item__check"]}>
+                  <input type={"checkbox"} />
+                </div>
+                <div className={styles["item__img"]}>
                   <Link to={"/"}>
-                    햇 감자 수미 20kg 10kg 5kg 못난이 정품, 20kg 못난이(특)
+                    <img src={testImg} alt="" />
                   </Link>
                 </div>
-                <div className={styles["item__etc"]}>
-                  <div>목요일 3/9 도착 예정</div>
-                  <div className={styles["item__quantity"]}>
-                    <span className={styles["item__quantity__origin"]}>
-                      3,300원
+                <div className={styles["item__info"]}>
+                  <div className={styles["item__title"]}>
+                    <Link to={"/"}>{item.name}</Link>
+                  </div>
+                  <div className={styles["item__etc"]}>
+                    <div>목요일 3/9 도착 예정</div>
+                    <div className={styles["item__quantity"]}>
+                      <span className={styles["item__quantity__origin"]}>
+                        {item.price}원
+                      </span>
+                      <select>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8</option>
+                        <option>9</option>
+                        <option>10+</option>
+                      </select>
+                      <span className={styles["item__quantity__total__price"]}>
+                        3,300원
+                      </span>
+                      <BsXSquare />
+                    </div>
+                  </div>
+                  {/* 수량변경 */}
+                  <div className={styles["item__cash"]}>
+                    <span className={styles["item__cash__container"]}>
+                      <div className={styles["item__cash__circle"]}>
+                        <FaCopyright />
+                      </div>
+                      최대 10,000원 적립
                     </span>
-                    <select>
-                      <option>1</option>
-                      <option>2</option>
-                      <option>3</option>
-                      <option>4</option>
-                      <option>5</option>
-                      <option>6</option>
-                      <option>7</option>
-                      <option>8</option>
-                      <option>9</option>
-                      <option>10+</option>
-                    </select>
-                    <span className={styles["item__quantity__total__price"]}>
-                      3,300원
-                    </span>
-                    <BsXSquare />
                   </div>
                 </div>
-                {/* 수량변경 */}
-                <div className={styles["item__cash"]}>
-                  <span className={styles["item__cash__container"]}>
-                    <div className={styles["item__cash__circle"]}>
-                      <FaCopyright />
-                    </div>
-                    최대 10,000원 적립
-                  </span>
+                <div className={styles["item__total__price"]}>
+                  {item.totalPrice}
                 </div>
+                <div className={styles["item__delivary__price"]}>-</div>
               </div>
-              <div className={styles["item__total__price"]}>58710원</div>
-              <div className={styles["item__delivary__price"]}>-</div>
-            </div>
+            ))}
           </div>
           <div className={styles["calc"]}>
             <span>상품가격</span>

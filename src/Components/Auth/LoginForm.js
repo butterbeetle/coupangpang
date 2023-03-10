@@ -11,7 +11,6 @@ import { loggedActions } from "../../store/login-slice";
 import {
   getAuth,
   signInWithEmailAndPassword,
-  updatePhoneNumber,
   updateProfile,
 } from "firebase/auth";
 import { firestore } from "../../firebase-config";
@@ -106,9 +105,11 @@ const LoginForm = () => {
           // });
           // sessionStorage.setItem("token", token.idToken);
           // sessionStorage.setItem("expires", token.expiresIn);
+          sessionStorage.setItem("uid", user.uid);
           sessionStorage.setItem("name", docSnap.data().name);
           dispatch(
             loggedActions.register({
+              uid: user.uid,
               name: docSnap.data().name,
               // email: docSnap.data().email,
               // phone: docSnap.data().phone,

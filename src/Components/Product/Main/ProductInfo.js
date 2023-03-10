@@ -12,7 +12,7 @@ import {
 } from "react-icons/io";
 import { useEffect, useState } from "react";
 
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 
 const DUMMY_PRODUCT = {
@@ -67,7 +67,16 @@ const ProductInfo = () => {
 
   const dispatch = useDispatch();
 
-  const addToCartHandler = () => {
+  const uid = sessionStorage.getItem("uid");
+  const isLogged = useSelector((state) => state.logged.isLogged);
+
+  const cart = useSelector((state) => state.cart);
+  /* 장바구니 전체 가격 */
+  const cartAmount = useSelector((state) => state.cart.totalAmount);
+  /* 장바구니에 있는 Item 정보 */
+  const cartItems = useSelector((state) => state.cart.items);
+
+  const addToCartHandler = async () => {
     dispatch(
       cartActions.addItemToCart({
         id: productId,
@@ -77,6 +86,7 @@ const ProductInfo = () => {
       })
     );
   };
+
   return (
     <div className={styles["product__info"]}>
       <div className={styles["product__info--header"]}>

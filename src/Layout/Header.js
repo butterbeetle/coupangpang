@@ -54,7 +54,6 @@ const myCoupangItems = [
 const Header = () => {
   /* 장바구니 전체 수량 */
   const cartQuantity = useSelector((state) => state.cart.totalQuantity);
-
   /* 드롭다운 표시 */
   const [dropdown, setDropdown] = useState(false);
   const viewPortHeight = window.innerHeight - 125;
