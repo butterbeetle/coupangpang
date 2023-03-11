@@ -1,4 +1,7 @@
 .today {
+  background-color: #fff;
+}
+.main {
   width: 1020px;
   height: 450px;
   margin: 0 auto;

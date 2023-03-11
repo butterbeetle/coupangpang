@@ -73,20 +73,22 @@ const TodaysHot = () => {
       onMouseEnter={stop}
       onMouseLeave={start}
     >
-      <ul className={styles["today-items"]}>
-        {todayHotItems.map((item, idx) => {
-          return (
-            <TodayItems
-              key={idx}
-              item={item}
-              idx={idx}
-              activeItem={activeItem}
-              itemNumber={count}
-              isActive={isActive}
-            />
-          );
-        })}
-      </ul>
+      <div className={styles["main"]}>
+        <ul className={styles["today-items"]}>
+          {todayHotItems.map((item, idx) => {
+            return (
+              <TodayItems
+                key={idx}
+                item={item}
+                idx={idx}
+                activeItem={activeItem}
+                itemNumber={count}
+                isActive={isActive}
+              />
+            );
+          })}
+        </ul>
+      </div>
     </section>
   );
 };

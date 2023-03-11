@@ -20,7 +20,7 @@
 .menus {
   display: flex;
   flex-direction: column;
-  z-index: 1;
+  z-index: 2;
   position: absolute;
   top: 110px;
   left: 0;

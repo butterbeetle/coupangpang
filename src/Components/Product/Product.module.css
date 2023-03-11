@@ -1,6 +1,8 @@
 .product {
+  background-color: #fff;
+}
+.main {
   width: 61.25rem;
   margin: 0 auto;
-  margin-bottom: 1rem;
-  margin-top: -0.1rem;
+  padding-bottom: 2.5rem;
 }
