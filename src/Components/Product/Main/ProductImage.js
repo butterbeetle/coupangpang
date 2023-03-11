@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { useParams } from "react-router-dom";
 import ReactImageZoom from "react-image-zoom";
 import styles from "./ProductImage.module.css";
 
@@ -15,7 +14,6 @@ const imgs = [
 ];
 
 const ProductImage = () => {
-  const { productId } = useParams();
   const [imgIndex, setImgIndex] = useState(0);
 
   const props = {
@@ -28,8 +26,6 @@ const ProductImage = () => {
   const hoverHandler = (id) => {
     setImgIndex((prev) => (prev = id));
   };
-
-  console.log(productId);
 
   return (
     <div className={styles["product__images"]}>

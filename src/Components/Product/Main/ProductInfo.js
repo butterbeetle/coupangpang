@@ -1,7 +1,7 @@
 import styles from "./ProductInfo.module.css";
 import { useParams } from "react-router";
 
-/* 아이콘 */
+/* Icon */
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsFillShareFill, BsCoin, BsChatLeftText } from "react-icons/bs";
 import { FiHeart, FiThumbsUp } from "react-icons/fi";
@@ -10,11 +10,12 @@ import {
   IoIosArrowDown,
   IoIosArrowForward,
 } from "react-icons/io";
-import { useEffect, useState } from "react";
 
+/* redux */
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 
+import { useEffect, useState } from "react";
 const DUMMY_PRODUCT = {
   title: "진품인증 받은 해남고구마",
   price: 10500,
@@ -91,12 +92,17 @@ const ProductInfo = () => {
     <div className={styles["product__info"]}>
       <div className={styles["product__info--header"]}>
         <p className={styles["product__info--title"]}>{DUMMY_PRODUCT.title}</p>
-        <div className={styles["review"]}>
-          <span className={styles["empty-star"]}>
-            <span className={styles["review-star"]} style={{ width: "80%" }} />
-          </span>
-          <span className={styles["review--count"]}>1,865개 상품평</span>
-        </div>
+        {
+          <div className={styles["review"]}>
+            <span className={styles["empty-star"]}>
+              <span
+                className={styles["review-star"]}
+                style={{ width: "80%" }}
+              />
+            </span>
+            <span className={styles["review--count"]}>1,865개 상품평</span>
+          </div>
+        }
         <div className={styles["product__info--icon"]}>
           <div className={styles["heart"]}>
             <FiHeart className={styles["heart--icon"]} />
@@ -108,17 +114,21 @@ const ProductInfo = () => {
       </div>
       <div className={styles["product__info--price"]}>
         <div className={styles["price__discount"]}>
-          <p className={styles["price__discount__rate"]}>{discount}%</p>
-          <p className={styles["price__origin"]}>{price.toLocaleString()}원</p>
+          <p className={styles["price__discount__rate"]}>
+            {DUMMY_PRODUCT.discount}%
+          </p>
+          <p className={styles["price__origin"]}>{DUMMY_PRODUCT.price}원</p>
           <AiOutlineInfoCircle />
         </div>
         <div className={styles["price__sale"]}>
-          <p className={styles["price__total"]}>{price.toLocaleString()}원</p>
+          <p className={styles["price__total"]}>{DUMMY_PRODUCT.price}원</p>
           <p className={styles["price__info"]}>쿠팡판매가</p>
         </div>
         <div className={styles["price__coupon"]}>
           <p className={styles["price__total"]}>
-            {(price - price * discount * 0.01).toLocaleString()}원
+            {DUMMY_PRODUCT.price -
+              DUMMY_PRODUCT.price * DUMMY_PRODUCT.discount * 0.01}
+            원
           </p>
           <p className={styles["price__info"]}>와우할인가</p>
         </div>
@@ -128,8 +138,10 @@ const ProductInfo = () => {
             <p>
               최대{" "}
               {parseInt(
-                (price - price * discount * 0.01) * 0.01
-              ).toLocaleString()}
+                (DUMMY_PRODUCT.price -
+                  DUMMY_PRODUCT.price * DUMMY_PRODUCT.discount * 0.01) *
+                  0.01
+              )}
               원 적립
             </p>
           </div>

@@ -13,10 +13,8 @@ import { useDispatch, useSelector } from "react-redux";
 
 /* firebase */
 import { getCartData, sendCartData } from "./store/cart-action";
-import { ref, getDownloadURL } from "firebase/storage";
-import { storage } from "./firebase-config";
 
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 
 const router = createBrowserRouter([
   {
@@ -36,17 +34,6 @@ const router = createBrowserRouter([
 let isInitial = true;
 
 function App() {
-  // const [url, setUrl] = useState("");
-  // const path = ref(storage, "1.jpg");
-
-  // useEffect(() => {
-  //   const test = async () => {
-  //     const reponse = await getDownloadURL(path);
-  //     setUrl(reponse);
-  //   };
-  //   test();
-  // }, [path]);
-
   const dispatch = useDispatch();
   const cart = useSelector((state) => state.cart);
   const isLogged = useSelector((state) => state.logged.isLogged);
@@ -67,12 +54,7 @@ function App() {
 
   // console.log(cart);
 
-  return (
-    <>
-      {/* <img src={url} alt="" style={{ width: "2rem", height: "2rem" }}></img> */}
-      <RouterProvider router={router} />
-    </>
-  );
+  return <RouterProvider router={router} />;
 }
 
 export default App;
