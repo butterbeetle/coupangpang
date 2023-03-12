@@ -1,5 +1,5 @@
 import styles from "./ProductInfo.module.css";
-import { useParams } from "react-router";
+import { useEffect, useState } from "react";
 
 /* Icon */
 import { AiOutlineInfoCircle } from "react-icons/ai";
@@ -15,7 +15,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 
-import { useEffect, useState } from "react";
 const DUMMY_PRODUCT = {
   title: "진품인증 받은 해남고구마",
   price: 10500,
@@ -24,14 +23,29 @@ const DUMMY_PRODUCT = {
 };
 
 const ProductInfo = () => {
-  const { productId } = useParams();
-  // 가격
+  const prodId = useSelector((state) => state.prod.id);
+  const prodTitle = useSelector((state) => state.prod.title);
+  const prodPrice = useSelector((state) => state.prod.price);
+  const prodDiscount = useSelector((state) => state.prod.discount);
+  const prodReview = useSelector((state) => state.prod.review);
+  const prodMaxQuantity = useSelector((state) => state.prod.maxQuantity);
+
+  console.log(
+    prodId,
+    prodTitle,
+    prodPrice,
+    prodDiscount,
+    prodReview,
+    prodMaxQuantity
+  );
+
+  /* 가격 */
   const [originPrice] = useState(DUMMY_PRODUCT.price);
   const [price, setPrice] = useState(originPrice);
-  // 할인률
+  /* 할인률 */
   const [originDiscount] = useState(DUMMY_PRODUCT.discount);
   const [discount, setDiscount] = useState(originDiscount);
-  // 개수
+  /* 개수 */
   const [quantity, setQuantity] = useState(1);
 
   const quantityChangeHandler = (e) => {
@@ -67,20 +81,12 @@ const ProductInfo = () => {
   }, [originPrice, originDiscount, quantity]);
 
   const dispatch = useDispatch();
-
-  const uid = sessionStorage.getItem("uid");
-  const isLogged = useSelector((state) => state.logged.isLogged);
-
-  const cart = useSelector((state) => state.cart);
-  /* 장바구니 전체 가격 */
-  const cartAmount = useSelector((state) => state.cart.totalAmount);
-  /* 장바구니에 있는 Item 정보 */
-  const cartItems = useSelector((state) => state.cart.items);
+  // const isLogged = useSelector((state) => state.logged.isLogged);
 
   const addToCartHandler = async () => {
     dispatch(
       cartActions.addItemToCart({
-        id: productId,
+        id: prodId,
         title: DUMMY_PRODUCT.title,
         price: price,
         quantity: quantity,
@@ -228,7 +234,7 @@ const ProductInfo = () => {
       </div>
       <div className={styles["product__info--desc"]}>
         <ul>
-          <li>쿠팡상품번호: {productId}</li>
+          <li>쿠팡상품번호: {prodId}</li>
         </ul>
       </div>
       <div className={styles["product__info--inquiry"]}>

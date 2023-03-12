@@ -1,6 +1,8 @@
+import { cartActions } from "./cart-slice";
+
+/* firebase */
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { firestore } from "../firebase-config";
-import { cartActions } from "./cart-slice";
 
 export const getCartData = () => {
   return async (dispatch) => {
