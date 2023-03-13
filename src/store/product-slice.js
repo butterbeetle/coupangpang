@@ -34,12 +34,12 @@ const productSlice = createSlice({
       const existingUrl = state.thumbnailUrl.find((item) => item.url === url);
       if (!existingUrl) state.thumbnailUrl.push(url);
     },
-    // nowLoading(state) {
-    //   state.isLoading = true;
-    // },
-    // endLoading(state) {
-    //   state.isLoading = false;
-    // },
+    nowLoading(state) {
+      state.isLoading = true;
+    },
+    endLoading(state) {
+      state.isLoading = false;
+    },
   },
 });
 

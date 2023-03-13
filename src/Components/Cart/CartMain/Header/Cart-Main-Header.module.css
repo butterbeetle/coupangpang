@@ -1,0 +1,50 @@
+.contents__header {
+  display: flex;
+  position: relative;
+  align-items: baseline;
+}
+.contents__header-icon {
+  width: 1.8rem;
+  height: 1.8rem;
+  color: #5e5e5e;
+}
+.contents__header h1 {
+  margin: 0;
+  margin-left: 0.5rem;
+  font-size: 1.7rem;
+}
+.contents__header ul {
+  position: absolute;
+  display: flex;
+  margin: 0;
+  top: 0.5rem;
+  right: 0;
+  color: #cecece;
+}
+.step {
+  display: flex;
+  align-items: center;
+}
+.step {
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+.step__num {
+  margin: 0;
+  font-size: 1.1rem;
+  margin-right: 0.1rem;
+}
+.step__title {
+  margin: 0;
+}
+.step svg {
+  display: inline-block;
+  width: 1.1rem;
+  height: 1.1rem;
+}
+.step__here {
+  color: #646464;
+}
+.step__here .step__num {
+  color: #0ea6ed;
+}

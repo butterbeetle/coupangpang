@@ -8,6 +8,7 @@
   border-bottom: 0.1rem solid #ddd;
 }
 .product__info--title {
+  width: 23rem;
   font-size: 1.1rem;
   font-weight: bold;
   margin: 0;

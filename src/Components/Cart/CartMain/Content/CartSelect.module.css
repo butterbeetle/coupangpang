@@ -1,0 +1,23 @@
+/* 전체선택 삭제 */
+.select {
+  padding: 1.25rem 0 1.8rem 0.5rem;
+  display: flex;
+  font-size: 0.75rem;
+}
+.select__check {
+  display: flex;
+  align-items: center;
+}
+.select__check input {
+  margin-right: 0.5rem;
+}
+.cur__total {
+  color: #888888;
+}
+.select__all,
+.select__soldOut {
+  margin-left: 0.63rem;
+  padding: 0.2rem 0.37rem;
+  border: 0.1rem solid #ccc;
+  cursor: pointer;
+}

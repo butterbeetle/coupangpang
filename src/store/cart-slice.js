@@ -12,6 +12,10 @@ const cartSlice = createSlice({
       state.items = action.payload.items;
       state.totalQuantity = action.payload.totalQuantity;
     },
+    replaceCartItem(state, action) {
+      console.log("redux", action.payload);
+      state.items = action.payload;
+    },
     addItemToCart(state, action) {
       const newItem = action.payload;
       const existingItem = state.items.find((item) => item.id === newItem.id);
@@ -21,6 +25,7 @@ const cartSlice = createSlice({
       if (!existingItem) {
         state.items.push({
           id: newItem.id,
+          thumbnail: newItem.thumbnail,
           name: newItem.title,
           price: newItem.price,
           totalPrice: newItem.price,

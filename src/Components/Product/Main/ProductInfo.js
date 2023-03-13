@@ -15,13 +15,6 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
 
-const DUMMY_PRODUCT = {
-  title: "진품인증 받은 해남고구마",
-  price: 10500,
-  discount: 47,
-  maxQuantity: 999,
-};
-
 const ProductInfo = () => {
   const prodId = useSelector((state) => state.prod.id);
   const prodTitle = useSelector((state) => state.prod.title);
@@ -30,66 +23,72 @@ const ProductInfo = () => {
   const prodReview = useSelector((state) => state.prod.review);
   const prodMaxQuantity = useSelector((state) => state.prod.maxQuantity);
 
-  console.log(
-    prodId,
-    prodTitle,
-    prodPrice,
-    prodDiscount,
-    prodReview,
-    prodMaxQuantity
-  );
+  // console.log(
+  //   prodId,
+  //   prodTitle,
+  //   prodPrice,
+  //   prodDiscount,
+  //   prodReview,
+  //   prodMaxQuantity
+  // );
 
   /* 가격 */
-  const [originPrice] = useState(DUMMY_PRODUCT.price);
-  const [price, setPrice] = useState(originPrice);
+  const [price, setPrice] = useState(prodPrice);
   /* 할인률 */
-  const [originDiscount] = useState(DUMMY_PRODUCT.discount);
-  const [discount, setDiscount] = useState(originDiscount);
+  // const [discount, setDiscount] = useState(prodDiscount);
   /* 개수 */
   const [quantity, setQuantity] = useState(1);
 
+  /* 최대개수 넘지 못하게 */
   const quantityChangeHandler = (e) => {
     const value = Number(e.target.value);
     if (Number.isNaN(value) || value < 1) return;
-    if (value > 999) {
-      setQuantity(999);
+    if (value > prodMaxQuantity) {
+      setQuantity(prodMaxQuantity);
       return;
     }
     setQuantity(value);
   };
+
+  /* 개수 관련 */
   const quantityBlurHandler = (e) => {
     if (e.target.value === "0") {
       setQuantity(1);
     }
-    setPrice(originPrice * quantity);
+    setPrice(prodPrice * quantity);
   };
   const quantityIncrease = () => {
-    if (quantity === 999) return;
+    if (quantity === prodMaxQuantity) return;
     setQuantity((prev) => prev + 1);
-    setPrice(originPrice * quantity);
+    setPrice(prodPrice * quantity);
   };
 
   const quantityDecrease = () => {
     if (quantity === 1) return;
     setQuantity((prev) => prev - 1);
-    setPrice(originPrice * quantity);
+    setPrice(prodPrice * quantity);
   };
 
+  /* 개수 변경 시 가격,할인률 변경 */
   useEffect(() => {
-    setPrice(originPrice * quantity);
-    setDiscount(parseInt(originDiscount / quantity));
-  }, [originPrice, originDiscount, quantity]);
+    setPrice(prodPrice * quantity);
+    // setDiscount(parseInt(prodDiscount / quantity));
+  }, [prodPrice, prodDiscount, quantity]);
 
-  const dispatch = useDispatch();
   // const isLogged = useSelector((state) => state.logged.isLogged);
 
-  const addToCartHandler = async () => {
+  /* 장바구니 넣을 때 썸네일 이미지도 */
+  const urlArray = useSelector((state) => state.prod.thumbnailUrl);
+  /* 장바구니 넣기 */
+  const dispatch = useDispatch();
+  const addToCartHandler = () => {
     dispatch(
       cartActions.addItemToCart({
         id: prodId,
-        title: DUMMY_PRODUCT.title,
-        price: price,
-        quantity: quantity,
+        thumbnail: urlArray[0].url,
+        title: prodTitle,
+        price,
+        quantity,
       })
     );
   };
@@ -97,8 +96,8 @@ const ProductInfo = () => {
   return (
     <div className={styles["product__info"]}>
       <div className={styles["product__info--header"]}>
-        <p className={styles["product__info--title"]}>{DUMMY_PRODUCT.title}</p>
-        {
+        <p className={styles["product__info--title"]}>{prodTitle}</p>
+        {prodReview > 0 && (
           <div className={styles["review"]}>
             <span className={styles["empty-star"]}>
               <span
@@ -106,9 +105,11 @@ const ProductInfo = () => {
                 style={{ width: "80%" }}
               />
             </span>
-            <span className={styles["review--count"]}>1,865개 상품평</span>
+            <span className={styles["review--count"]}>
+              {prodReview}개 상품평
+            </span>
           </div>
-        }
+        )}
         <div className={styles["product__info--icon"]}>
           <div className={styles["heart"]}>
             <FiHeart className={styles["heart--icon"]} />
@@ -120,21 +121,17 @@ const ProductInfo = () => {
       </div>
       <div className={styles["product__info--price"]}>
         <div className={styles["price__discount"]}>
-          <p className={styles["price__discount__rate"]}>
-            {DUMMY_PRODUCT.discount}%
-          </p>
-          <p className={styles["price__origin"]}>{DUMMY_PRODUCT.price}원</p>
+          <p className={styles["price__discount__rate"]}>{prodDiscount}%</p>
+          <p className={styles["price__origin"]}>{price.toLocaleString()}원</p>
           <AiOutlineInfoCircle />
         </div>
         <div className={styles["price__sale"]}>
-          <p className={styles["price__total"]}>{DUMMY_PRODUCT.price}원</p>
+          <p className={styles["price__total"]}>{price.toLocaleString()}원</p>
           <p className={styles["price__info"]}>쿠팡판매가</p>
         </div>
         <div className={styles["price__coupon"]}>
           <p className={styles["price__total"]}>
-            {DUMMY_PRODUCT.price -
-              DUMMY_PRODUCT.price * DUMMY_PRODUCT.discount * 0.01}
-            원
+            {(price - price * prodDiscount * 0.01).toLocaleString()}원
           </p>
           <p className={styles["price__info"]}>와우할인가</p>
         </div>
@@ -144,10 +141,8 @@ const ProductInfo = () => {
             <p>
               최대{" "}
               {parseInt(
-                (DUMMY_PRODUCT.price -
-                  DUMMY_PRODUCT.price * DUMMY_PRODUCT.discount * 0.01) *
-                  0.01
-              )}
+                (price - price * prodDiscount * 0.01) * 0.01
+              ).toLocaleString()}
               원 적립
             </p>
           </div>
@@ -187,7 +182,7 @@ const ProductInfo = () => {
               최대{" "}
               <strong>
                 {parseInt(
-                  (price - price * discount * 0.01) * 0.01
+                  (price - price * prodDiscount * 0.01) * 0.01
                 ).toLocaleString()}
                 원
               </strong>{" "}
