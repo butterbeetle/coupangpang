@@ -141,7 +141,7 @@ const CartItem = ({ item }) => {
             <div className={styles["item__cash__circle"]}>
               <FaCopyright />
             </div>
-            최대 10,000원 적립
+            최대 {(item.totalPrice * 0.01).toLocaleString()}원 적립
           </span>
         </div>
       </div>
