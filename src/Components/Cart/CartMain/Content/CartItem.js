@@ -6,7 +6,8 @@ import { BsXSquare } from "react-icons/bs";
 import { FaCopyright } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../../store/cart-slice";
-const CartItem = ({ item }) => {
+
+const CartItem = ({ item, index }) => {
   const selectOpt = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"];
   const [selected, setSelected] = useState(item.quantity);
   const [selectText, setSelectText] = useState("");
@@ -20,7 +21,7 @@ const CartItem = ({ item }) => {
     setSelectText(e.target.value);
     setTest((prev) => ({
       ...prev,
-      quantity: e.target.value,
+      quantity: +e.target.value,
       totalPrice: item.price * e.target.value,
     }));
   };
@@ -32,8 +33,10 @@ const CartItem = ({ item }) => {
   const onChangeHandler = (e) => {
     setSelectText(e.target.value);
   };
-
-  console.log(test);
+  useEffect(() => {
+    dispatch(cartActions.replaceCartItem({ item: test }));
+  }, [dispatch, test]);
+  // console.log(item);
   return (
     <div key={item.id} className={styles["items__box"]}>
       <div className={styles["item__check"]}>

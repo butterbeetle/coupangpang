@@ -7,7 +7,7 @@ import CartItem from "./CartItem";
 const CartItems = () => {
   /* 장바구니에 있는 Item 정보 */
   const cartItems = useSelector((state) => state.cart.items);
-
+  // console.log(cartItems);
   return (
     <div className={styles["items"]}>
       <ul className={styles["items__menu"]}>
@@ -20,8 +20,8 @@ const CartItems = () => {
         <li className={styles["menu__delivary__price"]}>배송비</li>
       </ul>
       <div className={styles["items__delivary_type"]}>판매자배송 상품</div>
-      {cartItems.map((item) => (
-        <CartItem key={item.id} item={item} />
+      {cartItems.map((item, idx) => (
+        <CartItem key={item.id} item={item} index={idx} />
       ))}
     </div>
   );

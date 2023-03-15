@@ -13,8 +13,15 @@ const cartSlice = createSlice({
       state.totalQuantity = action.payload.totalQuantity;
     },
     replaceCartItem(state, action) {
-      console.log("redux", action.payload);
-      state.items = action.payload;
+      const newItemId = action.payload.item.id;
+      const changeItemIndex = state.items.findIndex(
+        (item) => item.id === newItemId
+      );
+      // console.log("redux item index", newItemId, changeItemIndex);
+      if (changeItemIndex > -1) {
+        state.changed = true;
+        state.items[changeItemIndex] = action.payload.item;
+      }
     },
     addItemToCart(state, action) {
       const newItem = action.payload;
