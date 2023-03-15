@@ -4,7 +4,8 @@ import styles from "./CartItem.module.css";
 /* Icon */
 import { BsXSquare } from "react-icons/bs";
 import { FaCopyright } from "react-icons/fa";
-import { useDispatch } from "react-redux";
+/* Redux */
+import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../../store/cart-slice";
 
 const CartItem = ({ item }) => {
@@ -18,11 +19,14 @@ const CartItem = ({ item }) => {
   const [isChange, setIsChange] = useState(false);
   const [isLessTen, setIsLessTen] = useState(true);
 
+  /* 10개 이상 선택 시 input focus용 */
+  const inputRef = useRef(null);
+
   /* Redux Store & Firebase 업데이트용 */
   const dispatch = useDispatch();
   const [newItem, setNewItem] = useState(item);
 
-  const inputRef = useRef(null);
+  const checked = useSelector((state) => state.cart.checked);
 
   /* select 선택 */
   const selectHandler = (e) => {
@@ -70,16 +74,26 @@ const CartItem = ({ item }) => {
     dispatch(cartActions.replaceCartItem({ item: newItem }));
   }, [dispatch, newItem]);
 
+  /* 10개 이상 선택 시 input에 focus */
   useLayoutEffect(() => {
     if (!isLessTen && inputRef.current !== null) {
       inputRef.current.focus();
     }
   }, [isLessTen]);
-  // console.log(itemQty, itemQtyText);
+
+  /* 단일 check 관리 */
+  const singleCheckHandler = (checked) => {
+    dispatch(cartActions.singleCheck({ id: item.id, checked }));
+  };
+
   return (
     <div key={item.id} className={styles["items__box"]}>
       <div className={styles["item__check"]}>
-        <input type={"checkbox"} />
+        <input
+          type={"checkbox"}
+          onChange={(e) => singleCheckHandler(e.target.checked)}
+          checked={checked.includes(item.id) ? true : false}
+        />
       </div>
       <div className={styles["item__img"]}>
         <Link to={"/"}>

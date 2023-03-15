@@ -3,9 +3,10 @@ import { createSlice } from "@reduxjs/toolkit";
 const cartSlice = createSlice({
   name: "cart",
   initialState: {
-    items: [],
-    totalQuantity: 0,
-    changed: false,
+    items: [], // 장바구니 Item 정보
+    totalQuantity: 0, // 장바구니 총 수량
+    checked: [], // 장바구니 Item 체크
+    changed: false, // 장바구니 변경 체크
   },
   reducers: {
     replaceCart(state, action) {
@@ -64,6 +65,26 @@ const cartSlice = createSlice({
       state.items = [];
       state.totalQuantity = 0;
       state.changed = false;
+    },
+    singleCheck(state, action) {
+      const id = action.payload.id;
+      const array = [...state.checked];
+      if (action.payload.checked) {
+        state.checked.push(id);
+      } else {
+        state.checked = array.filter((itemId) => itemId !== id);
+      }
+    },
+    allCheck(state, action) {
+      const array = [];
+      if (action.payload.checked) {
+        state.items.forEach((item) => {
+          array.push(item.id);
+        });
+        state.checked = array;
+      } else {
+        state.checked = [];
+      }
     },
   },
 });

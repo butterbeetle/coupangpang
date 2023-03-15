@@ -31,7 +31,10 @@ export const sendCartData = (cart) => {
   return async () => {
     const sendData = async () => {
       const uid = sessionStorage.getItem("uid");
-      await setDoc(doc(firestore, "cart", uid), cart);
+      await setDoc(doc(firestore, "cart", uid), {
+        items: cart.items,
+        totalQuantity: cart.totalQuantity,
+      });
     };
     try {
       await sendData();
