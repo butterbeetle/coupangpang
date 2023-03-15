@@ -75,7 +75,7 @@ const CartItem = ({ item }) => {
       inputRef.current.focus();
     }
   }, [isLessTen]);
-  console.log(itemQty, itemQtyText);
+  // console.log(itemQty, itemQtyText);
   return (
     <div key={item.id} className={styles["items__box"]}>
       <div className={styles["item__check"]}>
