@@ -1,3 +1,6 @@
+.none {
+  display: none;
+}
 /* 아이템 표시 */
 .items__box {
   display: flex;

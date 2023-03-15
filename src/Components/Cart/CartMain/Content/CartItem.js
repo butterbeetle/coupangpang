@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CartItem.module.css";
 /* Icon */
@@ -8,35 +8,74 @@ import { useDispatch } from "react-redux";
 import { cartActions } from "../../../../store/cart-slice";
 
 const CartItem = ({ item }) => {
+  /* select option */
   const selectOpt = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"];
-  const [selected, setSelected] = useState(item.quantity);
-  const [selectText, setSelectText] = useState("");
+  /* 10 미만 */
+  const [itemQty, setItemQty] = useState(item.quantity);
+  /* 10 이상 */
+  const [itemQtyText, setItemQtyText] = useState("");
+  /* 10 이상 입력 시 수량변경 버튼 보이기여부(변경했는지, 10+ 선택했는지)*/
+  const [isChange, setIsChange] = useState(false);
+  const [isLessTen, setIsLessTen] = useState(true);
 
+  /* Redux Store & Firebase 업데이트용 */
   const dispatch = useDispatch();
-  const [test, setTest] = useState(item);
+  const [newItem, setNewItem] = useState(item);
+
+  const inputRef = useRef(null);
 
   /* select 선택 */
   const selectHandler = (e) => {
-    setSelected(e.target.value);
-    setSelectText(e.target.value);
-    setTest((prev) => ({
-      ...prev,
-      quantity: +e.target.value,
-      totalPrice: item.price * e.target.value,
-    }));
+    if (e.target.value !== "10+") {
+      setIsLessTen(true);
+      setItemQty(e.target.value);
+      setNewItem((prev) => ({
+        ...prev,
+        quantity: +e.target.value,
+        totalPrice: item.price * +e.target.value,
+      }));
+    } else {
+      setItemQtyText(itemQty);
+      setIsLessTen(false);
+    }
+  };
+
+  /* 10개 이상일 때, 수량입력 시 */
+  const onChangeHandler = (e) => {
+    const value = Number(e.target.value);
+    if (Number.isNaN(value) || value < 1) return;
+    setIsChange(true);
+    setItemQtyText(e.target.value);
+  };
+
+  const onBlurHandler = () => {
+    if (isChange || +itemQty > 9) return;
+    setIsLessTen(true);
   };
   /* 10개 이상일 때, 수량변경 버튼클릭 시 */
   const onClickHandler = () => {
-    setSelected(selectText);
+    setIsChange(false);
+    setItemQty(itemQtyText);
+    if (+itemQtyText < 10) {
+      setIsLessTen(true);
+    }
+    setNewItem((prev) => ({
+      ...prev,
+      quantity: +itemQtyText,
+      totalPrice: item.price * +itemQtyText,
+    }));
   };
-  /* 10개 이상일 때, 수량입력 시 */
-  const onChangeHandler = (e) => {
-    setSelectText(e.target.value);
-  };
+  /* 수량 변경 시 마다 Redux Store & Firebase 업데이트 */
   useEffect(() => {
-    dispatch(cartActions.replaceCartItem({ item: test }));
-  }, [dispatch, test]);
-  // console.log(item);
+    dispatch(cartActions.replaceCartItem({ item: newItem }));
+  }, [dispatch, newItem]);
+
+  useLayoutEffect(() => {
+    if (!isLessTen && inputRef.current !== null) {
+      inputRef.current.focus();
+    }
+  }, [isLessTen]);
+  console.log(itemQty, itemQtyText);
   return (
     <div key={item.id} className={styles["items__box"]}>
       <div className={styles["item__check"]}>
@@ -57,28 +96,40 @@ const CartItem = ({ item }) => {
             <span className={styles["item__quantity__origin"]}>
               {item.price.toLocaleString()}원
             </span>
-            {selected < 10 ? (
-              <span className={styles["select-select"]}>
-                <select onChange={selectHandler} defaultValue={item.quantity}>
-                  {selectOpt.map((opt, idx) => (
-                    <option key={opt} value={idx + 1}>
-                      {opt}
-                    </option>
-                  ))}
-                </select>
-              </span>
-            ) : (
-              <span className={styles["select-text"]}>
-                <input
-                  onChange={onChangeHandler}
-                  value={selectText}
-                  maxLength="4"
-                />
+            <span
+              className={`${
+                isLessTen ? styles["select-select"] : styles["none"]
+              }`}
+            >
+              <select
+                onChange={selectHandler}
+                value={itemQty !== "10+" && itemQty}
+              >
+                {selectOpt.map((opt) => (
+                  <option key={opt} value={opt}>
+                    {opt}
+                  </option>
+                ))}
+              </select>
+            </span>
+            <span
+              className={`${
+                isLessTen ? styles["none"] : styles["select-text"]
+              }`}
+            >
+              <input
+                ref={inputRef}
+                onChange={onChangeHandler}
+                onBlur={onBlurHandler}
+                value={itemQtyText}
+                maxLength="4"
+              />
+              {isChange && (
                 <button onClick={onClickHandler} type="button">
                   수량변경
                 </button>
-              </span>
-            )}
+              )}
+            </span>
             <span className={styles["item__quantity__total__price"]}>
               <p>{item.totalPrice.toLocaleString()}원</p>
             </span>

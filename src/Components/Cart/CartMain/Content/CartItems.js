@@ -20,7 +20,7 @@ const CartItems = () => {
         <li className={styles["menu__delivary__price"]}>배송비</li>
       </ul>
       <div className={styles["items__delivary_type"]}>판매자배송 상품</div>
-      {cartItems.map((item, idx) => (
+      {cartItems.map((item) => (
         <CartItem key={item.id} item={item} />
       ))}
     </div>
