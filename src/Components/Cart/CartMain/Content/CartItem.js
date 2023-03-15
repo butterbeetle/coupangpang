@@ -7,7 +7,7 @@ import { FaCopyright } from "react-icons/fa";
 import { useDispatch } from "react-redux";
 import { cartActions } from "../../../../store/cart-slice";
 
-const CartItem = ({ item, index }) => {
+const CartItem = ({ item }) => {
   const selectOpt = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"];
   const [selected, setSelected] = useState(item.quantity);
   const [selectText, setSelectText] = useState("");

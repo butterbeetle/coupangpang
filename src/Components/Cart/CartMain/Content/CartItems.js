@@ -21,7 +21,7 @@ const CartItems = () => {
       </ul>
       <div className={styles["items__delivary_type"]}>판매자배송 상품</div>
       {cartItems.map((item, idx) => (
-        <CartItem key={item.id} item={item} index={idx} />
+        <CartItem key={item.id} item={item} />
       ))}
     </div>
   );
