@@ -5,7 +5,7 @@ import ProductTab from "./Tab/ProductTab";
 import { useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-import Loading from "../Util/Loading";
+import Loading from "../../Util/Loading";
 import { useDispatch, useSelector } from "react-redux";
 import {
   getDetailUrl,

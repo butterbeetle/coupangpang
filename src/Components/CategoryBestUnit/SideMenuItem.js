@@ -22,6 +22,7 @@ const SideMenuItem = (props) => {
     sideCtx.scrollOffset(props.idx);
   };
 
+  /* bug 수정해야댐! */
   useEffect(() => {
     if (offset[props.idx] <= scrollY && scrollY < offset[props.idx] + 600) {
       setScroll(true);
