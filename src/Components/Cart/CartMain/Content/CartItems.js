@@ -15,7 +15,7 @@ const CartItems = () => {
   const allCheckHandler = (checked) => {
     dispatch(cartActions.allCheck({ checked }));
   };
-
+  console.log(cartItems);
   return (
     <div className={styles["items"]}>
       <ul className={styles["items__menu"]}>

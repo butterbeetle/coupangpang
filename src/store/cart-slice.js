@@ -54,11 +54,12 @@ const cartSlice = createSlice({
       state.totalQuantity--;
       state.changed = true;
 
-      if (existingItem.quantity === 1) {
+      if (existingItem) {
         state.items = state.items.filter((item) => item.id !== id);
-      } else {
-        existingItem.quantity--;
-        existingItem.totalPrice -= existingItem.price;
+      }
+      if (state.items.length === 0) {
+        state.items = [];
+        state.totalQuantity = 0;
       }
     },
     resetItemToCart(state) {

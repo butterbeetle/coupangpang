@@ -86,6 +86,11 @@ const CartItem = ({ item }) => {
     dispatch(cartActions.singleCheck({ id: item.id, checked }));
   };
 
+  /* Item 삭제 */
+  const itemDeleteHandler = () => {
+    dispatch(cartActions.removeItemToCart(item.id));
+    console.log("삭제 클릭");
+  };
   return (
     <div key={item.id} className={styles["items__box"]}>
       <div className={styles["item__check"]}>
@@ -147,7 +152,7 @@ const CartItem = ({ item }) => {
             <span className={styles["item__quantity__total__price"]}>
               <p>{item.totalPrice.toLocaleString()}원</p>
             </span>
-            <BsXSquare />
+            <BsXSquare onClick={itemDeleteHandler} />
           </div>
         </div>
         <div className={styles["item__cash"]}>
