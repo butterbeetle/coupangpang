@@ -1,4 +1,4 @@
-import CategoryItems from "./CategoryItems";
+import CategoryItems from "../Layout/Header/CategoryItems";
 import styles from "./Dropdown.module.css";
 
 const Dropdown = ({ submenus, dropdown, depth, icon }) => {

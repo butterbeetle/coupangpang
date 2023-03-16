@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // import { Link } from "react-router-dom";
-import CategoryItems from "../Components/CategoryItems";
+import CategoryItems from "./CategoryItems";
 import styles from "./Category.module.css";
 
 const categoryItems = [

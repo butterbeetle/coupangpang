@@ -1,8 +1,8 @@
 import styles from "./CategoryBestUnit.module.css";
 
-import SideMenu from "./CategoryBestUnit/SideMenu";
-import Contents from "./CategoryBestUnit/Contents";
-import { SideMenuContext } from "../store/sideMenu-context";
+import SideMenu from "./SideMenu/SideMenu";
+import Contents from "./Contents";
+import { SideMenuContext } from "../../store/sideMenu-context";
 import { useContext } from "react";
 
 const CategoryBestUnit = () => {

@@ -1,4 +1,4 @@
-import Footer from "../../Layout/Footer";
+import Footer from "../../Layout/Footer/Footer";
 import styles from "./CartView.module.css";
 
 import CartHeader from "./CartHeader/CartHeader";

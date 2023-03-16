@@ -1,5 +1,5 @@
-import Contents from "../Components/Contents";
-import TodaysHot from "../Components/TodaysHot";
+import Contents from "../Components/Home/Contents";
+import TodaysHot from "../Components/Home/TodaysHot";
 
 const HomePage = () => {
   return (

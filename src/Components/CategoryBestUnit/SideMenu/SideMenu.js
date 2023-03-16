@@ -4,7 +4,7 @@ import SideMenuItem from "./SideMenuItem";
 
 import { Reorder } from "framer-motion";
 import SideMenuSettingItem from "./SideMenuSettingItem";
-import { SideMenuContext } from "../../store/sideMenu-context";
+import { SideMenuContext } from "../../../store/sideMenu-context";
 
 const SideMenu = () => {
   const sideCtx = useContext(SideMenuContext);

@@ -1,21 +1,21 @@
 import styles from "./TodaysHot.module.css";
 //banner img
-import big_banner01 from "../assets/img/banner/big_banner01.jpg";
-import big_banner02 from "../assets/img/banner/big_banner02.jpg";
-import big_banner03 from "../assets/img/banner/big_banner03.jpg";
-import big_banner04 from "../assets/img/banner/big_banner04.jpg";
-import big_banner05 from "../assets/img/banner/big_banner05.png";
-import big_banner06 from "../assets/img/banner/big_banner06.jpg";
-import small_banner01 from "../assets/img/banner/small_banner01.png";
-import small_banner02 from "../assets/img/banner/small_banner02.png";
-import small_banner03 from "../assets/img/banner/small_banner03.png";
-import small_banner04 from "../assets/img/banner/small_banner04.png";
-import small_banner05 from "../assets/img/banner/small_banner05.png";
-import small_banner06 from "../assets/img/banner/small_banner06.png";
+import big_banner01 from "../../assets/img/banner/big_banner01.jpg";
+import big_banner02 from "../../assets/img/banner/big_banner02.jpg";
+import big_banner03 from "../../assets/img/banner/big_banner03.jpg";
+import big_banner04 from "../../assets/img/banner/big_banner04.jpg";
+import big_banner05 from "../../assets/img/banner/big_banner05.png";
+import big_banner06 from "../../assets/img/banner/big_banner06.jpg";
+import small_banner01 from "../../assets/img/banner/small_banner01.png";
+import small_banner02 from "../../assets/img/banner/small_banner02.png";
+import small_banner03 from "../../assets/img/banner/small_banner03.png";
+import small_banner04 from "../../assets/img/banner/small_banner04.png";
+import small_banner05 from "../../assets/img/banner/small_banner05.png";
+import small_banner06 from "../../assets/img/banner/small_banner06.png";
 
 import TodayItems from "./TodayItems";
 import { useEffect, useState } from "react";
-import useInterval from "../hooks/useInterval";
+import useInterval from "../../hooks/useInterval";
 
 const todayHotItems = [
   {

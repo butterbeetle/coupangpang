@@ -31,7 +31,7 @@
   display: inline-block;
   width: 180px;
   height: 40px;
-  background: url("../assets/img/main-header/logo_coupang.png") no-repeat;
+  background: url("../../assets/img/main-header/logo_coupang.png") no-repeat;
   background-size: cover;
 }
 
@@ -64,7 +64,7 @@
   top: 19px;
   left: 30px;
   z-index: 4;
-  background: url("../assets/img/header_img_collection.png") no-repeat -143px -40px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat -143px -40px;
 }
 .my-coupang {
   left: -15px;
@@ -98,14 +98,14 @@
   width: 10px;
   height: 10px;
   padding-right: 15px;
-  background: url("../assets/img/header_img_collection.png") no-repeat 0px -175px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat 0px -175px;
 }
 .icon-up {
   display: inline-block;
   width: 10px;
   height: 10px;
   padding-right: 15px;
-  background: url("../assets/img/header_img_collection.png") no-repeat 0px -152px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat 0px -152px;
 }
 .searchBox__mainBox__bar img {
   width: 25px;
@@ -129,14 +129,14 @@
   width: 25px;
   height: 25px;
   padding-right: 10px;
-  background: url("../img/header_img/ic_mic.png") no-repeat 3px 0px;
+  background: url("../../img/header_img/ic_mic.png") no-repeat 3px 0px;
   background-size: 20px 48px;
 }
 .searchBox__mainBox__bar__form button {
   border: 0;
   width: 30px;
   height: 30px;
-  background: url("../assets/img/header_img_collection.png") no-repeat -123px -75px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat -123px -75px;
   cursor: pointer;
 }
 
@@ -162,7 +162,7 @@
   margin-right: 20px;
   width: 30px;
   height: 35px;
-  background: url("../assets/img/header_img_collection.png") no-repeat -112px -36px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat -112px -36px;
 }
 .myCoupang-dropdown {
   position: relative;
@@ -175,7 +175,8 @@
   position: relative;
   width: 40px;
   height: 40px;
-  background: url("../assets/img/header_img_collection.png") no-repeat -112px 0px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat -112px
+    0px;
 }
 .searchBox__mainBox__user__cart__counter {
   display: block;
@@ -207,26 +208,26 @@
 }
 .searchBox__gnbMenu__delivery {
   height: 30px;
-  background: url("../assets/img/header_img_collection.png") no-repeat 0px -118px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat 0px -118px;
 }
 .searchBox__gnbMenu__fresh {
   height: 30px;
-  background: url("../img/header_img/rocket_fresh.png") no-repeat 0px 5px;
+  background: url("../../img/header_img/rocket_fresh.png") no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__biz {
   height: 30px;
-  background: url("../img/header_img/logoBizonlyBrown.png") no-repeat 0px 5px;
+  background: url("../../img/header_img/logoBizonlyBrown.png") no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__overseas {
   height: 30px;
-  background: url("../img/header_img/Overseas.png") no-repeat 0px 5px;
+  background: url("../../img/header_img/Overseas.png") no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__promotion {
   height: 30px;
-  background: url("../img/header_img/icon_government_promotion.png") no-repeat
-    0px 5px;
+  background: url("../../img/header_img/icon_government_promotion.png")
+    no-repeat 0px 5px;
 }
 .searchBox__gnbMenu__travel {
   height: 30px;
-  background: url("../img/header_img/icon_travel.png") no-repeat 0px 5px;
+  background: url("../../img/header_img/icon_travel.png") no-repeat 0px 5px;
 }

@@ -3,9 +3,9 @@ import styles from "./Navigation.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { Fragment, useEffect, useState } from "react";
-import { loggedActions } from "../store/login-slice";
+import { loggedActions } from "../../store/login-slice";
+import { cartActions } from "../../store/cart-slice";
 import { getAuth, signOut } from "firebase/auth";
-import { cartActions } from "../store/cart-slice";
 
 const Navigation = () => {
   const auth = getAuth();

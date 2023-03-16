@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CategoryItems.module.css";
-import Dropdown from "./Dropdown";
+import Dropdown from "../../Util/Dropdown";
 
 const CategoryItems = ({ items, depth, type }) => {
   const [dropdown, setDropdown] = useState(false);

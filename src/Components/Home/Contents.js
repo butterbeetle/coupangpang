@@ -1,9 +1,9 @@
 import styles from "./Contents.module.css";
 import Sidebar from "./Sidebar";
-import Discovery from "./Discovery/Discovery";
-import Advertisement from "./Advertisement/Advertisement";
-import CategoryBestUnit from "./CategoryBestUnit";
-import SideMenuProvider from "../store/sideMenu-context";
+import Discovery from "../Discovery/Discovery";
+import Advertisement from "../Advertisement/Advertisement";
+import CategoryBestUnit from "../CategoryBestUnit/CategoryBestUnit";
+import SideMenuProvider from "../../store/sideMenu-context";
 
 const Contents = () => {
   return (

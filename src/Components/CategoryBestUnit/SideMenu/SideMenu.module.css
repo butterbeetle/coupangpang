@@ -17,7 +17,7 @@
   display: block;
   width: 34px;
   height: 50px;
-  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
+  background: url("../../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat 0 -267px;
   background-color: #fafaff;
   cursor: pointer;
@@ -30,7 +30,7 @@
   position: absolute;
   width: 9px;
   height: 12px;
-  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
+  background: url("../../../assets/img/widget/pc_bestcategory_v2_setting.png")
     no-repeat -93px -65px;
 }
 .setting-category {

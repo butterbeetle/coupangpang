@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react";
 import styles from "./SideMenuItem.module.css";
-import icons from "./ItemsIcon.module.css";
-import { SideMenuContext } from "../../store/sideMenu-context";
+import icons from "../ItemsIcon.module.css";
+import { SideMenuContext } from "../../../store/sideMenu-context";
 
 const SideMenuItem = (props) => {
   const sideCtx = useContext(SideMenuContext);

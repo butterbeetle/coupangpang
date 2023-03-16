@@ -8,5 +8,6 @@
   display: inline-block;
   width: 290px;
   height: 50px;
-  background: url("../assets/img/widget/coupang_widget_main.png") no-repeat 0px -125px;
+  background: url("../../assets/img/widget/coupang_widget_main.png") no-repeat
+    0px -125px;
 }
