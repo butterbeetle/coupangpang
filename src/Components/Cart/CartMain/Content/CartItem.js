@@ -89,7 +89,6 @@ const CartItem = ({ item }) => {
   /* Item 삭제 */
   const itemDeleteHandler = () => {
     dispatch(cartActions.removeItemToCart(item.id));
-    console.log("삭제 클릭");
   };
   return (
     <div key={item.id} className={styles["items__box"]}>

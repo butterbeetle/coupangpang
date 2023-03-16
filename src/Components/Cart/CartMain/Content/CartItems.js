@@ -15,26 +15,32 @@ const CartItems = () => {
   const allCheckHandler = (checked) => {
     dispatch(cartActions.allCheck({ checked }));
   };
-  console.log(cartItems);
+
   return (
     <div className={styles["items"]}>
       <ul className={styles["items__menu"]}>
-        <li className={styles["menu__check"]}>
-          <input
-            type={"checkbox"}
-            onChange={(e) => allCheckHandler(e.target.checked)}
-            checked={checked.length === cartItems.length ? true : false}
-          />
-          전체선택
-        </li>
+        {cartItems.length > 0 && (
+          <li className={styles["menu__check"]}>
+            <input
+              type={"checkbox"}
+              onChange={(e) => allCheckHandler(e.target.checked)}
+              checked={checked.length === cartItems.length ? true : false}
+            />
+            전체선택
+          </li>
+        )}
         <li className={styles["menu__info"]}>상품정보</li>
         <li className={styles["menu__total__price"]}>상품금액</li>
         <li className={styles["menu__delivary__price"]}>배송비</li>
       </ul>
-      <div className={styles["items__delivary_type"]}>판매자배송 상품</div>
-      {cartItems.map((item) => (
-        <CartItem key={item.id} item={item} />
-      ))}
+      {cartItems.length > 0 && (
+        <>
+          <div className={styles["items__delivary_type"]}>판매자배송 상품</div>
+          {cartItems.map((item) => (
+            <CartItem key={item.id} item={item} />
+          ))}
+        </>
+      )}
     </div>
   );
 };
