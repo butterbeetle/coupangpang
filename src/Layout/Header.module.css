@@ -180,10 +180,10 @@
 .searchBox__mainBox__user__cart__counter {
   display: block;
   position: absolute;
-  font-size: 12px;
+  font-size: 11px;
   color: #fff;
-  top: -0.65rem;
-  right: 0.55rem;
+  top: -0.61rem;
+  right: 0.63rem;
 }
 
 .searchBox__gnbMenu {
