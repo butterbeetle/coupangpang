@@ -1,0 +1,19 @@
+.view {
+  box-sizing: border-box;
+  border-top: 0.1rem solid #2f3648;
+  padding: 0.55rem;
+  display: flex;
+  font-size: 0.7rem;
+  justify-content: space-between;
+  width: 100%;
+  color: #fff;
+  background-color: #373f57;
+}
+.view__text {
+  display: flex;
+  align-items: center;
+}
+.view__qty {
+  font-weight: bold;
+  color: #3abbff;
+}
