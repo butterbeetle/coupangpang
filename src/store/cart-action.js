@@ -24,7 +24,7 @@ export const getCartData = () => {
     try {
       await getData();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 };
@@ -41,7 +41,7 @@ export const sendCartData = (cart) => {
     try {
       await sendData();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 };

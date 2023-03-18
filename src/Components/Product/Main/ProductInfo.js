@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { AiOutlineInfoCircle } from "react-icons/ai";
 import { BsFillShareFill, BsCoin, BsChatLeftText } from "react-icons/bs";
 import { FiHeart, FiThumbsUp } from "react-icons/fi";
+import { RxCross2 } from "react-icons/rx";
 import {
   IoIosArrowUp,
   IoIosArrowDown,
@@ -14,6 +15,7 @@ import {
 /* redux */
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../store/cart-slice";
+import { Link } from "react-router-dom";
 
 const ProductInfo = () => {
   const prodId = useSelector((state) => state.prod.id);
@@ -76,12 +78,13 @@ const ProductInfo = () => {
   }, [prodPrice, prodDiscount, quantity]);
 
   // const isLogged = useSelector((state) => state.logged.isLogged);
-
+  const [isShowing, setIsShowing] = useState(false);
   /* 장바구니 넣을 때 썸네일 이미지도 */
   const urlArray = useSelector((state) => state.prod.thumbnailUrl);
   /* 장바구니 넣기 */
   const dispatch = useDispatch();
   const addToCartHandler = () => {
+    setIsShowing(true);
     dispatch(
       cartActions.addItemToCart({
         id: prodId,
@@ -93,6 +96,17 @@ const ProductInfo = () => {
     );
   };
 
+  useEffect(() => {
+    if (isShowing) {
+      const invisible = setTimeout(() => {
+        setIsShowing(false);
+      }, 3000);
+      return () => clearTimeout(invisible);
+    }
+  });
+  const goCartCancel = () => {
+    setIsShowing(false);
+  };
   return (
     <div className={styles["product__info"]}>
       <div className={styles["product__info--header"]}>
@@ -226,6 +240,15 @@ const ProductInfo = () => {
             바로 구매 <IoIosArrowForward />
           </button>
         </div>
+        {isShowing && (
+          <div className={styles["goCart"]}>
+            <RxCross2 onClick={goCartCancel} />
+            상품이 장바구니에 담겼습니다.
+            <Link to="/cart">
+              <button type="button">{"장바구니 바로가기"}</button>
+            </Link>
+          </div>
+        )}
       </div>
       <div className={styles["product__info--desc"]}>
         <ul>

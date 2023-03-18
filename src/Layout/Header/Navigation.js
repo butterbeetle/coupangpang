@@ -50,10 +50,10 @@ const Navigation = () => {
   const [name, setName] = useState("");
 
   useLayoutEffect(() => {
-    getIndexedDbData().then(({ name }) => {
-      if (name) {
+    getIndexedDbData().then((e) => {
+      if (e) {
         dispatch(loggedActions.login());
-        setName(name);
+        setName(e.name);
       }
     });
   }, [dispatch]);

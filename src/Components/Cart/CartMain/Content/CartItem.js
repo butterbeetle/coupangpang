@@ -8,6 +8,7 @@ import { FaCopyright } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../../store/cart-slice";
 
+let init = true;
 const CartItem = ({ item }) => {
   /* select option */
   const selectOpt = [1, 2, 3, 4, 5, 6, 7, 8, 9, "10+"];
@@ -71,8 +72,12 @@ const CartItem = ({ item }) => {
   };
   /* 수량 변경 시 마다 Redux Store & Firebase 업데이트 */
   useEffect(() => {
+    if (init && itemQty > 10) {
+      setItemQtyText(itemQty);
+      setIsLessTen(false);
+    }
     dispatch(cartActions.replaceCartItem({ item: newItem }));
-  }, [dispatch, newItem]);
+  }, [dispatch, newItem, itemQty]);
 
   /* 10개 이상 선택 시 input에 focus */
   useLayoutEffect(() => {

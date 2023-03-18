@@ -8,5 +8,9 @@ export const getIndexedDbData = async () => {
     `firebase:authUser:${process.env.REACT_APP_APIKEY}:[DEFAULT]`
   );
   db.close();
-  return { uid: result.value.uid, name: result.value.displayName };
+  if (result) {
+    return { uid: result.value.uid, name: result.value.displayName };
+  } else {
+    return;
+  }
 };

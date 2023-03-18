@@ -105,8 +105,8 @@ const LoginForm = () => {
           // });
           // sessionStorage.setItem("token", token.idToken);
           // sessionStorage.setItem("expires", token.expiresIn);
-          localStorage.setItem("uid", user.uid);
-          localStorage.setItem("name", docSnap.data().name);
+          // localStorage.setItem("uid", user.uid);
+          // localStorage.setItem("name", docSnap.data().name);
           // dispatch(
           //   loggedActions.register({
           //     uid: user.uid,

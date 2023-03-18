@@ -336,7 +336,39 @@
 .buy--cart button:last-child:hover {
   background-color: #0f5ca8;
 }
-
+.goCart {
+  font-size: 0.75rem;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  top: -6rem;
+  left: 4.5rem;
+  border: 0.1rem solid #ccc;
+  background-color: #fff;
+  padding: 1.3rem 2.2rem;
+}
+.goCart button {
+  margin-top: 0.7rem;
+  font-weight: bold;
+  cursor: pointer;
+  color: #346aff;
+  border: solid 0.1rem #346aff;
+  background-color: #fff;
+  padding: 0.3rem 1rem;
+  border-radius: 0.2rem;
+}
+.goCart svg {
+  cursor: pointer;
+  display: inline;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #ccc;
+}
 /* 설명 */
 .product__info--desc {
   margin-bottom: 1.8rem;
