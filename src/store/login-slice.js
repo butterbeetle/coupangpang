@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getAuth, signOut } from "firebase/auth";
 
 const initialState = {
   isLogged: false,
-  uid: "",
-  name: "",
+  // uid: "",
+  // name: "",
   // email: "",
   // phone: "",
 };
@@ -12,19 +13,21 @@ const loggedSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    register(state, action) {
-      state.uid = action.payload.uid;
-      state.name = action.payload.name;
-      // state.email = action.payload.email;
-      // state.phone = action.payload.phone;
-    },
+    // register(state, action) {
+    //   state.uid = action.payload.uid;
+    //   state.name = action.payload.name;
+    //   state.email = action.payload.email;
+    //   state.phone = action.payload.phone;
+    // },
     login(state) {
       state.isLogged = true;
     },
     logout(state) {
+      const auth = getAuth();
       state.isLogged = false;
-      state.uid = "";
-      state.name = "";
+      signOut(auth);
+      // state.uid = "";
+      // state.name = "";
       // state.email = "";
       // state.phone = "";
     },

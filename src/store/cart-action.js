@@ -3,11 +3,13 @@ import { cartActions } from "./cart-slice";
 /* firebase */
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { firestore } from "../firebase-config";
+/* indexedDB */
+import { getIndexedDbData } from "../Util/IndexedDB";
 
 export const getCartData = () => {
   return async (dispatch) => {
     const getData = async () => {
-      const uid = sessionStorage.getItem("uid");
+      const { uid } = await getIndexedDbData();
       if (uid === null) return;
       const docSnap = await getDoc(doc(firestore, "cart", uid));
       if (docSnap.exists()) {
@@ -30,7 +32,7 @@ export const getCartData = () => {
 export const sendCartData = (cart) => {
   return async () => {
     const sendData = async () => {
-      const uid = sessionStorage.getItem("uid");
+      const { uid } = await getIndexedDbData();
       await setDoc(doc(firestore, "cart", uid), {
         items: cart.items,
         totalQuantity: cart.totalQuantity,

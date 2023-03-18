@@ -2,13 +2,13 @@ import { Link } from "react-router-dom";
 import styles from "./Navigation.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
-import { Fragment, useEffect, useState } from "react";
+import { Fragment, useLayoutEffect, useState } from "react";
 import { loggedActions } from "../../store/login-slice";
 import { cartActions } from "../../store/cart-slice";
-import { getAuth, signOut } from "firebase/auth";
+/* indexedDB */
+import { getIndexedDbData } from "../../Util/IndexedDB";
 
 const Navigation = () => {
-  const auth = getAuth();
   const [isLeftHover, setIsLeftHover] = useState(false);
   const [isRightHover, setIsRightHover] = useState(false);
 
@@ -46,40 +46,19 @@ const Navigation = () => {
   );
 
   const dispatch = useDispatch();
-  const userName = useSelector((state) => state.logged.name);
   const isLogged = useSelector((state) => state.logged.isLogged);
+  const [name, setName] = useState("");
 
-  // console.log("Navi", userName, isLogged);
-
-  useEffect(() => {
-    const name = sessionStorage.getItem("name");
-    if (name) {
-      dispatch(loggedActions.register({ name }));
-      dispatch(loggedActions.login());
-    }
+  useLayoutEffect(() => {
+    getIndexedDbData().then(({ name }) => {
+      if (name) {
+        dispatch(loggedActions.login());
+        setName(name);
+      }
+    });
   }, [dispatch]);
 
-  // useEffect(() => {
-  //   auth.onAuthStateChanged((user) => {
-  //     if (user) {
-  //       console.log(user);
-  //       dispatch(
-  //         loggedActions.register({
-  //           email: user.email,
-  //           name: user.displayName,
-  //         })
-  //       );
-  //       dispatch(loggedActions.login());
-  //     } else {
-  //       console.log("logout");
-  //     }
-  //   });
-  // }, [auth, dispatch]);
-
   const logoutHandler = () => {
-    sessionStorage.removeItem("uid");
-    sessionStorage.removeItem("name");
-    signOut(auth);
     dispatch(loggedActions.logout());
     dispatch(cartActions.resetItemToCart());
   };
@@ -88,7 +67,7 @@ const Navigation = () => {
     <Fragment>
       <li>
         <Link to="/">
-          <strong>{userName}</strong>님
+          <strong>{name}</strong>님
         </Link>
       </li>
       <li>
@@ -107,6 +86,7 @@ const Navigation = () => {
       </li>
     </Fragment>
   );
+
   return (
     <section className={styles.topBar}>
       <div className={styles.topBar__main}>
