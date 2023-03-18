@@ -1,9 +1,10 @@
 import styles from "./Sidebar.module.css";
+import SidebarCart from "./SidebarCart";
 
 const Sidebar = () => {
   return (
-    <article className={styles["sidebar"]}>
-      <div className={styles["sidebar__contents"]}></div>
+    <article className={styles["main"]}>
+      <SidebarCart />
     </article>
   );
 };

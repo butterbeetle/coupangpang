@@ -1,5 +1,5 @@
 import styles from "./Contents.module.css";
-import Sidebar from "./Sidebar";
+import Sidebar from "./Sidebar/Sidebar";
 import Discovery from "../Discovery/Discovery";
 import Advertisement from "../Advertisement/Advertisement";
 import CategoryBestUnit from "../CategoryBestUnit/CategoryBestUnit";
