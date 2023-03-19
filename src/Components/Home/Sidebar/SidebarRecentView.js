@@ -3,6 +3,8 @@ import { useSelector } from "react-redux";
 
 const SidebarRecentView = () => {
   const cartQty = useSelector((state) => state.cart.items).length;
+  const tt = useSelector((state) => state.recentView.items);
+  console.log(tt);
   return (
     <div className={styles["view"]}>
       <div className={styles["view__text"]}>최근본상품</div>

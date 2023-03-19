@@ -1,6 +1,6 @@
 import styles from "./ProductInfo.module.css";
 
-/* redux */
+/* Icon */
 import ProductHeader from "./ProductHeader";
 import ProductPrice from "./ProductPrice";
 import ProductDelivary from "./ProductDelivary";
@@ -10,9 +10,29 @@ import ProductCash from "./ProductCash";
 import ProductBuy from "./ProductBuy";
 import ProductDesc from "./ProductDesc";
 import ProductInquiry from "./ProductInquiry";
+/* Redux */
+import { useDispatch, useSelector } from "react-redux";
+import { useEffect } from "react";
+import { recentViewSliceActions } from "../../../../store/recentView-slice";
 
 const ProductInfo = () => {
-  // const isLogged = useSelector((state) => state.logged.isLogged);
+  const id = useSelector((state) => state.prod.id);
+  const title = useSelector((state) => state.prod.title);
+  const price = useSelector((state) => state.prod.price);
+  const url = useSelector((state) => state.prod.thumbnailUrl[0]);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(
+      recentViewSliceActions.addItemToRecentView({
+        id,
+        title,
+        price,
+        url,
+      })
+    );
+  }, [dispatch, id, title, price, url]);
 
   return (
     <div className={styles["product__info"]}>
