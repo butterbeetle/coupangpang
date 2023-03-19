@@ -33,6 +33,7 @@ const Product = () => {
     }
   }, [dispatch, productId]);
 
+  console.log("Item 봤구나!");
   return (
     <section className={styles["product"]}>
       {isLoading ? (
