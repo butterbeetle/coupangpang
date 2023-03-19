@@ -1,0 +1,12 @@
+/* 설명 */
+.product__info--desc {
+  margin-bottom: 1.8rem;
+}
+.product__info--desc ul {
+  margin: 0;
+  font-size: 0.75rem;
+  margin-left: 0.95rem;
+}
+.product__info--desc ul li {
+  list-style: disc;
+}

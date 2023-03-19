@@ -10,12 +10,19 @@ const initialState = {
   maxQuantity: "",
   detailUrl: [],
   thumbnailUrl: [],
+  current: {
+    quantity: 1,
+    price: 0,
+  },
 };
 
 const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    chagneCurrentProd(state, action) {
+      state.current = action.payload;
+    },
     addProduct(state, action) {
       state.id = action.payload.id;
       state.title = action.payload.title;

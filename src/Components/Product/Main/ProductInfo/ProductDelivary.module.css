@@ -1,0 +1,15 @@
+/* 배송일자 */
+.product__info--delivary {
+  padding: 0.7rem 0 0.3rem 0;
+  border-bottom: 0.1rem solid #eee;
+}
+.delivary--type {
+  font-size: 0.75rem;
+  font-weight: bold;
+}
+.delivary--date {
+  font-size: 0.75rem;
+}
+.product__info--delivary p {
+  margin: 0;
+}

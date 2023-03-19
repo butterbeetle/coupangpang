@@ -1,0 +1,19 @@
+/* 문의 */
+.product__info--inquiry {
+  position: relative;
+  font-size: 0.75rem;
+  color: #346aff;
+  padding-bottom: 0.8rem;
+  border-bottom: 0.1rem solid #eee;
+}
+.product__info--inquiry svg {
+  position: absolute;
+  left: 0;
+  width: 1.2rem;
+  height: 1.2rem;
+}
+.product__info--inquiry p {
+  margin: 0;
+  margin-left: 1.6rem;
+  cursor: pointer;
+}
