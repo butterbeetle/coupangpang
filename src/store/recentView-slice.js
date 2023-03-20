@@ -1,33 +1,38 @@
-import { createSlice, current } from "@reduxjs/toolkit";
+import { createSlice } from "@reduxjs/toolkit";
 
 const recentViewSlice = createSlice({
   name: "recentView",
   initialState: {
     items: [],
+    changed: false,
   },
   reducers: {
+    replaceRecentView(state, action) {
+      // console.log("redux:", action.payload.items);
+      state.items = action.payload.items;
+    },
     addItemToRecentView(state, action) {
       const { id, title, price, url } = action.payload;
       if (!id || !title || !price || !url) return;
-      console.log("다 있으면", id, title, price, url);
+      state.changed = true;
+      const realUrl = url.url;
 
       const existing = state.items.find((item) => item.id === id);
 
       if (!existing) {
-        console.log("없음");
-        state.items.unshift({ id, title, price, url });
+        state.items.unshift({ id, title, price, realUrl });
       } else {
-        console.log("있음");
-        const arrFilter = state.items
-          .filter((item) => item.id !== id)
-          .unshift({ id, title, price, url });
-        console.log(arrFilter);
-        state.items = arrFilter;
+        if (state.items.length > 1) {
+          state.items = state.items.filter((item) => item.id !== id);
+          state.items.unshift({ id, title, price, realUrl });
+        }
       }
-      console.log("작업 후", current(state.items));
     },
     removeItemToRecentView(state, action) {
       /* 사진,이름,가격 */
+    },
+    resetItemToRecentView(state) {
+      state.items = [];
     },
   },
 });

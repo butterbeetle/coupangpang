@@ -14,6 +14,7 @@ import { cartActions } from "../../../../store/cart-slice";
 import { productActions } from "../../../../store/product-slice";
 
 const ProductBuy = () => {
+  const isLogged = useSelector((state) => state.logged.isLogged);
   const prodId = useSelector((state) => state.prod.id);
   const prodPrice = useSelector((state) => state.prod.price);
   const prodTitle = useSelector((state) => state.prod.title);
@@ -88,16 +89,36 @@ const ProductBuy = () => {
   /* 장바구니에 아이템 넣기 */
   const addToCartHandler = () => {
     setIsShowing(true);
-    dispatch(
-      cartActions.addItemToCart({
-        id: prodId,
-        thumbnail: urlArray[0].url,
-        title: prodTitle,
-        price,
-        quantity,
-      })
-    );
+    if (isLogged) {
+      dispatch(
+        cartActions.addItemToCart({
+          id: prodId,
+          thumbnail: urlArray[0].url,
+          title: prodTitle,
+          price,
+          quantity,
+        })
+      );
+    }
   };
+
+  let cartModal = isLogged ? (
+    <div className={styles["goCart"]}>
+      <RxCross2 onClick={goCartCancel} />
+      상품이 장바구니에 담겼습니다.
+      <Link to="/cart">
+        <button type="button">{"장바구니 바로가기"}</button>
+      </Link>
+    </div>
+  ) : (
+    <div className={styles["goCart"]}>
+      <RxCross2 onClick={goCartCancel} />
+      로그인이 필요합니다!
+      <Link to="/login">
+        <button type="button">{"로그인 바로가기"}</button>
+      </Link>
+    </div>
+  );
 
   return (
     <div className={styles["product__info--buy"]}>
@@ -126,15 +147,7 @@ const ProductBuy = () => {
           바로 구매 <IoIosArrowForward />
         </button>
       </div>
-      {isShowing && (
-        <div className={styles["goCart"]}>
-          <RxCross2 onClick={goCartCancel} />
-          상품이 장바구니에 담겼습니다.
-          <Link to="/cart">
-            <button type="button">{"장바구니 바로가기"}</button>
-          </Link>
-        </div>
-      )}
+      {isShowing && cartModal}
     </div>
   );
 };

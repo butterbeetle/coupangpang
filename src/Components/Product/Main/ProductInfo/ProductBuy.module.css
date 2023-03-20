@@ -77,11 +77,12 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 15rem;
+  height: 6.25rem;
   top: -6rem;
   left: 4.5rem;
   border: 0.1rem solid #ccc;
   background-color: #fff;
-  padding: 1.3rem 2.2rem;
 }
 .goCart button {
   margin-top: 0.7rem;

@@ -1,14 +1,13 @@
 import styles from "./SidebarRecentView.module.css";
+/* redux */
 import { useSelector } from "react-redux";
 
 const SidebarRecentView = () => {
-  const cartQty = useSelector((state) => state.cart.items).length;
-  const tt = useSelector((state) => state.recentView.items);
-  console.log(tt);
+  const recentViewItems = useSelector((state) => state.recentView.items);
   return (
     <div className={styles["view"]}>
       <div className={styles["view__text"]}>최근본상품</div>
-      <div className={styles["view__qty"]}>{cartQty}</div>
+      <div className={styles["view__qty"]}>{recentViewItems.length}</div>
     </div>
   );
 };

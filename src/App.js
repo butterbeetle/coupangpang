@@ -16,6 +16,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCartData, sendCartData } from "./store/cart-action";
 
 import { useEffect } from "react";
+import {
+  getRecentViewData,
+  sendRecentViewData,
+} from "./store/recentView-action";
 
 const router = createBrowserRouter([
   {
@@ -36,24 +40,37 @@ let isInitial = true;
 
 function App() {
   const dispatch = useDispatch();
+  /* 장바구니 데이터 */
   const cart = useSelector((state) => state.cart);
+  /* 최근 본 상품 데이터 */
+  const recentView = useSelector((state) => state.recentView);
   const isLogged = useSelector((state) => state.logged.isLogged);
 
+  /* firebase에서 장바구니, 최근 본 상품 얻어오기 */
   useEffect(() => {
-    dispatch(getCartData());
+    if (isLogged) {
+      dispatch(getCartData());
+      dispatch(getRecentViewData());
+    }
   }, [dispatch, isLogged]);
 
+  /* 장바구니 넣기 */
   useEffect(() => {
     if (isInitial) {
       isInitial = false;
       return;
     }
-    if (cart.changed) {
+    if (cart.changed && isLogged) {
       dispatch(sendCartData(cart));
     }
-  }, [cart, dispatch]);
+  }, [cart, recentView, dispatch, isLogged]);
 
-  // console.log(cart);
+  /* 최근 본 상품 넣기 */
+  useEffect(() => {
+    if (recentView.changed && isLogged) {
+      dispatch(sendRecentViewData(recentView.items));
+    }
+  }, [recentView, dispatch, isLogged]);
 
   return <RouterProvider router={router} />;
 }

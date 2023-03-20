@@ -16,23 +16,25 @@ import { useEffect } from "react";
 import { recentViewSliceActions } from "../../../../store/recentView-slice";
 
 const ProductInfo = () => {
+  const dispatch = useDispatch();
   const id = useSelector((state) => state.prod.id);
   const title = useSelector((state) => state.prod.title);
   const price = useSelector((state) => state.prod.price);
   const url = useSelector((state) => state.prod.thumbnailUrl[0]);
-
-  const dispatch = useDispatch();
+  const isLogged = useSelector((state) => state.logged.isLogged);
 
   useEffect(() => {
-    dispatch(
-      recentViewSliceActions.addItemToRecentView({
-        id,
-        title,
-        price,
-        url,
-      })
-    );
-  }, [dispatch, id, title, price, url]);
+    if (isLogged) {
+      dispatch(
+        recentViewSliceActions.addItemToRecentView({
+          id,
+          title,
+          price,
+          url,
+        })
+      );
+    }
+  }, [dispatch, id, title, price, url, isLogged]);
 
   return (
     <div className={styles["product__info"]}>

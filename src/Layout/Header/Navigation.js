@@ -7,6 +7,7 @@ import { loggedActions } from "../../store/login-slice";
 import { cartActions } from "../../store/cart-slice";
 /* indexedDB */
 import { getIndexedDbData } from "../../Util/IndexedDB";
+import { recentViewSliceActions } from "../../store/recentView-slice";
 
 const Navigation = () => {
   const [isLeftHover, setIsLeftHover] = useState(false);
@@ -61,6 +62,7 @@ const Navigation = () => {
   const logoutHandler = () => {
     dispatch(loggedActions.logout());
     dispatch(cartActions.resetItemToCart());
+    dispatch(recentViewSliceActions.resetItemToRecentView());
   };
 
   let topbarMenu = isLogged ? (
