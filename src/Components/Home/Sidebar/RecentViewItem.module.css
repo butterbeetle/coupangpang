@@ -1,3 +1,9 @@
+.visible {
+  display: block;
+}
+.none {
+  display: none;
+}
 .item {
   cursor: pointer;
   position: relative;
