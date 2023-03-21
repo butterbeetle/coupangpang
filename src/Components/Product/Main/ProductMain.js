@@ -1,6 +1,6 @@
 import styles from "./ProductMain.module.css";
-import ProductImage from "./ProductImage";
-import ProductInfo from "./ProductInfo";
+import ProductImage from "./ProductImage/ProductImage";
+import ProductInfo from "./ProductInfo/ProductInfo";
 
 const ProductMain = () => {
   return (

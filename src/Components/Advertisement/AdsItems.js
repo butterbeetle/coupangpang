@@ -13,7 +13,7 @@ const AdsItems = ({
   review_score,
   review_count,
 }) => {
-  const [hoverStyles, setHoverStyles] = useState("");
+  const [isHover, setIsHover] = useState(false);
   const priceComma = price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   const score = review_score * 20 + "%";
   const count = review_count.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
@@ -39,10 +39,10 @@ const AdsItems = ({
   }
 
   const onMouseEnter = () => {
-    setHoverStyles(item_type + "-hover");
+    setIsHover(true);
   };
   const onMouseLeave = () => {
-    setHoverStyles(null);
+    setIsHover(false);
   };
 
   let discountJsx =
@@ -70,9 +70,8 @@ const AdsItems = ({
 
           <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>
             <div
-              className={`${styles["title"]} ${styles[item_type + "-title"]} ${
-                styles[hoverStyles]
-              }`}
+              className={`${styles["title"]} ${styles[item_type + "-title"]} 
+              ${isHover ? styles[item_type + "-hover"] : null}`}
             >
               <span>{title}</span>
             </div>

@@ -8,10 +8,15 @@ import { motion } from "framer-motion";
 import { useDispatch } from "react-redux";
 import { loggedActions } from "../../store/login-slice";
 
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  updateProfile,
+} from "firebase/auth";
 import { firestore } from "../../firebase-config";
 import { doc, getDoc } from "firebase/firestore";
 
+// import { useCookies } from "react-cookie";
 const LoginForm = () => {
   const [emailColor, setEmailColor] = useState("");
   const [passwordColor, setPasswordColor] = useState("");
@@ -67,32 +72,58 @@ const LoginForm = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // const [cookies, setCookie, removeCookie] = useCookies();
   const onSubmit = (data) => {
     // console.log("onSubmit", data, data.email, data.password);
 
     const auth = getAuth();
-
     signInWithEmailAndPassword(auth, data.email, data.password)
       .then(async (userCredential) => {
         const user = userCredential.user;
+        // const token = userCredential._tokenResponse;
         const docRef = doc(firestore, "users", user.uid);
         const docSnap = await getDoc(docRef);
         if (docSnap.exists()) {
-          // console.log("Document data:", docSnap.data());
-          dispatch(
-            loggedActions.register({
-              email: docSnap.data().email,
-              name: docSnap.data().name,
-              phone: docSnap.data().phone,
-            })
-          );
+          // console.log(
+          //   "Document data:",
+          //   docSnap.data(),
+          //   "UID:",
+          //   user.uid,
+          //   "Token:",
+          //   token
+          // );
+          // console.log(token.expiresIn, token.refreshToken, token.idToken);
+          // const today = new Date();
+          // const expires = new Date(today.setDate(today.getDate() + 14));
+          // setCookie("token", token.refreshToken, {
+          //   path: "/",
+          //   expires: expires,
+          // });
+          // setCookie("uid", user.uid, {
+          //   path: "/",
+          //   expires: expires,
+          // });
+          // sessionStorage.setItem("token", token.idToken);
+          // sessionStorage.setItem("expires", token.expiresIn);
+          // localStorage.setItem("uid", user.uid);
+          // localStorage.setItem("name", docSnap.data().name);
+          // dispatch(
+          //   loggedActions.register({
+          //     uid: user.uid,
+          //     name: docSnap.data().name,
+          //   })
+          // );
           dispatch(loggedActions.login());
+          updateProfile(auth.currentUser, {
+            displayName: docSnap.data().name,
+          });
           navigate("/");
         } else {
           throw new Error();
         }
       })
-      .catch(() => {
+      .catch((e) => {
+        // console.log(e);
         setSubmitError(
           "이메일 또는 비밀번호를 다시 확인하세요. 쿠팡에 등록되지 않은 이메일이거나, 이메일 또는 비밀번호를 잘못 입력하셨습니다."
         );

@@ -1,16 +1,15 @@
 import styles from "./ProductTabContents.module.css";
-/* 아이콘 */
+import { useState } from "react";
+import { useSelector } from "react-redux";
+
+/* Icon */
 import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
 import { RiErrorWarningFill } from "react-icons/ri";
-
-/* 테스트 이미지 */
-import detail_image01 from "../../../assets/img/test/test_detail1.jpg";
-import detail_image02 from "../../../assets/img/test/test_detail2.png";
-import detail_image03 from "../../../assets/img/test/test_detail3.png";
-import { useState } from "react";
-
 const ProductTabContents = () => {
   const [seeMore, setSeeMore] = useState(false);
+
+  const urlArray = useSelector((state) => state.prod.detailUrl);
+
   const seeMoreHandler = () => {
     setSeeMore((prev) => !prev);
   };
@@ -78,9 +77,9 @@ const ProductTabContents = () => {
               seeMore ? "" : styles["hide__overflow"]
             }`}
           >
-            <img src={detail_image01} alt="" />
-            <img src={detail_image02} alt="" />
-            <img src={detail_image03} alt="" />
+            {urlArray.map((item, idx) => (
+              <img key={idx} src={item.url} alt="" />
+            ))}
           </div>
           <div className={styles["detail__more"]}>
             <div

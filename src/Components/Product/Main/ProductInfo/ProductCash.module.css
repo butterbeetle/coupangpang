@@ -1,0 +1,47 @@
+/* 캐시적립 */
+.product__info--cash {
+  padding: 0.8rem 0;
+  font-size: 0.9rem;
+  border-bottom: 0.1rem solid #eee;
+}
+.cash__header {
+  display: flex;
+  margin-bottom: 1.1rem;
+}
+.cash__header svg:first-child {
+  color: #c99d00;
+  width: 1rem;
+  height: 1rem;
+}
+.cash__header svg:last-child {
+  color: #aaa;
+  width: 1.1rem;
+  height: 1.1rem;
+  margin-right: 0.6rem;
+}
+.cash__header p {
+  margin: 0 0.7rem;
+}
+.cash__title {
+  display: flex;
+  align-items: center;
+  border-right: 0.1rem solid #ddd;
+}
+.cash__promotion {
+  padding: 0.8rem;
+  border: solid 0.1rem #ccc;
+  background-color: #fafafa;
+}
+.cash__promotion p {
+  margin: 0;
+  margin-bottom: 0.65rem;
+}
+.cash__promotion button {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.2rem;
+  font-size: 0.9rem;
+  color: #346aff;
+  border: solid 0.1rem #346aff;
+  background-color: #fff;
+  cursor: pointer;
+}

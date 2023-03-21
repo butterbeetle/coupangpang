@@ -1,0 +1,23 @@
+/* 버튼(계속 쇼핑하기/구매하기) */
+.button {
+  font-size: 1.4rem;
+  text-align: center;
+  margin: 6.125rem 0 1rem;
+}
+.button__shopping,
+.button__buy {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 13.5rem;
+  padding: 0.8rem 0;
+  border: 0.125rem solid #0073e9;
+  border-radius: 0.25rem;
+}
+.button__shopping {
+  color: #0073e9;
+  margin-right: 0.8rem;
+}
+.button__buy {
+  color: #fff;
+  background-color: #0073e9;
+}

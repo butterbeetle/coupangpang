@@ -1,0 +1,9 @@
+.main {
+  border: 0.1rem solid #c0c0c0;
+  position: absolute;
+  top: 1.2rem;
+  left: 50%;
+  margin: 2.5rem 0 0 29.5rem;
+  width: 6.25rem;
+  height: 27.75rem;
+}

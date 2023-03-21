@@ -1,0 +1,32 @@
+.empty {
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #55575f;
+  padding: 3.7rem;
+}
+.empty__button {
+  padding: 2.5rem 0;
+  font-size: 0.85rem;
+  font-weight: bold;
+  color: #55575f;
+  background-color: #f8f8f8;
+  text-align: center;
+}
+.empty__button p {
+  display: inline;
+  margin: 0;
+  color: #1b8fce;
+}
+.tody__prod {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1.5rem auto 0;
+  font-size: 1.2rem;
+  color: #fff;
+  border-radius: 0.3rem;
+  background: linear-gradient(to bottom, #90d4f7, #006fb9);
+  width: fit-content;
+  padding: 0.75rem 1.25rem;
+}

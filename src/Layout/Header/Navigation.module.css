@@ -1,0 +1,74 @@
+.topBar {
+  background-color: #f0f0f0;
+  position: relative;
+}
+.topBar__main {
+  width: 1020px;
+  height: 30px;
+  font-size: 11px;
+  margin: 0 auto;
+}
+
+.topBar nav {
+  display: flex;
+  justify-content: space-between;
+}
+
+.topbar__nav--ul {
+  list-style: none;
+  margin: 0;
+  padding: 5px 25px 5px 10px;
+  display: flex;
+  position: relative;
+}
+
+.topbar__nav li {
+  margin: 2px;
+  padding-right: 15px;
+  height: 23px;
+  cursor: pointer;
+}
+
+.icon {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  margin-left: 3px;
+  background: url("../../assets/img/header_img_collection.png") no-repeat -150px -31px;
+}
+
+.logout {
+  padding: 2px;
+  border: 1px solid #ccc;
+  background-color: #fafafa;
+  color: #888;
+}
+
+.hovermenu__left {
+  position: absolute;
+  top: 30px;
+  left: 50px;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+}
+.hovermenu__right {
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  z-index: 1;
+  background-color: #fff;
+  box-shadow: 0 4px 5px rgb(0 0 0 / 30%);
+}
+.hovermenu--ul {
+  padding: 8px 10px 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 12px;
+}
+
+.hovermenu--ul li {
+  padding: 3px 5px 0;
+}

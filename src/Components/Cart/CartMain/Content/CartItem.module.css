@@ -1,0 +1,137 @@
+.none {
+  display: none;
+}
+/* 아이템 표시 */
+.items__box {
+  display: flex;
+  width: 100%;
+  border-bottom: 0.1rem solid #e2dfdf;
+}
+.item__check {
+  display: flex;
+  width: 5%;
+  padding: 1.3rem 0;
+  align-items: center;
+  justify-content: center;
+}
+.item__img {
+  width: 9%;
+  padding: 1.3rem 0;
+}
+.item__img img {
+  display: inline-block;
+  width: 4.8rem;
+  height: 4.8rem;
+}
+.item__info {
+  width: 66%;
+  padding: 0.62rem 0.3rem 0.62rem 0.9rem;
+}
+.item__title {
+  padding: 1.3rem 0;
+  color: #555;
+  font-weight: bold;
+  font-size: 0.8rem;
+  border-bottom: 0.1rem solid #e2dfdf;
+  padding-bottom: 0.7rem;
+}
+.item__etc {
+  display: flex;
+  padding-top: 0.4rem;
+  font-size: 0.8rem;
+  justify-content: space-between;
+}
+.item__quantity {
+  display: flex;
+  justify-content: flex-end;
+  color: #aaa;
+}
+
+.item__quantity svg {
+  cursor: pointer;
+  margin-left: 0.3rem;
+  display: inline;
+  width: 1rem;
+  height: 1rem;
+}
+.select-select select {
+  display: inline-block;
+  width: 3.5rem;
+}
+.select-text,
+.select-select {
+  margin-left: 0.2rem;
+  margin-right: 1rem;
+  display: inline-block;
+}
+.select-text input {
+  box-sizing: border-box;
+  width: 3.5rem;
+  border: 0.1rem solid #ccc;
+}
+.select-text button {
+  cursor: pointer;
+  margin-top: 0.2rem;
+  box-sizing: border-box;
+  width: 3.5rem;
+  height: 1.5rem;
+  display: block;
+  white-space: nowrap;
+  font-size: 0.7rem;
+  padding: 0;
+  background-color: #fff;
+  border: 0.1rem solid #888;
+}
+.item__quantity__total__price {
+  width: 4.4rem;
+}
+.item__quantity__total__price p {
+  margin: 0;
+  text-align: right;
+}
+.item__cash {
+  display: flex;
+  justify-content: flex-end;
+}
+.item__cash__container {
+  margin-top: 0.87rem;
+  position: relative;
+  display: flex;
+  width: fit-content;
+  padding: 0.1rem 0.3rem;
+  border-radius: 0.625rem;
+  font-size: 0.75rem;
+  border: 0.1rem solid #ccc;
+}
+.item__cash__circle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #ffe30b;
+  top: 1rem;
+  width: 1rem;
+  height: 1rem;
+  border-radius: 1rem;
+}
+.item__cash__circle svg {
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  color: #ffc90b;
+}
+.item__total__price {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border-left: 0.1rem solid #e2dfdf;
+}
+.item__delivary__price {
+  width: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  border-left: 0.1rem solid #e2dfdf;
+}

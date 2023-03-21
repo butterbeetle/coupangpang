@@ -1,0 +1,110 @@
+.menu {
+  position: fixed;
+  top: 10px;
+  width: 34px;
+  margin-left: -48px;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  z-index: 1;
+}
+
+.menu ul {
+  margin: 0;
+}
+
+.setting {
+  border-top: 1px solid #ddd;
+  display: block;
+  width: 34px;
+  height: 50px;
+  background: url("../../../assets/img/widget/pc_bestcategory_v2_setting.png")
+    no-repeat 0 -267px;
+  background-color: #fafaff;
+  cursor: pointer;
+}
+.box-tail {
+  right: -12px;
+  z-index: 2;
+  bottom: 2%;
+  display: inline-block;
+  position: absolute;
+  width: 9px;
+  height: 12px;
+  background: url("../../../assets/img/widget/pc_bestcategory_v2_setting.png")
+    no-repeat -93px -65px;
+}
+.setting-category {
+  z-index: 1;
+  background-color: #fff;
+  position: absolute;
+  top: 0;
+  left: 43px;
+  width: 300px;
+  border: 1px solid #ddd;
+  box-shadow: 0 1px 2px rgb(0 0 0 / 20%);
+  font-size: 12px;
+  /* item drag 시 text drag 되어서 퍼렁색 되는 것 방지 */
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.setting-category__title {
+  padding: 15px 0 0 20px;
+  position: relative;
+  height: 45px;
+  border-bottom: 1px solid #ddd;
+}
+.title {
+  margin: 0 0 3px;
+}
+.description {
+  margin: 0 0 5px;
+  font-size: 11px;
+  color: #888;
+}
+.reset {
+  margin: 0;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 60px;
+  height: 60px;
+  border: 0;
+  background-color: rgb(250, 250, 250);
+  cursor: pointer;
+}
+
+.menus {
+  padding: 0 22px;
+}
+.list {
+  height: 38px;
+  margin-top: -1px;
+  border-top: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+}
+.list:last-child {
+  border: 0;
+}
+
+.buttons {
+  margin-top: -1px;
+  border-top: 1px solid #ddd;
+  padding: 15px 0;
+  background-color: rgb(250, 250, 250);
+}
+.buttons button {
+  cursor: pointer;
+  width: 50%;
+  background-color: rgb(250, 250, 250);
+}
+.cancel {
+  border: 0;
+  color: rgb(128, 128, 128);
+  border-right: 1px solid #ddd;
+}
+.confirm {
+  border: 0;
+  color: #4285f4;
+}

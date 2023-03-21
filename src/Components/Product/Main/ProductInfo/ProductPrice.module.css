@@ -1,0 +1,67 @@
+/* 가격 */
+.product__info--price {
+  padding: 1rem 0;
+  border-bottom: 0.1rem solid #eee;
+}
+.product__info--price p {
+  margin: 0;
+}
+.price__discount {
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  color: #aaa;
+}
+.price__discount svg {
+  margin-left: 0.2rem;
+  cursor: pointer;
+}
+.price__discount__rate {
+  color: black;
+}
+.price__discount p {
+  margin-right: 0.2rem;
+}
+.price__origin {
+  text-decoration: line-through;
+}
+.price__sale {
+  display: flex;
+  align-items: center;
+  color: #768695;
+}
+.price__coupon {
+  display: flex;
+  align-items: center;
+  color: #cb1400;
+}
+.price__total {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+.price__sale p,
+.price__coupon p {
+  margin-top: -0.2rem;
+  margin-right: 0.2rem;
+}
+.price__info {
+  font-size: 0.9rem;
+}
+/* badge */
+.price__badge {
+  margin-top: 0.8rem;
+  margin-left: 0.1rem;
+  display: flex;
+  width: fit-content;
+  align-items: center;
+  padding: 0.1rem 0.5rem;
+  font-size: 0.75rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0.6rem;
+}
+.price__badge svg {
+  color: #c99d00;
+}
+.price__badge p {
+  margin-left: 0.2rem;
+}
