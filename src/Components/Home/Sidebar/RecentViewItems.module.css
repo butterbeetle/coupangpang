@@ -1,5 +1,42 @@
 .items {
-  padding: 0.65rem;
-  padding-bottom: 0;
-  border: 0.1rem solid pink;
+  position: relative;
+  min-height: 22.3rem;
+  padding: 0.55rem;
+}
+.ctrl {
+  position: absolute;
+  bottom: 0.3rem;
+  display: flex;
+  width: 4.75rem;
+  height: 1.3rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.ctrl__counter {
+  display: inline;
+  color: #7b7b7b;
+  font-size: 0.7rem;
+}
+.ctrl__pageNumber {
+  font-weight: bold;
+  color: #0085da;
+  display: inline;
+  margin: 0;
+}
+.ctrl__btn svg {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: inline;
+  width: 1rem;
+  height: 1rem;
+  background-color: #f3f3f3;
+  border: 0.1rem solid #dbdbdb;
+  box-shadow: 0 0.02rem 0.1rem #ccc;
+}
+.left {
+  margin-right: -0.1rem;
+}
+.ctrl__btn svg:hover {
+  background-color: #c0c0c0;
+  color: #fff;
 }
