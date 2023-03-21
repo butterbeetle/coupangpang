@@ -3,6 +3,10 @@
   min-height: 22.3rem;
   padding: 0.55rem;
 }
+.no__items {
+  display: flex;
+  align-items: center;
+}
 .ctrl {
   position: absolute;
   bottom: 0.3rem;
@@ -39,4 +43,9 @@
 .ctrl__btn svg:hover {
   background-color: #c0c0c0;
   color: #fff;
+}
+.empty {
+  font-size: 0.7rem;
+  color: #929292;
+  text-align: center;
 }
