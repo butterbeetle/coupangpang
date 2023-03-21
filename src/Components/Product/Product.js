@@ -3,7 +3,7 @@ import ProductMain from "./Main/ProductMain";
 import ProductTab from "./Tab/ProductTab";
 
 import { useEffect } from "react";
-import { useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 
 import Loading from "../../Util/Loading";
 import { useDispatch, useSelector } from "react-redux";
@@ -15,22 +15,25 @@ import {
 import { productActions } from "../../store/product-slice";
 
 let init = true;
+let currentPath = "";
 const Product = () => {
+  let location = useLocation();
   const { productId } = useParams();
 
   const dispatch = useDispatch();
   const isLoading = useSelector((state) => state.prod.isLoading);
 
+  useEffect(() => {
+    // window.location.reload();
+  }, []);
+  console.log(currentPath, location.pathname);
   /* Product, Thumbnail, Detail Img Data 받아오기 */
   useEffect(() => {
-    if (init) {
-      init = false;
-      dispatch(productActions.nowLoading());
-      dispatch(getProductData(productId));
-      dispatch(getDetailUrl(productId));
-      dispatch(getThumbnailUrl(productId));
-      dispatch(productActions.endLoading());
-    }
+    dispatch(productActions.nowLoading());
+    dispatch(getProductData(productId));
+    dispatch(getDetailUrl(productId));
+    dispatch(getThumbnailUrl(productId));
+    dispatch(productActions.endLoading());
   }, [dispatch, productId]);
 
   return (

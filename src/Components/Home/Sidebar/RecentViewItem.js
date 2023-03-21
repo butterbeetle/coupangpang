@@ -20,7 +20,7 @@ const RecentViewItem = ({ item }) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <Link to={`/products/${item.id}`}>
+      <Link to={`products/${item.id}`}>
         <img src={item.realUrl} alt="" />
 
         {

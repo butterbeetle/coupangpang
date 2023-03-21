@@ -33,6 +33,7 @@ export const getProductData = (productId) => {
 export const getThumbnailUrl = (productId) => {
   return async (dispatch) => {
     const getData = async () => {
+      dispatch(productActions.resetUrl());
       const thumbnailRef = ref(storage, `/product/food/${productId}/thumbnail`);
       const res = await listAll(thumbnailRef);
       res.items.forEach(async (itemRef) => {
@@ -51,6 +52,7 @@ export const getThumbnailUrl = (productId) => {
 export const getDetailUrl = (productId) => {
   return async (dispatch) => {
     const getData = async () => {
+      dispatch(productActions.resetUrl());
       const detailRef = ref(storage, `/product/food/${productId}/detail`);
       const res = await listAll(detailRef);
       res.items.forEach(async (itemRef) => {

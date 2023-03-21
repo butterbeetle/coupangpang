@@ -41,6 +41,10 @@ const productSlice = createSlice({
       const existingUrl = state.thumbnailUrl.find((item) => item.url === url);
       if (!existingUrl) state.thumbnailUrl.push(url);
     },
+    resetUrl(state) {
+      state.detailUrl = [];
+      state.thumbnailUrl = [];
+    },
     nowLoading(state) {
       state.isLoading = true;
     },

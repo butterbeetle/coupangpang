@@ -19,7 +19,7 @@ const RecentViewItems = () => {
   const decreaseIndex = () => {
     setIndex((prev) => (prev === 0 ? maxIndex : prev - 1));
   };
-  console.log(index, maxIndex);
+  console.log(recentViewItems);
   return (
     <div className={styles["items"]}>
       {recentViewItems
