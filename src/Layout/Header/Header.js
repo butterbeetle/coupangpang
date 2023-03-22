@@ -137,7 +137,7 @@ const Header = () => {
                 <form className={styles.searchBox__mainBox__bar__form}>
                   <input placeholder="찾고 싶은 상품을 검색해보세요!" />
                   <span></span>
-                  <button alt="검색" />
+                  <button alt="검색" title="검색" type="button"></button>
                 </form>
               </div>
               <ul className={styles.searchBox__mainBox__user}>

@@ -23,7 +23,7 @@ const DiscoveryItems = ({ url, idx }) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <Link to={url}>
+      <Link to={url} title="/">
         <span className={`${styles["discovery__item--img0" + idx]}`} />
         {buyButton}
       </Link>
