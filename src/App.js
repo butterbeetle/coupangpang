@@ -15,11 +15,13 @@ import { useDispatch, useSelector } from "react-redux";
 /* firebase */
 import { getCartData, sendCartData } from "./store/cart-action";
 
-import { useEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 import {
   getRecentViewData,
   sendRecentViewData,
 } from "./store/recentView-action";
+import { getIndexedDbData } from "./Util/IndexedDB";
+import { loggedActions } from "./store/login-slice";
 
 const router = createBrowserRouter([
   {
@@ -45,6 +47,15 @@ function App() {
   /* 최근 본 상품 데이터 */
   const recentView = useSelector((state) => state.recentView);
   const isLogged = useSelector((state) => state.logged.isLogged);
+
+  /* login 확인 */
+  useLayoutEffect(() => {
+    getIndexedDbData().then((e) => {
+      if (e) {
+        dispatch(loggedActions.login());
+      }
+    });
+  }, [dispatch]);
 
   /* firebase에서 장바구니, 최근 본 상품 얻어오기 */
   useEffect(() => {

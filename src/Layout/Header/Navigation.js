@@ -51,13 +51,14 @@ const Navigation = () => {
   const [name, setName] = useState("");
 
   useLayoutEffect(() => {
-    getIndexedDbData().then((e) => {
-      if (e) {
-        dispatch(loggedActions.login());
-        setName(e.name);
-      }
-    });
-  }, [dispatch]);
+    if (isLogged) {
+      getIndexedDbData().then((e) => {
+        if (e) {
+          setName(e.name);
+        }
+      });
+    }
+  });
 
   const logoutHandler = () => {
     dispatch(loggedActions.logout());

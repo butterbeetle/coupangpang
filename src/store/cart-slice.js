@@ -62,6 +62,23 @@ const cartSlice = createSlice({
         state.totalQuantity = 0;
       }
     },
+    removeItemsToCart(state, action) {
+      const idArray = action.payload;
+      const length = idArray.length;
+
+      state.totalQuantity -= length;
+      state.changed = true;
+
+      idArray.forEach((id) => {
+        state.items = state.items.filter((item) => item.id !== id);
+        state.checked = state.checked.filter((item) => item !== id);
+      });
+
+      if (state.items.length === 0) {
+        state.items = [];
+        state.totalQuantity = 0;
+      }
+    },
     resetItemToCart(state) {
       state.items = [];
       state.totalQuantity = 0;
