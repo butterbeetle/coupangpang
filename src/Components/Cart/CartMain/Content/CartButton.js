@@ -7,7 +7,7 @@ const CartButton = () => {
       <Link className={styles["button__shopping"]} to="/">
         계속 쇼핑하기
       </Link>
-      <Link className={styles["button__buy"]} to="/">
+      <Link className={styles["button__buy"]} to="/payment">
         구매하기
       </Link>
     </div>
