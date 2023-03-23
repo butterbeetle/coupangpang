@@ -1,6 +1,7 @@
-import { resolveMotionValue } from "framer-motion";
 import { useEffect } from "react";
 import styles from "./Payment.module.css";
+import PaymentHeader from "./PaymentHeader";
+import PaymentMain from "./PaymentMain";
 
 const Payment = () => {
   useEffect(() => {
@@ -25,7 +26,7 @@ const Payment = () => {
       pay_method,
       paid_amount,
       status,
-    } = resolveMotionValue;
+    } = res;
 
     if (success) {
       console.log(
@@ -65,11 +66,8 @@ const Payment = () => {
   };
 
   return (
-    <div>
-      Payment Page
-      <button type="button" onClick={onClickPayment}>
-        클릭!
-      </button>
+    <div className={styles["contents"]}>
+      <PaymentMain />
     </div>
   );
 };
