@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import styles from "./Payment.module.css";
-import PaymentHeader from "./PaymentHeader";
-import PaymentMain from "./PaymentMain";
+import PaymentHeader from "./Header/PaymentHeader";
+import PaymentMain from "./Main/PaymentMain";
 
 const Payment = () => {
   useEffect(() => {
@@ -66,7 +66,7 @@ const Payment = () => {
   };
 
   return (
-    <div className={styles["contents"]}>
+    <div className={styles["content"]}>
       <PaymentMain />
     </div>
   );
