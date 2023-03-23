@@ -43,19 +43,22 @@ const Payment = () => {
 
   const onClickPayment = () => {
     const { IMP } = window;
+    /* Import 관리자 페이지 > 내 정보 > 가맹점 식별 코드 */
     IMP.init("imp61877428");
 
     const data = {
-      pg: "coupang",
+      // pg: "kakaopay.TC0ONETIME",
+      // pg: "tosspay.tosstest",
+      pg: "kicc.T5102001",
       pay_method: "card",
-      merchant_uid: "merchant_" + new Date().getTime(),
-      name: "쿠팡 테스트",
+      merchant_uid: "IMP" + new Date().getTime(),
+      name: "KG이니시스: 당근 20kg",
       amount: 100,
-      buyer_email: "gildong@gmail.com",
-      buyer_name: "홍길동",
-      buyer_tel: "010-4242-4242",
-      buyer_addr: "서울특별시 강남구 신사동",
-      buyer_postcode: "01181",
+      buyer_email: "Iamport@chai.finance",
+      buyer_name: "아임포트 기술지원팀",
+      buyer_tel: "010-1234-5678",
+      buyer_addr: "서울특별시 강남구 삼성동",
+      buyer_postcode: "123-456",
     };
 
     IMP.request_pay(data, callback);
