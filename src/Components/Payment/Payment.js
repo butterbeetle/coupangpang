@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import styles from "./Payment.module.css";
-import PaymentHeader from "./Header/PaymentHeader";
 import PaymentMain from "./Main/PaymentMain";
 
 const Payment = () => {

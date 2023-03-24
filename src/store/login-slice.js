@@ -3,6 +3,12 @@ import { getAuth, signOut } from "firebase/auth";
 
 const initialState = {
   isLogged: false,
+  user: {
+    uid: "",
+    name: "",
+    email: "",
+    phone: "",
+  },
   // uid: "",
   // name: "",
   // email: "",

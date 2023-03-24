@@ -27,6 +27,7 @@ import { useEffect, useLayoutEffect } from "react";
 
 /* IndexedDB */
 import { getIndexedDbData } from "./Util/IndexedDB";
+import { useUnload } from "./hooks/useUnload";
 
 const router = createBrowserRouter([
   {
@@ -53,6 +54,12 @@ function App() {
   /* 최근 본 상품 데이터 */
   const recentView = useSelector((state) => state.recentView);
   const isLogged = useSelector((state) => state.logged.isLogged);
+
+  /* 창 종료 시 indexedDB data 삭제 */
+  useUnload((e) => {
+    e.preventDefault();
+    dispatch(loggedActions.logout());
+  });
 
   /* login 확인 */
   useLayoutEffect(() => {

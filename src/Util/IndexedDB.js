@@ -14,3 +14,14 @@ export const getIndexedDbData = async () => {
     return;
   }
 };
+
+/* 필요 없을 듯? */
+export const deleteIndexedDbData = async () => {
+  const db = await openDB("firebaseLocalStorageDb");
+  const tx = db.transaction("firebaseLocalStorage", "readwrite");
+  const store = tx.objectStore("firebaseLocalStorage");
+  if (store) {
+    await store.clear();
+  }
+  return;
+};
