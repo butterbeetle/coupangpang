@@ -28,6 +28,8 @@ import { useEffect, useLayoutEffect } from "react";
 /* IndexedDB */
 import { getIndexedDbData } from "./Util/IndexedDB";
 import { useUnload } from "./hooks/useUnload";
+import { getUserData } from "./store/login-action";
+import AddAddress from "./Components/Payment/Popup/AddAddress";
 
 const router = createBrowserRouter([
   {
@@ -43,6 +45,7 @@ const router = createBrowserRouter([
   { path: "/join", element: <JoinForm /> },
   { path: "/cart", element: <CartView /> },
   { path: "/payment", element: <PaymentPage /> },
+  { path: "/addressbook", element: <AddAddress /> },
 ]);
 
 let isInitial = true;
@@ -73,6 +76,7 @@ function App() {
   /* firebase에서 장바구니, 최근 본 상품 얻어오기 */
   useEffect(() => {
     if (isLogged) {
+      dispatch(getUserData());
       dispatch(getCartData());
       dispatch(getRecentViewData());
     }

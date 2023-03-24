@@ -14,9 +14,8 @@ export const getUserData = () => {
       const docSnap = await getDoc(doc(firestore, "users", uid));
       if (docSnap.exists()) {
         dispatch(
-          loggedActions.replaceCart({
-            items: docSnap.data().items || [],
-            totalQuantity: docSnap.data().totalQuantity,
+          loggedActions.replaceUserData({
+            data: docSnap.data(),
           })
         );
       }
