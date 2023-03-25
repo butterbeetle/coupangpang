@@ -10,6 +10,7 @@ import PaymentPage from "./pages/PaymentPage";
 import LoginForm from "./Components/Auth/LoginForm";
 import JoinForm from "./Components/Auth/JoinForm";
 import CartView from "./Components/Cart/CartView";
+import AddAddress from "./Components/Payment/Popup/AddAddress";
 
 /* redux */
 import { useDispatch, useSelector } from "react-redux";
@@ -29,7 +30,6 @@ import { useEffect, useLayoutEffect } from "react";
 import { getIndexedDbData } from "./Util/IndexedDB";
 import { useUnload } from "./hooks/useUnload";
 import { getUserData } from "./store/login-action";
-import AddAddress from "./Components/Payment/Popup/AddAddress";
 
 const router = createBrowserRouter([
   {
@@ -45,7 +45,10 @@ const router = createBrowserRouter([
   { path: "/join", element: <JoinForm /> },
   { path: "/cart", element: <CartView /> },
   { path: "/payment", element: <PaymentPage /> },
-  { path: "/addressbook", element: <AddAddress /> },
+  {
+    path: "/addressbook",
+    element: <AddAddress />,
+  },
 ]);
 
 let isInitial = true;

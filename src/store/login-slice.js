@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAuth, signOut } from "firebase/auth";
+import { deleteIndexedDbData } from "../Util/IndexedDB";
 
 const initialState = {
   isLogged: false,
@@ -24,9 +25,10 @@ const loggedSlice = createSlice({
       state.isLogged = true;
     },
     logout(state) {
+      state.isLogged = false;
+      deleteIndexedDbData();
       const auth = getAuth();
       signOut(auth);
-      state.isLogged = false;
     },
   },
 });
