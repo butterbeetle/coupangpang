@@ -1,0 +1,73 @@
+.message {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  line-height: 1.25rem;
+  border-radius: 0.4rem;
+  color: #000;
+  font-size: 0.75rem;
+  background-color: #fef8e5;
+  margin-bottom: 0.5rem;
+}
+.location {
+  border: 0.1rem solid #ccc;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.location label {
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  border-bottom: 0.1rem solid #ccc;
+}
+.location label:last-child {
+  border: none;
+}
+.location label input {
+  appearance: none;
+}
+.big__circle {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small__circle {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #eee;
+}
+.big__select {
+  border: 0.1rem solid #346aff;
+  background-color: #346aff;
+}
+.small__select {
+  background-color: #fff;
+}
+.opt {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 0.1rem solid #ccc;
+  background-color: #f4f4f4;
+  padding: 0.5rem;
+}
+.input__box {
+  display: flex;
+  font-size: 0.75rem;
+  flex-direction: column;
+  border: 0.1rem solid #ccc;
+  background-color: #fff;
+  padding: 0.3rem;
+  padding-left: 0.8rem;
+}
+.input__box p {
+  margin: 0;
+}
+.test2 {
+  font-size: 1.2rem;
+}

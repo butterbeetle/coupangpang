@@ -7,7 +7,7 @@ import useInput from "../../../hooks/useInput";
 import { useState } from "react";
 import { addrActions } from "../../../store/address-slice";
 
-const AddAddressPost = ({ onClick }) => {
+const AddAddressPost = ({ onClick, register, errors }) => {
   const {
     click: addrClick,
     clickHandler: addrClickHandler,
@@ -37,7 +37,11 @@ const AddAddressPost = ({ onClick }) => {
   );
 
   return (
-    <div className={styles["input__box"]}>
+    <div
+      className={`${styles["input__box"]} ${
+        errors ? styles["error__border"] : ""
+      }`}
+    >
       <div className={styles["icon__box"]}>
         <MdLocationPin />
       </div>
@@ -49,6 +53,7 @@ const AddAddressPost = ({ onClick }) => {
         {addrData.roadAddress && (
           <div className={styles["postCode"]}>
             <input
+              {...register}
               onClick={addrClickHandler}
               onBlur={addrBlur}
               type="text"
@@ -57,6 +62,9 @@ const AddAddressPost = ({ onClick }) => {
           </div>
         )}
       </div>
+      {errors && (
+        <span className={styles["error__message"]}>{errors.message}</span>
+      )}
     </div>
   );
 };

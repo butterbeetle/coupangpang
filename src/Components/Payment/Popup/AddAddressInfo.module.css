@@ -13,17 +13,21 @@
   color: #ccc;
   border-right: 0.1rem solid #ccc;
 }
-.post__box {
+.info__box {
   width: 90%;
   display: flex;
   flex-direction: column;
 }
 .icon__box svg {
-  width: 1.6rem;
-  height: 1.6rem;
+  width: 1.3rem;
+  height: 1.3rem;
   display: inline;
 }
-.postCode {
+.info__normal {
+  border-bottom: 0.1rem solid #ccc;
+}
+.info__normal,
+.info__dawn {
   width: 100%;
   height: 2.8rem;
   cursor: pointer;
@@ -32,39 +36,20 @@
   align-items: center;
   color: #0073ed;
 }
-.postCode input {
-  box-sizing: border-box;
-  width: 100%;
-  height: 100%;
-  border: none;
-  border-top: 0.1rem solid #ccc;
-  text-indent: 0.75rem;
-  color: #111;
-  font-weight: bold;
-  font-size: 0.9rem;
-}
+
 .addr {
   color: #111;
 }
-.postCode p {
+.info__normal p,
+.info__dawn p {
   margin: 0;
   font-weight: bold;
   padding-left: 0.75rem;
 }
-.postCode svg {
+.info__normal svg,
+.info__dawn svg {
   width: 1.6rem;
   height: 1.6rem;
   display: inline;
   margin-right: 0.5rem;
-}
-.error__border {
-  border: 0.1rem solid #e52528;
-  margin-bottom: 2rem;
-}
-.error__message {
-  position: absolute;
-  bottom: -1.5rem;
-  left: 0.7rem;
-  font-size: 0.75rem;
-  color: #e52528;
 }
