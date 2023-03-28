@@ -7,6 +7,7 @@ const AddAddressNormalReq = () => {
   const onChange = (e) => {
     setValue(e.target.value);
   };
+  console.log(value);
   return (
     <div>
       <div className={styles["message"]}>
@@ -104,22 +105,19 @@ const AddAddressNormalReq = () => {
         </label>
         <div className={styles["opt"]}>
           로켓배송에만 사용됩니다.
-          <motion.div className={styles["input__box"]}>
-            {value === "delivery_box" && (
-              <motion.p layoutId="text" className={styles["test1"]}>
-                택배함 번호 (필수)
-              </motion.p>
-            )}
-            <input />
+          <div className={styles["input__box"]}>
             <motion.p
-              initial={false}
-              animate={{ borderColor: "red" }}
-              layoutId="text"
+              animate={{
+                top: value === "delivery_box" ? "-0.3rem" : "0.5rem",
+                fontSize: value === "delivery_box" ? "0.5rem" : "1.5rem",
+              }}
+              transition={{ duration: 0.15 }}
               className={styles["test2"]}
             >
               택배함 번호 (필수)
             </motion.p>
-          </motion.div>
+            <input />
+          </div>
         </div>
 
         <label htmlFor="etc">
