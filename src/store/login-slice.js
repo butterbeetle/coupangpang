@@ -1,35 +1,34 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { getAuth, signOut } from "firebase/auth";
+import { deleteIndexedDbData } from "../Util/IndexedDB";
 
 const initialState = {
   isLogged: false,
-  // uid: "",
-  // name: "",
-  // email: "",
-  // phone: "",
+  user: {
+    name: "",
+    email: "",
+    phone: "",
+    address: [],
+  },
 };
 
 const loggedSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    // register(state, action) {
-    //   state.uid = action.payload.uid;
-    //   state.name = action.payload.name;
-    //   state.email = action.payload.email;
-    //   state.phone = action.payload.phone;
-    // },
+    replaceUserData(state, action) {
+      state.user.name = action.payload.data.name;
+      state.user.email = action.payload.data.email;
+      state.user.phone = action.payload.data.phone;
+    },
     login(state) {
       state.isLogged = true;
     },
     logout(state) {
-      const auth = getAuth();
       state.isLogged = false;
+      deleteIndexedDbData();
+      const auth = getAuth();
       signOut(auth);
-      // state.uid = "";
-      // state.name = "";
-      // state.email = "";
-      // state.phone = "";
     },
   },
 });

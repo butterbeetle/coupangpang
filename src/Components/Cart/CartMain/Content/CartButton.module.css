@@ -1,11 +1,12 @@
 /* 버튼(계속 쇼핑하기/구매하기) */
 .button {
-  font-size: 1.4rem;
   text-align: center;
   margin: 6.125rem 0 1rem;
 }
 .button__shopping,
 .button__buy {
+  cursor: pointer;
+  font-size: 1.4rem;
   box-sizing: border-box;
   display: inline-block;
   width: 13.5rem;

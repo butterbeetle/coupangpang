@@ -171,7 +171,7 @@ const CartItem = ({ item }) => {
       <div className={styles["item__total__price"]}>
         {item.totalPrice.toLocaleString()}원
       </div>
-      <div className={styles["item__delivary__price"]}>-</div>
+      <div className={styles["item__delivery__price"]}>-</div>
     </div>
   );
 };

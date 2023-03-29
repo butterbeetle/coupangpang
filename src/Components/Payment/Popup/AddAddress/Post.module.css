@@ -1,0 +1,70 @@
+.input__box {
+  display: flex;
+  position: relative;
+  border: 0.1rem solid #ccc;
+  margin-bottom: 0.5rem;
+}
+.icon__box {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.8rem;
+  background-color: #fafafa;
+  color: #ccc;
+  border-right: 0.1rem solid #ccc;
+}
+.post__box {
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+}
+.icon__box svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline;
+}
+.postCode {
+  width: 100%;
+  height: 2.8rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #0073ed;
+}
+.postCode input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-top: 0.1rem solid #ccc;
+  text-indent: 0.75rem;
+  color: #111;
+  font-weight: bold;
+  font-size: 0.9rem;
+}
+.addr {
+  color: #111;
+}
+.postCode p {
+  margin: 0;
+  font-weight: bold;
+  padding-left: 0.75rem;
+}
+.postCode svg {
+  width: 1.6rem;
+  height: 1.6rem;
+  display: inline;
+  margin-right: 0.5rem;
+}
+.error__border {
+  border: 0.1rem solid #e52528;
+  margin-bottom: 2rem;
+}
+.error__message {
+  position: absolute;
+  bottom: -1.5rem;
+  left: 0.7rem;
+  font-size: 0.75rem;
+  color: #e52528;
+}

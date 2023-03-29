@@ -29,7 +29,12 @@ const recentViewSlice = createSlice({
       }
     },
     removeItemToRecentView(state, action) {
-      /* 사진,이름,가격 */
+      const id = action.payload;
+      state.changed = true;
+      state.items = state.items.filter((item) => item.id !== id);
+      if (state.items.length === 0) {
+        state.items = [];
+      }
     },
     resetItemToRecentView(state) {
       state.items = [];

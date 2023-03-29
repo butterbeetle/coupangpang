@@ -85,11 +85,11 @@
   color: #888;
   font-weight: 400;
 }
-.trending-ads_item-delivary {
+.trending-ads_item-delivery {
   display: inline-block;
   width: 55px;
   height: 13px;
-  background: url("../../assets/img/badges/rocket_delivary.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_delivery.png") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }

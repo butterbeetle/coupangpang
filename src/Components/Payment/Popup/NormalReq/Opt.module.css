@@ -1,0 +1,71 @@
+.opt {
+  margin-top: 1rem;
+  padding: 1rem;
+  border: 0.1rem solid #ccc;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.opt label {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+.opt label:last-child {
+  border: none;
+}
+.opt label input[type="radio"] {
+  appearance: none;
+}
+.opt h2 {
+  border: 0;
+  font-size: 1rem;
+  margin: 0;
+  margin-bottom: 1rem;
+  color: #111;
+}
+.opt p {
+  margin: 0;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  color: #888;
+}
+
+.big__circle {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small__circle {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #eee;
+}
+.big__select {
+  border: 0.1rem solid #346aff;
+  background-color: #346aff;
+}
+.small__select {
+  background-color: #fff;
+}
+
+.text {
+  padding: 1rem 2.8rem 1rem 0.75rem;
+  width: 75%;
+  border: 0.1rem solid #ccc;
+}
+.pw {
+  margin-bottom: 1rem;
+}
+.pw__none {
+  margin-bottom: 1rem;
+  font-size: 0.85rem;
+}

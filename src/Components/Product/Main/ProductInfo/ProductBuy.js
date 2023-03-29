@@ -143,9 +143,11 @@ const ProductBuy = () => {
           장바구니 담기
         </button>
         <div></div>
-        <button type="button">
-          바로 구매 <IoIosArrowForward />
-        </button>
+        <Link to="/payment">
+          <button type="button">
+            바로 구매 <IoIosArrowForward />
+          </button>
+        </Link>
       </div>
       {isShowing && cartModal}
     </div>

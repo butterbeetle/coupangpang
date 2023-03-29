@@ -1,0 +1,29 @@
+.desc {
+  cursor: pointer;
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+}
+.desc p {
+  margin: 0;
+}
+.message {
+  margin-top: 1rem;
+  font-size: 0.75rem;
+  text-align: center;
+}
+.button {
+  margin-top: 2.2rem;
+  text-align: center;
+}
+.button button {
+  padding: 1rem 5.3rem;
+  box-sizing: border-box;
+  color: #fff;
+  background-color: #0078eb;
+  font-size: 1.3rem;
+  border-radius: 0.2rem;
+  border: 0.1rem solid #ccc;
+  cursor: pointer;
+}

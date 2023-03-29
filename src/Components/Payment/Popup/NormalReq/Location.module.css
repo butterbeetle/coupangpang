@@ -1,0 +1,45 @@
+.location {
+  border: 0.1rem solid #ccc;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+.door,
+.door_absence,
+.security_office,
+.delivery_box,
+.etc {
+  cursor: pointer;
+  padding: 1rem;
+  display: flex;
+  border-bottom: 0.1rem solid #ccc;
+}
+.location label:last-child {
+  border: none;
+}
+.location label input[type="radio"] {
+  appearance: none;
+}
+.big__circle {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.small__circle {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #eee;
+}
+.big__select {
+  border: 0.1rem solid #346aff;
+  background-color: #346aff;
+}
+.small__select {
+  background-color: #fff;
+}

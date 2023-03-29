@@ -156,7 +156,7 @@ const ProductTabContents = () => {
         </div>
       </li>
       <li className={styles["contents__notice"]}>
-        <div className={styles["notice__delivary__info"]}>
+        <div className={styles["notice__delivery__info"]}>
           <h5>배송정보</h5>
           <div className={styles["notice__grid"]}>
             <div className={styles["notice__item"]}>
@@ -186,7 +186,7 @@ const ProductTabContents = () => {
             </div>
           </div>
         </div>
-        <div className={styles["notice__delivary__return"]}>
+        <div className={styles["notice__delivery__return"]}>
           <h5>교환/반품 안내</h5>
           <ul>
             <li>
@@ -236,7 +236,7 @@ const ProductTabContents = () => {
             </div>
           </div>
         </div>
-        <div className={styles["notice__delivary__limit"]}>
+        <div className={styles["notice__delivery__limit"]}>
           <h5>교환/반품 제한사항</h5>
           <ul>
             <li>ㆍ주문/제작 상품의 경우, 상품의 제작이 이미 진행된 경우</li>
@@ -328,7 +328,7 @@ const ProductTabContents = () => {
             </div>
           </div>
         </div>
-        <div className={styles["notice__delivary__seller"]}>
+        <div className={styles["notice__delivery__seller"]}>
           <h5>판매자 정보</h5>
           <div className={`${styles["notice__grid"]} ${styles["grid__2"]}`}>
             <div className={styles["notice__item"]}>

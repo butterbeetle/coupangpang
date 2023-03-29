@@ -7,7 +7,7 @@ const CartMain = () => {
   return (
     <main className={styles["main"]}>
       <div className={styles["contents"]}>
-        <CartMainHeader />
+        <CartMainHeader step={2} />
         <CartMainContent />
       </div>
     </main>

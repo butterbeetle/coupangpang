@@ -1,0 +1,42 @@
+.title {
+  margin-top: 1.7rem;
+  margin-bottom: 0.3rem;
+}
+.title h3 {
+  font-size: 1.25rem;
+  color: #333;
+  margin: 0;
+}
+
+.customer {
+  border: 0.13rem solid #cecece;
+  border-radius: 0.2rem;
+}
+.customer__info {
+  font-size: 1rem;
+}
+.customer__info__header {
+  font-weight: 700;
+  box-sizing: border-box;
+  padding: 0.8rem;
+  padding-left: 1rem;
+  text-align: left;
+  background-color: #f4f4f4;
+}
+
+.customer__info__content {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  padding: 0.8rem;
+  padding-left: 1rem;
+  text-align: left;
+}
+
+.prod__title {
+  width: 65%;
+}
+.prod__quantity {
+  font-size: 0.75rem;
+  color: #888;
+}

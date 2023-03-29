@@ -3,9 +3,9 @@ import styles from "./ProductInfo.module.css";
 /* Icon */
 import ProductHeader from "./ProductHeader";
 import ProductPrice from "./ProductPrice";
-import ProductDelivary from "./ProductDelivary";
+import ProductDelivery from "./ProductDelivery";
 import ProductSeller from "./ProductSeller";
-import ProductDelivaryCompany from "./ProductDelivaryCompany";
+import ProductDeliveryCompany from "./ProductDeliveryCompany";
 import ProductCash from "./ProductCash";
 import ProductBuy from "./ProductBuy";
 import ProductDesc from "./ProductDesc";
@@ -40,9 +40,9 @@ const ProductInfo = () => {
     <div className={styles["product__info"]}>
       <ProductHeader />
       <ProductPrice />
-      <ProductDelivary />
+      <ProductDelivery />
       <ProductSeller />
-      <ProductDelivaryCompany />
+      <ProductDeliveryCompany />
       <ProductCash />
       <ProductBuy />
       <ProductDesc />

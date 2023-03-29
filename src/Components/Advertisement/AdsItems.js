@@ -23,14 +23,14 @@ const AdsItems = ({
   switch (badge) {
     case null:
       break;
-    case "free_delivary":
+    case "free_delivery":
       badgeStyles = styles["badge-free"];
       break;
     case "rocket_buy":
       badgeStyles = styles["badge-rocket-buy"];
       break;
-    case "rocket_delivary":
-      badgeStyles = styles["badge-rocket-delivary"];
+    case "rocket_delivery":
+      badgeStyles = styles["badge-rocket-delivery"];
       break;
     case "rocket_install":
       badgeStyles = styles["badge-rocket-install"];
@@ -95,7 +95,7 @@ const AdsItems = ({
 
             {item_type !== "related" && item_type !== "bestUnit" && (
               <span className={`${badgeStyles}`}>
-                {badge === "free_delivary" && "무료배송"}
+                {badge === "free_delivery" && "무료배송"}
               </span>
             )}
             {item_type !== "bestUnit" && (
