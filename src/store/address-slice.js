@@ -12,9 +12,13 @@ const addrSlice = createSlice({
     delivary_normal: "",
     delivary_dawn: "",
     default_setting: false,
+    changed: false,
   },
   reducers: {
-    addAddr(state, action) {
+    replaceAddr(state, action) {
+      state.data = action.payload;
+    },
+    setAddr(state, action) {
       const {
         name,
         roadAddress,
@@ -35,6 +39,19 @@ const addrSlice = createSlice({
       if (delivary_dawn) state.delivary_dawn = delivary_dawn;
       if (state.default_setting !== default_setting)
         state.default_setting = default_setting;
+    },
+    addAddr(state, action) {
+      const newData = action.payload;
+      state.changed = true;
+      state.data.push({
+        id: newData.id,
+        name: newData.name,
+        detailAddress: newData.detailAddress,
+        phone: newData.phone,
+        roadAddress: newData.roadAddress,
+        zonecode: newData.zonecode,
+        default_setting: state.default_setting ? true : false,
+      });
     },
   },
 });

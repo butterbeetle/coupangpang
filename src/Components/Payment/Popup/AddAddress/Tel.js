@@ -1,11 +1,12 @@
-import styles from "./AddAddressTel.module.css";
+import styles from "./Tel.module.css";
 /* Hook */
-import useInput from "../../../hooks/useInput";
+import useInput from "../../../../hooks/useInput";
+
 /* Icon */
 import { FiPhoneCall } from "react-icons/fi";
 import { AiOutlineMinus } from "react-icons/ai";
 
-const AddAddressTel = ({ register, errors, onClose }) => {
+const Tel = ({ register, errors, onClose }) => {
   const {
     click: telClick,
     clickHandler: telClickHandler,
@@ -37,4 +38,4 @@ const AddAddressTel = ({ register, errors, onClose }) => {
   );
 };
 
-export default AddAddressTel;
+export default Tel;

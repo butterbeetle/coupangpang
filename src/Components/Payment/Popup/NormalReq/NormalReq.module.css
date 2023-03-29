@@ -1,0 +1,18 @@
+.header {
+  padding: 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 0.1rem solid #ccc;
+  margin-bottom: 1rem;
+}
+.message {
+  box-sizing: border-box;
+  padding: 0.5rem;
+  line-height: 1.25rem;
+  border-radius: 0.4rem;
+  color: #000;
+  font-size: 0.75rem;
+  background-color: #fef8e5;
+  margin-bottom: 0.5rem;
+}

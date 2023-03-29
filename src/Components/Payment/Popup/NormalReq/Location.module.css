@@ -1,20 +1,14 @@
-.message {
-  box-sizing: border-box;
-  padding: 0.5rem;
-  line-height: 1.25rem;
-  border-radius: 0.4rem;
-  color: #000;
-  font-size: 0.75rem;
-  background-color: #fef8e5;
-  margin-bottom: 0.5rem;
-}
 .location {
   border: 0.1rem solid #ccc;
   display: flex;
   justify-content: center;
   flex-direction: column;
 }
-.location label {
+.door,
+.door_absence,
+.security_office,
+.delivery_box,
+.etc {
   cursor: pointer;
   padding: 1rem;
   display: flex;
@@ -23,7 +17,7 @@
 .location label:last-child {
   border: none;
 }
-.location label input {
+.location label input[type="radio"] {
   appearance: none;
 }
 .big__circle {
@@ -48,26 +42,4 @@
 }
 .small__select {
   background-color: #fff;
-}
-.opt {
-  display: flex;
-  flex-direction: column;
-  border-bottom: 0.1rem solid #ccc;
-  background-color: #f4f4f4;
-  padding: 0.5rem;
-}
-.input__box {
-  display: flex;
-  font-size: 0.75rem;
-  flex-direction: column;
-  border: 0.1rem solid #ccc;
-  background-color: #fff;
-  padding: 0.3rem;
-  padding-left: 0.8rem;
-}
-.input__box p {
-  margin: 0;
-}
-.test2 {
-  position: relative;
 }

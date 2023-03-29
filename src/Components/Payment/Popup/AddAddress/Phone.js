@@ -1,33 +1,25 @@
-import styles from "./AddAddressPhone.module.css";
+import styles from "./Phone.module.css";
 
 /* Icon */
 import { FiSmartphone } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
 
 /* Hook */
-import useInput from "../../../hooks/useInput";
+import useInput from "../../../../hooks/useInput";
 
-const AddAddressPhone = ({
-  register,
-  errors,
-  setValue,
-  getValues,
-  openTel,
-  onOpen,
-}) => {
+const Phone = ({ register, errors, setValue, getValues, openTel, onOpen }) => {
   const {
     click: phoneClick,
-    touched: phoneTouched,
     clickHandler: phoneClickHandler,
     blurHandler: phoneBlurHandler,
   } = useInput();
 
   const phoneBlur = (e) => {
-    phoneBlurHandler();
     const value = getValues;
-    if (phoneTouched && !errors) {
+    if (!errors) {
       setValue("phone", value.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
     }
+    phoneBlurHandler();
   };
 
   return (
@@ -55,4 +47,4 @@ const AddAddressPhone = ({
   );
 };
 
-export default AddAddressPhone;
+export default Phone;

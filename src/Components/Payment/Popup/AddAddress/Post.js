@@ -1,13 +1,16 @@
-import styles from "./AddAddressPost.module.css";
+import styles from "./Post.module.css";
 
 /* Icon */
 import { MdLocationPin, MdSearch } from "react-icons/md";
+/* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import useInput from "../../../hooks/useInput";
-import { useState } from "react";
-import { addrActions } from "../../../store/address-slice";
+import { addrActions } from "../../../../store/address-slice";
 
-const AddAddressPost = ({ onClick, register, errors }) => {
+/* Hook */
+import useInput from "../../../../hooks/useInput";
+import { useState } from "react";
+
+const Post = ({ onClick, register, errors }) => {
   const {
     click: addrClick,
     clickHandler: addrClickHandler,
@@ -19,13 +22,13 @@ const AddAddressPost = ({ onClick, register, errors }) => {
   const [, setDetailAddress] = useState("");
 
   const addrBlur = (e) => {
+    addrBlurHandler();
     setDetailAddress(e.target.value);
     dispatch(
-      addrActions.addAddr({
+      addrActions.setAddr({
         detailAddress: e.target.value,
       })
     );
-    addrBlurHandler();
   };
 
   let addrInfo = addrData.roadAddress ? (
@@ -69,4 +72,4 @@ const AddAddressPost = ({ onClick, register, errors }) => {
   );
 };
 
-export default AddAddressPost;
+export default Post;

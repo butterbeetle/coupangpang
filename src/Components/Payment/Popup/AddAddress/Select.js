@@ -1,19 +1,22 @@
-import styles from "./AddAddreeSelect.module.css";
+import styles from "./Select.module.css";
 /* Icon */
 import { BsCheck } from "react-icons/bs";
 /* Animating */
 import { motion } from "framer-motion";
+/* Hook */
 import { useState } from "react";
+/* Redux */
 import { useDispatch } from "react-redux";
-import { addrActions } from "../../../store/address-slice";
-const AddAddreeSelect = () => {
+import { addrActions } from "../../../../store/address-slice";
+
+const Select = () => {
   const dispatch = useDispatch();
   const [click, setClick] = useState(false);
 
   const onClick = () => {
     setClick((prev) => !prev);
     dispatch(
-      addrActions.addAddr({
+      addrActions.setAddr({
         default_setting: !click,
       })
     );
@@ -38,4 +41,4 @@ const AddAddreeSelect = () => {
   );
 };
 
-export default AddAddreeSelect;
+export default Select;

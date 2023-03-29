@@ -1,9 +1,9 @@
-import styles from "./AddAddressName.module.css";
+import styles from "./Name.module.css";
 /* Hook */
-import useInput from "../../../hooks/useInput";
+import useInput from "../../../../hooks/useInput";
 /* Icon */
 import { FaRegUser } from "react-icons/fa";
-const AddAddressName = ({ register, errors }) => {
+const Name = ({ register, errors }) => {
   const {
     click: nameClick,
     clickHandler: nameClickHandler,
@@ -34,4 +34,4 @@ const AddAddressName = ({ register, errors }) => {
   );
 };
 
-export default AddAddressName;
+export default Name;

@@ -1,9 +1,9 @@
-import styles from "./AddAddressInfo.module.css";
+import styles from "./Info.module.css";
 /* Icon */
 import { BsChatLeftDots } from "react-icons/bs";
 import { RiArrowRightSLine } from "react-icons/ri";
 
-const AddAddressInfo = ({ onClickNor, onClickDawn }) => {
+const Info = ({ onClickNor, onClickDawn }) => {
   return (
     <div className={styles["input__box"]}>
       <div className={styles["icon__box"]}>
@@ -23,4 +23,4 @@ const AddAddressInfo = ({ onClickNor, onClickDawn }) => {
   );
 };
 
-export default AddAddressInfo;
+export default Info;

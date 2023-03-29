@@ -1,0 +1,56 @@
+.header {
+  padding: 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 0.1rem solid #ccc;
+  margin-bottom: 0.5rem;
+}
+.card {
+  box-sizing: border-box;
+  border: 0.1rem solid #ccc;
+  padding: 1rem;
+}
+.card-select {
+  border: 0.15rem solid #0073e9;
+}
+.main__header {
+  margin-bottom: 1rem;
+}
+.name {
+  margin: 0;
+  color: #111;
+  font-weight: bold;
+}
+.main__body {
+  margin-bottom: 1rem;
+}
+.addr,
+.phone,
+.req {
+  margin: 0;
+  font-size: 0.9rem;
+  margin-bottom: 0.3rem;
+}
+.main__foot {
+  display: flex;
+  justify-content: space-between;
+}
+.update,
+.select {
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 0.5rem 1.2rem;
+}
+
+.update {
+  color: #0073e9;
+  background-color: #fff;
+  border: 0.1rem solid #ccc;
+}
+.select {
+  color: #fff;
+  background-color: #0073e9;
+  border: none;
+}

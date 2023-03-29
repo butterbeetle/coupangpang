@@ -56,12 +56,13 @@ const PaymentAddress = () => {
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
 
-    const popup = window.open(
+    window.open(
       "/addressbook",
       "배송지 추가",
       `width=${width},height=${height},left=${left},top=${top}`
     );
   };
+
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>

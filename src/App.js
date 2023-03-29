@@ -10,7 +10,7 @@ import PaymentPage from "./pages/PaymentPage";
 import LoginForm from "./Components/Auth/LoginForm";
 import JoinForm from "./Components/Auth/JoinForm";
 import CartView from "./Components/Cart/CartView";
-import AddAddress from "./Components/Payment/Popup/AddAddress";
+import Popup from "./Components/Payment/Popup/Popup";
 
 /* redux */
 import { useDispatch, useSelector } from "react-redux";
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
   { path: "/payment", element: <PaymentPage /> },
   {
     path: "/addressbook",
-    element: <AddAddress />,
+    element: <Popup />,
   },
 ]);
 
@@ -64,7 +64,8 @@ function App() {
   /* 창 종료 시 indexedDB data 삭제 */
   useUnload((e) => {
     e.preventDefault();
-    dispatch(loggedActions.logout());
+    /* popup 문제 */
+    // dispatch(loggedActions.logout());
   });
 
   /* login 확인 */
