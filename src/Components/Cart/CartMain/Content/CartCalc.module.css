@@ -24,7 +24,7 @@
   transform: rotate(90deg);
 }
 .calc__price,
-.calc__delivary,
+.calc__delivery,
 .calc__total {
   font-size: 1rem;
   font-weight: 500;

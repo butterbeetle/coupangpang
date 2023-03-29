@@ -209,10 +209,10 @@
 .contents__notice p {
   margin: 0;
 }
-.notice__delivary__info,
-.notice__delivary__return,
-.notice__delivary__limit,
-.notice__delivary__seller {
+.notice__delivery__info,
+.notice__delivery__return,
+.notice__delivery__limit,
+.notice__delivery__seller {
   margin-top: 2.8rem;
 }
 .notice__grid {

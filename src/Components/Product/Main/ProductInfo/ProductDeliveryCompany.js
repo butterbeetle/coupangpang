@@ -1,6 +1,6 @@
-import styles from "./ProductDelivaryCompany.module.css";
+import styles from "./ProductDeliveryCompany.module.css";
 
-const ProductDelivaryCompany = () => {
+const ProductDeliveryCompany = () => {
   return (
     <div className={styles["product__info--delivery--company"]}>
       배송사:
@@ -9,4 +9,4 @@ const ProductDelivaryCompany = () => {
   );
 };
 
-export default ProductDelivaryCompany;
+export default ProductDeliveryCompany;

@@ -125,19 +125,19 @@
   background-size: cover;
   margin-left: 5px;
 }
-.jet_delivary {
+.jet_delivery {
   display: inline-block;
   width: 55px;
   height: 13px;
-  background: url("../../assets/img/badges/jet_delivary.png") no-repeat;
+  background: url("../../assets/img/badges/jet_delivery.png") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }
-.rocket_delivary {
+.rocket_delivery {
   display: inline-block;
   width: 55px;
   height: 13px;
-  background: url("../../assets/img/badges/rocket_delivary.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_delivery.png") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }
@@ -150,12 +150,12 @@
   background: url("../../assets/img/badges/rocket_buy.png") no-repeat;
   background-size: cover;
 }
-.badge-rocket-delivary {
+.badge-rocket-delivery {
   margin-top: 3px;
   display: inline-block;
   width: 70px;
   height: 17px;
-  background: url("../../assets/img/badges/rocket_delivary.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_delivery.png") no-repeat;
   background-size: cover;
 }
 .badge-rocket-install {
