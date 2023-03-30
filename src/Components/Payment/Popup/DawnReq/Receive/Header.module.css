@@ -1,0 +1,13 @@
+.receive__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.receive__header h2 {
+  font-size: 1rem;
+}
+.receive__header p {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #888;
+}

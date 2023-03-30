@@ -23,8 +23,12 @@
 }
 .opt__label {
   padding: 0;
+  padding-top: 1.25rem;
+  padding-bottom: 0.5rem;
+  background-color: #fff;
 }
 .opt__label input {
+  position: relative;
   box-sizing: border-box;
   text-indent: 0.75rem;
   padding-top: 1.5rem;
@@ -33,5 +37,21 @@
   height: 100%;
   font-weight: bold;
   border: 0.1rem solid #ccc;
-  background-color: #fff;
+  background-color: transparent;
+  z-index: 1;
+}
+.error {
+  margin: 0;
+  font-size: 0.75rem;
+  color: #e52528;
+  margin-left: 1rem;
+}
+.click_text {
+  color: #0073ed;
+}
+.error_text {
+  color: #e52528;
+}
+.error_border {
+  border: 0.1rem solid #e52528;
 }

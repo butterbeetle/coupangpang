@@ -1,7 +1,13 @@
-import styles from "./DawnReq.module.css";
+import Message from "../NormalReq/Message";
+import Receive from "./Receive/Receive";
 
 const DawnReq = () => {
-  return <div>DawnReq</div>;
+  return (
+    <main>
+      <Message />
+      <Receive />
+    </main>
+  );
 };
 
 export default DawnReq;

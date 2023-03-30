@@ -1,22 +1,18 @@
-.location {
-  border: 0.1rem solid #ccc;
-  display: flex;
-  justify-content: center;
-  flex-direction: column;
+.receive__body label {
+  width: fit-content;
 }
-.door,
-.delivery {
-  cursor: pointer;
-  padding: 1rem;
-  display: flex;
-  border-bottom: 0.1rem solid #ccc;
-}
-.location label:last-child {
-  border: none;
-}
-.location label input[type="radio"] {
+.receive__body label input[type="radio"] {
   appearance: none;
 }
+.door,
+.delivery,
+.etc {
+  cursor: pointer;
+  display: flex;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
 .big__circle {
   width: 1.3rem;
   height: 1.3rem;
@@ -25,6 +21,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-right: 0.7rem;
 }
 .small__circle {
   width: 0.6rem;
@@ -39,4 +36,7 @@
 }
 .small__select {
   background-color: #fff;
+}
+.door__opt {
+  margin-left: 2.5rem;
 }

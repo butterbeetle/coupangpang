@@ -1,0 +1,68 @@
+.receive__body label {
+  width: fit-content;
+}
+.receive__body label input[type="radio"] {
+  appearance: none;
+}
+.common,
+.security,
+.generation,
+.free {
+  cursor: pointer;
+  display: flex;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.common__opt {
+  position: relative;
+  margin-left: 2.5rem;
+}
+.common__opt input {
+  width: 90%;
+  box-sizing: border-box;
+  padding: 0.7rem;
+}
+.required {
+  margin: 0.5rem 0 1rem;
+  color: #346aff;
+  font-size: 0.75rem;
+}
+.length {
+  position: absolute;
+  font-size: 0.75rem;
+  color: #ccc;
+  top: 0;
+  right: 3rem;
+}
+.generation__opt {
+  font-size: 0.75rem;
+  color: #aaa;
+  margin: -0.5rem 0 1rem 2.2rem;
+}
+.big__circle {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.7rem;
+}
+.small__circle {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #eee;
+}
+.big__select {
+  border: 0.1rem solid #346aff;
+  background-color: #346aff;
+}
+.small__select {
+  background-color: #fff;
+}
+.door__opt {
+  margin-left: 2.5rem;
+}
