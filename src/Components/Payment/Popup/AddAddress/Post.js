@@ -9,7 +9,6 @@ import { popupActions } from "../../../../store/popup-slice";
 
 /* Hook */
 import useInput from "../../../../hooks/useInput";
-import { useState } from "react";
 
 const Post = ({ register, errors }) => {
   const {
@@ -20,11 +19,9 @@ const Post = ({ register, errors }) => {
 
   const addrData = useSelector((state) => state.addr);
   const dispatch = useDispatch();
-  const [, setDetailAddress] = useState("");
 
   const addrBlur = (e) => {
     addrBlurHandler();
-    setDetailAddress(e.target.value);
     dispatch(
       addrActions.setAddr({
         detailAddress: e.target.value,

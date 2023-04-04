@@ -3,14 +3,29 @@ import styles from "./Info.module.css";
 import { BsChatLeftDots } from "react-icons/bs";
 import { RiArrowRightSLine } from "react-icons/ri";
 /* Redux */
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { popupActions } from "../../../../store/popup-slice";
 
 const Info = () => {
   const dispatch = useDispatch();
+  const { delivaryNormal, delivaryNormalReq } = useSelector(
+    (state) => state.addr
+  );
+
   const onClick = (e) => {
     dispatch(popupActions.move(e));
   };
+
+  let norInfo = delivaryNormal ? (
+    <p className={styles["norInfo"]}>{`일반 : ${delivaryNormal} ${
+      delivaryNormal === "택배함" || delivaryNormal === "기타사항"
+        ? `(${delivaryNormalReq})`
+        : ""
+    }`}</p>
+  ) : (
+    <p>일반배송 정보를 선택해 주세요.</p>
+  );
+
   return (
     <div className={styles["input__box"]}>
       <div className={styles["icon__box"]}>
@@ -21,7 +36,7 @@ const Info = () => {
           className={styles["info__normal"]}
           onClick={() => onClick("normal")}
         >
-          <p>일반배송 정보를 선택해 주세요.</p>
+          {norInfo}
           <RiArrowRightSLine />
         </div>
         <div className={styles["info__dawn"]} onClick={() => onClick("dawn")}>

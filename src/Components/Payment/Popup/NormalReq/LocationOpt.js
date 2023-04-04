@@ -5,14 +5,19 @@ import { motion } from "framer-motion";
 /* Hook */
 import useInput from "../../../../hooks/useInput";
 import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addrActions } from "../../../../store/address-slice";
 
 const LocationOpt = ({ type }) => {
+  const dispatch = useDispatch();
+  const { delivaryNormalReq } = useSelector((state) => state.addr);
   const { click, touched, clickHandler, blurHandler } = useInput();
   const [error, setError] = useState(false);
   const [value, setValue] = useState("");
   const onChange = (e) => {
     setValue(e.target.value);
   };
+
   useEffect(() => {
     if (touched && value.length === 0) {
       setError(true);
@@ -20,6 +25,22 @@ const LocationOpt = ({ type }) => {
       setError(false);
     }
   }, [touched, value]);
+
+  useEffect(() => {
+    if (delivaryNormalReq === "error") {
+      setError(true);
+    }
+  }, [delivaryNormalReq]);
+
+  const onBlur = (e) => {
+    dispatch(
+      addrActions.setAddr({
+        delivaryNormalReq: e.target.value,
+      })
+    );
+    blurHandler();
+  };
+
   let msg =
     type === "delivery_box"
       ? "로켓배송에만 사용됩니다."
@@ -39,7 +60,7 @@ const LocationOpt = ({ type }) => {
         <input
           type="text"
           onClick={clickHandler}
-          onBlur={blurHandler}
+          onBlur={onBlur}
           maxLength="50"
           onChange={onChange}
         />

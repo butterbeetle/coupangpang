@@ -9,8 +9,10 @@ const addrSlice = createSlice({
     zonecode: "",
     detailAddress: "",
     phone: "",
-    delivary_normal: "",
-    delivary_dawn: "",
+    delivaryNormal: "",
+    delivaryNormalReq: "",
+    delivaryDawn: "",
+    delivaryDawnReq: "",
     default_setting: false,
     changed: false,
   },
@@ -25,8 +27,10 @@ const addrSlice = createSlice({
         zonecode,
         detailAddress,
         phone,
-        delivary_normal,
-        delivary_dawn,
+        delivaryNormal,
+        delivaryNormalReq,
+        delivaryDawn,
+        delivaryDawnReq,
         default_setting,
       } = action.payload;
 
@@ -35,8 +39,12 @@ const addrSlice = createSlice({
       if (zonecode) state.zonecode = zonecode;
       if (detailAddress) state.detailAddress = detailAddress;
       if (phone) state.phone = phone;
-      if (delivary_normal) state.delivary_normal = delivary_normal;
-      if (delivary_dawn) state.delivary_dawn = delivary_dawn;
+      if (delivaryNormal) state.delivaryNormal = delivaryNormal;
+      if (delivaryNormalReq || delivaryNormalReq === "")
+        state.delivaryNormalReq = delivaryNormalReq;
+      if (delivaryDawn) state.delivaryDawn = delivaryDawn;
+      if (delivaryDawnReq || delivaryDawnReq === "")
+        state.delivaryDawnReq = delivaryDawnReq;
       if (state.default_setting !== default_setting)
         state.default_setting = default_setting;
     },

@@ -117,7 +117,11 @@ const Popup = () => {
   /* Move */
   const location = useSelector((state) => state.popup.location);
   const title = useSelector((state) => state.popup.title);
-  console.log(location);
+  // console.log(location);
+
+  /* Addr Data */
+  const addr = useSelector((state) => state.addr);
+  console.log(addr);
 
   return (
     <div className={styles["content"]}>
