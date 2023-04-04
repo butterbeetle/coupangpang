@@ -1,4 +1,6 @@
 import Message from "../NormalReq/Message";
+import Alarm from "./Alarm/Alarm";
+import Button from "./Button";
 import Receive from "./Receive/Receive";
 
 const DawnReq = () => {
@@ -6,6 +8,8 @@ const DawnReq = () => {
     <main>
       <Message />
       <Receive />
+      <Alarm />
+      <Button />
     </main>
   );
 };

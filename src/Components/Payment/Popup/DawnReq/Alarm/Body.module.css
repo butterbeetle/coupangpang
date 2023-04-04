@@ -1,29 +1,18 @@
-.receive__body label {
+.alarm__body label {
   width: fit-content;
 }
-.receive__body label input[type="radio"] {
+.alarm__body label input[type="radio"] {
   appearance: none;
 }
-.common,
-.security,
-.generation,
-.free {
+.seven,
+.atOnce {
   cursor: pointer;
   display: flex;
   color: #555;
   margin-bottom: 1rem;
 }
-.error_text {
-  color: #e52528;
-}
-
-.none_text {
-  color: #111;
-}
-.generation__opt {
-  font-size: 0.75rem;
-  color: #aaa;
-  margin: -0.5rem 0 1rem 2.2rem;
+.atOnce {
+  margin-bottom: 0;
 }
 .big__circle {
   width: 1.3rem;
@@ -48,7 +37,4 @@
 }
 .small__select {
   background-color: #fff;
-}
-.door__opt {
-  margin-left: 2.5rem;
 }

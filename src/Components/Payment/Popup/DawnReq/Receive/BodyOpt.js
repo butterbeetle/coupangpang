@@ -1,13 +1,22 @@
 import styles from "./BodyOpt.module.css";
 import { useState } from "react";
+import BodyInput from "./BodyInput";
 const BodyOpt = () => {
   const [value, setValue] = useState("common");
+  const [error, setError] = useState(false);
   const onClick = (e) => {
     setValue(e);
+    if (e !== "common") {
+      setError(false);
+    }
   };
   return (
     <div className={styles["door__opt"]}>
-      <label className={styles["common"]} onClick={() => onClick("common")}>
+      <label
+        className={`${styles["common"]}
+        ${error ? styles["error_text"] : styles["none_text"]}`}
+        onClick={() => onClick("common")}
+      >
         <div
           className={`${styles["big__circle"]} ${
             value === "common" ? styles["big__select"] : ""
@@ -22,15 +31,11 @@ const BodyOpt = () => {
         공동현관 출입번호
       </label>
       {value === "common" && (
-        <div className={styles["common__opt"]}>
-          <input
-            type="text"
-            placeholder="예 : #1234*, 열쇠#707@1234"
-            maxLength={50}
-          />
-          <p className={styles["required"]}>필수 입력 사항입니다.</p>
-          <p className={styles["length"]}>0/50</p>
-        </div>
+        <BodyInput
+          ph={"예 : #1234*, 열쇠#707@1234"}
+          error={error}
+          setError={setError}
+        />
       )}
 
       <label className={styles["security"]} onClick={() => onClick("security")}>

@@ -5,7 +5,10 @@
   flex-direction: column;
 }
 .door,
-.delivery {
+.door_absence,
+.security_office,
+.delivery_box,
+.etc {
   cursor: pointer;
   padding: 1rem;
   display: flex;

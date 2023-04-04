@@ -1,14 +1,14 @@
-.receive__header {
+.alarm__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.receive__header h2 {
+.alarm__header h2 {
   margin: 0;
   margin-bottom: 1rem;
   font-size: 1rem;
 }
-.receive__header p {
+.alarm__header p {
   margin: 0;
   font-size: 0.75rem;
   color: #888;
