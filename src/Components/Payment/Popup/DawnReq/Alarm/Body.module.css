@@ -1,0 +1,40 @@
+.alarm__body label {
+  width: fit-content;
+}
+.alarm__body label input[type="radio"] {
+  appearance: none;
+}
+.seven,
+.atOnce {
+  cursor: pointer;
+  display: flex;
+  color: #555;
+  margin-bottom: 1rem;
+}
+.atOnce {
+  margin-bottom: 0;
+}
+.big__circle {
+  width: 1.3rem;
+  height: 1.3rem;
+  border: 0.1rem solid #ccc;
+  border-radius: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 0.7rem;
+}
+.small__circle {
+  width: 0.6rem;
+  height: 0.6rem;
+  border: none;
+  border-radius: 1rem;
+  background-color: #eee;
+}
+.big__select {
+  border: 0.1rem solid #346aff;
+  background-color: #346aff;
+}
+.small__select {
+  background-color: #fff;
+}

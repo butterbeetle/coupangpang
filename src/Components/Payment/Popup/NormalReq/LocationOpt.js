@@ -2,9 +2,44 @@ import styles from "./LocationOpt.module.css";
 
 /* Animation */
 import { motion } from "framer-motion";
+/* Hook */
 import useInput from "../../../../hooks/useInput";
+import { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { addrActions } from "../../../../store/address-slice";
+
 const LocationOpt = ({ type }) => {
-  const { click, clickHandler, blurHandler } = useInput();
+  const dispatch = useDispatch();
+  const { delivaryNormalReq } = useSelector((state) => state.addr);
+  const { click, touched, clickHandler, blurHandler } = useInput();
+  const [error, setError] = useState(false);
+  const [value, setValue] = useState("");
+  const onChange = (e) => {
+    setValue(e.target.value);
+  };
+
+  useEffect(() => {
+    if (touched && value.length === 0) {
+      setError(true);
+    } else {
+      setError(false);
+    }
+  }, [touched, value]);
+
+  useEffect(() => {
+    if (delivaryNormalReq === "error") {
+      setError(true);
+    }
+  }, [delivaryNormalReq]);
+
+  const onBlur = (e) => {
+    dispatch(
+      addrActions.setAddr({
+        delivaryNormalReq: e.target.value,
+      })
+    );
+    blurHandler();
+  };
 
   let msg =
     type === "delivery_box"
@@ -17,6 +52,19 @@ const LocationOpt = ({ type }) => {
   return (
     <div className={styles["opt"]}>
       <p className={styles["opt__text"]}>{msg}</p>
+      <label
+        className={`${styles["opt__label"]}
+      ${error ? styles["error_border"] : ""}
+      `}
+      >
+        <input
+          type="text"
+          onClick={clickHandler}
+          onBlur={onBlur}
+          maxLength="50"
+          onChange={onChange}
+        />
+      </label>
       <motion.p
         initial={{
           top: "2.7rem",
@@ -24,20 +72,22 @@ const LocationOpt = ({ type }) => {
           fontSize: "0.85rem",
         }}
         animate={{
-          top: click ? "2.3rem" : "2.7rem",
-          fontSize: click ? "0.75rem" : "0.85rem",
+          top: click || value.length > 0 ? "2.3rem" : "2.7rem",
+          fontSize: click || value.length > 0 ? "0.75rem" : "0.85rem",
         }}
         transition={{
-          duration: 0.1,
+          duration: 0.05,
         }}
-        className={styles["placeholder"]}
+        className={`${styles["placeholder"]}
+        
+        ${click ? styles["click_text"] : ""}
+        ${error ? styles["error_text"] : ""}
+        `}
       >
         {placeholder}
       </motion.p>
-      {click && <p className={styles["length"]}>0/50</p>}
-      <label className={styles["opt__label"]}>
-        <input type="text" onClick={clickHandler} onBlur={blurHandler} />
-      </label>
+      {click && <p className={styles["length"]}>{value.length}/50</p>}
+      {error && <p className={styles["error"]}>내용을 입력해주세요.</p>}
     </div>
   );
 };

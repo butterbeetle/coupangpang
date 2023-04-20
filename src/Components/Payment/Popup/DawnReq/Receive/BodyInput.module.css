@@ -1,0 +1,32 @@
+.common__opt {
+  margin: 0.5rem 0 1rem;
+  position: relative;
+  margin-left: 2.5rem;
+}
+.input {
+  width: 90%;
+  box-sizing: border-box;
+  padding: 0.7rem;
+}
+.error {
+  border: 0.1rem solid #e52528;
+}
+.error_text {
+  color: #e52528;
+}
+.none {
+  border: 0.1rem solid #346aff;
+}
+.none_text {
+  color: #346aff;
+}
+.required {
+  font-size: 0.75rem;
+}
+.length {
+  position: absolute;
+  font-size: 0.75rem;
+  color: #ccc;
+  top: 0;
+  right: 3rem;
+}

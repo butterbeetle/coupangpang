@@ -2,10 +2,35 @@ import styles from "./Location.module.css";
 /* Hook */
 import { useState } from "react";
 import LocationOpt from "./LocationOpt";
+import { useDispatch } from "react-redux";
+import { addrActions } from "../../../../store/address-slice";
 const Location = () => {
+  const dispatch = useDispatch();
   const [value, setValue] = useState("door");
   const onChange = (e) => {
     setValue(e.target.value);
+    if (e.target.value === "delivery_box" || e.target.value === "etc") {
+      console.log(e.target.value);
+      dispatch(
+        addrActions.setAddr({
+          delivaryNormalReq: "",
+        })
+      );
+    }
+    dispatch(
+      addrActions.setAddr({
+        delivaryNormal:
+          e.target.value === "door"
+            ? "문 앞"
+            : e.target.value === "door_absence"
+            ? "직접 받고 부재 시 문 앞"
+            : e.target.value === "security_office"
+            ? "경비실"
+            : e.target.value === "delivery_box"
+            ? "택배함"
+            : "기타사항",
+      })
+    );
   };
 
   return (

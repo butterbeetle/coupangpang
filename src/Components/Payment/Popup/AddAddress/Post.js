@@ -5,12 +5,12 @@ import { MdLocationPin, MdSearch } from "react-icons/md";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
+import { popupActions } from "../../../../store/popup-slice";
 
 /* Hook */
 import useInput from "../../../../hooks/useInput";
-import { useState } from "react";
 
-const Post = ({ onClick, register, errors }) => {
+const Post = ({ register, errors }) => {
   const {
     click: addrClick,
     clickHandler: addrClickHandler,
@@ -19,11 +19,9 @@ const Post = ({ onClick, register, errors }) => {
 
   const addrData = useSelector((state) => state.addr);
   const dispatch = useDispatch();
-  const [, setDetailAddress] = useState("");
 
   const addrBlur = (e) => {
     addrBlurHandler();
-    setDetailAddress(e.target.value);
     dispatch(
       addrActions.setAddr({
         detailAddress: e.target.value,
@@ -38,7 +36,9 @@ const Post = ({ onClick, register, errors }) => {
   ) : (
     <p>우편번호 찾기</p>
   );
-
+  const onClick = (e) => {
+    dispatch(popupActions.move(e));
+  };
   return (
     <div
       className={`${styles["input__box"]} ${
@@ -49,7 +49,7 @@ const Post = ({ onClick, register, errors }) => {
         <MdLocationPin />
       </div>
       <div className={styles["post__box"]}>
-        <div className={styles["postCode"]} onClick={onClick}>
+        <div className={styles["postCode"]} onClick={() => onClick("post")}>
           {addrInfo}
           <MdSearch />
         </div>
