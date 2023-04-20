@@ -122,7 +122,6 @@ const Popup = () => {
   /* Addr Data */
   const addr = useSelector((state) => state.addr);
   console.log(addr);
-
   return (
     <div className={styles["content"]}>
       <header className={styles["header"]}>{title}</header>

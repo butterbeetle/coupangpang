@@ -8,9 +8,8 @@ import { popupActions } from "../../../../store/popup-slice";
 
 const Info = () => {
   const dispatch = useDispatch();
-  const { delivaryNormal, delivaryNormalReq } = useSelector(
-    (state) => state.addr
-  );
+  const { delivaryNormal, delivaryNormalReq, delivaryDawn, delivaryDawnReq } =
+    useSelector((state) => state.addr);
 
   const onClick = (e) => {
     dispatch(popupActions.move(e));
@@ -24,6 +23,14 @@ const Info = () => {
     }`}</p>
   ) : (
     <p>일반배송 정보를 선택해 주세요.</p>
+  );
+
+  let dawnInfo = delivaryDawn ? (
+    <p className={styles["norInfo"]}>{`일반 : ${delivaryDawn} ${
+      delivaryDawn === "문 앞" ? `(${delivaryDawnReq})` : ""
+    }`}</p>
+  ) : (
+    <p>새벽배송 정보를 선택해 주세요.</p>
   );
 
   return (
@@ -40,7 +47,7 @@ const Info = () => {
           <RiArrowRightSLine />
         </div>
         <div className={styles["info__dawn"]} onClick={() => onClick("dawn")}>
-          <p>새벽배송 정보를 선택해 주세요.</p>
+          {dawnInfo}
           <RiArrowRightSLine />
         </div>
       </div>

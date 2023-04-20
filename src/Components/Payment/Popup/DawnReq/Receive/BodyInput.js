@@ -1,8 +1,11 @@
 import styles from "./BodyInput.module.css";
 import useInput from "../../../../../hooks/useInput";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addrActions } from "../../../../../store/address-slice";
 
 const BodyInput = ({ ph, error, setError }) => {
+  const dispatch = useDispatch();
   const { click, clickHandler, blurHandler } = useInput();
   const [value, setValue] = useState("");
   const onClick = () => {
@@ -13,10 +16,21 @@ const BodyInput = ({ ph, error, setError }) => {
     blurHandler();
     if (value.length > 0) {
       setError(false);
+      dispatch(
+        addrActions.setAddr({
+          delivaryDawnReq: value,
+        })
+      );
     } else {
       setError(true);
+      dispatch(
+        addrActions.setAddr({
+          delivaryDawnReq: "error",
+        })
+      );
     }
   };
+
   const onChange = (e) => {
     setValue(e.target.value);
   };

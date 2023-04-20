@@ -1,7 +1,11 @@
 import styles from "./BodyOpt.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BodyInput from "./BodyInput";
+import { useDispatch, useSelector } from "react-redux";
+import { addrActions } from "../../../../../store/address-slice";
 const BodyOpt = () => {
+  const dispatch = useDispatch();
+  const { delivaryDawnReq } = useSelector((state) => state.addr);
   const [value, setValue] = useState("common");
   const [error, setError] = useState(false);
   const onClick = (e) => {
@@ -9,7 +13,24 @@ const BodyOpt = () => {
     if (e !== "common") {
       setError(false);
     }
+    dispatch(
+      addrActions.setAddr({
+        delivaryDawnReq:
+          e === "security"
+            ? "경비실 호출"
+            : e === "generation"
+            ? "세대 호출"
+            : e === "free"
+            ? "자유 출입가능"
+            : "",
+      })
+    );
   };
+  useEffect(() => {
+    if (delivaryDawnReq === "error") {
+      setError(true);
+    }
+  }, [delivaryDawnReq]);
   return (
     <div className={styles["door__opt"]}>
       <label
