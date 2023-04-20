@@ -13,24 +13,28 @@ const BodyOpt = () => {
     if (e !== "common") {
       setError(false);
     }
+  };
+  useEffect(() => {
     dispatch(
       addrActions.setAddr({
         delivaryDawnReq:
-          e === "security"
+          value === "security"
             ? "경비실 호출"
-            : e === "generation"
+            : value === "generation"
             ? "세대 호출"
-            : e === "free"
+            : value === "free"
             ? "자유 출입가능"
             : "",
       })
     );
-  };
+  }, [dispatch, value]);
+
   useEffect(() => {
     if (delivaryDawnReq === "error") {
       setError(true);
     }
   }, [delivaryDawnReq]);
+
   return (
     <div className={styles["door__opt"]}>
       <label

@@ -23,24 +23,32 @@ import ShowAddr from "./ShowAddr/ShowAddr";
 import { popupActions } from "../../../store/popup-slice";
 
 const Popup = () => {
-  const formSchema = yup.object({
-    name: yup.string().required("받는 사람 이름을 입력해주세요."),
-    post: yup.string().required("상세주소를 입력해주세요."),
-    phone: yup
-      .string()
-      .required("휴대폰 번호를 입력해주세요.")
-      .matches(
-        /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/,
-        "휴대폰 번호를 정확하게 입력해주세요."
-      ),
-    tel: yup
-      .string()
-      .notRequired()
-      .matches(
-        /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/,
-        "연락처 번호를 정확하게 입력해주세요."
-      ),
-  });
+  const formSchema = yup.object().shape(
+    {
+      name: yup.string().required("받는 사람 이름을 입력해주세요."),
+      post: yup.string().required("상세주소를 입력해주세요."),
+      phone: yup
+        .string()
+        .required("휴대폰 번호를 입력해주세요.")
+        .matches(
+          /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/,
+          "휴대폰 번호를 정확하게 입력해주세요."
+        ),
+      tel: yup
+        .string()
+        .nullable()
+        .notRequired()
+        .when("tel", {
+          is: (value) => value?.length,
+          then: (rule) =>
+            rule.matches(
+              /^01([0|1|6|7|8|9])-?([0-9]{4})-?([0-9]{4})$/,
+              "연락처 번호를 정확하게 입력해주세요."
+            ),
+        }),
+    }, // Add Cyclic deps here because when require itself
+    ["tel", "tel"]
+  );
 
   const {
     register,
@@ -121,7 +129,7 @@ const Popup = () => {
 
   /* Addr Data */
   const addr = useSelector((state) => state.addr);
-  console.log(addr);
+  console.log(addr.data);
   return (
     <div className={styles["content"]}>
       <header className={styles["header"]}>{title}</header>

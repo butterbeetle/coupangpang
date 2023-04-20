@@ -1,5 +1,5 @@
 import styles from "./Body.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import BodyOpt from "./BodyOpt";
 import { useDispatch } from "react-redux";
 import { addrActions } from "../../../../../store/address-slice";
@@ -8,14 +8,19 @@ const Body = () => {
   const [value, setValue] = useState("door");
   const onClick = (e) => {
     setValue(e);
-    console.log(e);
+  };
+  useEffect(() => {
     dispatch(
       addrActions.setAddr({
         delivaryDawn:
-          e === "door" ? "문 앞" : e === "delivery" ? "택배함" : "기타사항",
+          value === "door"
+            ? "문 앞"
+            : value === "delivery"
+            ? "택배함"
+            : "기타사항",
       })
     );
-  };
+  }, [dispatch, value]);
   return (
     <div className={styles["receive__body"]}>
       <label className={styles["door"]} onClick={() => onClick("door")}>
