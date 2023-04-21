@@ -6,7 +6,6 @@ import { useEffect } from "react";
 import { getAddrData } from "../../../store/address-action";
 const PaymentAddress = () => {
   const dispatch = useDispatch();
-  const userData = useSelector((state) => state.logged.user);
   const addrData = useSelector((state) => state.addr.data);
   const addrLen = addrData.length;
 
@@ -16,23 +15,26 @@ const PaymentAddress = () => {
   }, [dispatch]);
 
   const popupHandler = () => {
-    if (addrLen > 0) {
-      console.log("show");
-      dispatch(popupActions.move("show"));
-    } else {
-      console.log("add");
-      dispatch(popupActions.move("add"));
-    }
     const width = 510;
     const height = 650;
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
 
-    window.open(
-      "/addressbook",
-      "배송지 추가",
-      `width=${width},height=${height},left=${left},top=${top}`
-    );
+    if (addrLen > 0) {
+      dispatch(popupActions.move("show"));
+      window.open(
+        "/addressbook/show",
+        "배송지 선택",
+        `width=${width},height=${height},left=${left},top=${top}`
+      );
+    } else {
+      dispatch(popupActions.move("add"));
+      window.open(
+        "/addressbook/add",
+        "배송지 추가",
+        `width=${width},height=${height},left=${left},top=${top}`
+      );
+    }
   };
 
   let addressData =

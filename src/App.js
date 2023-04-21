@@ -47,7 +47,10 @@ const router = createBrowserRouter([
   { path: "/payment", element: <PaymentPage /> },
   {
     path: "/addressbook",
-    element: <Popup />,
+    children: [
+      { path: "add", element: <Popup /> },
+      { path: "show", element: <Popup /> },
+    ],
   },
 ]);
 
