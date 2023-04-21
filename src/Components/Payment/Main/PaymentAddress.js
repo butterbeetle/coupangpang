@@ -1,12 +1,42 @@
 import styles from "./PaymentAddress.module.css";
 import { BsCheck } from "react-icons/bs";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { popupActions } from "../../../store/popup-slice";
+import { useEffect } from "react";
+import { getAddrData } from "../../../store/address-action";
 const PaymentAddress = () => {
+  const dispatch = useDispatch();
   const userData = useSelector((state) => state.logged.user);
-  const addressLength = userData.address.length;
+  const addrData = useSelector((state) => state.addr.data);
+  const addrLen = addrData.length;
+
+  /* 접속 시 Firebase에 저장되어 있는지 확인해서 가져옴 */
+  useEffect(() => {
+    dispatch(getAddrData());
+  }, [dispatch]);
+
+  const popupHandler = () => {
+    if (addrLen > 0) {
+      console.log("show");
+      dispatch(popupActions.move("show"));
+    } else {
+      console.log("add");
+      dispatch(popupActions.move("add"));
+    }
+    const width = 510;
+    const height = 650;
+    const left = window.screenX + (window.outerWidth - width) / 2;
+    const top = window.screenY + (window.outerHeight - height) / 2;
+
+    window.open(
+      "/addressbook",
+      "배송지 추가",
+      `width=${width},height=${height},left=${left},top=${top}`
+    );
+  };
 
   let addressData =
-    addressLength > 0 ? (
+    addrLen > 0 ? (
       <div className={styles["customer"]}>
         <div className={styles["customer__info"]}>
           <div className={styles["customer__info__header"]}>이름</div>
@@ -50,24 +80,14 @@ const PaymentAddress = () => {
       </div>
     );
 
-  const popupHandler = () => {
-    const width = 510;
-    const height = 650;
-    const left = window.screenX + (window.outerWidth - width) / 2;
-    const top = window.screenY + (window.outerHeight - height) / 2;
-
-    window.open(
-      "/addressbook",
-      "배송지 추가",
-      `width=${width},height=${height},left=${left},top=${top}`
-    );
-  };
-
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>
         <h3>받는사람정보</h3>
-        <button onClick={popupHandler}>배송지추가</button>
+        <button onClick={popupHandler}>
+          배송지
+          {addrLen > 0 ? "변경" : "추가"}
+        </button>
       </div>
       {addressData}
     </div>

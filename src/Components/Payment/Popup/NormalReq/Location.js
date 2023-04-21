@@ -10,7 +10,6 @@ const Location = () => {
   const onChange = (e) => {
     setValue(e.target.value);
     if (e.target.value === "delivery_box" || e.target.value === "etc") {
-      console.log(e.target.value);
       dispatch(
         addrActions.setAddr({
           delivaryNormalReq: "",

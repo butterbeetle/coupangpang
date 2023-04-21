@@ -18,7 +18,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../store/address-slice";
-import { getAddrData, sendAddrData } from "../../../store/address-action";
+import { sendAddrData } from "../../../store/address-action";
 import ShowAddr from "./ShowAddr/ShowAddr";
 import { popupActions } from "../../../store/popup-slice";
 
@@ -103,6 +103,8 @@ const Popup = () => {
         zonecode: addrData.zonecode,
       })
     );
+
+    dispatch(popupActions.move("show"));
   };
 
   /* Error */
@@ -110,22 +112,17 @@ const Popup = () => {
     console.log(e);
   };
 
-  /* 접속 시 Firebase에 저장되어 있는지 확인해서 가져옴 */
-  useEffect(() => {
-    dispatch(getAddrData());
-  }, [dispatch]);
-
   /* AddrData firebase에 저장 */
-  // useEffect(() => {
-  //   if (addrData.changed) {
-  //     dispatch(sendAddrData(addrData.data));
-  //   }
-  // }, [addrData, dispatch]);
+  useEffect(() => {
+    if (addrData.changed) {
+      dispatch(sendAddrData(addrData.data));
+    }
+  }, [addrData, dispatch]);
 
   /* Move */
   const location = useSelector((state) => state.popup.location);
   const title = useSelector((state) => state.popup.title);
-  // console.log(location);
+  console.log(location, title);
 
   /* Addr Data */
   const addr = useSelector((state) => state.addr);
@@ -135,8 +132,7 @@ const Popup = () => {
       <header className={styles["header"]}>{title}</header>
       <main className={styles["main"]}>
         <form onSubmit={handleSubmit(onsubmit, onError)}>
-          {/* <ShowAddr /> */}
-
+          {location === "show" && <ShowAddr />}
           {location === "add" && (
             <AddAddress
               register={register}
