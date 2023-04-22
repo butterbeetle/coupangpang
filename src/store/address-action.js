@@ -3,7 +3,6 @@ import { addrActions } from "./address-slice";
 /* firebase */
 import { doc, getDoc, setDoc } from "firebase/firestore";
 import { firestore } from "../firebase-config";
-
 /* indexedDB */
 import { getIndexedDbData } from "../Util/IndexedDB";
 
