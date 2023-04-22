@@ -1,6 +1,4 @@
 # Coupang Clone Coding Project
-쿠팡 클론코딩 사이트
-
 
 ## 🖥️ 프로젝트 소개
 쿠팡을 참고하여 공부하면서 만든 클론 사이트입니다.
@@ -12,6 +10,7 @@
 ### ⚙️ 개발 환경
 - `JavaScript`
 - `React`
+- `Module CSS`
 - **IDE** : Vscode
 - **Database** : Firebase
 
