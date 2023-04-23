@@ -2,7 +2,7 @@ import styles from "./Name.module.css";
 /* Hook */
 import useInput from "../../../../hooks/useInput";
 /* Icon */
-import { FaRegUser } from "react-icons/fa";
+import { FaRegUser } from "@react-icons/all-files/fa/FaRegUser";
 const Name = ({ register, errors }) => {
   const {
     click: nameClick,

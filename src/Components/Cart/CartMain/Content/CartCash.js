@@ -1,6 +1,6 @@
 import styles from "./CartCash.module.css";
 /* Icon */
-import { FaCopyright } from "react-icons/fa";
+import { FaCopyright } from "@react-icons/all-files/fa/FaCopyright";
 const CartCash = () => {
   return (
     <div className={styles["cash"]}>

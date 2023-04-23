@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import styles from "./ProductPrice.module.css";
 
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { BsCoin } from "react-icons/bs";
+import { AiOutlineInfo } from "@react-icons/all-files/ai/AiOutlineInfo";
+import { ImCoinDollar } from "@react-icons/all-files/im/ImCoinDollar";
 
 const ProductPrice = () => {
   const prodDiscount = useSelector((state) => state.prod.discount);
@@ -13,7 +13,7 @@ const ProductPrice = () => {
       <div className={styles["price__discount"]}>
         <p className={styles["price__discount__rate"]}>{prodDiscount}%</p>
         <p className={styles["price__origin"]}>{price.toLocaleString()}원</p>
-        <AiOutlineInfoCircle />
+        <AiOutlineInfo />
       </div>
       <div className={styles["price__sale"]}>
         <p className={styles["price__total"]}>{price.toLocaleString()}원</p>
@@ -27,7 +27,7 @@ const ProductPrice = () => {
       </div>
       <div>
         <div className={styles["price__badge"]}>
-          <BsCoin />
+          <ImCoinDollar />
           <p>
             최대{" "}
             {parseInt(

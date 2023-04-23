@@ -1,5 +1,5 @@
 import styles from "./OrderFlow.module.css";
-import { AiOutlineRight } from "react-icons/ai";
+import { AiOutlineRight } from "@react-icons/all-files/ai/AiOutlineRight";
 
 const OrderFlow = ({ step }) => {
   return (

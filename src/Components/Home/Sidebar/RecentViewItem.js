@@ -2,7 +2,8 @@ import { useState } from "react";
 import styles from "./RecentViewItem.module.css";
 
 /* Icon */
-import { BsFillXSquareFill } from "react-icons/bs";
+import { BsFillXSquareFill } from "@react-icons/all-files/bs/BsFillXSquareFill";
+
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { recentViewSliceActions } from "../../../store/recentView-slice";

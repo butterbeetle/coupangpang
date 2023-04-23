@@ -3,8 +3,8 @@ import styles from "./Tel.module.css";
 import useInput from "../../../../hooks/useInput";
 
 /* Icon */
-import { FiPhoneCall } from "react-icons/fi";
-import { AiOutlineMinus } from "react-icons/ai";
+import { FiPhoneCall } from "@react-icons/all-files/fi/FiPhoneCall";
+import { AiOutlineMinus } from "@react-icons/all-files/ai/AiOutlineMinus";
 
 const Tel = ({ register, errors, onClose }) => {
   const {

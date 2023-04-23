@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux";
 import styles from "./ProductHeader.module.css";
 /* Icon */
-import { BsFillShareFill } from "react-icons/bs";
-import { FiHeart } from "react-icons/fi";
+import { GiShare } from "@react-icons/all-files/gi/GiShare";
+import { FiHeart } from "@react-icons/all-files/fi/FiHeart";
 const ProductHeader = () => {
   const prodTitle = useSelector((state) => state.prod.title);
   const prodReview = useSelector((state) => state.prod.review);
@@ -23,7 +23,7 @@ const ProductHeader = () => {
           <FiHeart className={styles["heart--icon"]} />
         </div>
         <div className={styles["share"]}>
-          <BsFillShareFill className={styles["share--icon"]} />
+          <GiShare className={styles["share--icon"]} />
         </div>
       </div>
     </div>

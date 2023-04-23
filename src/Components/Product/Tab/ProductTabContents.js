@@ -3,8 +3,9 @@ import { useState } from "react";
 import { useSelector } from "react-redux";
 
 /* Icon */
-import { IoIosArrowUp, IoIosArrowDown } from "react-icons/io";
-import { RiErrorWarningFill } from "react-icons/ri";
+import { IoIosArrowUp } from "@react-icons/all-files/io/IoIosArrowUp";
+import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
+import { RiErrorWarningFill } from "@react-icons/all-files/ri/RiErrorWarningFill";
 const ProductTabContents = () => {
   const [seeMore, setSeeMore] = useState(false);
 
