@@ -2,8 +2,8 @@ import { useEffect, useLayoutEffect, useRef, useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./CartItem.module.css";
 /* Icon */
-import { BsXSquare } from "react-icons/bs";
-import { FaCopyright } from "react-icons/fa";
+import { FiXSquare } from "@react-icons/all-files/fi/FiXSquare";
+import { FaCopyright } from "@react-icons/all-files/fa/FaCopyright";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { cartActions } from "../../../../store/cart-slice";
@@ -156,7 +156,7 @@ const CartItem = ({ item }) => {
             <span className={styles["item__quantity__total__price"]}>
               <p>{item.totalPrice.toLocaleString()}원</p>
             </span>
-            <BsXSquare onClick={itemDeleteHandler} />
+            <FiXSquare onClick={itemDeleteHandler} />
           </div>
         </div>
         <div className={styles["item__cash"]}>

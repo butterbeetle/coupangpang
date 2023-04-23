@@ -1,7 +1,7 @@
 import styles from "./ProductCash.module.css";
 /* Icon */
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { BsCoin } from "react-icons/bs";
+import { AiOutlineInfoCircle } from "@react-icons/all-files/ai/AiOutlineInfoCircle";
+import { ImCoinDollar } from "@react-icons/all-files/im/ImCoinDollar";
 import { useSelector } from "react-redux";
 const ProductCash = () => {
   const prodDiscount = useSelector((state) => state.prod.discount);
@@ -11,7 +11,7 @@ const ProductCash = () => {
     <div className={styles["product__info--cash"]}>
       <div className={styles["cash__header"]}>
         <div className={styles["cash__title"]}>
-          <BsCoin />
+          <ImCoinDollar />
           <p>캐시적립 혜택</p>
           <AiOutlineInfoCircle />
         </div>

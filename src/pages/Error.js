@@ -1,8 +1,9 @@
 import { Link } from "react-router-dom";
 import styles from "./Error.module.css";
 /* Icon */
-import { AiOutlineStop, AiOutlineSearch } from "react-icons/ai";
-import { GiRotaryPhone } from "react-icons/gi";
+import { AiOutlineStop } from "@react-icons/all-files/ai/AiOutlineStop";
+import { AiOutlineSearch } from "@react-icons/all-files/ai/AiOutlineSearch";
+import { BiHeadphone } from "@react-icons/all-files/bi/BiHeadphone";
 
 const ErrorPage = () => {
   return (
@@ -31,7 +32,7 @@ const ErrorPage = () => {
               있습니다.)
             </p>
             <div className={styles["call"]}>
-              <GiRotaryPhone className={styles["call__img"]} />
+              <BiHeadphone className={styles["call__img"]} />
               고객센터 TEL. 1577-7011 (운영시간 : 연중무휴 오전 9시 ~ 오후 7시)
             </div>
             <div className={styles["btn"]}>

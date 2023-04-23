@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import styles from "./CartEmpty.module.css";
 /* Icon */
-import { MdArrowForwardIos } from "react-icons/md";
+import { MdArrowForward } from "@react-icons/all-files/md/MdArrowForward";
 const CartEmpty = () => {
   return (
     <div>
@@ -15,7 +15,7 @@ const CartEmpty = () => {
         </div>
         <Link className={styles["tody__prod"]} to="/">
           오늘의 추천 상품보기
-          <MdArrowForwardIos />
+          <MdArrowForward />
         </Link>
       </div>
     </div>

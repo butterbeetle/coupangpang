@@ -4,7 +4,8 @@ import RecentViewItem from "./RecentViewItem";
 /* redux */
 import { useSelector } from "react-redux";
 /* Icon */
-import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import { MdKeyboardArrowRight } from "@react-icons/all-files/md/MdKeyboardArrowRight";
+import { MdKeyboardArrowLeft } from "@react-icons/all-files/md/MdKeyboardArrowLeft";
 
 const RecentViewItems = () => {
   const recentViewItems = useSelector((state) => state.recentView.items);

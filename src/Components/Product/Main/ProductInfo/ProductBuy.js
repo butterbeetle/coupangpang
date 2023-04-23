@@ -1,12 +1,10 @@
 import styles from "./ProductBuy.module.css";
 import { Link } from "react-router-dom";
 /* Icon */
-import { RxCross2 } from "react-icons/rx";
-import {
-  IoIosArrowUp,
-  IoIosArrowDown,
-  IoIosArrowForward,
-} from "react-icons/io";
+import { MdCancel } from "@react-icons/all-files/md/MdCancel";
+import { IoMdArrowUp } from "@react-icons/all-files/io/IoMdArrowUp";
+import { IoMdArrowDown } from "@react-icons/all-files/io/IoMdArrowDown";
+import { IoMdArrowForward } from "@react-icons/all-files/io/IoMdArrowForward";
 
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
@@ -104,7 +102,7 @@ const ProductBuy = () => {
 
   let cartModal = isLogged ? (
     <div className={styles["goCart"]}>
-      <RxCross2 onClick={goCartCancel} />
+      <MdCancel onClick={goCartCancel} />
       상품이 장바구니에 담겼습니다.
       <Link to="/cart">
         <button type="button">{"장바구니 바로가기"}</button>
@@ -112,7 +110,7 @@ const ProductBuy = () => {
     </div>
   ) : (
     <div className={styles["goCart"]}>
-      <RxCross2 onClick={goCartCancel} />
+      <MdCancel onClick={goCartCancel} />
       로그인이 필요합니다!
       <Link to="/login">
         <button type="button">{"로그인 바로가기"}</button>
@@ -131,10 +129,10 @@ const ProductBuy = () => {
         />
         <div className={styles["button--bag"]}>
           <button type="button" onClick={quantityIncrease}>
-            <IoIosArrowUp />
+            <IoMdArrowUp />
           </button>
           <button type="button" onClick={quantityDecrease}>
-            <IoIosArrowDown />
+            <IoMdArrowDown />
           </button>
         </div>
       </div>
@@ -145,7 +143,7 @@ const ProductBuy = () => {
         <div></div>
         <Link to="/payment">
           <button type="button">
-            바로 구매 <IoIosArrowForward />
+            바로 구매 <IoMdArrowForward />
           </button>
         </Link>
       </div>

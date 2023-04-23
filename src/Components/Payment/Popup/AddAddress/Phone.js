@@ -1,8 +1,8 @@
 import styles from "./Phone.module.css";
 
 /* Icon */
-import { FiSmartphone } from "react-icons/fi";
-import { AiOutlinePlus } from "react-icons/ai";
+import { FiSmartphone } from "@react-icons/all-files/fi/FiSmartphone";
+import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 
 /* Hook */
 import useInput from "../../../../hooks/useInput";

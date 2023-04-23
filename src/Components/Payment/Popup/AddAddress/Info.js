@@ -1,7 +1,7 @@
 import styles from "./Info.module.css";
 /* Icon */
-import { BsChatLeftDots } from "react-icons/bs";
-import { RiArrowRightSLine } from "react-icons/ri";
+import { BsChatDots } from "@react-icons/all-files/bs/BsChatDots";
+import { RiArrowRightSLine } from "@react-icons/all-files/ri/RiArrowRightSLine";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { popupActions } from "../../../../store/popup-slice";
@@ -36,7 +36,7 @@ const Info = () => {
   return (
     <div className={styles["input__box"]}>
       <div className={styles["icon__box"]}>
-        <BsChatLeftDots />
+        <BsChatDots />
       </div>
       <div className={styles["info__box"]}>
         <div

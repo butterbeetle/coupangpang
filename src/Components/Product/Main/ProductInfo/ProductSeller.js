@@ -1,7 +1,7 @@
 import styles from "./ProductSeller.module.css";
 /* Icon */
-import { AiOutlineInfoCircle } from "react-icons/ai";
-import { FiThumbsUp } from "react-icons/fi";
+import { AiOutlineInfoCircle } from "@react-icons/all-files/ai/AiOutlineInfoCircle";
+import { FiThumbsUp } from "@react-icons/all-files/fi/FiThumbsUp";
 const ProductSeller = () => {
   return (
     <div className={styles["product__info--seller"]}>

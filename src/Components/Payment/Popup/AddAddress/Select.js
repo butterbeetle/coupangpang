@@ -1,6 +1,6 @@
 import styles from "./Select.module.css";
 /* Icon */
-import { BsCheck } from "react-icons/bs";
+import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
 /* Animating */
 import { motion } from "framer-motion";
 /* Hook */

@@ -1,5 +1,7 @@
 import styles from "./PaymentAddress.module.css";
-import { BsCheck } from "react-icons/bs";
+
+import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
+
 import { useDispatch, useSelector } from "react-redux";
 import { popupActions } from "../../../store/popup-slice";
 import { useEffect } from "react";

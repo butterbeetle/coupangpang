@@ -1,5 +1,6 @@
 import styles from "./CartCalc.module.css";
-import { MdAddCircle, MdPauseCircle } from "react-icons/md";
+import { MdAddCircle } from "@react-icons/all-files/md/MdAddCircle";
+import { MdPauseCircleOutline } from "@react-icons/all-files/md/MdPauseCircleOutline";
 import { useSelector } from "react-redux";
 const CartCalc = () => {
   /* 장바구니에 있는 Item 정보 */
@@ -24,7 +25,7 @@ const CartCalc = () => {
       <MdAddCircle className={styles["plus"]} />
       <span>배송비</span>
       <span className={styles["calc__delivery"]}>0</span>원
-      <MdPauseCircle className={styles["equal"]} />
+      <MdPauseCircleOutline className={styles["equal"]} />
       <span>주문금액</span>
       <span className={styles["calc__total"]}>
         {totalPrice.toLocaleString()}

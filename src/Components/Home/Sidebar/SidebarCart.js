@@ -1,5 +1,5 @@
 import styles from "./SidebarCart.module.css";
-import { MdPlayArrow } from "react-icons/md";
+import { MdPlayArrow } from "@react-icons/all-files/md/MdPlayArrow";
 import { useSelector } from "react-redux";
 
 const SidebarCart = () => {

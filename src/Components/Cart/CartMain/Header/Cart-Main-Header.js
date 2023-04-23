@@ -1,11 +1,11 @@
 import styles from "./Cart-Main-Header.module.css";
-import { BsCart4 } from "react-icons/bs";
+import { AiOutlineShoppingCart } from "@react-icons/all-files/ai/AiOutlineShoppingCart";
 import OrderFlow from "../../../../Util/OrderFlow";
 
 const CartMainHeader = ({ step }) => {
   return (
     <header className={styles["contents__header"]}>
-      <BsCart4 className={styles["contents__header-icon"]} />
+      <AiOutlineShoppingCart className={styles["contents__header-icon"]} />
       <h1>장바구니</h1>
       <OrderFlow step={step} />
     </header>

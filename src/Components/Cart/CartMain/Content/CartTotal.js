@@ -1,7 +1,7 @@
 import styles from "./CartTotal.module.css";
 /* Icon */
-import { AiOutlinePlusSquare } from "react-icons/ai";
-import { MdPausePresentation } from "react-icons/md";
+import { AiFillPlusSquare } from "@react-icons/all-files/ai/AiFillPlusSquare";
+import { CgPlayPause } from "@react-icons/all-files/cg/CgPlayPause";
 import { useSelector } from "react-redux";
 const CartTotal = () => {
   /* 장바구니에 있는 Item 정보 */
@@ -23,9 +23,9 @@ const CartTotal = () => {
           {totalPrice.toLocaleString()}
         </span>
         원
-        <AiOutlinePlusSquare className={styles["plus-square"]} />총 배송비
+        <AiFillPlusSquare className={styles["plus-square"]} />총 배송비
         <span className={styles["total__price"]}>0</span>원
-        <MdPausePresentation className={styles["equal-square"]} />총 주문금액
+        <CgPlayPause className={styles["equal-square"]} />총 주문금액
         <span
           className={`${styles["total__price"]} ${styles["total__price__final"]}`}
         >

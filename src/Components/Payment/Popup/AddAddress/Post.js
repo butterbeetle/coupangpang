@@ -1,7 +1,8 @@
 import styles from "./Post.module.css";
 
 /* Icon */
-import { MdLocationPin, MdSearch } from "react-icons/md";
+import { MdLocationOn } from "@react-icons/all-files/md/MdLocationOn";
+import { MdSearch } from "@react-icons/all-files/md/MdSearch";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
@@ -46,7 +47,7 @@ const Post = ({ register, errors }) => {
       }`}
     >
       <div className={styles["icon__box"]}>
-        <MdLocationPin />
+        <MdLocationOn />
       </div>
       <div className={styles["post__box"]}>
         <div className={styles["postCode"]} onClick={() => onClick("post")}>
