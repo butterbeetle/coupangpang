@@ -19,9 +19,11 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
 import { sendAddrData } from "../../../../store/address-action";
+import { useNavigate } from "react-router-dom";
 
 const AddAddrData = () => {
   const dispatch = useDispatch();
+  const navigate = useNavigate();
   const addrData = useSelector((state) => state.addr);
 
   const formSchema = yup.object().shape(
@@ -91,13 +93,18 @@ const AddAddrData = () => {
     dispatch(
       addrActions.addAddr({
         id: addrData.data.length,
-        name: addrData.data.name,
-        phone: addrData.data.phone,
+        name: addrData.name,
+        phone: addrData.phone,
         roadAddress: addrData.roadAddress,
         detailAddress: addrData.detailAddress,
         zonecode: addrData.zonecode,
+        delivaryDawn: addrData.delivaryDawn,
+        delivaryDawnReq: addrData.delivaryDawnReq,
+        delivaryNormal: addrData.delivaryNormal,
+        delivaryNormalReq: addrData.delivaryNormal.Req,
       })
     );
+    navigate("/addressbook/show");
   };
 
   /* AddrData firebase에 저장 */
@@ -107,7 +114,6 @@ const AddAddrData = () => {
     }
   }, [addrData, dispatch]);
 
-  console.log(addrData);
   return (
     <div>
       <header className={styles["header"]}>배송지 추가</header>

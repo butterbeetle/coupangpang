@@ -59,6 +59,12 @@ const addrSlice = createSlice({
         roadAddress: newData.roadAddress,
         zonecode: newData.zonecode,
         default_setting: state.default_setting ? true : false,
+        delivaryDawn: newData.delivaryDawn ? newData.delivaryDawn : "",
+        delivaryDawnReq: newData.delivaryDawnReq ? newData.delivaryDawnReq : "",
+        delivaryNormal: newData.delivaryNormal ? newData.delivaryNormal : "",
+        delivaryNormalReq: newData.delivaryNormal.Req
+          ? newData.delivaryNormalReq
+          : "",
       });
     },
   },

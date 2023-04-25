@@ -39,7 +39,7 @@ export const sendAddrData = (addr) => {
     try {
       await sendData();
     } catch (e) {
-      // console.log(e);
+      console.log(e);
     }
   };
 };
