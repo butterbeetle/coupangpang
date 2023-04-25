@@ -3,16 +3,16 @@ import styles from "./Info.module.css";
 import { BsChatDots } from "@react-icons/all-files/bs/BsChatDots";
 import { RiArrowRightSLine } from "@react-icons/all-files/ri/RiArrowRightSLine";
 /* Redux */
-import { useDispatch, useSelector } from "react-redux";
-import { popupActions } from "../../../../store/popup-slice";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 const Info = () => {
-  const dispatch = useDispatch();
+  const navigator = useNavigate();
   const { delivaryNormal, delivaryNormalReq, delivaryDawn, delivaryDawnReq } =
     useSelector((state) => state.addr);
 
   const onClick = (e) => {
-    dispatch(popupActions.move(e));
+    navigator(`/addressbook/${e}`);
   };
 
   let norInfo = delivaryNormal ? (
@@ -26,9 +26,9 @@ const Info = () => {
   );
 
   let dawnInfo = delivaryDawn ? (
-    <p className={styles["norInfo"]}>{`일반 : ${delivaryDawn} ${
-      delivaryDawn === "문 앞" ? `(${delivaryDawnReq})` : ""
-    }`}</p>
+    <p
+      className={styles["norInfo"]}
+    >{`새벽 : ${delivaryDawn} ${`(${delivaryDawnReq})`}`}</p>
   ) : (
     <p>새벽배송 정보를 선택해 주세요.</p>
   );

@@ -6,22 +6,37 @@ import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 
 /* Hook */
 import useInput from "../../../../hooks/useInput";
+import { useDispatch, useSelector } from "react-redux";
+import { addrActions } from "../../../../store/address-slice";
 
-const Phone = ({ register, errors, setValue, getValues, openTel, onOpen }) => {
+const Phone = ({
+  register,
+  errors,
+  value,
+  setValue,
+  openTel,
+  openTelHandler,
+}) => {
+  const dispatch = useDispatch();
+  const phone = useSelector((state) => state.addr.phone);
+
   const {
     click: phoneClick,
     clickHandler: phoneClickHandler,
     blurHandler: phoneBlurHandler,
   } = useInput();
 
-  const phoneBlur = (e) => {
-    const value = getValues;
-    if (!errors) {
-      setValue("phone", value.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
-    }
+  const blurHandler = () => {
     phoneBlurHandler();
+    // if (!errors && value) {
+    //   setValue("phone", value.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3"));
+    // }
+    dispatch(
+      addrActions.setAddr({
+        phone: value,
+      })
+    );
   };
-
   return (
     <div
       className={`${styles["input__box"]} ${
@@ -31,14 +46,17 @@ const Phone = ({ register, errors, setValue, getValues, openTel, onOpen }) => {
       <div className={styles["icon__box"]}>
         <FiSmartphone />
       </div>
-      <label htmlFor="phone" onClick={phoneClickHandler} onBlur={phoneBlur}>
+      <label htmlFor="phone" onClick={phoneClickHandler} onBlur={blurHandler}>
         <input
           id="phone"
           type="text"
+          value={value ? value : phone}
           placeholder={phoneClick ? "" : "휴대폰 번호"}
           {...register}
         />
-        {!openTel && <AiOutlinePlus title="연락처 추가" onClick={onOpen} />}
+        {!openTel && (
+          <AiOutlinePlus title="연락처 추가" onClick={openTelHandler} />
+        )}
       </label>
       {errors && (
         <span className={styles["error__message"]}>{errors.message}</span>

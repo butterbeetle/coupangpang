@@ -2,17 +2,18 @@ import styles from "./Button.module.css";
 
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { popupActions } from "../../../../store/popup-slice";
 import { addrActions } from "../../../../store/address-slice";
+import { useNavigate } from "react-router-dom";
 const Button = () => {
   const dispatch = useDispatch();
+  const navigator = useNavigate();
   const { delivaryNormal, delivaryNormalReq } = useSelector(
     (state) => state.addr
   );
   const onClick = (e) => {
     if (delivaryNormal === "택배함" || delivaryNormal === "기타사항") {
       if (delivaryNormalReq.length > 0 && delivaryNormalReq !== "error") {
-        dispatch(popupActions.move(e));
+        navigator("/addressbook/add");
       } else {
         dispatch(
           addrActions.setAddr({
@@ -21,7 +22,7 @@ const Button = () => {
         );
       }
     } else {
-      dispatch(popupActions.move(e));
+      navigator("/addressbook/add");
     }
   };
   return (

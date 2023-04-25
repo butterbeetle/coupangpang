@@ -6,40 +6,37 @@ import { MdSearch } from "@react-icons/all-files/md/MdSearch";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
-import { popupActions } from "../../../../store/popup-slice";
 
 /* Hook */
 import useInput from "../../../../hooks/useInput";
 
-const Post = ({ register, errors }) => {
+const Post = ({ register, value, errors, openSearchPostHandler }) => {
+  const dispatch = useDispatch();
+  const { roadAddress, detailAddress, zonecode } = useSelector(
+    (state) => state.addr
+  );
+
   const {
-    click: addrClick,
-    clickHandler: addrClickHandler,
-    blurHandler: addrBlurHandler,
+    click: postClick,
+    clickHandler: postClickHandler,
+    blurHandler: postBlurHandler,
   } = useInput();
 
-  const addrData = useSelector((state) => state.addr);
-  const dispatch = useDispatch();
-
-  const addrBlur = (e) => {
-    addrBlurHandler();
+  const blurHandler = () => {
+    postBlurHandler();
     dispatch(
       addrActions.setAddr({
-        detailAddress: e.target.value,
+        detailAddress: value,
       })
     );
   };
 
-  let addrInfo = addrData.roadAddress ? (
-    <p
-      className={styles["addr"]}
-    >{`${addrData.roadAddress} [${addrData.zonecode}]`}</p>
+  let addrInfo = roadAddress ? (
+    <p className={styles["addr"]}>{`${roadAddress} [${zonecode}]`}</p>
   ) : (
     <p>우편번호 찾기</p>
   );
-  const onClick = (e) => {
-    dispatch(popupActions.move(e));
-  };
+
   return (
     <div
       className={`${styles["input__box"]} ${
@@ -50,18 +47,21 @@ const Post = ({ register, errors }) => {
         <MdLocationOn />
       </div>
       <div className={styles["post__box"]}>
-        <div className={styles["postCode"]} onClick={() => onClick("post")}>
+        <div className={styles["postCode"]} onClick={openSearchPostHandler}>
           {addrInfo}
           <MdSearch />
         </div>
-        {addrData.roadAddress && (
-          <div className={styles["postCode"]}>
+        {roadAddress && (
+          <div
+            className={styles["postCode"]}
+            onClick={postClickHandler}
+            onBlur={blurHandler}
+          >
             <input
-              {...register}
-              onClick={addrClickHandler}
-              onBlur={addrBlur}
               type="text"
-              placeholder={addrClick ? "" : "상세주소"}
+              value={value ? value : detailAddress}
+              placeholder={postClick ? "" : "상세주소"}
+              {...register}
             />
           </div>
         )}

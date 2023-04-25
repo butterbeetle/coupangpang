@@ -3,9 +3,9 @@ import styles from "./PaymentAddress.module.css";
 import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
 
 import { useDispatch, useSelector } from "react-redux";
-import { popupActions } from "../../../store/popup-slice";
 import { useEffect } from "react";
 import { getAddrData } from "../../../store/address-action";
+
 const PaymentAddress = () => {
   const dispatch = useDispatch();
   const addrData = useSelector((state) => state.addr.data);
@@ -23,14 +23,12 @@ const PaymentAddress = () => {
     const top = window.screenY + (window.outerHeight - height) / 2;
 
     if (addrLen > 0) {
-      dispatch(popupActions.move("show"));
       window.open(
         "/addressbook/show",
         "배송지 선택",
         `width=${width},height=${height},left=${left},top=${top}`
       );
     } else {
-      dispatch(popupActions.move("add"));
       window.open(
         "/addressbook/add",
         "배송지 추가",
@@ -46,7 +44,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>이름</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              김승회
+              {addrData[0].name}
             </div>
           </div>
         </div>
@@ -54,7 +52,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>배송주소</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              butterbeetle@naver.com
+              {addrData[0].roadAddress}
             </div>
           </div>
         </div>
@@ -62,7 +60,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>연락처</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              010-8611-9303
+              {addrData[0].phone}
             </div>
           </div>
         </div>
@@ -73,7 +71,7 @@ const PaymentAddress = () => {
           </div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              직접 받고 부재 시 문 앞
+              일반 : ㅁㅁㅁ
             </div>
           </div>
         </div>
@@ -84,6 +82,7 @@ const PaymentAddress = () => {
       </div>
     );
 
+  console.log(addrData);
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>

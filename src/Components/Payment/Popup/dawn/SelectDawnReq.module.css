@@ -1,0 +1,12 @@
+.main {
+  width: 28.7rem;
+  margin: 0 auto;
+}
+.header {
+  padding: 0.5rem 0;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-align: center;
+  border-bottom: 0.1rem solid #ccc;
+  margin-bottom: 0.5rem;
+}

@@ -11,7 +11,11 @@ import PaymentPage from "./pages/PaymentPage";
 import LoginForm from "./Components/Auth/LoginForm";
 import JoinForm from "./Components/Auth/JoinForm";
 import CartView from "./Components/Cart/CartView";
-import Popup from "./Components/Payment/Popup/Popup";
+/* Popup */
+import AddAddrData from "./Components/Payment/Popup/add/AddAddrData";
+import ShowAddrData from "./Components/Payment/Popup/show/showAddrData";
+import SelectNormalReq from "./Components/Payment/Popup/normal/SelectNormalReq";
+import SelectDawnReq from "./Components/Payment/Popup/dawn/SelectDawnReq";
 
 /* redux */
 import { useDispatch, useSelector } from "react-redux";
@@ -68,8 +72,10 @@ const router = createBrowserRouter([
   {
     path: "/addressbook",
     children: [
-      { path: "add", element: <Popup /> },
-      { path: "show", element: <Popup /> },
+      { path: "add", element: <AddAddrData /> },
+      { path: "show", element: <ShowAddrData /> },
+      { path: "normal", element: <SelectNormalReq /> },
+      { path: "dawn", element: <SelectDawnReq /> },
     ],
   },
 ]);

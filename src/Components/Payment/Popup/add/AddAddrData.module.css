@@ -1,6 +1,3 @@
-.content {
-  min-height: 40.5rem;
-}
 .main {
   width: 28.7rem;
   margin: 0 auto;
@@ -11,9 +8,5 @@
   font-size: 1.1rem;
   text-align: center;
   border-bottom: 0.1rem solid #ccc;
-  margin-bottom: 1rem;
-}
-
-.none {
-  display: none;
+  margin-bottom: 0.5rem;
 }

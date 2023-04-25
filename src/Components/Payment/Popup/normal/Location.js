@@ -1,12 +1,14 @@
 import styles from "./Location.module.css";
 /* Hook */
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import LocationOpt from "./LocationOpt";
 import { useDispatch } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
 const Location = () => {
   const dispatch = useDispatch();
+
   const [value, setValue] = useState("door");
+
   const onChange = (e) => {
     setValue(e.target.value);
     if (e.target.value === "delivery_box" || e.target.value === "etc") {
@@ -31,6 +33,14 @@ const Location = () => {
       })
     );
   };
+
+  useEffect(() => {
+    dispatch(
+      addrActions.setAddr({
+        delivaryNormal: "문 앞",
+      })
+    );
+  }, [dispatch]);
 
   return (
     <div className={styles["location"]}>

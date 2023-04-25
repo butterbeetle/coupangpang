@@ -1,6 +1,6 @@
 import styles from "./BodyInput.module.css";
 import useInput from "../../../../../hooks/useInput";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { addrActions } from "../../../../../store/address-slice";
 
@@ -35,6 +35,13 @@ const BodyInput = ({ ph, error, setError }) => {
     setValue(e.target.value);
   };
 
+  useEffect(() => {
+    dispatch(
+      addrActions.setAddr({
+        delivaryDawnReq: "",
+      })
+    );
+  }, [dispatch]);
   return (
     <div className={styles["common__opt"]}>
       <input
