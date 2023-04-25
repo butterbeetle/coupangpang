@@ -7,6 +7,7 @@ import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
+
 import LoginForm from "./Components/Auth/LoginForm";
 import JoinForm from "./Components/Auth/JoinForm";
 import CartView from "./Components/Cart/CartView";
@@ -24,12 +25,23 @@ import {
 import { getCartData, sendCartData } from "./store/cart-action";
 
 /* Hook */
-import { useEffect, useLayoutEffect } from "react";
+import { lazy, useEffect, useLayoutEffect } from "react";
 
 /* IndexedDB */
 import { getIndexedDbData } from "./Util/IndexedDB";
 import { useUnload } from "./hooks/useUnload";
 import { getUserData } from "./store/login-action";
+
+// const lazyLoadRoutes = (componentName) => {
+//   const LazyElement = lazy(() => import(`./pages/Root`));
+
+//   // Wrapping around the suspense component is mandatory
+//   return (
+//     <Suspense fallback="Loading...">
+//       <LazyElement />
+//     </Suspense>
+//   );
+// };
 
 const router = createBrowserRouter([
   {
@@ -37,8 +49,16 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/products/:productId", element: <ProductDetail /> },
+      {
+        path: "/",
+        element: <Home />,
+        router: lazy(() => import("./pages/HomePage")),
+      },
+      {
+        path: "/products/:productId",
+        element: <ProductDetail />,
+        router: lazy(() => import("./pages/ProductDetail")),
+      },
     ],
   },
   { path: "/login", element: <LoginForm /> },

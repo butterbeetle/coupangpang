@@ -1,9 +1,9 @@
-import { Fragment, useState } from "react";
+import { Fragment, lazy, useState } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
 import icon_new from "../../img/header_img/ico_new.png";
-import Catrgory from "./Category";
+import Category from "./Category";
 import CategoryItems from "./CategoryItems";
 import { Link } from "react-router-dom";
 
@@ -95,7 +95,7 @@ const Header = () => {
       <Navigation />
       <header className={styles["header"]}>
         <section className={styles["contents"]}>
-          <Catrgory />
+          <Category />
           <div className={styles.searchBox}>
             <div className={styles.searchBox__mainBox}>
               <Link to="/" title="Coupang - 내가 잘사는 이유">
