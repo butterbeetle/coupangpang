@@ -92,7 +92,7 @@ const AddAddrData = () => {
   const onsubmit = () => {
     dispatch(
       addrActions.addAddr({
-        id: addrData.data.length,
+        id: Math.floor((Date.now() * Math.random()) / 32),
         name: addrData.name,
         phone: addrData.phone,
         roadAddress: addrData.roadAddress,
