@@ -27,7 +27,7 @@ const ShowAddrData = () => {
             <AddrData key={data.id} item={data} />
           ))}
         </main>
-        <Link to="/addressbook/add">
+        <Link to="/addressbook/add" className={styles["add"]}>
           배송지 추가
           <AiOutlinePlus />
         </Link>

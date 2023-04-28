@@ -12,6 +12,7 @@ import DaumPostcodeEmbed from "react-daum-postcode";
 /* Hook */
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 /* Yup */
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -19,13 +20,13 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
 import { sendAddrData } from "../../../../store/address-action";
-import { useNavigate } from "react-router-dom";
 
 const AddAddrData = () => {
+  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const addrData = useSelector((state) => state.addr);
-
+  console.log(location);
   const formSchema = yup.object().shape(
     {
       name: yup.string().required("받는 사람 이름을 입력해주세요."),

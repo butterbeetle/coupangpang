@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styles from "./AddrData.module.css";
 
 const AddrData = ({ item }) => {
@@ -25,8 +26,8 @@ const AddrData = ({ item }) => {
         }`}</p>
       </div>
       <div className={styles["main__foot"]}>
-        <div className={styles["update"]}>수정</div>
-        <div className={styles["select"]}>선택</div>
+        <Link className={styles["update"]}>수정</Link>
+        <Link className={styles["select"]}>선택</Link>
       </div>
     </div>
   );
