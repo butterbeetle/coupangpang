@@ -17,6 +17,16 @@
 .main__body {
   margin-bottom: 1rem;
 }
+.default {
+  margin: 0;
+  margin-bottom: 0.2rem;
+  font-size: 0.7rem;
+  color: #555;
+  border: 0.1rem solid #555;
+  padding: 0.15rem 0.3rem;
+  width: fit-content;
+  border-radius: 0.8rem;
+}
 .addr,
 .phone,
 .req {
