@@ -41,6 +41,7 @@ const AddAddrData = () => {
           delivaryDawnReq: state.delivaryDawnReq,
           delivaryNormal: state.delivaryNormal,
           delivaryNormalReq: state.delivaryNormalReq,
+          default_setting: state.default_setting,
         })
       );
     }

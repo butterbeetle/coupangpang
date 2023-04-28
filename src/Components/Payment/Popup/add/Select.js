@@ -13,7 +13,7 @@ const Select = () => {
   const dispatch = useDispatch();
   const [click, setClick] = useState(false);
 
-  const default_setting = useSelector((state) => state.addr.default_setting);
+  const { default_setting } = useSelector((state) => state.addr);
 
   useEffect(() => {
     if (default_setting) {
@@ -29,7 +29,7 @@ const Select = () => {
       })
     );
   };
-
+  console.log(default_setting);
   return (
     <div className={styles["main"]} onClick={onClick}>
       <motion.div
