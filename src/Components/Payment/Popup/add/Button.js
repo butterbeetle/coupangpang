@@ -9,12 +9,14 @@ const Button = () => {
       <button className={styles["button"]} type="submit">
         저장
       </button>
-      <button
-        className={`${styles["button"]} ${styles["delete"]}`}
-        type="button"
-      >
-        삭제
-      </button>
+      {state !== null && (
+        <button
+          className={`${styles["button"]} ${styles["delete"]}`}
+          type="button"
+        >
+          삭제
+        </button>
+      )}
     </div>
   );
 };
