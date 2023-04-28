@@ -18,6 +18,7 @@ const addrSlice = createSlice({
   },
   reducers: {
     replaceAddr(state, action) {
+      state.changed = false;
       state.data = action.payload.data;
     },
     setAddr(state, action) {

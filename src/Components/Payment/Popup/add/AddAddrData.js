@@ -104,15 +104,15 @@ const AddAddrData = () => {
         delivaryNormalReq: addrData.delivaryNormal.Req,
       })
     );
-    navigate("/addressbook/show");
   };
 
   /* AddrData firebase에 저장 */
   useEffect(() => {
     if (addrData.changed) {
       dispatch(sendAddrData(addrData.data));
+      navigate("/addressbook/show");
     }
-  }, [addrData, dispatch]);
+  }, [addrData, dispatch, navigate]);
 
   return (
     <div>
