@@ -26,7 +26,13 @@ const AddrData = ({ item }) => {
         }`}</p>
       </div>
       <div className={styles["main__foot"]}>
-        <Link className={styles["update"]}>수정</Link>
+        <Link
+          className={styles["update"]}
+          to={`/addressbook/add/${item.id}`}
+          state={item}
+        >
+          수정
+        </Link>
         <Link className={styles["select"]}>선택</Link>
       </div>
     </div>

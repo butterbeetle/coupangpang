@@ -22,11 +22,30 @@ import { addrActions } from "../../../../store/address-slice";
 import { sendAddrData } from "../../../../store/address-action";
 
 const AddAddrData = () => {
-  const location = useLocation();
   const dispatch = useDispatch();
   const navigate = useNavigate();
+
+  const { state } = useLocation();
   const addrData = useSelector((state) => state.addr);
-  console.log(location);
+
+  useEffect(() => {
+    if (state !== null) {
+      dispatch(
+        addrActions.setAddr({
+          name: state.name,
+          phone: state.phone,
+          roadAddress: state.roadAddress,
+          detailAddress: state.detailAddress,
+          zonecode: state.zonecode,
+          delivaryDawn: state.delivaryDawn,
+          delivaryDawnReq: state.delivaryDawnReq,
+          delivaryNormal: state.delivaryNormal,
+          delivaryNormalReq: state.delivaryNormalReq,
+        })
+      );
+    }
+  }, [dispatch, state]);
+
   const formSchema = yup.object().shape(
     {
       name: yup.string().required("받는 사람 이름을 입력해주세요."),
