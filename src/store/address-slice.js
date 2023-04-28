@@ -63,7 +63,7 @@ const addrSlice = createSlice({
         delivaryDawn: newData.delivaryDawn ? newData.delivaryDawn : "",
         delivaryDawnReq: newData.delivaryDawnReq ? newData.delivaryDawnReq : "",
         delivaryNormal: newData.delivaryNormal ? newData.delivaryNormal : "",
-        delivaryNormalReq: newData.delivaryNormal.Req
+        delivaryNormalReq: newData.delivaryNormalReq
           ? newData.delivaryNormalReq
           : "",
       });

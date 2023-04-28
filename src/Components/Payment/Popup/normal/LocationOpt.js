@@ -35,7 +35,7 @@ const LocationOpt = ({ type }) => {
   const onBlur = (e) => {
     dispatch(
       addrActions.setAddr({
-        delivaryNormalReq: e.target.value,
+        delivaryNormalReq: value,
       })
     );
     blurHandler();

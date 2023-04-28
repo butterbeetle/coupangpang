@@ -101,7 +101,7 @@ const AddAddrData = () => {
         delivaryDawn: addrData.delivaryDawn,
         delivaryDawnReq: addrData.delivaryDawnReq,
         delivaryNormal: addrData.delivaryNormal,
-        delivaryNormalReq: addrData.delivaryNormal.Req,
+        delivaryNormalReq: addrData.delivaryNormalReq,
       })
     );
   };
