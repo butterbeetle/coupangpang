@@ -18,7 +18,6 @@ const ShowAddrData = () => {
     dispatch(getAddrData());
   }, [dispatch]);
 
-  console.log(addrData);
   return (
     <div>
       <header className={styles["header"]}>배송지 선택</header>

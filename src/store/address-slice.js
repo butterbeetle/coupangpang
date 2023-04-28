@@ -17,6 +17,19 @@ const addrSlice = createSlice({
     changed: false,
   },
   reducers: {
+    reset(state) {
+      state.name = "";
+      state.roadAddress = "";
+      state.zonecode = "";
+      state.detailAddress = "";
+      state.phone = "";
+      state.delivaryNormal = "";
+      state.delivaryNormalReq = "";
+      state.delivaryDawn = "";
+      state.delivaryDawnReq = "";
+      state.default_setting = false;
+      state.changed = false;
+    },
     replaceAddr(state, action) {
       state.changed = false;
       state.data = action.payload.data;

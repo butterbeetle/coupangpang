@@ -110,6 +110,7 @@ const AddAddrData = () => {
   useEffect(() => {
     if (addrData.changed) {
       dispatch(sendAddrData(addrData.data));
+      dispatch(addrActions.reset());
       navigate("/addressbook/show");
     }
   }, [addrData, dispatch, navigate]);
