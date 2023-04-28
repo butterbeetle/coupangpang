@@ -65,6 +65,13 @@ const addrSlice = createSlice({
     addAddr(state, action) {
       const newData = action.payload;
       state.changed = true;
+
+      if (state.default_setting) {
+        state.data.forEach((item) => {
+          if (item.default_setting) item.default_setting = false;
+        });
+      }
+
       state.data.push({
         id: newData.id,
         name: newData.name,
