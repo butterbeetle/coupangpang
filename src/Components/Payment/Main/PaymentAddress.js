@@ -36,7 +36,7 @@ const PaymentAddress = () => {
       );
     }
   };
-
+  console.log(addrData);
   let addressData =
     addrLen > 0 ? (
       <div className={styles["customer"]}>
