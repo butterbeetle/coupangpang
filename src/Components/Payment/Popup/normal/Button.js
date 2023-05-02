@@ -13,10 +13,10 @@ const Button = () => {
   const { delivaryNormal, delivaryNormalReq } = useSelector(
     (state) => state.addr
   );
-  const onClick = (e) => {
+  const onClick = () => {
     if (delivaryNormal === "택배함" || delivaryNormal === "기타사항") {
       if (delivaryNormalReq.length > 0 && delivaryNormalReq !== "error") {
-        navigator(`/addressbook/add`, { state });
+        navigator(-1, { state });
       } else {
         dispatch(
           addrActions.setAddr({
@@ -25,7 +25,7 @@ const Button = () => {
         );
       }
     } else {
-      navigator(`/addressbook/add`, { state });
+      navigator(-1, { state });
     }
   };
 

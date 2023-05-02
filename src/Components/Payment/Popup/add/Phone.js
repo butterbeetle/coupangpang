@@ -8,8 +8,6 @@ import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import useInput from "../../../../hooks/useInput";
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
-import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
 
 const Phone = ({
   register,
@@ -20,7 +18,6 @@ const Phone = ({
   openTelHandler,
 }) => {
   const dispatch = useDispatch();
-  const { state } = useLocation();
   const phone = useSelector((state) => state.addr.phone);
 
   const {
@@ -40,12 +37,6 @@ const Phone = ({
       })
     );
   };
-
-  useEffect(() => {
-    if (state?.phone) {
-      setValue("phone", state.phone);
-    }
-  }, [setValue, state]);
 
   return (
     <div

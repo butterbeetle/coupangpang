@@ -11,7 +11,7 @@ const Button = () => {
   const { delivaryDawnReq } = useSelector((state) => state.addr);
   const onClick = () => {
     if (delivaryDawnReq.length > 0 && delivaryDawnReq !== "error") {
-      navigator("/addressbook/add", { state });
+      navigator(-1, { state });
     } else {
       dispatch(
         addrActions.setAddr({

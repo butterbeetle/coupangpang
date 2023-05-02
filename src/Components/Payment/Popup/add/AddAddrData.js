@@ -21,6 +21,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
 import { sendAddrData } from "../../../../store/address-action";
 
+let updateInit = true;
 const AddAddrData = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -122,7 +123,8 @@ const AddAddrData = () => {
 
   /* 수정버튼 누르고 들어왔을 때 */
   useEffect(() => {
-    if (state !== null) {
+    if (state !== null && updateInit) {
+      updateInit = false;
       dispatch(
         addrActions.setAddr({
           name: state.name,
@@ -137,10 +139,12 @@ const AddAddrData = () => {
           default_setting: state.default_setting,
         })
       );
+      setValue("name", state.name);
+      setValue("phone", state.phone);
     }
-  }, [dispatch, state, clearErrors]);
+  }, [dispatch, state, clearErrors, setValue]);
 
-  console.log(state, errors);
+  console.log(state);
   return (
     <div>
       <header className={styles["header"]}>배송지 추가</header>
