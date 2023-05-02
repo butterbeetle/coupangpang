@@ -72,8 +72,16 @@ const router = createBrowserRouter([
   {
     path: "/addressbook",
     children: [
-      { path: "add", element: <AddAddrData /> },
-      { path: "add/:addrId", element: <AddAddrData /> },
+      {
+        path: "add",
+        element: <AddAddrData />,
+        children: [
+          {
+            path: ":addrId",
+            element: <AddAddrData />,
+          },
+        ],
+      },
       { path: "show", element: <ShowAddrData /> },
       { path: "normal", element: <SelectNormalReq /> },
       { path: "dawn", element: <SelectDawnReq /> },

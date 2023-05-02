@@ -8,7 +8,7 @@ const Button = () => {
   const dispatch = useDispatch();
   const navigator = useNavigate();
   const { delivaryDawnReq } = useSelector((state) => state.addr);
-  const onClick = (e) => {
+  const onClick = () => {
     if (delivaryDawnReq.length > 0 && delivaryDawnReq !== "error") {
       navigator("/addressbook/add");
     } else {
@@ -21,11 +21,7 @@ const Button = () => {
   };
 
   return (
-    <button
-      className={styles["button"]}
-      type="button"
-      onClick={() => onClick("add")}
-    >
+    <button className={styles["button"]} type="button" onClick={onClick}>
       동의하고 저장하기
     </button>
   );

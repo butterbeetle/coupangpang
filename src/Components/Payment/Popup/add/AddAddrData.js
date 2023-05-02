@@ -28,25 +28,6 @@ const AddAddrData = () => {
   const { state } = useLocation();
   const addrData = useSelector((state) => state.addr);
 
-  useEffect(() => {
-    if (state !== null) {
-      dispatch(
-        addrActions.setAddr({
-          name: state.name,
-          phone: state.phone,
-          roadAddress: state.roadAddress,
-          detailAddress: state.detailAddress,
-          zonecode: state.zonecode,
-          delivaryDawn: state.delivaryDawn,
-          delivaryDawnReq: state.delivaryDawnReq,
-          delivaryNormal: state.delivaryNormal,
-          delivaryNormalReq: state.delivaryNormalReq,
-          default_setting: state.default_setting,
-        })
-      );
-    }
-  }, [dispatch, state]);
-
   const formSchema = yup.object().shape(
     {
       name: yup.string().required("받는 사람 이름을 입력해주세요."),
@@ -113,7 +94,10 @@ const AddAddrData = () => {
   const onsubmit = () => {
     dispatch(
       addrActions.addAddr({
-        id: Math.floor((Date.now() * Math.random()) / 32),
+        id:
+          state !== null
+            ? state.id
+            : Math.floor((Date.now() * Math.random()) / 32),
         name: addrData.name,
         phone: addrData.phone,
         roadAddress: addrData.roadAddress,
@@ -136,6 +120,27 @@ const AddAddrData = () => {
     }
   }, [addrData, dispatch, navigate]);
 
+  /* 수정버튼 누르고 들어왔을 때 */
+  useEffect(() => {
+    if (state !== null) {
+      dispatch(
+        addrActions.setAddr({
+          name: state.name,
+          phone: state.phone,
+          roadAddress: state.roadAddress,
+          detailAddress: state.detailAddress,
+          zonecode: state.zonecode,
+          delivaryDawn: state.delivaryDawn,
+          delivaryDawnReq: state.delivaryDawnReq,
+          delivaryNormal: state.delivaryNormal,
+          delivaryNormalReq: state.delivaryNormalReq,
+          default_setting: state.default_setting,
+        })
+      );
+    }
+  }, [dispatch, state]);
+  // @TODO일반배송/새벽배송 들어갔다오면 기본배송지 체크풀리는거
+  // console.log(state);
   return (
     <div>
       <header className={styles["header"]}>배송지 추가</header>
