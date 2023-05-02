@@ -28,7 +28,7 @@ const Button = () => {
       navigator(`/addressbook/add`, { state });
     }
   };
-  console.log("nor", state);
+
   return (
     <button className={styles["button"]} type="button" onClick={onClick}>
       동의하고 저장하기
