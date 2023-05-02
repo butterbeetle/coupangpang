@@ -75,12 +75,12 @@ const AddAddrData = () => {
     clearErrors("tel");
     setOpenTel(false);
   };
+
   /* 주소 찾기 열기 */
   const [openSearchPost, setOpenSearchPost] = useState(false);
   const openSearchPostHandler = () => {
     setOpenSearchPost(true);
   };
-
   /* 주소 설정 후 */
   const onComplete = (data) => {
     setOpenSearchPost(false);
@@ -91,6 +91,7 @@ const AddAddrData = () => {
       })
     );
   };
+
   /* Submit */
   const onsubmit = () => {
     dispatch(
@@ -124,6 +125,7 @@ const AddAddrData = () => {
   /* 수정버튼 누르고 들어왔을 때 */
   useEffect(() => {
     if (state !== null && updateInit) {
+      console.log("Update Init");
       updateInit = false;
       dispatch(
         addrActions.setAddr({
@@ -144,7 +146,7 @@ const AddAddrData = () => {
     }
   }, [dispatch, state, clearErrors, setValue]);
 
-  console.log(state);
+  console.log(addrData);
   return (
     <div>
       <header className={styles["header"]}>배송지 추가</header>

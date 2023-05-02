@@ -4,22 +4,19 @@ import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
 /* Animating */
 import { motion } from "framer-motion";
 /* Hook */
-import { useState } from "react";
-import { useLocation } from "react-router-dom";
+
 /* Redux */
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
 
 const Select = () => {
   const dispatch = useDispatch();
-  const { state } = useLocation();
-  const [click, setClick] = useState(state ?? false);
+  const setting = useSelector((state) => state.addr.default_setting);
 
   const onClick = () => {
-    setClick((prev) => !prev);
     dispatch(
       addrActions.setAddr({
-        default_setting: !click,
+        default_setting: !setting,
       })
     );
   };
@@ -32,8 +29,8 @@ const Select = () => {
           y: -13,
         }}
         animate={{
-          opacity: click ? 1 : 0,
-          y: click ? -13 : 0,
+          opacity: setting ? 1 : 0,
+          y: setting ? -13 : 0,
         }}
         transition={{
           duration: 0.2,

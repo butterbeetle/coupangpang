@@ -59,8 +59,9 @@ const addrSlice = createSlice({
       if (delivaryDawn) state.delivaryDawn = delivaryDawn;
       if (delivaryDawnReq || delivaryDawnReq === "")
         state.delivaryDawnReq = delivaryDawnReq;
-      if (state.default_setting !== default_setting)
+      if (!state.default_setting === default_setting) {
         state.default_setting = default_setting;
+      }
     },
     addAddr(state, action) {
       const newData = action.payload;
