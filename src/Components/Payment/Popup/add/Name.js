@@ -29,10 +29,10 @@ const Name = ({ register, value, errors, setValue }) => {
   };
 
   useEffect(() => {
-    if (state.name) {
+    if (state?.name) {
       setValue("name", state.name);
     }
-  }, [setValue, state.name]);
+  }, [setValue, state]);
 
   return (
     <div

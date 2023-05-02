@@ -42,10 +42,10 @@ const Phone = ({
   };
 
   useEffect(() => {
-    if (state.phone) {
+    if (state?.phone) {
       setValue("phone", state.phone);
     }
-  }, [setValue, state.phone]);
+  }, [setValue, state]);
 
   return (
     <div
