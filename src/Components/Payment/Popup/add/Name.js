@@ -5,9 +5,12 @@ import useInput from "../../../../hooks/useInput";
 import { FaRegUser } from "@react-icons/all-files/fa/FaRegUser";
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
+import { useLocation } from "react-router-dom";
+import { useEffect } from "react";
 
-const Name = ({ register, value, errors }) => {
+const Name = ({ register, value, errors, setValue }) => {
   const dispatch = useDispatch();
+  const { state } = useLocation();
   const name = useSelector((state) => state.addr.name);
 
   const {
@@ -24,6 +27,12 @@ const Name = ({ register, value, errors }) => {
       })
     );
   };
+
+  useEffect(() => {
+    if (state.name) {
+      setValue("name", state.name);
+    }
+  }, [setValue, state.name]);
 
   return (
     <div

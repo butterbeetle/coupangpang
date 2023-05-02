@@ -138,9 +138,9 @@ const AddAddrData = () => {
         })
       );
     }
-  }, [dispatch, state]);
+  }, [dispatch, state, clearErrors]);
 
-  // console.log(state);
+  console.log(state, errors);
   return (
     <div>
       <header className={styles["header"]}>배송지 추가</header>
@@ -153,6 +153,7 @@ const AddAddrData = () => {
               <Name
                 register={register("name")}
                 value={watch("name")}
+                setValue={setValue}
                 errors={errors.name}
               />
               <Post
