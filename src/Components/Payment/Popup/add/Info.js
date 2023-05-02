@@ -8,11 +8,15 @@ import { useNavigate } from "react-router-dom";
 
 const Info = () => {
   const navigator = useNavigate();
-  const { delivaryNormal, delivaryNormalReq, delivaryDawn, delivaryDawnReq } =
-    useSelector((state) => state.addr);
-
+  const {
+    delivaryNormal,
+    delivaryNormalReq,
+    delivaryDawn,
+    delivaryDawnReq,
+    default_setting,
+  } = useSelector((state) => state.addr);
   const onClick = (e) => {
-    navigator(`/addressbook/${e}`);
+    navigator(`/addressbook/${e}`, { state: default_setting });
   };
 
   let norInfo = delivaryNormal ? (

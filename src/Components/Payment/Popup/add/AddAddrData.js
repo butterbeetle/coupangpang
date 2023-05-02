@@ -139,7 +139,7 @@ const AddAddrData = () => {
       );
     }
   }, [dispatch, state]);
-  // @TODO일반배송/새벽배송 들어갔다오면 기본배송지 체크풀리는거
+
   // console.log(state);
   return (
     <div>

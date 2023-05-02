@@ -2,15 +2,16 @@ import styles from "./Button.module.css";
 
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
-import { useNavigate } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Button = () => {
+  const { state } = useLocation();
   const dispatch = useDispatch();
   const navigator = useNavigate();
   const { delivaryDawnReq } = useSelector((state) => state.addr);
   const onClick = () => {
     if (delivaryDawnReq.length > 0 && delivaryDawnReq !== "error") {
-      navigator("/addressbook/add");
+      navigator("/addressbook/add", { state });
     } else {
       dispatch(
         addrActions.setAddr({
