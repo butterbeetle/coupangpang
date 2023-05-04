@@ -121,8 +121,7 @@ const AddAddrData = () => {
 
   /* 수정버튼 누르고 들어왔을 때 */
   useEffect(() => {
-    if (state !== null && updateInit) {
-      updateInit = false;
+    if (state !== null) {
       dispatch(
         addrActions.setAddr({
           name: state.name,
