@@ -96,10 +96,7 @@ const AddAddrData = () => {
   const onsubmit = () => {
     dispatch(
       addrActions.addAddr({
-        id:
-          state !== null
-            ? state.id
-            : Math.floor((Date.now() * Math.random()) / 32),
+        id: state?.id ?? Math.floor((Date.now() * Math.random()) / 32),
         name: addrData.name,
         phone: addrData.phone,
         roadAddress: addrData.roadAddress,
@@ -125,7 +122,6 @@ const AddAddrData = () => {
   /* 수정버튼 누르고 들어왔을 때 */
   useEffect(() => {
     if (state !== null && updateInit) {
-      console.log("Update Init");
       updateInit = false;
       dispatch(
         addrActions.setAddr({

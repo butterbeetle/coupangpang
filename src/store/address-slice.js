@@ -65,6 +65,7 @@ const addrSlice = createSlice({
     },
     addAddr(state, action) {
       const newData = action.payload;
+      const existingData = state.data.find((data) => data.id === newData.id);
       state.changed = true;
 
       if (state.default_setting) {
@@ -73,21 +74,44 @@ const addrSlice = createSlice({
         });
       }
 
-      state.data.push({
-        id: newData.id,
-        name: newData.name,
-        detailAddress: newData.detailAddress,
-        phone: newData.phone,
-        roadAddress: newData.roadAddress,
-        zonecode: newData.zonecode,
-        default_setting: state.default_setting ? true : false,
-        delivaryDawn: newData.delivaryDawn ? newData.delivaryDawn : "",
-        delivaryDawnReq: newData.delivaryDawnReq ? newData.delivaryDawnReq : "",
-        delivaryNormal: newData.delivaryNormal ? newData.delivaryNormal : "",
-        delivaryNormalReq: newData.delivaryNormalReq
+      if (!existingData) {
+        state.data.push({
+          id: newData.id,
+          name: newData.name,
+          detailAddress: newData.detailAddress,
+          phone: newData.phone,
+          roadAddress: newData.roadAddress,
+          zonecode: newData.zonecode,
+          default_setting: state.default_setting ? true : false,
+          delivaryDawn: newData.delivaryDawn ? newData.delivaryDawn : "",
+          delivaryDawnReq: newData.delivaryDawnReq
+            ? newData.delivaryDawnReq
+            : "",
+          delivaryNormal: newData.delivaryNormal ? newData.delivaryNormal : "",
+          delivaryNormalReq: newData.delivaryNormalReq
+            ? newData.delivaryNormalReq
+            : "",
+        });
+      } else {
+        existingData.name = newData.name;
+        existingData.detailAddress = newData.detailAddress;
+        existingData.phone = newData.phone;
+        existingData.roadAddress = newData.roadAddress;
+        existingData.zonecode = newData.zonecode;
+        existingData.default_setting = state.default_setting ? true : false;
+        existingData.delivaryDawn = newData.delivaryDawn
+          ? newData.delivaryDawn
+          : "";
+        existingData.delivaryDawnReq = newData.delivaryDawnReq
+          ? newData.delivaryDawnReq
+          : "";
+        existingData.delivaryNormal = newData.delivaryNormal
+          ? newData.delivaryNormal
+          : "";
+        existingData.delivaryNormalReq = newData.delivaryNormalReq
           ? newData.delivaryNormalReq
-          : "",
-      });
+          : "";
+      }
     },
   },
 });
