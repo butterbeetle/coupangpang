@@ -4,13 +4,13 @@ import { useLocation } from "react-router-dom";
 
 const Button = () => {
   const { state } = useLocation();
-
+  console.log(state?.id);
   return (
     <div>
       <button className={styles["button"]} type="submit">
         저장
       </button>
-      {state && (
+      {state?.id && (
         <button
           className={`${styles["button"]} ${styles["delete"]}`}
           type="button"
