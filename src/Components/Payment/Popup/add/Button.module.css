@@ -8,6 +8,7 @@
   padding: 0.85rem 0;
   box-shadow: 0 0.1rem 0 #004790;
   background-color: #0073ed;
+  margin-bottom: 1rem;
 }
 .button:active {
   box-shadow: inset 0 0.1rem 0 #004790;
@@ -15,7 +16,6 @@
 .delete {
   color: #e52528;
   background-color: #fff;
-  margin-top: 1rem;
   border: 0.1rem solid #ccc;
   box-shadow: inset 0 -0.05rem 0 #ccc;
 }
