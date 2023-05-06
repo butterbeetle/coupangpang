@@ -1,10 +1,25 @@
+import { useDispatch, useSelector } from "react-redux";
 import styles from "./Button.module.css";
 /* Hook */
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
+import { addrActions } from "../../../../store/address-slice";
 
-const Button = () => {
+const Button = ({ setValue, handleSubmit }) => {
   const { state } = useLocation();
-  console.log(state?.id);
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const addrData = useSelector((state) => state.addr);
+
+  const removeAddr = () => {
+    console.log("삭제");
+    dispatch(addrActions.removeAddr(state?.id));
+    // dispatch(addrActions.reset());
+    setValue("name", "");
+    setValue("phone", "");
+
+    navigate("/addressbook/show");
+  };
+
   return (
     <div>
       <button className={styles["button"]} type="submit">
@@ -13,7 +28,8 @@ const Button = () => {
       {state?.id && (
         <button
           className={`${styles["button"]} ${styles["delete"]}`}
-          type="button"
+          onClick={handleSubmit(removeAddr)}
+          type="submit"
         >
           삭제
         </button>

@@ -3,27 +3,35 @@ import styles from "./showAddrData.module.css";
 import { useEffect } from "react";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { getAddrData } from "../../../../store/address-action";
+import { getAddrData, sendAddrData } from "../../../../store/address-action";
 /* Components */
 import AddrData from "./AddrData";
 /* Icon */
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { Link } from "react-router-dom";
 
+let init = true;
 const ShowAddrData = () => {
   const dispatch = useDispatch();
-  const addrData = useSelector((state) => state.addr.data);
+  const addrData = useSelector((state) => state.addr);
 
   useEffect(() => {
-    dispatch(getAddrData());
-  }, [dispatch]);
+    if (init) {
+      init = false;
+      dispatch(getAddrData());
+    }
+
+    if (addrData.changed) {
+      dispatch(sendAddrData(addrData.data));
+    }
+  }, [addrData, dispatch]);
 
   return (
     <div>
       <header className={styles["header"]}>배송지 선택</header>
       <div className={styles["container"]}>
         <main className={styles["main"]}>
-          {addrData.map((data) => (
+          {addrData.data.map((data) => (
             <AddrData key={data.id} item={data} />
           ))}
         </main>

@@ -19,9 +19,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
-import { sendAddrData } from "../../../../store/address-action";
+// import { sendAddrData } from "../../../../store/address-action";
 
-let updateInit = true;
 const AddAddrData = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -108,16 +107,18 @@ const AddAddrData = () => {
         delivaryNormalReq: addrData.delivaryNormalReq,
       })
     );
+
+    navigate("/addressbook/show");
   };
 
   /* AddrData firebase에 저장 */
-  useEffect(() => {
-    if (addrData.changed) {
-      dispatch(sendAddrData(addrData.data));
-      dispatch(addrActions.reset());
-      navigate("/addressbook/show");
-    }
-  }, [addrData, dispatch, navigate]);
+  // useEffect(() => {
+  //   if (addrData.changed) {
+  //     console.log("add 저장?");
+  //     dispatch(sendAddrData(addrData.data));
+  //     dispatch(addrActions.reset());
+  //   }
+  // }, [addrData, dispatch, navigate]);
 
   /* 수정버튼 누르고 들어왔을 때 */
   useEffect(() => {
@@ -138,10 +139,10 @@ const AddAddrData = () => {
       );
       setValue("name", state.name);
       setValue("phone", state.phone);
+      setValue("post", state.detailAddress);
     }
-  }, [dispatch, state, clearErrors, setValue]);
+  }, [dispatch, state, setValue]);
 
-  console.log(addrData);
   return (
     <div>
       <header className={styles["header"]}>배송지 추가</header>
@@ -181,7 +182,7 @@ const AddAddrData = () => {
               )}
               <Info />
               <Select />
-              <Button />
+              <Button setValue={setValue} handleSubmit={handleSubmit} />
             </div>
           )}
         </form>

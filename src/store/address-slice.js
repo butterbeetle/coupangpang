@@ -28,7 +28,7 @@ const addrSlice = createSlice({
       state.delivaryDawn = "";
       state.delivaryDawnReq = "";
       state.default_setting = false;
-      state.changed = false;
+      // state.changed = false;
     },
     replaceAddr(state, action) {
       state.changed = false;
@@ -46,6 +46,7 @@ const addrSlice = createSlice({
         delivaryDawn,
         delivaryDawnReq,
         default_setting,
+        changed,
       } = action.payload;
 
       if (name) state.name = name;
@@ -62,7 +63,9 @@ const addrSlice = createSlice({
       if (!state.default_setting === default_setting) {
         state.default_setting = default_setting;
       }
+      if (!state.changed === changed) state.changed = changed;
     },
+
     addAddr(state, action) {
       const newData = action.payload;
       const existingData = state.data.find((data) => data.id === newData.id);
@@ -111,6 +114,16 @@ const addrSlice = createSlice({
         existingData.delivaryNormalReq = newData.delivaryNormalReq
           ? newData.delivaryNormalReq
           : "";
+      }
+    },
+    removeAddr(state, action) {
+      const id = action.payload;
+      state.changed = true;
+
+      state.data = state.data.filter((data) => data.id !== id);
+
+      if (state.data.length === 0) {
+        state.data = [];
       }
     },
   },
