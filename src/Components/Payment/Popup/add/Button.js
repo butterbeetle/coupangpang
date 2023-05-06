@@ -1,15 +1,16 @@
 import styles from "./Button.module.css";
 /* Hook */
-import { useParams } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 const Button = () => {
-  const params = useParams();
+  const { state } = useLocation();
+
   return (
     <div>
       <button className={styles["button"]} type="submit">
         저장
       </button>
-      {params && (
+      {state && (
         <button
           className={`${styles["button"]} ${styles["delete"]}`}
           type="button"
