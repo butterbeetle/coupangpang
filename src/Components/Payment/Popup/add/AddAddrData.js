@@ -11,7 +11,7 @@ import Select from "./Select";
 import DaumPostcodeEmbed from "react-daum-postcode";
 /* Hook */
 import { useForm } from "react-hook-form";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 /* Yup */
 import * as yup from "yup";
@@ -19,6 +19,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
+import LoadingSpinner from "../../../../Util/Loading";
 // import { sendAddrData } from "../../../../store/address-action";
 
 const AddAddrData = () => {
@@ -27,6 +28,8 @@ const AddAddrData = () => {
 
   const { state } = useLocation();
   const addrData = useSelector((state) => state.addr);
+
+  const [loading, setLoading] = useState(false);
 
   const formSchema = yup.object().shape(
     {
@@ -107,9 +110,19 @@ const AddAddrData = () => {
         delivaryNormalReq: addrData.delivaryNormalReq,
       })
     );
-
-    navigate("/addressbook/show");
+    setLoading((prev) => !prev);
   };
+  const moveTo2Sec = useCallback(() => {
+    setLoading((prev) => !prev);
+    navigate("/addressbook/show");
+  }, [navigate]);
+
+  useEffect(() => {
+    if (loading) {
+      const timeout = setTimeout(moveTo2Sec, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [loading, moveTo2Sec]);
 
   /* AddrData firebase에 저장 */
   // useEffect(() => {
@@ -145,6 +158,11 @@ const AddAddrData = () => {
 
   return (
     <div>
+      {loading && (
+        <div className={styles["loading"]}>
+          <LoadingSpinner />
+        </div>
+      )}
       <header className={styles["header"]}>배송지 추가</header>
       <main className={styles["main"]}>
         <form onSubmit={handleSubmit(onsubmit)}>
