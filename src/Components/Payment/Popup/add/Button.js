@@ -3,6 +3,7 @@ import styles from "./Button.module.css";
 /* Hook */
 import { useLocation, useNavigate } from "react-router-dom";
 import { addrActions } from "../../../../store/address-slice";
+import LoadingSpinner from "../../../../Util/Loading";
 
 const Button = ({ setValue, handleSubmit }) => {
   const { state } = useLocation();
@@ -12,14 +13,23 @@ const Button = ({ setValue, handleSubmit }) => {
 
   const removeAddr = () => {
     dispatch(addrActions.removeAddr(state?.id));
-    dispatch(addrActions.reset());
-    setValue("name", "");
-    setValue("phone", "");
-    navigate("/addressbook/show");
+
+    setTimeout(() => {
+      dispatch(addrActions.reset());
+      setValue("name", "");
+      setValue("phone", "");
+
+      if (addrData.data.length === 1) {
+        navigate("/addressbook/add");
+      } else {
+        navigate("/addressbook/show");
+      }
+    }, 2000);
   };
 
   return (
     <div>
+      <LoadingSpinner />
       <button className={styles["button"]} type="submit">
         저장
       </button>

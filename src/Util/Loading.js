@@ -1,13 +1,13 @@
 import styles from "./Loading.module.css";
 
-import { ImSpinner3 } from "@react-icons/all-files/im/ImSpinner3";
+import { CgSpinner } from "@react-icons/all-files/cg/CgSpinner.esm";
 
-const Loading = () => {
+const LoadingSpinner = () => {
   return (
     <div className={styles["loading"]}>
-      <ImSpinner3 />
+      <CgSpinner />
     </div>
   );
 };
 
-export default Loading;
+export default LoadingSpinner;
