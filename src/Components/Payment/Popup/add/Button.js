@@ -11,12 +11,10 @@ const Button = ({ setValue, handleSubmit }) => {
   const addrData = useSelector((state) => state.addr);
 
   const removeAddr = () => {
-    console.log("삭제");
     dispatch(addrActions.removeAddr(state?.id));
-    // dispatch(addrActions.reset());
+    dispatch(addrActions.reset());
     setValue("name", "");
     setValue("phone", "");
-
     navigate("/addressbook/show");
   };
 

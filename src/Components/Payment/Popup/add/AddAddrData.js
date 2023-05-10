@@ -91,7 +91,7 @@ const AddAddrData = () => {
     );
   };
 
-  /* Submit */
+  /* 저장 */
   const onsubmit = () => {
     dispatch(
       addrActions.addAddr({
