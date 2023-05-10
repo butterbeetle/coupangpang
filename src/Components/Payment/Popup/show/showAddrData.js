@@ -9,6 +9,7 @@ import AddrData from "./AddrData";
 /* Icon */
 import { AiOutlinePlus } from "@react-icons/all-files/ai/AiOutlinePlus";
 import { Link } from "react-router-dom";
+import { addrActions } from "../../../../store/address-slice";
 
 let init = true;
 const ShowAddrData = () => {
@@ -24,6 +25,8 @@ const ShowAddrData = () => {
     if (addrData.changed) {
       dispatch(sendAddrData(addrData.data));
     }
+
+    dispatch(addrActions.reset());
   }, [addrData, dispatch]);
 
   return (
