@@ -3,11 +3,17 @@ import styles from "./PaymentAddress.module.css";
 import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
 
 import { useDispatch, useSelector } from "react-redux";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { getAddrData } from "../../../store/address-action";
 
+let init = true;
 const PaymentAddress = () => {
   const dispatch = useDispatch();
+
+  const [popup, setPopup] = useState(null);
+  const [data, setData] = useState(null);
+  const [defaultData, setDefaultData] = useState(null);
+
   const addrData = useSelector((state) => state.addr.data);
   const addrLen = addrData.length;
 
@@ -16,27 +22,55 @@ const PaymentAddress = () => {
     dispatch(getAddrData());
   }, [dispatch]);
 
+  /* 팝업 관리 */
   const popupHandler = () => {
     const width = 510;
     const height = 650;
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
-
+    let popup = "";
     if (addrLen > 0) {
-      window.open(
+      popup = window.open(
         "/addressbook/show",
         "배송지 선택",
         `width=${width},height=${height},left=${left},top=${top}`
       );
     } else {
-      window.open(
+      popup = window.open(
         "/addressbook/add",
         "배송지 추가",
         `width=${width},height=${height},left=${left},top=${top}`
       );
     }
+    setPopup(popup);
   };
-  console.log(addrData);
+
+  /* 팝업 닫힐 때 팝업창에서 메시지 받아오기 */
+  useEffect(() => {
+    if (!popup) return;
+
+    const listener = (e) => {
+      if (e.origin !== window.location.origin) return;
+
+      setData(e.data.item);
+    };
+
+    popup.addEventListener("message", listener, false);
+
+    return () => {
+      popup.removeEventListener("message", listener);
+      setPopup(null);
+    };
+  }, [popup]);
+
+  useEffect(() => {
+    if (init) {
+      setDefaultData(
+        addrData.filter((data) => data.default_setting) ?? addrData[0]
+      );
+    }
+  }, [addrData]);
+
   let addressData =
     addrLen > 0 ? (
       <div className={styles["customer"]}>
@@ -44,7 +78,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>이름</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {addrData[0].name}
+              {data?.name ?? defaultData[0]?.name}
             </div>
           </div>
         </div>
@@ -52,7 +86,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>배송주소</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {addrData[0].roadAddress}
+              {data?.roadAddress ?? defaultData[0]?.roadAddress}
             </div>
           </div>
         </div>
@@ -60,7 +94,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>연락처</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {addrData[0].phone}
+              {data?.phone ?? defaultData[0]?.phone}
             </div>
           </div>
         </div>
@@ -82,7 +116,6 @@ const PaymentAddress = () => {
       </div>
     );
 
-  console.log(addrData);
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>

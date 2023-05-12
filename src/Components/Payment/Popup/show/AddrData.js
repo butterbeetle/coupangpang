@@ -1,11 +1,32 @@
 import { Link } from "react-router-dom";
 import styles from "./AddrData.module.css";
+import { useEffect } from "react";
 
 const AddrData = ({ item }) => {
   const phone = item.phone.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
   const normal = item.delivaryNormal ? item.delivaryNormal : "문 앞";
   const dawn = item.delivaryDawn ? item.delivaryDawn : "";
 
+  /* 선택 시 팝업 닫으면서 데이터 보내기 */
+  const closePopup = () => {
+    window.postMessage({ item }, "http://localhost:3000/payment");
+    window.close();
+  };
+
+  const preventClose = (e) => {
+    e.preventDefault();
+    e.returnValue = ""; //Chrome에서 동작하도록; deprecated
+  };
+
+  useEffect(() => {
+    (() => {
+      window.addEventListener("beforeunload", preventClose);
+    })();
+
+    return () => {
+      window.removeEventListener("beforeunload", preventClose);
+    };
+  }, []);
   return (
     <div className={`${styles["card"]} ${styles["card-select"]}`}>
       <div className={styles["main__header"]}>
@@ -33,7 +54,9 @@ const AddrData = ({ item }) => {
         >
           수정
         </Link>
-        <Link className={styles["select"]}>선택</Link>
+        <div className={styles["select"]} onClick={closePopup}>
+          선택
+        </div>
       </div>
     </div>
   );

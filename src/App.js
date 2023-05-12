@@ -103,6 +103,7 @@ function App() {
   useUnload((e) => {
     e.preventDefault();
     /* popup 문제 */
+    // @TODO window.onbeforeunload 찾아보기
     // dispatch(loggedActions.logout());
   });
 
