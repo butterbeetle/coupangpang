@@ -17,11 +17,12 @@ const PaymentAddress = () => {
   const [popupData, setPopupData] = useState(null);
   const [defaultData, setDefaultData] = useState(null);
 
-  /* 접속 시 Firebase에 저장되어 있는지 확인해서 가져옴 */
+  /* 첫 접속 시 로딩 */
   useEffect(() => {
     setLoading(true);
   }, []);
 
+  /* 데이터 변경시 마다 로딩 */
   useEffect(() => {
     if (loading) {
       const timeout = setTimeout(() => {
@@ -29,9 +30,9 @@ const PaymentAddress = () => {
       }, 2000);
       return () => clearTimeout(timeout);
     }
-  }, [loading, addrData]);
+  }, [loading]);
 
-  //@TODO 데이터 받아오기전에 공백을 뿌려서 이름,전번 같은게 아나옴
+  /* addrData 변경 시 기본배송지 변경 */
   useEffect(() => {
     const filterData = addrData.filter((data) => data.default_setting);
     setDefaultData(
@@ -65,7 +66,7 @@ const PaymentAddress = () => {
     setPopup(popup);
   };
 
-  /* 팝업 닫힐 때 팝업창에서 메시지 받아오기 */
+  /* 팝업 닫힐 때 팝업창에서 데이터 받아오기 */
   useEffect(() => {
     if (!popup) return;
 
