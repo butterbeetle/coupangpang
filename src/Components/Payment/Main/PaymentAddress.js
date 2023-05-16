@@ -1,26 +1,45 @@
 import styles from "./PaymentAddress.module.css";
-
+/* Icon */
 import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
-
-import { useDispatch, useSelector } from "react-redux";
+/* Hook */
 import { useEffect, useState } from "react";
-import { getAddrData } from "../../../store/address-action";
+/* Redux */
+import { useSelector } from "react-redux";
+/* Util */
+import LoadingSpinner from "../../../Util/Loading";
 
-let init = true;
 const PaymentAddress = () => {
-  const dispatch = useDispatch();
-
-  const [popup, setPopup] = useState(null);
-  const [data, setData] = useState(null);
-  const [defaultData, setDefaultData] = useState(null);
-
   const addrData = useSelector((state) => state.addr.data);
   const addrLen = addrData.length;
 
+  const [loading, setLoading] = useState(false);
+  const [popup, setPopup] = useState(null);
+  const [popupData, setPopupData] = useState(null);
+  const [defaultData, setDefaultData] = useState(null);
+
   /* 접속 시 Firebase에 저장되어 있는지 확인해서 가져옴 */
   useEffect(() => {
-    dispatch(getAddrData());
-  }, [dispatch]);
+    setLoading(true);
+  }, []);
+
+  useEffect(() => {
+    if (loading) {
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [loading, addrData]);
+
+  //@TODO 데이터 받아오기전에 공백을 뿌려서 이름,전번 같은게 아나옴
+  useEffect(() => {
+    const filterData = addrData.filter((data) => data.default_setting);
+    setDefaultData(
+      (prev) =>
+        (prev =
+          filterData.length > 0 ? { ...filterData[0] } : { ...addrData[0] })
+    );
+  }, [addrData]);
 
   /* 팝업 관리 */
   const popupHandler = () => {
@@ -29,6 +48,7 @@ const PaymentAddress = () => {
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
     let popup = "";
+
     if (addrLen > 0) {
       popup = window.open(
         "/addressbook/show",
@@ -51,25 +71,16 @@ const PaymentAddress = () => {
 
     const listener = (e) => {
       if (e.origin !== window.location.origin) return;
-
-      setData(e.data.item);
+      if (e.data.item) {
+        setLoading(true);
+        setPopupData(e.data.item);
+      }
     };
 
     popup.addEventListener("message", listener, false);
 
-    return () => {
-      popup.removeEventListener("message", listener);
-      setPopup(null);
-    };
+    return () => popup.removeEventListener("message", listener);
   }, [popup]);
-
-  useEffect(() => {
-    if (init) {
-      setDefaultData(
-        addrData.filter((data) => data.default_setting) ?? addrData[0]
-      );
-    }
-  }, [addrData]);
 
   let addressData =
     addrLen > 0 ? (
@@ -78,7 +89,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>이름</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {data?.name ?? defaultData[0]?.name}
+              {popupData?.name ?? defaultData?.name}
             </div>
           </div>
         </div>
@@ -86,7 +97,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>배송주소</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {data?.roadAddress ?? defaultData[0]?.roadAddress}
+              {popupData?.roadAddress ?? defaultData?.roadAddress}
             </div>
           </div>
         </div>
@@ -94,7 +105,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>연락처</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {data?.phone ?? defaultData[0]?.phone}
+              {popupData?.phone ?? defaultData?.phone}
             </div>
           </div>
         </div>
@@ -118,6 +129,11 @@ const PaymentAddress = () => {
 
   return (
     <div className={styles["content"]}>
+      {loading && (
+        <div className={styles["loading"]}>
+          <LoadingSpinner />
+        </div>
+      )}
       <div className={styles["title"]}>
         <h3>받는사람정보</h3>
         <button onClick={popupHandler}>

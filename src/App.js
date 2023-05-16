@@ -35,6 +35,7 @@ import { lazy, useEffect, useLayoutEffect } from "react";
 import { getIndexedDbData } from "./Util/IndexedDB";
 import { useUnload } from "./hooks/useUnload";
 import { getUserData } from "./store/login-action";
+import { getAddrData } from "./store/address-action";
 
 // const lazyLoadRoutes = (componentName) => {
 //   const LazyElement = lazy(() => import(`./pages/Root`));
@@ -119,6 +120,7 @@ function App() {
   /* firebase에서 장바구니, 최근 본 상품 얻어오기 */
   useEffect(() => {
     if (isLogged) {
+      dispatch(getAddrData());
       dispatch(getUserData());
       dispatch(getCartData());
       dispatch(getRecentViewData());

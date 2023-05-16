@@ -17,6 +17,16 @@
   font-size: 0.7rem;
   box-shadow: inset 0 -0.1rem 0 rgba(0, 0, 0, 0.1);
 }
+.loading {
+  z-index: 2;
+  position: absolute;
+  background-color: rgba(50, 50, 50, 0.5);
+  width: 100%;
+  height: 100%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
 
 .customer {
   border-top: 0.13rem solid #cecece;
