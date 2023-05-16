@@ -14,8 +14,17 @@ const PaymentAddress = () => {
 
   const [loading, setLoading] = useState(false);
   const [popup, setPopup] = useState(null);
+
   const [popupData, setPopupData] = useState(null);
   const [defaultData, setDefaultData] = useState(null);
+
+  console.log(
+    popupData?.delivaryNormal.length === 0
+      ? defaultData?.delivaryNormal.length === 0
+        ? "문 앞"
+        : defaultData?.delivaryNormal
+      : popupData?.delivaryNormal
+  );
 
   /* 첫 접속 시 로딩 */
   useEffect(() => {
@@ -117,7 +126,11 @@ const PaymentAddress = () => {
           </div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              일반 : ㅁㅁㅁ
+              {popupData?.delivaryNormal.length === 0
+                ? defaultData?.delivaryNormal.length === 0
+                  ? "문 앞"
+                  : defaultData?.delivaryNormal
+                : popupData?.delivaryNormal}
             </div>
           </div>
         </div>
