@@ -18,13 +18,11 @@ const PaymentAddress = () => {
   const [popupData, setPopupData] = useState(null);
   const [defaultData, setDefaultData] = useState(null);
 
-  console.log(
-    popupData?.delivaryNormal.length === 0
-      ? defaultData?.delivaryNormal.length === 0
-        ? "문 앞"
-        : defaultData?.delivaryNormal
-      : popupData?.delivaryNormal
-  );
+  const dNormal = popupData?.delivaryNormal ?? defaultData?.delivaryNormal;
+  const comb = dNormal?.length === 0 ? "문 앞" : dNormal;
+  const dNormalReq =
+    popupData?.delivaryNormalReq ?? defaultData?.delivaryNormalReq;
+  const dRequest = `${comb} ${dNormalReq ? "(" + dNormalReq + ")" : ""}`;
 
   /* 첫 접속 시 로딩 */
   useEffect(() => {
@@ -126,11 +124,7 @@ const PaymentAddress = () => {
           </div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {popupData?.delivaryNormal.length === 0
-                ? defaultData?.delivaryNormal.length === 0
-                  ? "문 앞"
-                  : defaultData?.delivaryNormal
-                : popupData?.delivaryNormal}
+              {dRequest}
             </div>
           </div>
         </div>
