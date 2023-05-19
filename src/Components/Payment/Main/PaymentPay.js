@@ -1,11 +1,25 @@
-import { useState } from "react";
 import styles from "./PaymentPay.module.css";
+/* Hook */
+import { useState } from "react";
+/* Redux */
+import { useSelector } from "react-redux";
 
 const PaymentPay = () => {
   const [radio, setRadio] = useState("trans");
   const radioHandler = (e) => {
     setRadio(e.target.value);
   };
+
+  const checked = useSelector((state) => state.cart.checked);
+  const cartItem = useSelector((state) => state.cart.items);
+
+  const [totalPrice] = useState(
+    cartItem
+      .filter((item) => checked.includes(item.id))
+      .reduce((acc, cur) => (acc += cur.totalPrice), 0)
+  );
+
+  console.log(totalPrice);
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>
@@ -16,7 +30,7 @@ const PaymentPay = () => {
           <div className={styles["customer__info__header"]}>총상품가격</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              19900원
+              {totalPrice.toLocaleString()}원
             </div>
           </div>
         </div>
@@ -30,7 +44,7 @@ const PaymentPay = () => {
           <div className={styles["customer__info__header"]}>총결제금액</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              19900원
+              {totalPrice.toLocaleString()}원
             </div>
           </div>
         </div>
