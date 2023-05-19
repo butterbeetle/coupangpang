@@ -14,7 +14,6 @@ const PaymentDelivary = () => {
   const today = new Date();
   const tomorrow = new Date(today.setDate(today.getDate() + 1));
 
-  console.log(cartItem, purchasedItem);
   return (
     <div className={styles["content"]}>
       <div className={styles["title"]}>

@@ -1,16 +1,3 @@
-.title {
-  margin-top: 1.7rem;
-  margin-bottom: 0.3rem;
-}
-.title h3 {
-  font-size: 1.25rem;
-  color: #333;
-  margin: 0;
-}
-
-.customer {
-  border-top: 0.13rem solid #cecece;
-}
 .customer__info {
   display: flex;
   font-size: 0.75rem;
@@ -27,6 +14,12 @@
   border-right: 0.1rem solid #eee;
   border-bottom: 0.1rem solid #eee;
 }
+.check {
+  display: inline;
+  width: 1rem;
+  height: 1rem;
+  color: #e60027;
+}
 .customer__info__content {
   box-sizing: border-box;
   width: 88%;
@@ -34,4 +27,20 @@
   padding-left: 1rem;
   text-align: left;
   border-bottom: 0.1rem solid #eee;
+}
+.customer__info__content__detail {
+  display: flex;
+}
+.customer__info__content__detail li {
+  display: flex;
+  align-items: center;
+}
+.customer__info__content__detail li:nth-child(n + 2) {
+  margin-left: 0.7rem;
+}
+.customer__info__content__detail label {
+  cursor: pointer;
+}
+.selected {
+  font-weight: bold;
 }
