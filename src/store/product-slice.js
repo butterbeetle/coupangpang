@@ -45,12 +45,6 @@ const productSlice = createSlice({
       state.detailUrl = [];
       state.thumbnailUrl = [];
     },
-    nowLoading(state) {
-      state.isLoading = true;
-    },
-    endLoading(state) {
-      state.isLoading = false;
-    },
   },
 });
 

@@ -6,8 +6,8 @@ import { useCallback, useEffect, useState } from "react";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { sendAddrData } from "../../../../store/address-action";
-/* Util */
-import LoadingSpinner from "../../../../Util/Loading";
+/* UI */
+import LoadingModal from "../../../../UI/LoadingModal";
 
 const Button = ({ setValue, handleSubmit }) => {
   const { state } = useLocation();
@@ -45,11 +45,7 @@ const Button = ({ setValue, handleSubmit }) => {
 
   return (
     <div>
-      {loading && (
-        <div className={styles["loading"]}>
-          <LoadingSpinner />
-        </div>
-      )}
+      {loading && <LoadingModal />}
       <button className={styles["button"]} type="submit">
         저장
       </button>

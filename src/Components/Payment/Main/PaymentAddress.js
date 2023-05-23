@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 /* Redux */
 import { useSelector } from "react-redux";
 /* Util */
-import LoadingSpinner from "../../../Util/Loading";
+import LoadingModal from "../../../UI/LoadingModal";
 
 const PaymentAddress = () => {
   const addrData = useSelector((state) => state.addr.data);
@@ -137,11 +137,7 @@ const PaymentAddress = () => {
 
   return (
     <div className={styles["content"]}>
-      {loading && (
-        <div className={styles["loading"]}>
-          <LoadingSpinner />
-        </div>
-      )}
+      {loading && <LoadingModal />}
       <div className={styles["title"]}>
         <h3>받는사람정보</h3>
         <button onClick={popupHandler}>

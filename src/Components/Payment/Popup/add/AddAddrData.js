@@ -19,7 +19,8 @@ import { yupResolver } from "@hookform/resolvers/yup";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { addrActions } from "../../../../store/address-slice";
-import LoadingSpinner from "../../../../Util/Loading";
+/* UI */
+import LoadingModal from "../../../../UI/LoadingModal";
 // import { sendAddrData } from "../../../../store/address-action";
 
 const AddAddrData = () => {
@@ -158,11 +159,7 @@ const AddAddrData = () => {
 
   return (
     <div>
-      {loading && (
-        <div className={styles["loading"]}>
-          <LoadingSpinner />
-        </div>
-      )}
+      {loading && <LoadingModal />}
       <header className={styles["header"]}>배송지 추가</header>
       <main className={styles["main"]}>
         <form onSubmit={handleSubmit(onsubmit)}>
