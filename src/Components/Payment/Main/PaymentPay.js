@@ -1,19 +1,26 @@
 import styles from "./PaymentPay.module.css";
-/* Hook */
-import { useState } from "react";
-/* Redux */
-import { useSelector } from "react-redux";
 import PaymentMethod from "./PaymentMethod";
+/* Hook */
+import { useEffect } from "react";
+/* Redux */
+import { useDispatch, useSelector } from "react-redux";
+import { buyAction } from "../../../store/buy-slice";
 
 const PaymentPay = () => {
+  const dispatch = useDispatch();
   const checked = useSelector((state) => state.cart.checked);
   const cartItem = useSelector((state) => state.cart.items);
+  const purchasedItem = cartItem?.filter((item) => checked?.includes(item.id));
 
-  const [totalPrice] = useState(
-    cartItem
-      .filter((item) => checked.includes(item.id))
-      .reduce((acc, cur) => (acc += cur.totalPrice), 0)
+  const amount = purchasedItem?.reduce(
+    (acc, cur) => (acc += cur.totalPrice),
+    0
   );
+
+  /* 새로고침 했을때를 위해 다시한번 저장 */
+  useEffect(() => {
+    dispatch(buyAction.addToCurrentItems({ items: purchasedItem }));
+  }, [dispatch, purchasedItem]);
 
   return (
     <div className={styles["content"]}>
@@ -25,7 +32,7 @@ const PaymentPay = () => {
           <div className={styles["customer__info__header"]}>총상품가격</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {totalPrice.toLocaleString()}원
+              {amount.toLocaleString()}원
             </div>
           </div>
         </div>
@@ -39,7 +46,7 @@ const PaymentPay = () => {
           <div className={styles["customer__info__header"]}>총결제금액</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {totalPrice.toLocaleString()}원
+              {amount.toLocaleString()}원
             </div>
           </div>
         </div>

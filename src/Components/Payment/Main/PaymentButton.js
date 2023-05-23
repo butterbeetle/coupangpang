@@ -1,19 +1,27 @@
-import { useEffect } from "react";
 import styles from "./PaymentButton.module.css";
+/* Hook */
+import { useEffect } from "react";
+/* Redux */
+import { useSelector } from "react-redux";
+
+const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
+const TOSPAY = "tosspay.tosstest"; // 토스페이
+const KICC = "kicc.T5102001"; // 신용카드
+const CARD = "card"; // 신용카드
+const VBANK = "vbank"; // 무통장입금(가상계좌)
+const TRANS = "trans"; // 계좌이체
 
 const PaymentButton = () => {
-  useEffect(() => {
-    const jqry = document.createElement("script");
-    jqry.src = "https://code.jquery.com/jquery-1.12.4.min.js";
-    const iamport = document.createElement("script");
-    iamport.src = "https://cdn.iamport.kr/js/iamport.payment-1.2.0.js";
-    document.head.appendChild(jqry);
-    document.head.appendChild(iamport);
-    return () => {
-      document.head.removeChild(jqry);
-      document.head.removeChild(iamport);
-    };
-  }, []);
+  const userData = useSelector((state) => state.logged.user);
+  const curItems = useSelector((state) => state.buy.currentItems);
+  const checked = useSelector((state) => state.cart.checked);
+  const name = `${curItems.items[0]?.name.slice(0, 35)}${
+    checked?.length > 1 ? "... 외 " + (checked?.length - 1) + "개" : "..."
+  }`;
+  const amount = curItems.items?.reduce(
+    (acc, cur) => (acc += cur.totalPrice),
+    0
+  );
 
   const callback = (res) => {
     const {
@@ -46,22 +54,44 @@ const PaymentButton = () => {
     IMP.init("imp61877428");
 
     const data = {
-      // pg: "kakaopay.TC0ONETIME",
-      // pg: "tosspay.tosstest",
-      pg: "kicc.T5102001",
-      pay_method: "card",
+      pg: KAKAOPAY,
+      // pg: TOSSPAY,
+      // pg: KICC,
+      pay_method: CARD,
+      // pay_method: VBANK,
+      // pay_method: TRANS,
       merchant_uid: "IMP" + new Date().getTime(),
-      name: "KG이니시스: 당근 20kg",
-      amount: 100,
-      buyer_email: "Iamport@chai.finance",
-      buyer_name: "아임포트 기술지원팀",
-      buyer_tel: "010-1234-5678",
-      buyer_addr: "서울특별시 강남구 삼성동",
-      buyer_postcode: "123-456",
+      name, // 최대 40글자
+      amount, // 총 가격
+      // buyer_email: "Iamport@chai.finance", // 이메일 => 필수가 아니다?
+      buyer_name: curItems.addr.name, // 이름
+      buyer_tel: curItems.addr.phone.replace(
+        /^(\d{0,3})(\d{0,4})(\d{0,4})$/g,
+        "$1-$2-$3"
+      ), // 전번
+      buyer_addr: curItems.addr.roadAddress, // 주소
+      buyer_postcode: curItems.addr.zonecode, // 우편번호
     };
 
     IMP.request_pay(data, callback);
   };
+
+  useEffect(() => {
+    const jqry = document.createElement("script");
+    jqry.src = "https://code.jquery.com/jquery-1.12.4.min.js";
+    const iamport = document.createElement("script");
+    iamport.src = "https://cdn.iamport.kr/js/iamport.payment-1.2.0.js";
+    document.head.appendChild(jqry);
+    document.head.appendChild(iamport);
+    return () => {
+      document.head.removeChild(jqry);
+      document.head.removeChild(iamport);
+    };
+  }, []);
+
+  // console.log("userData", userData);
+  // console.log("currentItem addr", curItems.addr);
+  // console.log("currentItem items", curItems.items);
   return (
     <div>
       <div className={styles["desc"]}>
@@ -73,7 +103,7 @@ const PaymentButton = () => {
         제공(해외직구의 경우 국외제공) 및 결제에 동의합니다.
       </div>
       <div className={styles["button"]}>
-        <button>결제하기</button>
+        <button onClick={onClickPayment}>결제하기</button>
       </div>
     </div>
   );

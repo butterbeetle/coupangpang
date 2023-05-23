@@ -4,6 +4,7 @@ import cartSlice from "./cart-slice";
 import loggedSlice from "./login-slice";
 import productSlice from "./product-slice";
 import recentViewSlice from "./recentView-slice";
+import buySlice from "./buy-slice";
 
 const store = configureStore({
   reducer: {
@@ -12,6 +13,7 @@ const store = configureStore({
     prod: productSlice.reducer,
     recentView: recentViewSlice.reducer,
     addr: addrSlice.reducer,
+    buy: buySlice.reducer,
   },
 });
 

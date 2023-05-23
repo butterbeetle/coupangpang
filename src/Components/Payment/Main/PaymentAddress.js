@@ -4,11 +4,13 @@ import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
 /* Hook */
 import { useEffect, useState } from "react";
 /* Redux */
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 /* Util */
 import LoadingModal from "../../../UI/LoadingModal";
+import { buyAction } from "../../../store/buy-slice";
 
 const PaymentAddress = () => {
+  const dispatch = useDispatch();
   const addrData = useSelector((state) => state.addr.data);
   const addrLen = addrData.length;
 
@@ -16,12 +18,10 @@ const PaymentAddress = () => {
   const [popup, setPopup] = useState(null);
 
   const [popupData, setPopupData] = useState(null);
-  const [defaultData, setDefaultData] = useState(null);
 
-  const dNormal = popupData?.delivaryNormal ?? defaultData?.delivaryNormal;
+  const dNormal = popupData?.delivaryNormal;
   const comb = dNormal?.length === 0 ? "문 앞" : dNormal;
-  const dNormalReq =
-    popupData?.delivaryNormalReq ?? defaultData?.delivaryNormalReq;
+  const dNormalReq = popupData?.delivaryNormalReq;
   const dRequest = `${comb} ${dNormalReq ? "(" + dNormalReq + ")" : ""}`;
 
   /* 첫 접속 시 로딩 */
@@ -42,13 +42,17 @@ const PaymentAddress = () => {
   /* addrData 변경 시 기본배송지 변경 */
   useEffect(() => {
     const filterData = addrData.filter((data) => data.default_setting);
-    setDefaultData(
+    setPopupData(
       (prev) =>
         (prev =
-          filterData.length > 0 ? { ...filterData[0] } : { ...addrData[0] })
+          filterData?.length > 0 ? { ...filterData[0] } : { ...addrData[0] })
     );
   }, [addrData]);
 
+  /* 주소데이터 저장 */
+  useEffect(() => {
+    dispatch(buyAction.addToCurrentItems({ addr: popupData }));
+  }, [dispatch, popupData]);
   /* 팝업 관리 */
   const popupHandler = () => {
     const width = 510;
@@ -97,7 +101,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>이름</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {popupData?.name ?? defaultData?.name}
+              {popupData?.name}
             </div>
           </div>
         </div>
@@ -105,7 +109,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>배송주소</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {popupData?.roadAddress ?? defaultData?.roadAddress}
+              {popupData?.roadAddress}
             </div>
           </div>
         </div>
@@ -113,7 +117,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>연락처</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {popupData?.phone ?? defaultData?.phone}
+              {popupData?.phone}
             </div>
           </div>
         </div>

@@ -16,6 +16,7 @@ export const getCartData = () => {
         dispatch(
           cartActions.replaceCart({
             items: docSnap.data().items || [],
+            checked: docSnap.data().checked || [],
             totalQuantity: docSnap.data().totalQuantity,
           })
         );
@@ -36,6 +37,7 @@ export const sendCartData = (cart) => {
       await setDoc(doc(firestore, "cart", uid), {
         items: cart.items,
         totalQuantity: cart.totalQuantity,
+        checked: cart.checked,
       });
     };
     try {
