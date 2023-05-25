@@ -4,14 +4,15 @@ const buySlice = createSlice({
   name: "buy",
   initialState: {
     buyedItems: [],
-    currentItems: { addr: [], items: [] },
+    currentItems: { date: "", addr: [], items: [], method: "card" },
   },
   reducers: {
     addToCurrentItems(state, action) {
-      const { addr, items } = action.payload;
+      const { addr, items, method } = action.payload;
 
       if (addr) state.currentItems.addr = addr;
       if (items) state.currentItems.items = items;
+      if (method) state.currentItems.method = method;
     },
   },
 });

@@ -1,11 +1,16 @@
+import { useDispatch } from "react-redux";
+import { buyAction } from "../../../store/buy-slice";
 import styles from "./PaymentMethod.module.css";
 /* Hook */
 import { useState } from "react";
+/* Redux */
 
 const PaymentMethod = () => {
-  const [radio, setRadio] = useState("trans");
+  const dispatch = useDispatch();
+  const [radio, setRadio] = useState("card");
   const radioHandler = (e) => {
     setRadio(e.target.value);
+    dispatch(buyAction.addToCurrentItems({ method: e.target.value }));
   };
   return (
     <div className={styles["customer__info"]}>

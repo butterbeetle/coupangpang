@@ -48,27 +48,33 @@ const PaymentButton = () => {
     }
   };
 
+  const pgSelect = (pg) => {
+    if (pg === "kakao") return KAKAOPAY;
+    else if (pg === "toss") return TOSPAY;
+    else return KICC;
+  };
+  const methodSelect = (method) => {
+    if (method === "trans") return TRANS;
+    else if (method === "vbank") return VBANK;
+    else return CARD;
+  };
+  const phoneFormat = (phone) => {
+    return phone.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3");
+  };
   const onClickPayment = () => {
     const { IMP } = window;
     /* Import 관리자 페이지 > 내 정보 > 가맹점 식별 코드 */
     IMP.init("imp61877428");
 
     const data = {
-      pg: KAKAOPAY,
-      // pg: TOSSPAY,
-      // pg: KICC,
-      pay_method: CARD,
-      // pay_method: VBANK,
-      // pay_method: TRANS,
+      pg: pgSelect(curItems.method),
+      pay_method: methodSelect(curItems.method),
       merchant_uid: "IMP" + new Date().getTime(),
       name, // 최대 40글자
       amount, // 총 가격
       // buyer_email: "Iamport@chai.finance", // 이메일 => 필수가 아니다?
       buyer_name: curItems.addr.name, // 이름
-      buyer_tel: curItems.addr.phone.replace(
-        /^(\d{0,3})(\d{0,4})(\d{0,4})$/g,
-        "$1-$2-$3"
-      ), // 전번
+      buyer_tel: phoneFormat(curItems.addr.phone), // 전번
       buyer_addr: curItems.addr.roadAddress, // 주소
       buyer_postcode: curItems.addr.zonecode, // 우편번호
     };
@@ -92,6 +98,7 @@ const PaymentButton = () => {
   // console.log("userData", userData);
   // console.log("currentItem addr", curItems.addr);
   // console.log("currentItem items", curItems.items);
+  // console.log("currentItem method", curItems.method);
   return (
     <div>
       <div className={styles["desc"]}>
