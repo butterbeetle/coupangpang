@@ -5,6 +5,8 @@ import { useNavigate } from "react-router-dom";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { sendOrderedData } from "../../../store/order-action";
+/* Util */
+import { phoneFormat } from "../../../Util/format";
 
 const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
 const TOSPAY = "tosspay.tosstest"; // 토스페이
@@ -83,9 +85,7 @@ const PaymentButton = () => {
     else if (method === "vbank") return VBANK;
     else return CARD;
   };
-  const phoneFormat = (phone) => {
-    return phone.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3");
-  };
+
   const onClickPayment = () => {
     const { IMP } = window;
     /* Import 관리자 페이지 > 내 정보 > 가맹점 식별 코드 */

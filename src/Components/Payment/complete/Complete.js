@@ -1,21 +1,67 @@
 import styles from "./Complete.module.css";
+import { Link } from "react-router-dom";
 /* Util */
 import OrderFlow from "../../../Util/OrderFlow";
-
-import test from "../../../assets/img/beauty.jpg";
-import { Link } from "react-router-dom";
-
+import LoadingModal from "../../../UI/LoadingModal";
+import { dateFormat, phoneFormat } from "../../../Util/format";
+/* Icon */
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { IoIosArrowUp } from "@react-icons/all-files/io/IoIosArrowUp";
-import { useState } from "react";
+/* Hook */
+import { useEffect, useState } from "react";
+/* Redux */
+import { useDispatch, useSelector } from "react-redux";
+import { getOrderedData } from "../../../store/order-action";
 
 const OrderComplete = () => {
+  const dispatch = useDispatch();
+  const orderedItems = useSelector((state) => state.order.orderedItems[0]);
+  const { day, month, date } = dateFormat(orderedItems.date);
+  const [loading, setLoading] = useState(false);
   const [openProdInfo, setOpenProdInfo] = useState(false);
   const openProdInfoHandler = () => {
     setOpenProdInfo((prev) => !prev);
   };
+  /* 첫 접속 시 로딩 */
+  useEffect(() => {
+    setLoading(true);
+    dispatch(getOrderedData());
+  }, [dispatch]);
+
+  /* 2초 후 로딩 끝 */
+  useEffect(() => {
+    if (loading) {
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [loading]);
+
+  /**
+   * method를 한글로 변환해주는 함수
+   */
+  const methodToString = (method) => {
+    switch (method) {
+      case "card":
+        return "카드";
+      case "kakao":
+        return "카카오페이";
+      case "toss":
+        return "토스페이";
+      case "vbank":
+        return "가상계좌";
+      case "trans":
+        return "계좌이체";
+      default:
+        return "카드";
+    }
+  };
+  console.log("orderedItems ", orderedItems);
+
   return (
     <div className={styles["background"]}>
+      {loading && <LoadingModal />}
       <div className={styles["container"]}>
         <div className={styles["title"]}>
           <h3>주문완료</h3>
@@ -28,47 +74,51 @@ const OrderComplete = () => {
         <div className={styles["prod__container"]}>
           <div className={styles["prod__info"]}>
             <div>
-              <strong>5/31(수) 도착 예정 (상품 1개)</strong> 판매자 :
-              (주)교보문고
+              <strong>
+                {`${month}/${date}(${day})`} 도착 예정 (상품
+                {orderedItems.items.length}개)
+              </strong>
             </div>
             {!openProdInfo && <IoIosArrowDown onClick={openProdInfoHandler} />}
             {openProdInfo && <IoIosArrowUp onClick={openProdInfoHandler} />}
           </div>
-          {openProdInfo && (
-            <div className={styles["prod__main"]}>
-              <img src={test} alt="" />
-              <div className={styles["prod__main__text"]}>
-                <p className={styles["prod__title"]}>
-                  월드 오브 워크래프트: 아서스 리치왕의 탄생, 제우미디어,
-                  크리스티 골든 저/구세희 역
-                </p>
-                <p className={styles["prod__price"]}>
-                  <strong>13,320</strong>원
-                </p>
-                <p className={styles["prod__amount"]}>수량: 1개</p>
+          {openProdInfo &&
+            orderedItems.items.map((item) => (
+              <div className={styles["prod__main"]}>
+                <img src={item.thumbnail} alt="" />
+                <div className={styles["prod__main__text"]}>
+                  <p className={styles["prod__title"]}>{item.name}</p>
+                  <p className={styles["prod__price"]}>
+                    <strong>{item.totalPrice}</strong>원
+                  </p>
+                  <p className={styles["prod__amount"]}>
+                    수량: {item.quantity}개
+                  </p>
+                </div>
               </div>
-            </div>
-          )}
+            ))}
         </div>
         <div className={styles["infos"]}>
           <div className={styles["recipient"]}>
             <h3 className={styles["recipient__title"]}>받는사람 정보</h3>
             <div className={styles["recipient__name"]}>
-              <div className={styles["name__title"]}>받는사람</div>{" "}
+              <div className={styles["name__title"]}>받는사람</div>
               <div className={styles["name__content"]}>
-                김승회 / 010-1234-5678
+                {`${orderedItems.addr.name} / ${phoneFormat(
+                  orderedItems.addr.phone
+                )}`}
               </div>
             </div>
             <div className={styles["recipient__addr"]}>
               <div className={styles["addr__title"]}>받는주소</div>
               <div className={styles["addr__content"]}>
-                14571 경기도 부천시 원미동 126-5 복된주택 201호
+                {`${orderedItems.addr.zonecode} ${orderedItems.addr.roadAddress}`}
               </div>
             </div>
             <div className={styles["recipient__req"]}>
               <div className={styles["req__title"]}>배송요청사항</div>
               <div className={styles["req__content"]}>
-                직접 받고 부재 시 문 앞
+                {`${orderedItems.addr.delivaryNormal}`}
               </div>
             </div>
           </div>
@@ -76,17 +126,34 @@ const OrderComplete = () => {
             <h3 className={styles["order__title"]}>결제 정보</h3>
             <div className={styles["order__price"]}>
               <div className={styles["price"]}>
-                <div>주문금액</div> <div>13,320 원</div>
+                <div>주문금액</div>
+                <div>
+                  {`${orderedItems.items
+                    .reduce((acc, cur) => {
+                      return (acc += cur.totalPrice);
+                    }, 0)
+                    .toLocaleString()}`}
+                  원
+                </div>
               </div>
               <div className={styles["delivary"]}>
-                <div>배송비</div> <div>+0 원</div>
+                <div>배송비</div> <div>+0원</div>
               </div>
             </div>
             <div className={styles["order__total"]}>
               <div className={styles["order__total-price"]}>총 결제금액</div>
               <div className={styles["order__method"]}>
-                <div className={styles["method"]}>카드 / 일시불</div>
-                <div className={styles["method-price"]}>15,820원</div>
+                <div className={styles["method"]}>
+                  {`${methodToString(orderedItems.method)}`} / 일시불
+                </div>
+                <div className={styles["method-price"]}>
+                  {`${orderedItems.items
+                    .reduce((acc, cur) => {
+                      return (acc += cur.totalPrice);
+                    }, 0)
+                    .toLocaleString()}`}
+                  원
+                </div>
               </div>
             </div>
           </div>

@@ -9,7 +9,7 @@ const orderSlice = createSlice({
   reducers: {
     setOrderedItems(state, action) {
       const { order } = action.payload.data;
-      state.orderedItems.push(...order);
+      state.orderedItems = [...order].sort((a, b) => b.date - a.date);
     },
     addToCurrentItems(state, action) {
       const { addr, items, method } = action.payload;
