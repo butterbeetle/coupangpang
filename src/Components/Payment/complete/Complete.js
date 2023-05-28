@@ -10,9 +10,9 @@ import { IoIosArrowUp } from "@react-icons/all-files/io/IoIosArrowUp";
 import { useState } from "react";
 
 const OrderComplete = () => {
-  const [openProd, setOpenProd] = useState(false);
-  const openProdHandler = () => {
-    setOpenProd((prev) => !prev);
+  const [openProdInfo, setOpenProdInfo] = useState(false);
+  const openProdInfoHandler = () => {
+    setOpenProdInfo((prev) => !prev);
   };
   return (
     <div className={styles["background"]}>
@@ -31,10 +31,10 @@ const OrderComplete = () => {
               <strong>5/31(수) 도착 예정 (상품 1개)</strong> 판매자 :
               (주)교보문고
             </div>
-            {!openProd && <IoIosArrowDown onClick={openProdHandler} />}
-            {openProd && <IoIosArrowUp onClick={openProdHandler} />}
+            {!openProdInfo && <IoIosArrowDown onClick={openProdInfoHandler} />}
+            {openProdInfo && <IoIosArrowUp onClick={openProdInfoHandler} />}
           </div>
-          {openProd && (
+          {openProdInfo && (
             <div className={styles["prod__main"]}>
               <img src={test} alt="" />
               <div className={styles["prod__main__text"]}>
