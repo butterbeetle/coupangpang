@@ -4,7 +4,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { getOrderedData, sendOrderedData } from "../../../store/order-action";
+import { sendOrderedData } from "../../../store/order-action";
 
 const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
 const TOSPAY = "tosspay.tosstest"; // 토스페이
@@ -31,11 +31,11 @@ const PaymentButton = () => {
     const {
       success,
       error_msg,
-      imp_uid,
-      merchant_uid,
-      pay_method,
-      paid_amount,
-      status,
+      // imp_uid,
+      // merchant_uid,
+      // pay_method,
+      // paid_amount,
+      // status,
     } = res;
 
     if (success) {
