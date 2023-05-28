@@ -1,6 +1,7 @@
 import styles from "./PaymentButton.module.css";
 /* Hook */
 import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 /* Redux */
 import { useSelector } from "react-redux";
 
@@ -12,8 +13,9 @@ const VBANK = "vbank"; // 무통장입금(가상계좌)
 const TRANS = "trans"; // 계좌이체
 
 const PaymentButton = () => {
-  const userData = useSelector((state) => state.logged.user);
-  const curItems = useSelector((state) => state.buy.currentItems);
+  const navigate = useNavigate();
+
+  const curItems = useSelector((state) => state.order.currentItems);
   const checked = useSelector((state) => state.cart.checked);
   const name = `${curItems.items[0]?.name.slice(0, 35)}${
     checked?.length > 1 ? "... 외 " + (checked?.length - 1) + "개" : "..."
@@ -35,14 +37,33 @@ const PaymentButton = () => {
     } = res;
 
     if (success) {
-      console.log(
-        "결제 성공",
-        imp_uid,
-        merchant_uid,
-        pay_method,
-        paid_amount,
-        status
-      );
+      // console.log(
+      //   "결제 성공",
+      //   imp_uid,
+      //   merchant_uid,
+      //   pay_method,
+      //   paid_amount,
+      //   status
+      // );
+      /* 
+      구매 후 저장해야될 정보
+      상품정보: items
+        1.썸네일
+        2.상품이름
+        3.상품가격
+        4.구매 수량
+      받는사람정보: addr
+        1.받는사람,전번
+        2.zipcode,주소
+        3.배송요청사항
+      결제정보: 
+        1.주문금액
+        2.배송비(0원)
+      총 결제금액: method
+        1.결제방법
+        2.총 가격
+       */
+      // navigate("/payment/complete");
     } else {
       console.log(`결제 실패: ${error_msg}`);
     }
@@ -95,10 +116,7 @@ const PaymentButton = () => {
     };
   }, []);
 
-  // console.log("userData", userData);
-  // console.log("currentItem addr", curItems.addr);
-  // console.log("currentItem items", curItems.items);
-  // console.log("currentItem method", curItems.method);
+  console.log({ data: new Date().getTime(), ...curItems });
   return (
     <div>
       <div className={styles["desc"]}>

@@ -3,7 +3,7 @@ import styles from "./PaymentDelivary.module.css";
 import PaymentItem from "./PaymentItem";
 
 const PaymentDelivary = () => {
-  const currentItems = useSelector((state) => state.buy.currentItems.items);
+  const currentItems = useSelector((state) => state.order.currentItems.items);
 
   const day = ["일", "월", "화", "수", "목", "금", "토"];
   const today = new Date();

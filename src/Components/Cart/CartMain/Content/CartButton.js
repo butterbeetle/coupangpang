@@ -5,7 +5,7 @@ import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { buyAction } from "../../../../store/buy-slice";
+import { orderAction } from "../../../../store/order-slice";
 
 const CartButton = () => {
   const dispatch = useDispatch();
@@ -20,7 +20,7 @@ const CartButton = () => {
       setModalOpen("true");
     } else {
       dispatch(
-        buyAction.addToCurrentItems({
+        orderAction.addToCurrentItems({
           items: cartItem?.filter((item) => checked?.includes(item.id)),
         })
       );

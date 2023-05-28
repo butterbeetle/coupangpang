@@ -1,10 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const buySlice = createSlice({
-  name: "buy",
+const orderSlice = createSlice({
+  name: "order",
   initialState: {
-    buyedItems: [],
-    currentItems: { date: "", addr: [], items: [], method: "card" },
+    orderedItems: [],
+    currentItems: { addr: [], items: [], method: "card" },
   },
   reducers: {
     addToCurrentItems(state, action) {
@@ -17,5 +17,5 @@ const buySlice = createSlice({
   },
 });
 
-export const buyAction = buySlice.actions;
-export default buySlice;
+export const orderAction = orderSlice.actions;
+export default orderSlice;

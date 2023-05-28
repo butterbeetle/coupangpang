@@ -5,9 +5,9 @@ import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
 import { useEffect, useState } from "react";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
+import { orderAction } from "../../../store/order-slice";
 /* Util */
 import LoadingModal from "../../../UI/LoadingModal";
-import { buyAction } from "../../../store/buy-slice";
 
 const PaymentAddress = () => {
   const dispatch = useDispatch();
@@ -51,7 +51,7 @@ const PaymentAddress = () => {
 
   /* 주소데이터 저장 */
   useEffect(() => {
-    dispatch(buyAction.addToCurrentItems({ addr: popupData }));
+    dispatch(orderAction.addToCurrentItems({ addr: popupData }));
   }, [dispatch, popupData]);
   /* 팝업 관리 */
   const popupHandler = () => {
