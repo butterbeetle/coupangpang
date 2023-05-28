@@ -7,6 +7,10 @@ const orderSlice = createSlice({
     currentItems: { addr: [], items: [], method: "card" },
   },
   reducers: {
+    setOrderedItems(state, action) {
+      const { order } = action.payload.data;
+      state.orderedItems.push(...order);
+    },
     addToCurrentItems(state, action) {
       const { addr, items, method } = action.payload;
 
@@ -17,5 +21,5 @@ const orderSlice = createSlice({
   },
 });
 
-export const orderAction = orderSlice.actions;
+export const orderActions = orderSlice.actions;
 export default orderSlice;

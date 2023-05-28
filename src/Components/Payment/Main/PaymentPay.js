@@ -4,7 +4,7 @@ import PaymentMethod from "./PaymentMethod";
 import { useEffect } from "react";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { orderAction } from "../../../store/order-slice";
+import { orderActions } from "../../../store/order-slice";
 
 const PaymentPay = () => {
   const dispatch = useDispatch();
@@ -19,7 +19,7 @@ const PaymentPay = () => {
 
   /* 새로고침 했을때를 위해 다시한번 저장 */
   useEffect(() => {
-    dispatch(orderAction.addToCurrentItems({ items: purchasedItem }));
+    dispatch(orderActions.addToCurrentItems({ items: purchasedItem }));
   }, [dispatch, purchasedItem]);
 
   return (

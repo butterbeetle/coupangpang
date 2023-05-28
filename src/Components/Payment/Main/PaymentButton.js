@@ -3,7 +3,8 @@ import styles from "./PaymentButton.module.css";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 /* Redux */
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { getOrderedData, sendOrderedData } from "../../../store/order-action";
 
 const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
 const TOSPAY = "tosspay.tosstest"; // 토스페이
@@ -14,6 +15,7 @@ const TRANS = "trans"; // 계좌이체
 
 const PaymentButton = () => {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const curItems = useSelector((state) => state.order.currentItems);
   const checked = useSelector((state) => state.cart.checked);
@@ -63,7 +65,9 @@ const PaymentButton = () => {
         1.결제방법
         2.총 가격
        */
-      // navigate("/payment/complete");
+      // console.log("결제 성공:", { data: new Date().getTime(), ...curItems });
+      dispatch(sendOrderedData({ date: new Date().getTime(), ...curItems }));
+      navigate("/order/complete");
     } else {
       console.log(`결제 실패: ${error_msg}`);
     }
@@ -116,7 +120,8 @@ const PaymentButton = () => {
     };
   }, []);
 
-  console.log({ data: new Date().getTime(), ...curItems });
+  // console.log({ data: new Date().getTime(), ...curItems });
+  // console.log("orderedItems", orderedItems);
   return (
     <div>
       <div className={styles["desc"]}>

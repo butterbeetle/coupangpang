@@ -66,7 +66,7 @@ const router = createBrowserRouter([
         router: lazy(() => import("./pages/ProductDetail")),
       },
       {
-        path: "/payment/complete",
+        path: "/order/complete",
         element: <OrderComplete />,
       },
     ],
