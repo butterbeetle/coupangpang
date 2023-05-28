@@ -1,10 +1,19 @@
-import OrderFlow from "../../../Util/OrderFlow";
 import styles from "./Complete.module.css";
+/* Util */
+import OrderFlow from "../../../Util/OrderFlow";
 
 import test from "../../../assets/img/beauty.jpg";
 import { Link } from "react-router-dom";
 
+import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
+import { IoIosArrowUp } from "@react-icons/all-files/io/IoIosArrowUp";
+import { useState } from "react";
+
 const OrderComplete = () => {
+  const [openProd, setOpenProd] = useState(false);
+  const openProdHandler = () => {
+    setOpenProd((prev) => !prev);
+  };
   return (
     <div className={styles["background"]}>
       <div className={styles["container"]}>
@@ -18,21 +27,28 @@ const OrderComplete = () => {
         <h3 className={styles["prod__header"]}>상품배송 정보</h3>
         <div className={styles["prod__container"]}>
           <div className={styles["prod__info"]}>
-            <strong>5/31(수) 도착 예정 (상품 1개)</strong> 판매자 : (주)교보문고
-          </div>
-          <div className={styles["prod__main"]}>
-            <img src={test} alt="" />
-            <div className={styles["prod__main__text"]}>
-              <p className={styles["prod__title"]}>
-                월드 오브 워크래프트: 아서스 리치왕의 탄생, 제우미디어, 크리스티
-                골든 저/구세희 역
-              </p>
-              <p className={styles["prod__price"]}>
-                <strong>13,320</strong>원
-              </p>
-              <p className={styles["prod__amount"]}>수량: 1개</p>
+            <div>
+              <strong>5/31(수) 도착 예정 (상품 1개)</strong> 판매자 :
+              (주)교보문고
             </div>
+            {!openProd && <IoIosArrowDown onClick={openProdHandler} />}
+            {openProd && <IoIosArrowUp onClick={openProdHandler} />}
           </div>
+          {openProd && (
+            <div className={styles["prod__main"]}>
+              <img src={test} alt="" />
+              <div className={styles["prod__main__text"]}>
+                <p className={styles["prod__title"]}>
+                  월드 오브 워크래프트: 아서스 리치왕의 탄생, 제우미디어,
+                  크리스티 골든 저/구세희 역
+                </p>
+                <p className={styles["prod__price"]}>
+                  <strong>13,320</strong>원
+                </p>
+                <p className={styles["prod__amount"]}>수량: 1개</p>
+              </div>
+            </div>
+          )}
         </div>
         <div className={styles["infos"]}>
           <div className={styles["recipient"]}>
