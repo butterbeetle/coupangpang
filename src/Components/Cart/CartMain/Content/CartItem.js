@@ -110,7 +110,7 @@ const CartItem = ({ item }) => {
         />
       </div>
       <div className={styles["item__img"]}>
-        <Link to={"/"}>
+        <Link to={`/products/${item.id}`}>
           <img src={item.thumbnail} alt="" />
         </Link>
       </div>

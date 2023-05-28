@@ -36,6 +36,7 @@ import { getIndexedDbData } from "./Util/IndexedDB";
 import { useUnload } from "./hooks/useUnload";
 import { getUserData } from "./store/login-action";
 import { getAddrData } from "./store/address-action";
+import OrderComplete from "./Components/Payment/complete/Complete";
 
 // const lazyLoadRoutes = (componentName) => {
 //   const LazyElement = lazy(() => import(`./pages/Root`));
@@ -63,6 +64,10 @@ const router = createBrowserRouter([
         path: "/products/:productId",
         element: <ProductDetail />,
         router: lazy(() => import("./pages/ProductDetail")),
+      },
+      {
+        path: "/payment/complete",
+        element: <OrderComplete />,
       },
     ],
   },
