@@ -75,8 +75,26 @@
   ![구매 배송지 추가](https://user-images.githubusercontent.com/50831567/233810926-b8e498ca-6a8a-4ec7-a32e-088a6031e3d8.gif)
 
   - 배송지 변경 (예정)
+  
+  ![배송지변경](https://github.com/butterbeetle/coupangpang/assets/50831567/b49fc179-7d48-4ec6-bd01-db434e97b49a)
+  
   - 배송지 삭제 (예정)
+  
+  ![배송지삭제](https://github.com/butterbeetle/coupangpang/assets/50831567/577981aa-5cdd-4370-ab56-ca532a15b59d)
+  
+  - 배송지 선택
+  - 
+  ![배송지 선택](https://github.com/butterbeetle/coupangpang/assets/50831567/2c8c8af9-7ee1-4e01-b053-b6392eae029f)
+
+  - 배송지 선택 시 스타일 중복 제거(예정)
+  
 - 구매 (예정)
+  - 결제 방법 선택
+  
+  ![구매 결제방법 선택](https://github.com/butterbeetle/coupangpang/assets/50831567/f68170a6-5cb3-400a-89c0-de4e3e9d4723)
+
+  - 결제
+  
 
 #### 마이 페이지 
 - 기본 정보 (예정)
