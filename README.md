@@ -12,7 +12,7 @@
 - `React`
 - `Module CSS`
 - **IDE** : Vscode
-- **Database** : Firebase
+- **Database** : Firebase (Firestore Database & Storage)
 
 ## 📌 주요 기능
 #### 회원가입 
@@ -83,10 +83,10 @@
   ![배송지삭제](https://github.com/butterbeetle/coupangpang/assets/50831567/577981aa-5cdd-4370-ab56-ca532a15b59d)
   
   - 배송지 선택
-  - 
+
   ![배송지 선택](https://github.com/butterbeetle/coupangpang/assets/50831567/2c8c8af9-7ee1-4e01-b053-b6392eae029f)
 
-  - 배송지 선택 시 스타일 중복 제거(예정)
+  - 배송지 선택 된 주소 스타일(파란테두리) 중복 제거 (예정)
   
 - 구매 (예정)
   - 결제 방법 선택
@@ -94,12 +94,15 @@
   ![구매 결제방법 선택](https://github.com/butterbeetle/coupangpang/assets/50831567/f68170a6-5cb3-400a-89c0-de4e3e9d4723)
 
   - 결제
-  
+    - 카카오페이 결제
+    ![카카오페이 결제](https://github.com/butterbeetle/coupangpang/assets/50831567/3a9e61cf-1915-4fca-ab28-d423e76e4e71)
+    - 카카오톡 결제 내역 (테스트API라 비용이 청구되지 않음)
+    ![카카오페이 결제내역](https://github.com/butterbeetle/coupangpang/assets/50831567/bfc8cfae-e658-42d8-bcad-e44efd3b80fb)
 
+  - 주문완료 
+  - ![주문완료](https://github.com/butterbeetle/coupangpang/assets/50831567/078f5c17-30b2-4d03-91b4-a168a16d14a2)
+  
 #### 마이 페이지 
 - 기본 정보 (예정)
 - 주문 정보 (예정)
 - 찜 리스트 (예정)
-
-#### 리뷰
-- 구매한 물품에 대한 리뷰 (예정)
