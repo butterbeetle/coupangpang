@@ -7,10 +7,15 @@ import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
+
 import LoginForm from "./Components/Auth/LoginForm";
 import JoinForm from "./Components/Auth/JoinForm";
 import CartView from "./Components/Cart/CartView";
-import Popup from "./Components/Payment/Popup/Popup";
+/* Popup */
+import AddAddrData from "./Components/Payment/Popup/add/AddAddrData";
+import ShowAddrData from "./Components/Payment/Popup/show/showAddrData";
+import SelectNormalReq from "./Components/Payment/Popup/normal/SelectNormalReq";
+import SelectDawnReq from "./Components/Payment/Popup/dawn/SelectDawnReq";
 
 /* redux */
 import { useDispatch, useSelector } from "react-redux";
@@ -24,12 +29,25 @@ import {
 import { getCartData, sendCartData } from "./store/cart-action";
 
 /* Hook */
-import { useEffect, useLayoutEffect } from "react";
+import { lazy, useEffect, useLayoutEffect } from "react";
 
 /* IndexedDB */
 import { getIndexedDbData } from "./Util/IndexedDB";
 import { useUnload } from "./hooks/useUnload";
 import { getUserData } from "./store/login-action";
+import { getAddrData } from "./store/address-action";
+import OrderComplete from "./Components/Payment/complete/Complete";
+
+// const lazyLoadRoutes = (componentName) => {
+//   const LazyElement = lazy(() => import(`./pages/Root`));
+
+//   // Wrapping around the suspense component is mandatory
+//   return (
+//     <Suspense fallback="Loading...">
+//       <LazyElement />
+//     </Suspense>
+//   );
+// };
 
 const router = createBrowserRouter([
   {
@@ -37,8 +55,20 @@ const router = createBrowserRouter([
     element: <RootLayout />,
     errorElement: <ErrorPage />,
     children: [
-      { path: "/", element: <Home /> },
-      { path: "/products/:productId", element: <ProductDetail /> },
+      {
+        path: "/",
+        element: <Home />,
+        router: lazy(() => import("./pages/HomePage")),
+      },
+      {
+        path: "/products/:productId",
+        element: <ProductDetail />,
+        router: lazy(() => import("./pages/ProductDetail")),
+      },
+      {
+        path: "/order/complete",
+        element: <OrderComplete />,
+      },
     ],
   },
   { path: "/login", element: <LoginForm /> },
@@ -48,8 +78,19 @@ const router = createBrowserRouter([
   {
     path: "/addressbook",
     children: [
-      { path: "add", element: <Popup /> },
-      { path: "show", element: <Popup /> },
+      {
+        path: "add",
+        element: <AddAddrData />,
+        children: [
+          {
+            path: ":addrId",
+            element: <AddAddrData />,
+          },
+        ],
+      },
+      { path: "show", element: <ShowAddrData /> },
+      { path: "normal", element: <SelectNormalReq /> },
+      { path: "dawn", element: <SelectDawnReq /> },
     ],
   },
 ]);
@@ -68,6 +109,7 @@ function App() {
   useUnload((e) => {
     e.preventDefault();
     /* popup 문제 */
+    // @TODO window.onbeforeunload 찾아보기
     // dispatch(loggedActions.logout());
   });
 
@@ -83,6 +125,7 @@ function App() {
   /* firebase에서 장바구니, 최근 본 상품 얻어오기 */
   useEffect(() => {
     if (isLogged) {
+      dispatch(getAddrData());
       dispatch(getUserData());
       dispatch(getCartData());
       dispatch(getRecentViewData());

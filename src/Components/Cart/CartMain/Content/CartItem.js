@@ -95,6 +95,11 @@ const CartItem = ({ item }) => {
   const itemDeleteHandler = () => {
     dispatch(cartActions.removeItemToCart(item.id));
   };
+
+  const day = ["일", "월", "화", "수", "목", "금", "토"];
+  const today = new Date();
+  const tomorrow = new Date(today.setDate(today.getDate() + 1));
+
   return (
     <div key={item.id} className={styles["items__box"]}>
       <div className={styles["item__check"]}>
@@ -105,7 +110,7 @@ const CartItem = ({ item }) => {
         />
       </div>
       <div className={styles["item__img"]}>
-        <Link to={"/"}>
+        <Link to={`/products/${item.id}`}>
           <img src={item.thumbnail} alt="" />
         </Link>
       </div>
@@ -114,7 +119,9 @@ const CartItem = ({ item }) => {
           <Link to={`/products/${item.id}`}>{item.name}</Link>
         </div>
         <div className={styles["item__etc"]}>
-          <div>목요일 3/9 도착 예정</div>
+          <div>{`내일(${day[tomorrow.getDay()]}) ${
+            tomorrow.getMonth() + 1
+          }/${tomorrow.getDate()} 도착 예정`}</div>
           <div className={styles["item__quantity"]}>
             <span className={styles["item__quantity__origin"]}>
               {item.price.toLocaleString()}원

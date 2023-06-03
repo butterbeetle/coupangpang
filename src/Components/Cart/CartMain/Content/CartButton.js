@@ -1,11 +1,17 @@
-import { useState } from "react";
-import { useSelector } from "react-redux";
-import { Link, useNavigate } from "react-router-dom";
-import CartModal from "../../../../UI/CartModal";
 import styles from "./CartButton.module.css";
+import CartModal from "../../../../UI/CartModal";
+/* Hook */
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+/* Redux */
+import { useDispatch, useSelector } from "react-redux";
+import { orderActions } from "../../../../store/order-slice";
 
 const CartButton = () => {
+  const dispatch = useDispatch();
+  const cartItem = useSelector((state) => state.cart.items);
   const checked = useSelector((state) => state.cart.checked);
+
   const navigate = useNavigate();
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -13,6 +19,11 @@ const CartButton = () => {
     if (checked.length === 0) {
       setModalOpen("true");
     } else {
+      dispatch(
+        orderActions.addToCurrentItems({
+          items: cartItem?.filter((item) => checked?.includes(item.id)),
+        })
+      );
       navigate("/payment");
     }
   };

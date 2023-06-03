@@ -2,9 +2,9 @@ import { configureStore } from "@reduxjs/toolkit";
 import addrSlice from "./address-slice";
 import cartSlice from "./cart-slice";
 import loggedSlice from "./login-slice";
-import popupSlice from "./popup-slice";
 import productSlice from "./product-slice";
 import recentViewSlice from "./recentView-slice";
+import orderSlice from "./order-slice";
 
 const store = configureStore({
   reducer: {
@@ -13,7 +13,7 @@ const store = configureStore({
     prod: productSlice.reducer,
     recentView: recentViewSlice.reducer,
     addr: addrSlice.reducer,
-    popup: popupSlice.reducer,
+    order: orderSlice.reducer,
   },
 });
 

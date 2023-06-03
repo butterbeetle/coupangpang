@@ -1,12 +1,10 @@
 import { useSelector } from "react-redux";
 import styles from "./PaymentBuyerInfo.module.css";
+/* Util */
+import { phoneFormat } from "../../../Util/format";
 
 const PaymentBuyerInfo = () => {
   const userData = useSelector((state) => state.logged.user);
-  const phone = userData.phone.replace(
-    /^(\d{0,3})(\d{0,4})(\d{0,4})$/g,
-    "$1-$2-$3"
-  );
 
   return (
     <div className={styles["content"]}>
@@ -34,7 +32,7 @@ const PaymentBuyerInfo = () => {
           <div className={styles["customer__info__header"]}>휴대폰 번호</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              {phone}
+              {phoneFormat(userData.phone)}
             </div>
           </div>
         </div>

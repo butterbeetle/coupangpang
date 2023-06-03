@@ -1,43 +1,98 @@
 import styles from "./PaymentAddress.module.css";
-
+/* Icon */
 import { BsCheck } from "@react-icons/all-files/bs/BsCheck";
-
+/* Hook */
+import { useEffect, useState } from "react";
+/* Redux */
 import { useDispatch, useSelector } from "react-redux";
-import { popupActions } from "../../../store/popup-slice";
-import { useEffect } from "react";
-import { getAddrData } from "../../../store/address-action";
+import { orderActions } from "../../../store/order-slice";
+/* Util */
+import LoadingModal from "../../../UI/LoadingModal";
+
 const PaymentAddress = () => {
   const dispatch = useDispatch();
   const addrData = useSelector((state) => state.addr.data);
   const addrLen = addrData.length;
 
-  /* 접속 시 Firebase에 저장되어 있는지 확인해서 가져옴 */
-  useEffect(() => {
-    dispatch(getAddrData());
-  }, [dispatch]);
+  const [loading, setLoading] = useState(false);
+  const [popup, setPopup] = useState(null);
 
+  const [popupData, setPopupData] = useState(null);
+
+  const dNormal = popupData?.delivaryNormal;
+  const comb = dNormal?.length === 0 ? "문 앞" : dNormal;
+  const dNormalReq = popupData?.delivaryNormalReq;
+  const dRequest = `${comb} ${dNormalReq ? "(" + dNormalReq + ")" : ""}`;
+
+  /* 첫 접속 시 로딩 */
+  useEffect(() => {
+    setLoading(true);
+  }, []);
+
+  /* 데이터 변경시 마다 로딩 */
+  useEffect(() => {
+    if (loading) {
+      const timeout = setTimeout(() => {
+        setLoading(false);
+      }, 2000);
+      return () => clearTimeout(timeout);
+    }
+  }, [loading]);
+
+  /* addrData 변경 시 기본배송지 변경 */
+  useEffect(() => {
+    const filterData = addrData.filter((data) => data.default_setting);
+    setPopupData(
+      (prev) =>
+        (prev =
+          filterData?.length > 0 ? { ...filterData[0] } : { ...addrData[0] })
+    );
+  }, [addrData]);
+
+  /* 주소데이터 저장 */
+  useEffect(() => {
+    dispatch(orderActions.addToCurrentItems({ addr: popupData }));
+  }, [dispatch, popupData]);
+  /* 팝업 관리 */
   const popupHandler = () => {
     const width = 510;
     const height = 650;
     const left = window.screenX + (window.outerWidth - width) / 2;
     const top = window.screenY + (window.outerHeight - height) / 2;
+    let popup = "";
 
     if (addrLen > 0) {
-      dispatch(popupActions.move("show"));
-      window.open(
+      popup = window.open(
         "/addressbook/show",
         "배송지 선택",
         `width=${width},height=${height},left=${left},top=${top}`
       );
     } else {
-      dispatch(popupActions.move("add"));
-      window.open(
+      popup = window.open(
         "/addressbook/add",
         "배송지 추가",
         `width=${width},height=${height},left=${left},top=${top}`
       );
     }
+    setPopup(popup);
   };
+
+  /* 팝업 닫힐 때 팝업창에서 데이터 받아오기 */
+  useEffect(() => {
+    if (!popup) return;
+
+    const listener = (e) => {
+      if (e.origin !== window.location.origin) return;
+      if (e.data.item) {
+        setLoading(true);
+        setPopupData(e.data.item);
+      }
+    };
+
+    popup.addEventListener("message", listener, false);
+
+    return () => popup.removeEventListener("message", listener);
+  }, [popup]);
 
   let addressData =
     addrLen > 0 ? (
@@ -46,7 +101,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>이름</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              김승회
+              {popupData?.name}
             </div>
           </div>
         </div>
@@ -54,7 +109,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>배송주소</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              butterbeetle@naver.com
+              {popupData?.roadAddress}
             </div>
           </div>
         </div>
@@ -62,7 +117,7 @@ const PaymentAddress = () => {
           <div className={styles["customer__info__header"]}>연락처</div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              010-8611-9303
+              {popupData?.phone}
             </div>
           </div>
         </div>
@@ -73,7 +128,7 @@ const PaymentAddress = () => {
           </div>
           <div className={styles["customer__info__content"]}>
             <div className={styles["customer__info__content__detail"]}>
-              직접 받고 부재 시 문 앞
+              {dRequest}
             </div>
           </div>
         </div>
@@ -86,6 +141,7 @@ const PaymentAddress = () => {
 
   return (
     <div className={styles["content"]}>
+      {loading && <LoadingModal />}
       <div className={styles["title"]}>
         <h3>받는사람정보</h3>
         <button onClick={popupHandler}>
