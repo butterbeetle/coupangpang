@@ -3,23 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Personalized.module.css";
 import AdsItems from "./AdsItems";
 
-import personalizedItem_01 from "../../assets/img/personalizedItems/personalizedItem_01.jpg";
-import personalizedItem_02 from "../../assets/img/personalizedItems/personalizedItem_02.jpg";
-import personalizedItem_03 from "../../assets/img/personalizedItems/personalizedItem_03.jpg";
-import personalizedItem_04 from "../../assets/img/personalizedItems/personalizedItem_04.png";
-import personalizedItem_05 from "../../assets/img/personalizedItems/personalizedItem_05.png";
-
-import personalizedItem_06 from "../../assets/img/personalizedItems/personalizedItem_06.jpg";
-import personalizedItem_07 from "../../assets/img/personalizedItems/personalizedItem_07.jpg";
-import personalizedItem_08 from "../../assets/img/personalizedItems/personalizedItem_08.jpg";
-import personalizedItem_09 from "../../assets/img/personalizedItems/personalizedItem_09.jpg";
-import personalizedItem_10 from "../../assets/img/personalizedItems/personalizedItem_10.jpg";
-
-import personalizedItem_11 from "../../assets/img/personalizedItems/personalizedItem_11.jpg";
-import personalizedItem_12 from "../../assets/img/personalizedItems/personalizedItem_12.jpg";
-import personalizedItem_13 from "../../assets/img/personalizedItems/personalizedItem_13.jpg";
-import personalizedItem_14 from "../../assets/img/personalizedItems/personalizedItem_14.jpg";
-import personalizedItem_15 from "../../assets/img/personalizedItems/personalizedItem_15.jpg";
+import personalizedItem_01 from "../../assets/img/personalizedItems/item01.webp";
+import personalizedItem_02 from "../../assets/img/personalizedItems/item02.webp";
+import personalizedItem_03 from "../../assets/img/personalizedItems/item03.webp";
+import personalizedItem_04 from "../../assets/img/personalizedItems/item04.webp";
+import personalizedItem_05 from "../../assets/img/personalizedItems/item05.webp";
+import personalizedItem_06 from "../../assets/img/personalizedItems/item06.webp";
+import personalizedItem_07 from "../../assets/img/personalizedItems/item07.webp";
+import personalizedItem_08 from "../../assets/img/personalizedItems/item08.webp";
+import personalizedItem_09 from "../../assets/img/personalizedItems/item09.webp";
+import personalizedItem_10 from "../../assets/img/personalizedItems/item10.webp";
+import personalizedItem_11 from "../../assets/img/personalizedItems/item11.webp";
+import personalizedItem_12 from "../../assets/img/personalizedItems/item12.webp";
+import personalizedItem_13 from "../../assets/img/personalizedItems/item13.webp";
+import personalizedItem_14 from "../../assets/img/personalizedItems/item14.webp";
+import personalizedItem_15 from "../../assets/img/personalizedItems/item15.webp";
 
 const personalizedItems = [
   {

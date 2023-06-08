@@ -17,7 +17,7 @@
   display: inline-block;
   width: 42px;
   height: 42px;
-  background: url("../../assets/img/btn-arrow-black.png") no-repeat;
+  background: url("../../assets/img/icon/btn-arrow-black.webp") no-repeat;
   cursor: pointer;
   opacity: 0.5;
   z-index: 1;
@@ -33,7 +33,7 @@
   font-size: 24px;
   font-weight: 600;
   padding-left: 42px;
-  background: url("../../assets/img/Icon/icon-trending-up@3x.png") no-repeat;
+  background: url("../../assets/img/icon/icon-trending-up@3x.webp") no-repeat;
   background-size: contain;
 }
 .items--ul {
@@ -89,7 +89,7 @@
   display: inline-block;
   width: 55px;
   height: 13px;
-  background: url("../../assets/img/badges/rocket_delivery.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_delivery.webp") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }
@@ -98,7 +98,7 @@
   display: inline-block;
   width: 75px;
   height: 18px;
-  background: url("../../assets/img/badges/rocket_buy.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_buy.webp") no-repeat;
   background-size: cover;
 }
 .trending-ads_item-review {
@@ -132,11 +132,11 @@
   display: block;
   width: 75px;
   height: 15px;
-  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+  background: url("../../assets/img/widget/coupang_widget.webp") no-repeat -39px -43px;
 }
 .review-star {
   display: block;
   width: 90%;
   height: 15px;
-  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
+  background: url("../../assets/img/widget/coupang_widget.webp") no-repeat -39px -58px;
 }

@@ -3,21 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Promotion.module.css";
 import AdsItems from "./AdsItems";
 
-import promotionItem_01 from "../../assets/img/promotionItems/promotionItem01.jpg";
-import promotionItem_02 from "../../assets/img/promotionItems/promotionItem02.jpg";
-import promotionItem_03 from "../../assets/img/promotionItems/promotionItem03.jpg";
-import promotionItem_04 from "../../assets/img/promotionItems/promotionItem04.jpg";
-import promotionItem_05 from "../../assets/img/promotionItems/promotionItem05.jpg";
-import promotionItem_06 from "../../assets/img/promotionItems/promotionItem06.png";
-import promotionItem_07 from "../../assets/img/promotionItems/promotionItem07.jpg";
-import promotionItem_08 from "../../assets/img/promotionItems/promotionItem08.jpeg";
-import promotionItem_09 from "../../assets/img/promotionItems/promotionItem09.jpg";
-import promotionItem_10 from "../../assets/img/promotionItems/promotionItem10.jpg";
-import promotionItem_11 from "../../assets/img/promotionItems/promotionItem11.jpg";
-import promotionItem_12 from "../../assets/img/promotionItems/promotionItem12.jpg";
-import promotionItem_13 from "../../assets/img/promotionItems/promotionItem13.jpg";
-import promotionItem_14 from "../../assets/img/promotionItems/promotionItem14.png";
-import promotionItem_15 from "../../assets/img/promotionItems/promotionItem15.png";
+import promotionItem_01 from "../../assets/img/promotionItems/item01.webp";
+import promotionItem_02 from "../../assets/img/promotionItems/item02.webp";
+import promotionItem_03 from "../../assets/img/promotionItems/item03.webp";
+import promotionItem_04 from "../../assets/img/promotionItems/item04.webp";
+import promotionItem_05 from "../../assets/img/promotionItems/item05.webp";
+import promotionItem_06 from "../../assets/img/promotionItems/item06.webp";
+import promotionItem_07 from "../../assets/img/promotionItems/item07.webp";
+import promotionItem_08 from "../../assets/img/promotionItems/item08.webp";
+import promotionItem_09 from "../../assets/img/promotionItems/item09.webp";
+import promotionItem_10 from "../../assets/img/promotionItems/item10.webp";
+import promotionItem_11 from "../../assets/img/promotionItems/item11.webp";
+import promotionItem_12 from "../../assets/img/promotionItems/item12.webp";
+import promotionItem_13 from "../../assets/img/promotionItems/item13.webp";
+import promotionItem_14 from "../../assets/img/promotionItems/item14.webp";
+import promotionItem_15 from "../../assets/img/promotionItems/item15.webp";
 
 const promotionItems = [
   {

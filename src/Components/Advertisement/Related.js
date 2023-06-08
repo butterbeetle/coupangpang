@@ -3,23 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Related.module.css";
 import AdsItems from "./AdsItems";
 
-import relatedItem_01 from "../../assets/img/relatedItems/relatedItem_01.jpg";
-import relatedItem_02 from "../../assets/img/relatedItems/relatedItem_02.png";
-import relatedItem_03 from "../../assets/img/relatedItems/relatedItem_03.jpg";
-import relatedItem_04 from "../../assets/img/relatedItems/relatedItem_04.gif";
-import relatedItem_05 from "../../assets/img/relatedItems/relatedItem_05.jpg";
-
-import relatedItem_06 from "../../assets/img/relatedItems/relatedItem_06.jpg";
-import relatedItem_07 from "../../assets/img/relatedItems/relatedItem_07.jpg";
-import relatedItem_08 from "../../assets/img/relatedItems/relatedItem_08.png";
-import relatedItem_09 from "../../assets/img/relatedItems/relatedItem_09.jpg";
-import relatedItem_10 from "../../assets/img/relatedItems/relatedItem_10.jpg";
-
-import relatedItem_11 from "../../assets/img/relatedItems/relatedItem_11.jpg";
-import relatedItem_12 from "../../assets/img/relatedItems/relatedItem_12.jpg";
-import relatedItem_13 from "../../assets/img/relatedItems/relatedItem_13.jpg";
-import relatedItem_14 from "../../assets/img/relatedItems/relatedItem_14.jpg";
-import relatedItem_15 from "../../assets/img/relatedItems/relatedItem_15.jpg";
+import relatedItem_01 from "../../assets/img/relatedItems/item01.webp";
+import relatedItem_02 from "../../assets/img/relatedItems/item02.webp";
+import relatedItem_03 from "../../assets/img/relatedItems/item03.webp";
+import relatedItem_04 from "../../assets/img/relatedItems/item04.gif";
+import relatedItem_05 from "../../assets/img/relatedItems/item05.webp";
+import relatedItem_06 from "../../assets/img/relatedItems/item06.webp";
+import relatedItem_07 from "../../assets/img/relatedItems/item07.webp";
+import relatedItem_08 from "../../assets/img/relatedItems/item08.webp";
+import relatedItem_09 from "../../assets/img/relatedItems/item09.webp";
+import relatedItem_10 from "../../assets/img/relatedItems/item10.webp";
+import relatedItem_11 from "../../assets/img/relatedItems/item11.webp";
+import relatedItem_12 from "../../assets/img/relatedItems/item12.webp";
+import relatedItem_13 from "../../assets/img/relatedItems/item13.webp";
+import relatedItem_14 from "../../assets/img/relatedItems/item14.webp";
+import relatedItem_15 from "../../assets/img/relatedItems/item15.webp";
 
 const relatedItems = [
   {

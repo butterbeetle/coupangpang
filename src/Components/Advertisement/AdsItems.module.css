@@ -41,7 +41,7 @@
   height: 16px;
   margin-right: 4px;
   vertical-align: -2px;
-  background: url("../../assets/img/badges/discount-badge.png") no-repeat;
+  background: url("../../assets/img/badges/discount-badge.webp") no-repeat;
 }
 .info {
   padding: 6px 12px 4px;
@@ -121,7 +121,7 @@
   display: inline-block;
   width: 63px;
   height: 13px;
-  background: url("../../assets/img/badges/rocket_fresh.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_fresh.webp") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }
@@ -129,7 +129,7 @@
   display: inline-block;
   width: 55px;
   height: 13px;
-  background: url("../../assets/img/badges/jet_delivery.png") no-repeat;
+  background: url("../../assets/img/badges/jet_delivery.webp") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }
@@ -137,7 +137,7 @@
   display: inline-block;
   width: 55px;
   height: 13px;
-  background: url("../../assets/img/badges/rocket_delivery.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_delivery.webp") no-repeat;
   background-size: cover;
   margin-left: 5px;
 }
@@ -147,7 +147,7 @@
   display: inline-block;
   width: 70px;
   height: 17px;
-  background: url("../../assets/img/badges/rocket_buy.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_buy.webp") no-repeat;
   background-size: cover;
 }
 .badge-rocket-delivery {
@@ -155,7 +155,7 @@
   display: inline-block;
   width: 70px;
   height: 17px;
-  background: url("../../assets/img/badges/rocket_delivery.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_delivery.webp") no-repeat;
   background-size: cover;
 }
 .badge-rocket-install {
@@ -163,7 +163,7 @@
   display: inline-block;
   width: 70px;
   height: 17px;
-  background: url("../../assets/img/badges/rocket_install.png") no-repeat;
+  background: url("../../assets/img/badges/rocket_install.webp") no-repeat;
   background-size: cover;
 }
 
@@ -182,10 +182,10 @@
   display: block;
   width: 75px;
   height: 15px;
-  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -43px;
+  background: url("../../assets/img/widget/coupang_widget.webp") no-repeat -39px -43px;
 }
 .review-star {
   display: block;
   height: 15px;
-  background: url("../../assets/img/widget/coupang_widget.png") no-repeat -39px -58px;
+  background: url("../../assets/img/widget/coupang_widget.webp") no-repeat -39px -58px;
 }

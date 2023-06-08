@@ -3,23 +3,21 @@ import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Trending.module.css";
 import AdsItems from "./AdsItems";
 
-import trendingItem_01 from "../../assets/img/trendingItems/trendingItem_01.jpg";
-import trendingItem_02 from "../../assets/img/trendingItems/trendingItem_02.jpg";
-import trendingItem_03 from "../../assets/img/trendingItems/trendingItem_03.jpg";
-import trendingItem_04 from "../../assets/img/trendingItems/trendingItem_04.jpg";
-import trendingItem_05 from "../../assets/img/trendingItems/trendingItem_05.jpg";
-
-import trendingItem_06 from "../../assets/img/trendingItems/trendingItem_06.jpg";
-import trendingItem_07 from "../../assets/img/trendingItems/trendingItem_07.jpg";
-import trendingItem_08 from "../../assets/img/trendingItems/trendingItem_08.jpg";
-import trendingItem_09 from "../../assets/img/trendingItems/trendingItem_09.jpg";
-import trendingItem_10 from "../../assets/img/trendingItems/trendingItem_10.jpg";
-
-import trendingItem_11 from "../../assets/img/trendingItems/trendingItem_11.jpg";
-import trendingItem_12 from "../../assets/img/trendingItems/trendingItem_12.jpg";
-import trendingItem_13 from "../../assets/img/trendingItems/trendingItem_13.jpg";
-import trendingItem_14 from "../../assets/img/trendingItems/trendingItem_14.jpg";
-import trendingItem_15 from "../../assets/img/trendingItems/trendingItem_15.jpg";
+import trendingItem_01 from "../../assets/img/trendingItems/item01.webp";
+import trendingItem_02 from "../../assets/img/trendingItems/item02.webp";
+import trendingItem_03 from "../../assets/img/trendingItems/item03.webp";
+import trendingItem_04 from "../../assets/img/trendingItems/item04.webp";
+import trendingItem_05 from "../../assets/img/trendingItems/item05.webp";
+import trendingItem_06 from "../../assets/img/trendingItems/item06.webp";
+import trendingItem_07 from "../../assets/img/trendingItems/item07.webp";
+import trendingItem_08 from "../../assets/img/trendingItems/item08.webp";
+import trendingItem_09 from "../../assets/img/trendingItems/item09.webp";
+import trendingItem_10 from "../../assets/img/trendingItems/item10.webp";
+import trendingItem_11 from "../../assets/img/trendingItems/item11.webp";
+import trendingItem_12 from "../../assets/img/trendingItems/item12.webp";
+import trendingItem_13 from "../../assets/img/trendingItems/item13.webp";
+import trendingItem_14 from "../../assets/img/trendingItems/item14.webp";
+import trendingItem_15 from "../../assets/img/trendingItems/item15.webp";
 
 const trendingItems = [
   {

@@ -11,7 +11,7 @@
   top: 44%;
   width: 30px;
   height: 50px;
-  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
+  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.webp")
     no-repeat 0px -15px;
   cursor: pointer;
 }
@@ -55,14 +55,14 @@
 .dot {
   width: 10px;
   height: 10px;
-  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
+  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.webp")
     no-repeat 0px -113px;
   margin-right: 10px;
 }
 .selected {
   width: 10px;
   height: 10px;
-  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.png")
+  background: url("../../assets/img/widget/pc_bestcategory_v2_setting.webp")
     no-repeat -50px -113px;
   margin-right: 10px;
 }

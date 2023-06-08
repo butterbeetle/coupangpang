@@ -44,7 +44,7 @@
 .footer_info__etc span:first-child {
   width: 110px;
   height: 30px;
-  background: url("../../img/footer_img/footer_asset.png") no-repeat -20px -30px;
+  background: url("../../assets/img/footer_img/footer_asset.webp") no-repeat -20px -30px;
 }
 .footer_info__etc {
   display: flex;
@@ -79,7 +79,7 @@ address {
   width: 1020px;
   height: 60px;
   margin: 0 auto;
-  background: url("../../img/footer_img/footer_asset.png") no-repeat 0px -90px;
+  background: url("../../assets/img/footer_img/footer_asset.webp") no-repeat 0px -90px;
 }
 
 .footer_copyright {
@@ -101,17 +101,17 @@ address {
   display: inline-block;
   width: 35px;
   height: 35px;
-  background: url("../../img/footer_img/footer_asset.png") no-repeat -220px -30px;
+  background: url("../../assets/img/footer_img/footer_asset.webp") no-repeat -220px -30px;
 }
 .footer_copyright__logo li:nth-child(2) a {
   display: inline-block;
   width: 35px;
   height: 35px;
-  background: url("../../img/footer_img/footer_asset.png") no-repeat -346px -30px;
+  background: url("../../assets/img/footer_img/footer_asset.webp") no-repeat -346px -30px;
 }
 .footer_copyright__logo li:nth-child(3) a {
   display: inline-block;
   width: 35px;
   height: 35px;
-  background: url("../../img/footer_img/footer_asset.png") no-repeat -388px -30px;
+  background: url("../../assets/img/footer_img/footer_asset.webp") no-repeat -388px -30px;
 }
