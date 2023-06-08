@@ -209,7 +209,8 @@
   margin: 0 0 0 1.3rem;
 }
 .searchBox__gnbMenu img {
-  width: 10px;
+  width: 0.6rem;
+  height: 0.6rem;
 }
 .searchBox__gnbMenu__delivery {
   height: 30px;
