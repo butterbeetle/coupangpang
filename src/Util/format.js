@@ -1,6 +1,8 @@
 /** 핸드폰번호 포맷을 000-0000-0000 처럼 변환해주는 함수 */
 export const phoneFormat = (phone) => {
-  return phone.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3");
+  return phone
+    ? phone.replace(/^(\d{0,3})(\d{0,4})(\d{0,4})$/g, "$1-$2-$3")
+    : "";
 };
 
 /**
@@ -10,6 +12,7 @@ export const phoneFormat = (phone) => {
  */
 export const dateFormat = (ms) => {
   const day = ["일", "월", "화", "수", "목", "금", "토"];
+  if (ms === undefined) return { day: 0, month: 0, date: 0 };
   const today = new Date(ms);
   const tomorrow = new Date(today.setDate(today.getDate() + 1));
 
