@@ -5,7 +5,8 @@
   align-items: flex-end;
   width: 110px;
   height: 115px;
-  background: url("../../assets/img/header_img_collection.png") no-repeat;
+  background: url("../../assets/img/header_img/header_img_collection.webp")
+    no-repeat;
 }
 
 .category--p {

@@ -1,5 +1,5 @@
 import styles from "./Complete.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 /* Util */
 import OrderFlow from "../../../Util/OrderFlow";
 import LoadingModal from "../../../UI/LoadingModal";
@@ -15,8 +15,9 @@ import { getOrderedData } from "../../../store/order-action";
 
 const OrderComplete = () => {
   const dispatch = useDispatch();
+  const { orderId } = useParams();
   const orderedItems = useSelector((state) => state.order.orderedItems[0]);
-  const { day, month, date } = dateFormat(orderedItems.date);
+  const { day, month, date } = dateFormat(orderedItems?.date);
   const [loading, setLoading] = useState(false);
   const [openProdInfo, setOpenProdInfo] = useState(false);
   const openProdInfoHandler = () => {
@@ -25,8 +26,8 @@ const OrderComplete = () => {
   /* 첫 접속 시 로딩 */
   useEffect(() => {
     setLoading(true);
-    dispatch(getOrderedData());
-  }, [dispatch]);
+    dispatch(getOrderedData(orderId));
+  }, [dispatch, orderId]);
 
   /* 2초 후 로딩 끝 */
   useEffect(() => {
@@ -57,8 +58,7 @@ const OrderComplete = () => {
         return "카드";
     }
   };
-  console.log("orderedItems ", orderedItems);
-
+  // console.log(orderedItems);
   return (
     <div className={styles["background"]}>
       {loading && <LoadingModal />}
@@ -76,16 +76,16 @@ const OrderComplete = () => {
             <div>
               <strong>
                 {`${month}/${date}(${day})`} 도착 예정 (상품
-                {orderedItems.items.length}개)
+                {orderedItems?.items.length}개)
               </strong>
             </div>
             {!openProdInfo && <IoIosArrowDown onClick={openProdInfoHandler} />}
             {openProdInfo && <IoIosArrowUp onClick={openProdInfoHandler} />}
           </div>
           {openProdInfo &&
-            orderedItems.items.map((item) => (
-              <div className={styles["prod__main"]}>
-                <img src={item.thumbnail} alt="" />
+            orderedItems?.items.map((item) => (
+              <div className={styles["prod__main"]} key={item.id}>
+                <img src={item.thumbnail} alt="" loading="lazy" />
                 <div className={styles["prod__main__text"]}>
                   <p className={styles["prod__title"]}>{item.name}</p>
                   <p className={styles["prod__price"]}>
@@ -104,21 +104,21 @@ const OrderComplete = () => {
             <div className={styles["recipient__name"]}>
               <div className={styles["name__title"]}>받는사람</div>
               <div className={styles["name__content"]}>
-                {`${orderedItems.addr.name} / ${phoneFormat(
-                  orderedItems.addr.phone
+                {`${orderedItems?.addr.name} / ${phoneFormat(
+                  orderedItems?.addr.phone
                 )}`}
               </div>
             </div>
             <div className={styles["recipient__addr"]}>
               <div className={styles["addr__title"]}>받는주소</div>
               <div className={styles["addr__content"]}>
-                {`${orderedItems.addr.zonecode} ${orderedItems.addr.roadAddress}`}
+                {`${orderedItems?.addr.zonecode} ${orderedItems?.addr.roadAddress}`}
               </div>
             </div>
             <div className={styles["recipient__req"]}>
               <div className={styles["req__title"]}>배송요청사항</div>
               <div className={styles["req__content"]}>
-                {`${orderedItems.addr.delivaryNormal}`}
+                {`${orderedItems?.addr.delivaryNormal}`}
               </div>
             </div>
           </div>
@@ -128,7 +128,7 @@ const OrderComplete = () => {
               <div className={styles["price"]}>
                 <div>주문금액</div>
                 <div>
-                  {`${orderedItems.items
+                  {`${orderedItems?.items
                     .reduce((acc, cur) => {
                       return (acc += cur.totalPrice);
                     }, 0)
@@ -144,10 +144,10 @@ const OrderComplete = () => {
               <div className={styles["order__total-price"]}>총 결제금액</div>
               <div className={styles["order__method"]}>
                 <div className={styles["method"]}>
-                  {`${methodToString(orderedItems.method)}`} / 일시불
+                  {`${methodToString(orderedItems?.method)}`} / 일시불
                 </div>
                 <div className={styles["method-price"]}>
-                  {`${orderedItems.items
+                  {`${orderedItems?.items
                     .reduce((acc, cur) => {
                       return (acc += cur.totalPrice);
                     }, 0)

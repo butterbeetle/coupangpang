@@ -41,7 +41,7 @@ const TodayItems = ({ item, idx, activeItem, itemNumber, isActive }) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <Link to={item.url} title="item">
+      <Link rel="dns-prefetch" to={item.url} title="item">
         <img
           className={`${styles["today-item-small"]} ${hoverStyles}`}
           src={item.small_banner_src}

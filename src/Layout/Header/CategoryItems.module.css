@@ -36,7 +36,8 @@
   right: 5px;
   width: 10px;
   height: 10px;
-  background: url("../../assets/img/header_img_collection.png") no-repeat -155px -18px;
+  background: url("../../assets/img/header_img/header_img_collection.webp")
+    no-repeat -155px -18px;
 }
 .arrow__depth {
   display: inline-block;
@@ -45,211 +46,212 @@
   left: 155px;
   width: 10px;
   height: 10px;
-  background: url("../../assets/img/header_img_collection.png") no-repeat -155px -18px;
+  background: url("../../assets/img/header_img/header_img_collection.webp")
+    no-repeat -155px -18px;
 }
 
 .fashion {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -28px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -28px;
 }
 .beauty {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -112px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -112px;
 }
 .child {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -155px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -155px;
 }
 .food {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -195px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -195px;
 }
 .kitchen {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -280px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -280px;
 }
 .life {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -325px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -325px;
 }
 .interior {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -365px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -365px;
 }
 .digital {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -407px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -407px;
 }
 .sports {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -450px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -450px;
 }
 .car {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -785px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -785px;
 }
 .book {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -575px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -575px;
 }
 .hobby {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -741px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -741px;
 }
 .office {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -492px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -492px;
 }
 .pet {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -533px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -533px;
 }
 .health {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -870px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -870px;
 }
 .travel {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -618px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -618px;
 }
 .theme {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -10px -912px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -10px -912px;
 }
 
 .fashion__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -28px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -28px;
 }
 .beauty__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -112px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -112px;
 }
 .child__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -155px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -155px;
 }
 .food__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -195px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -195px;
 }
 .kitchen__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -280px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -280px;
 }
 .life__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -325px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -325px;
 }
 .interior__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -365px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -365px;
 }
 .digital__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -407px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -407px;
 }
 .sports__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -450px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -450px;
 }
 .car__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -785px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -785px;
 }
 .book__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -575px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -575px;
 }
 .hobby__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -741px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -741px;
 }
 .office__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -492px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -492px;
 }
 .pet__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -533px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -533px;
 }
 .health__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -870px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -870px;
 }
 .travel__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -618px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -618px;
 }
 .theme__active {
   display: inline-block;
   width: 25px;
   height: 100%;
-  background: url("../../assets/img/pc_gnb_icon_ver10.png") no-repeat -202px -912px;
+  background: url("../../assets/img/category/pc_gnb_icon_ver10.webp") no-repeat -202px -912px;
 }

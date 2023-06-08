@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { sendOrderedData } from "../../../store/order-action";
 /* Util */
 import { phoneFormat } from "../../../Util/format";
+import { cartActions } from "../../../store/cart-slice";
 
 const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
 const TOSPAY = "tosspay.tosstest"; // 토스페이
@@ -68,8 +69,11 @@ const PaymentButton = () => {
         2.총 가격
        */
       // console.log("결제 성공:", { data: new Date().getTime(), ...curItems });
-      dispatch(sendOrderedData({ date: new Date().getTime(), ...curItems }));
-      navigate("/order/complete");
+      // 구매 성공 시 장바구니에서 아이템 삭제
+      dispatch(cartActions.removeItemsToCart(checked));
+      const date = new Date().getTime();
+      dispatch(sendOrderedData({ date, ...curItems }));
+      navigate(`/order/complete/IMP${date}`);
     } else {
       console.log(`결제 실패: ${error_msg}`);
     }

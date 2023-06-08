@@ -32,7 +32,7 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/fashion.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/fashion.webp") no-repeat 100px 140px;
 }
 
 .beauty__bg {
@@ -40,111 +40,111 @@
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/beauty.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/beauty.webp") no-repeat 100px 140px;
 }
 .child__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/child.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/child.webp") no-repeat 100px 140px;
 }
 .food__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/food.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/food.webp") no-repeat 100px 140px;
 }
 .kitchen__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/kitchen.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/kitchen.webp") no-repeat 100px 140px;
 }
 .life__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/life.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/life.webp") no-repeat 100px 140px;
 }
 .interior__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/interior.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/interior.webp") no-repeat 100px 140px;
 }
 .digital__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/digital.png") no-repeat 100px 140px;
+  background: url("../assets/img/category/digital.webp") no-repeat 100px 140px;
 }
 .sports__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/sports.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/sports.webp") no-repeat 100px 140px;
 }
 .car__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/car.jpg") no-repeat 10px 140px;
+  background: url("../assets/img/category/car.webp") no-repeat 10px 140px;
 }
 .book__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/book.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/book.webp") no-repeat 100px 140px;
 }
 .hobby__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/hobby.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/hobby.webp") no-repeat 100px 140px;
 }
 .office__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/office.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/office.webp") no-repeat 100px 140px;
 }
 .pet__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/pet.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/pet.webp") no-repeat 100px 140px;
 }
 .health__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/health.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/health.webp") no-repeat 100px 140px;
 }
 .travel__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/travel.jpg") no-repeat 10px 140px;
+  background: url("../assets/img/category/travel.webp") no-repeat 10px 140px;
 }
 .theme__bg {
   display: inline-block;
   position: absolute;
   width: 100%;
   height: 100%;
-  background: url("../assets/img/thmem.jpg") no-repeat 100px 140px;
+  background: url("../assets/img/category/thmem.webp") no-repeat 100px 140px;
 }
 /* car travel */

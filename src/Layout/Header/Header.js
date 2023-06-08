@@ -1,8 +1,8 @@
-import { Fragment, lazy, useState } from "react";
+import { Fragment, useState } from "react";
 import styles from "./Header.module.css";
 import Navigation from "./Navigation";
 //Icon
-import icon_new from "../../img/header_img/ico_new.png";
+import icon_new from "../../assets/img/header_img/ico_new.webp";
 import Category from "./Category";
 import CategoryItems from "./CategoryItems";
 import { Link } from "react-router-dom";

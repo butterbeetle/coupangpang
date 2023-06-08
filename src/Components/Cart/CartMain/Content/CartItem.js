@@ -111,7 +111,7 @@ const CartItem = ({ item }) => {
       </div>
       <div className={styles["item__img"]}>
         <Link to={`/products/${item.id}`}>
-          <img src={item.thumbnail} alt="" />
+          <img src={item.thumbnail} alt="" loading="lazy" />
         </Link>
       </div>
       <div className={styles["item__info"]}>

@@ -9,7 +9,8 @@ const orderSlice = createSlice({
   reducers: {
     setOrderedItems(state, action) {
       const { order } = action.payload.data;
-      state.orderedItems = [...order].sort((a, b) => b.date - a.date);
+      // console.log("redux", order);
+      state.orderedItems.push(order);
     },
     addToCurrentItems(state, action) {
       const { addr, items, method } = action.payload;

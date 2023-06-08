@@ -34,7 +34,7 @@ const RecentViewItem = ({ item }) => {
         onClick={removeRecentItem}
       />
       <Link to={`products/${item.id}`}>
-        <img src={item.realUrl} alt="" />
+        <img src={item.realUrl} alt="" loading="lazy" />
 
         {
           <div

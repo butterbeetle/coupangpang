@@ -20,7 +20,8 @@
   margin-left: 0.3rem;
   width: 7rem;
   height: 1.4rem;
-  background: url("../../../../assets/img/product/new-coach-mark.png") no-repeat;
+  background: url("../../../../assets/img/product/new-coach-mark.webp")
+    no-repeat;
   background-size: contain;
 }
 .seller--evaluation {

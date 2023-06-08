@@ -7,7 +7,7 @@
   display: inline-block;
   width: 200px;
   height: 50px;
-  background: url("../../assets/img/main-header/logo_coupang.png") no-repeat;
+  background: url("../../assets/img/logo/logo_coupang.webp") no-repeat;
   background-size: 200px 50px;
 }
 
@@ -25,31 +25,31 @@
   display: inline-block;
   width: 20px;
   height: 22px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -1px 2px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -1px 2px;
 }
 .icon--passwd {
   display: inline-block;
   width: 20px;
   height: 22px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -22px 0px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -22px 0px;
 }
 .icon--passwd--confirm {
   display: inline-block;
   width: 20px;
   height: 22px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -43px 0px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -43px 0px;
 }
 .icon--name {
   display: inline-block;
   width: 20px;
   height: 22px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -2px -21px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -2px -21px;
 }
 .icon--phone {
   display: inline-block;
   width: 20px;
   height: 22px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -21px -21px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -21px -21px;
 }
 .icon--check {
   display: inline-block;
@@ -58,7 +58,7 @@
   right: 13px;
   width: 20px;
   height: 22px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -63px 0px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -63px 0px;
 }
 
 .icon--hide {
@@ -68,7 +68,7 @@
   top: 15px;
   width: 22px;
   height: 20px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -105px -1px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -105px -1px;
 }
 
 .form__content {
@@ -126,7 +126,8 @@
   display: inline-block;
   width: 12px;
   height: 12px;
-  background: url("../../assets/img/icon-check-green.png") no-repeat 0px 0px;
+  background: url("../../assets/img/icon/icon-check-green.webp") no-repeat 0px
+    0px;
   background-size: cover;
 }
 .red-icon {
@@ -135,7 +136,7 @@
   display: inline-block;
   width: 12px;
   height: 12px;
-  background: url("../../assets/img/icon-cross-red.png") no-repeat 0px 0px;
+  background: url("../../assets/img/icon/icon-cross-red.webp") no-repeat 0px 0px;
   background-size: cover;
 }
 .error-box {

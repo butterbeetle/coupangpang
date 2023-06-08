@@ -7,7 +7,7 @@
   display: inline-block;
   width: 200px;
   height: 50px;
-  background: url("../../assets/img/main-header/logo_coupang.png") no-repeat;
+  background: url("../../assets/img/logo/logo_coupang.webp") no-repeat;
   background-size: 200px 50px;
 }
 
@@ -15,13 +15,13 @@
   display: inline-block;
   width: 22px;
   height: 20px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat 0px 0px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat 0px 0px;
 }
 .login__form--passwd--icon {
   display: inline-block;
   width: 22px;
   height: 20px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -21px -1px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -21px -1px;
 }
 .login__form--passwd--icon--visible {
   position: absolute;
@@ -30,7 +30,7 @@
   top: 15px;
   width: 22px;
   height: 20px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -105px -1px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -105px -1px;
   cursor: pointer;
 }
 .login__form--passwd--icon--invisible {
@@ -40,7 +40,7 @@
   top: 15px;
   width: 22px;
   height: 20px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -126px -1px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -126px -1px;
   cursor: pointer;
 }
 
@@ -111,7 +111,7 @@
   top: 25px;
   width: 20px;
   height: 15px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -80px -21px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -80px -21px;
 }
 
 .login__main__util__auto label {
@@ -141,7 +141,7 @@
   top: -4px;
   width: 15px;
   height: 10px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -110px -21px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -110px -21px;
 }
 .login__main__util__auto--box span {
   display: inline-block;
@@ -160,7 +160,7 @@
   width: 10px;
   height: 13px;
   margin-left: 5px;
-  background: url("../../assets/img/sprite-member.svg") no-repeat -102px -23px;
+  background: url("../../assets/svg/sprite-member.svg") no-repeat -102px -23px;
 }
 .login__main__btn {
   margin-top: 15px;

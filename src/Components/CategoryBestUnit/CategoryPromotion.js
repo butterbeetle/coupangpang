@@ -1126,7 +1126,7 @@ const items = {
 const CategoryPromotion = ({ category }) => {
   const [btnHover, setBtnHover] = useState(false);
   const { count, start, stop, reset, resetNum } = useInterval(0, 2000);
-  const len = items[`${category}`].length - 1;
+  const len = items[`${category}`]?.length - 1;
 
   useEffect(() => {
     if (count > len) {
@@ -1185,7 +1185,7 @@ const CategoryPromotion = ({ category }) => {
             }`}
           >
             <Link to="/">
-              <img src={item.img} alt={`${itemindex}`} />
+              <img src={item.img} alt={`${itemindex}`} loading="lazy" />
             </Link>
             <span
               className={`${styles["promotion__caption"]} ${

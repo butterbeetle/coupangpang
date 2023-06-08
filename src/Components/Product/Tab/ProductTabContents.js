@@ -79,7 +79,7 @@ const ProductTabContents = () => {
             }`}
           >
             {urlArray.map((item, idx) => (
-              <img key={idx} src={item.url} alt="" />
+              <img key={idx} src={item.url} alt="" loading="lazy" />
             ))}
           </div>
           <div className={styles["detail__more"]}>

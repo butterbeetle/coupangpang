@@ -1,6 +1,8 @@
 .today-item-small {
   vertical-align: top;
   position: relative;
+  width: 11.25rem;
+  height: 3.75rem;
   z-index: 2;
   top: 30px;
   right: -410px;
