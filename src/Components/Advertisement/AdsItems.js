@@ -65,7 +65,7 @@ const AdsItems = ({
     >
       <Link href="/">
         <div className={styles["infos"]}>
-          <img src={img} alt="오늘의 쇼핑 제안1" />
+          <img src={img} alt="오늘의 쇼핑 제안1" loading="lazy" />
           {discount > 0 && discountJsx}
 
           <div className={`${styles["info"]} ${styles[item_type + "-info"]}`}>

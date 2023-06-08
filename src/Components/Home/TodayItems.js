@@ -46,11 +46,13 @@ const TodayItems = ({ item, idx, activeItem, itemNumber, isActive }) => {
           className={`${styles["today-item-small"]} ${hoverStyles}`}
           src={item.small_banner_src}
           alt={"작은 배너" + idx}
+          loading="lazy"
         />
         <img
           className={`${styles["today-item-big"]} ${show}`}
           src={item.big_banner_src}
           alt={"큰 배너" + idx}
+          loading="lazy"
         />
       </Link>
     </li>

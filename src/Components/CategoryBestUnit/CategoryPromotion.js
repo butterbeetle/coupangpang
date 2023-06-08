@@ -1185,7 +1185,7 @@ const CategoryPromotion = ({ category }) => {
             }`}
           >
             <Link to="/">
-              <img src={item.img} alt={`${itemindex}`} />
+              <img src={item.img} alt={`${itemindex}`} loading="lazy" />
             </Link>
             <span
               className={`${styles["promotion__caption"]} ${

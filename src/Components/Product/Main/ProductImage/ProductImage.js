@@ -28,7 +28,7 @@ const ProductImage = () => {
             onMouseEnter={() => hoverHandler(idx)}
           >
             <div className={`${styles["product__image--small"]} `}>
-              <img src={item.url} alt={`item${idx}`} />
+              <img src={item.url} alt={`item${idx}`} loading="lazy" />
               <i className={`${imgIndex === idx ? styles["border"] : ""}`} />
             </div>
           </div>
@@ -37,7 +37,7 @@ const ProductImage = () => {
               imgIndex === idx ? styles["active"] : ""
             }`}
           >
-            <img src={item.url} alt={`item${idx}`} />
+            <img src={item.url} alt={`item${idx}`} loading="lazy" />
           </div>
           <div
             className={`${styles["product__image--zoom"]} ${
