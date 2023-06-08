@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styles from "./Error.module.css";
 /* Icon */
 import { AiOutlineStop } from "@react-icons/all-files/ai/AiOutlineStop";
@@ -6,6 +6,7 @@ import { AiOutlineSearch } from "@react-icons/all-files/ai/AiOutlineSearch";
 import { BiHeadphone } from "@react-icons/all-files/bi/BiHeadphone";
 
 const ErrorPage = () => {
+  const nav = useNavigate();
   return (
     <div className={styles["error"]}>
       <header className={styles["header"]}>
@@ -36,7 +37,11 @@ const ErrorPage = () => {
               고객센터 TEL. 1577-7011 (운영시간 : 연중무휴 오전 9시 ~ 오후 7시)
             </div>
             <div className={styles["btn"]}>
-              <Link className={styles["btn__back"]} to=".." relative="path">
+              <Link
+                className={styles["btn__back"]}
+                onClick={() => nav(-1)}
+                relative="path"
+              >
                 이전 페이지로
               </Link>
               <Link className={styles["btn__home"]} to="/">
