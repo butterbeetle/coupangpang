@@ -28,6 +28,7 @@ export const sendOrderedData = (order) => {
   return async () => {
     const sendData = async () => {
       const { uid } = await getIndexedDbData();
+      if (uid === null) return;
       const docSnap = await getDoc(doc(firestore, "order", uid));
       // console.log("sendOrderedData order", order);
       // console.log("sendOrderedData docSnap", docSnap.data().order);

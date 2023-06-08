@@ -57,115 +57,112 @@ const OrderComplete = () => {
         return "카드";
     }
   };
+  console.log("orderedItems ", orderedItems);
 
   return (
     <div className={styles["background"]}>
       {loading && <LoadingModal />}
-      {!loading && (
-        <div className={styles["container"]}>
-          <div className={styles["title"]}>
-            <h3>주문완료</h3>
-            <OrderFlow step={4} />
-          </div>
-          <div className={styles["thx"]}>
-            <strong>주문이 완료</strong>되었습니다. 감사합니다!
-          </div>
-          <h3 className={styles["prod__header"]}>상품배송 정보</h3>
-          <div className={styles["prod__container"]}>
-            <div className={styles["prod__info"]}>
-              <div>
-                <strong>
-                  {`${month}/${date}(${day})`} 도착 예정 (상품
-                  {orderedItems?.items.length}개)
-                </strong>
-              </div>
-              {!openProdInfo && (
-                <IoIosArrowDown onClick={openProdInfoHandler} />
-              )}
-              {openProdInfo && <IoIosArrowUp onClick={openProdInfoHandler} />}
+      <div className={styles["container"]}>
+        <div className={styles["title"]}>
+          <h3>주문완료</h3>
+          <OrderFlow step={4} />
+        </div>
+        <div className={styles["thx"]}>
+          <strong>주문이 완료</strong>되었습니다. 감사합니다!
+        </div>
+        <h3 className={styles["prod__header"]}>상품배송 정보</h3>
+        <div className={styles["prod__container"]}>
+          <div className={styles["prod__info"]}>
+            <div>
+              <strong>
+                {`${month}/${date}(${day})`} 도착 예정 (상품
+                {orderedItems?.items.length}개)
+              </strong>
             </div>
-            {openProdInfo &&
-              orderedItems?.items.map((item) => (
-                <div className={styles["prod__main"]}>
-                  <img src={item.thumbnail} alt="" />
-                  <div className={styles["prod__main__text"]}>
-                    <p className={styles["prod__title"]}>{item.name}</p>
-                    <p className={styles["prod__price"]}>
-                      <strong>{item.totalPrice}</strong>원
-                    </p>
-                    <p className={styles["prod__amount"]}>
-                      수량: {item.quantity}개
-                    </p>
-                  </div>
-                </div>
-              ))}
+            {!openProdInfo && <IoIosArrowDown onClick={openProdInfoHandler} />}
+            {openProdInfo && <IoIosArrowUp onClick={openProdInfoHandler} />}
           </div>
-          <div className={styles["infos"]}>
-            <div className={styles["recipient"]}>
-              <h3 className={styles["recipient__title"]}>받는사람 정보</h3>
-              <div className={styles["recipient__name"]}>
-                <div className={styles["name__title"]}>받는사람</div>
-                <div className={styles["name__content"]}>
-                  {`${orderedItems?.addr.name} / ${phoneFormat(
-                    orderedItems?.addr.phone
-                  )}`}
+          {openProdInfo &&
+            orderedItems?.items.map((item) => (
+              <div className={styles["prod__main"]}>
+                <img src={item.thumbnail} alt="" />
+                <div className={styles["prod__main__text"]}>
+                  <p className={styles["prod__title"]}>{item.name}</p>
+                  <p className={styles["prod__price"]}>
+                    <strong>{item.totalPrice}</strong>원
+                  </p>
+                  <p className={styles["prod__amount"]}>
+                    수량: {item.quantity}개
+                  </p>
                 </div>
               </div>
-              <div className={styles["recipient__addr"]}>
-                <div className={styles["addr__title"]}>받는주소</div>
-                <div className={styles["addr__content"]}>
-                  {`${orderedItems?.addr.zonecode} ${orderedItems?.addr.roadAddress}`}
-                </div>
-              </div>
-              <div className={styles["recipient__req"]}>
-                <div className={styles["req__title"]}>배송요청사항</div>
-                <div className={styles["req__content"]}>
-                  {`${orderedItems?.addr.delivaryNormal}`}
-                </div>
+            ))}
+        </div>
+        <div className={styles["infos"]}>
+          <div className={styles["recipient"]}>
+            <h3 className={styles["recipient__title"]}>받는사람 정보</h3>
+            <div className={styles["recipient__name"]}>
+              <div className={styles["name__title"]}>받는사람</div>
+              <div className={styles["name__content"]}>
+                {`${orderedItems?.addr.name} / ${phoneFormat(
+                  orderedItems?.addr.phone
+                )}`}
               </div>
             </div>
-            <div className={styles["order"]}>
-              <h3 className={styles["order__title"]}>결제 정보</h3>
-              <div className={styles["order__price"]}>
-                <div className={styles["price"]}>
-                  <div>주문금액</div>
-                  <div>
-                    {`${orderedItems?.items
-                      .reduce((acc, cur) => {
-                        return (acc += cur.totalPrice);
-                      }, 0)
-                      .toLocaleString()}`}
-                    원
-                  </div>
-                </div>
-                <div className={styles["delivary"]}>
-                  <div>배송비</div> <div>+0원</div>
-                </div>
+            <div className={styles["recipient__addr"]}>
+              <div className={styles["addr__title"]}>받는주소</div>
+              <div className={styles["addr__content"]}>
+                {`${orderedItems?.addr.zonecode} ${orderedItems?.addr.roadAddress}`}
               </div>
-              <div className={styles["order__total"]}>
-                <div className={styles["order__total-price"]}>총 결제금액</div>
-                <div className={styles["order__method"]}>
-                  <div className={styles["method"]}>
-                    {`${methodToString(orderedItems?.method)}`} / 일시불
-                  </div>
-                  <div className={styles["method-price"]}>
-                    {`${orderedItems?.items
-                      .reduce((acc, cur) => {
-                        return (acc += cur.totalPrice);
-                      }, 0)
-                      .toLocaleString()}`}
-                    원
-                  </div>
-                </div>
+            </div>
+            <div className={styles["recipient__req"]}>
+              <div className={styles["req__title"]}>배송요청사항</div>
+              <div className={styles["req__content"]}>
+                {`${orderedItems?.addr.delivaryNormal}`}
               </div>
             </div>
           </div>
-          <div className={styles["button"]}>
-            <Link to="/">주문 상세보기</Link>
-            <Link to="/">쇼핑 계속하기</Link>
+          <div className={styles["order"]}>
+            <h3 className={styles["order__title"]}>결제 정보</h3>
+            <div className={styles["order__price"]}>
+              <div className={styles["price"]}>
+                <div>주문금액</div>
+                <div>
+                  {`${orderedItems?.items
+                    .reduce((acc, cur) => {
+                      return (acc += cur.totalPrice);
+                    }, 0)
+                    .toLocaleString()}`}
+                  원
+                </div>
+              </div>
+              <div className={styles["delivary"]}>
+                <div>배송비</div> <div>+0원</div>
+              </div>
+            </div>
+            <div className={styles["order__total"]}>
+              <div className={styles["order__total-price"]}>총 결제금액</div>
+              <div className={styles["order__method"]}>
+                <div className={styles["method"]}>
+                  {`${methodToString(orderedItems?.method)}`} / 일시불
+                </div>
+                <div className={styles["method-price"]}>
+                  {`${orderedItems?.items
+                    .reduce((acc, cur) => {
+                      return (acc += cur.totalPrice);
+                    }, 0)
+                    .toLocaleString()}`}
+                  원
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-      )}
+        <div className={styles["button"]}>
+          <Link to="/">주문 상세보기</Link>
+          <Link to="/">쇼핑 계속하기</Link>
+        </div>
+      </div>
     </div>
   );
 };
