@@ -1,5 +1,5 @@
 import styles from "./Complete.module.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 /* Util */
 import OrderFlow from "../../../Util/OrderFlow";
 import LoadingModal from "../../../UI/LoadingModal";
@@ -15,6 +15,7 @@ import { getOrderedData } from "../../../store/order-action";
 
 const OrderComplete = () => {
   const dispatch = useDispatch();
+  const { orderId } = useParams();
   const orderedItems = useSelector((state) => state.order.orderedItems[0]);
   const { day, month, date } = dateFormat(orderedItems?.date);
   const [loading, setLoading] = useState(false);
@@ -25,8 +26,8 @@ const OrderComplete = () => {
   /* 첫 접속 시 로딩 */
   useEffect(() => {
     setLoading(true);
-    dispatch(getOrderedData());
-  }, [dispatch]);
+    dispatch(getOrderedData(orderId));
+  }, [dispatch, orderId]);
 
   /* 2초 후 로딩 끝 */
   useEffect(() => {
@@ -57,8 +58,7 @@ const OrderComplete = () => {
         return "카드";
     }
   };
-  console.log("orderedItems ", orderedItems);
-
+  // console.log(orderedItems);
   return (
     <div className={styles["background"]}>
       {loading && <LoadingModal />}
@@ -84,7 +84,7 @@ const OrderComplete = () => {
           </div>
           {openProdInfo &&
             orderedItems?.items.map((item) => (
-              <div className={styles["prod__main"]}>
+              <div className={styles["prod__main"]} key={item.id}>
                 <img src={item.thumbnail} alt="" />
                 <div className={styles["prod__main__text"]}>
                   <p className={styles["prod__title"]}>{item.name}</p>

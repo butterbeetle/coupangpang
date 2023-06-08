@@ -68,8 +68,9 @@ const PaymentButton = () => {
         2.총 가격
        */
       // console.log("결제 성공:", { data: new Date().getTime(), ...curItems });
-      dispatch(sendOrderedData({ date: new Date().getTime(), ...curItems }));
-      navigate("/order/complete");
+      const date = new Date().getTime();
+      dispatch(sendOrderedData({ date, ...curItems }));
+      navigate(`/order/complete/IMP${date}`);
     } else {
       console.log(`결제 실패: ${error_msg}`);
     }
