@@ -35,11 +35,29 @@ const productSlice = createSlice({
       const url = action.payload;
       const existingUrl = state.detailUrl.find((item) => item.url === url);
       if (!existingUrl) state.detailUrl.push(url);
+
+      state.detailUrl.sort((a, b) => {
+        const aIdx = a.url.indexOf(".webp");
+        const bIdx = b.url.indexOf(".webp");
+        return (
+          a.url.substring(aIdx - 2, aIdx).replace(/[^0-9]/g, "") -
+          b.url.substring(bIdx - 2, bIdx).replace(/[^0-9]/g, "")
+        );
+      });
     },
     addThumbnailUrl(state, action) {
       const url = action.payload;
       const existingUrl = state.thumbnailUrl.find((item) => item.url === url);
       if (!existingUrl) state.thumbnailUrl.push(url);
+
+      state.thumbnailUrl.sort((a, b) => {
+        const aIdx = a.url.indexOf(".webp");
+        const bIdx = b.url.indexOf(".webp");
+        return (
+          a.url.substring(aIdx - 2, aIdx).replace(/[^0-9]/g, "") -
+          b.url.substring(bIdx - 2, bIdx).replace(/[^0-9]/g, "")
+        );
+      });
     },
     resetUrl(state) {
       state.detailUrl = [];

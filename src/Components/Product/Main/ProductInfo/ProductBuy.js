@@ -16,7 +16,7 @@ const ProductBuy = () => {
   const prodId = useSelector((state) => state.prod.id);
   const prodPrice = useSelector((state) => state.prod.price);
   const prodTitle = useSelector((state) => state.prod.title);
-  const prodMaxQuantity = useSelector((state) => state.prod.maxQuantity);
+  const prodMaxQuantity = useSelector((state) => state.prod.maxQuantity) ?? 999;
 
   /* 가격 */
   const [price, setPrice] = useState(prodPrice);
