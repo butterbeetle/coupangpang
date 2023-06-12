@@ -11,7 +11,9 @@ export const getCartData = () => {
     const getData = async () => {
       const { uid } = await getIndexedDbData();
       if (uid === null) return;
-      const docSnap = await getDoc(doc(firestore, "cart", uid));
+      const docSnap = await getDoc(
+        doc(firestore, `users/${uid}/cart`, "infos")
+      );
       if (docSnap.exists()) {
         dispatch(
           cartActions.replaceCart({
@@ -34,7 +36,8 @@ export const sendCartData = (cart) => {
   return async () => {
     const sendData = async () => {
       const { uid } = await getIndexedDbData();
-      await setDoc(doc(firestore, "cart", uid), {
+      if (uid === null) return;
+      await setDoc(doc(firestore, `users/${uid}/cart`, "infos"), {
         items: cart.items,
         totalQuantity: cart.totalQuantity,
         checked: cart.checked,
