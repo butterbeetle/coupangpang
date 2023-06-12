@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import useOutsideClick from "../../hooks/useOutsideClick";
 import HeaderCart from "../../Components/Header/Cart";
+import HeaderMyCoupang from "../../Components/Header/MyCoupang";
 
 const searchTagItems = [
   { title: "전체" },
@@ -139,31 +140,7 @@ const Header = () => {
                 </form>
               </div>
               <ul className={styles.searchBox__mainBox__user}>
-                <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                  <div className={styles.searchBox__mainBox__user__info}>
-                    <p className={styles["mycoupang"]}>마이쿠팡</p>
-                    {myCoupangDropdown && (
-                      <div className={styles["myCoupang-dropdown"]}>
-                        <i className={styles["speech-icon"]}></i>
-                        <ul
-                          className={`${styles["menus"]} ${styles["my-coupang"]}`}
-                        >
-                          {myCoupangItems.map((menu, idx) => {
-                            const depth = 0;
-                            return (
-                              <CategoryItems
-                                items={menu}
-                                key={idx}
-                                depth={depth}
-                                type={1}
-                              />
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </li>
+                <HeaderMyCoupang />
                 <HeaderCart />
               </ul>
             </div>

@@ -10,7 +10,7 @@ const PreView = () => {
 
   return (
     <div className={styles["pre-view"]}>
-      <i className={styles["box-tail"]}></i>
+      <i className={styles["box-tail"]} />
       <div className={styles["view"]}>
         {[...items]
           .reverse()
