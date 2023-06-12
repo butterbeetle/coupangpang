@@ -12,6 +12,7 @@ import { useEffect, useState } from "react";
 /* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderedData } from "../../../store/order-action";
+import Sidebar from "../../Home/Sidebar/Sidebar";
 
 const OrderComplete = () => {
   const dispatch = useDispatch();
@@ -62,7 +63,11 @@ const OrderComplete = () => {
   return (
     <div className={styles["background"]}>
       {loading && <LoadingModal />}
+
       <div className={styles["container"]}>
+        <div className={styles["test"]}>
+          <Sidebar />
+        </div>
         <div className={styles["title"]}>
           <h3>주문완료</h3>
           <OrderFlow step={4} />
