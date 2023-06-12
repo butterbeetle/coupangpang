@@ -61,13 +61,11 @@ const CategoryItems = ({ items, depth, type }) => {
           />
         </Fragment>
       ) : (
-        <Fragment>
-          <button type="button" className={`${styles[items.icon]}`}>
-            <Link className={`${title} ${active} ${more}`} to="/">
-              {items.title}
-            </Link>
-          </button>
-        </Fragment>
+        <button type="button" className={`${styles[items.icon]}`}>
+          <Link className={`${title} ${active} ${more}`} to="/">
+            {items.title}
+          </Link>
+        </button>
       )}
     </li>
   );

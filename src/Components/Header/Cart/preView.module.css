@@ -1,0 +1,67 @@
+.pre-view {
+  cursor: default;
+  position: absolute;
+  right: 1rem;
+  top: 2.2rem;
+  width: 18rem;
+  height: 9rem;
+  z-index: 3;
+}
+.view {
+  border: 0.1rem solid #ddd;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.3);
+  position: relative;
+  right: 0;
+  top: 2rem;
+  width: 18rem;
+  background-color: #fff;
+}
+.view-item {
+  cursor: pointer;
+  margin: 0 1rem;
+  padding: 0.6rem 0;
+  display: flex;
+  align-items: center;
+  border-bottom: 0.1rem solid #eee;
+}
+.view-item img {
+  display: inline;
+  width: 4.3rem;
+  height: 4.3rem;
+}
+.view-item p {
+  display: inline;
+  margin: 0;
+  margin-left: 1rem;
+  white-space: normal;
+}
+.view-item:hover {
+  text-decoration: underline;
+  color: #4285f4;
+}
+.my-cart {
+  margin-top: -0.1rem;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 0.1rem solid #d4d4d4;
+  background-color: #fafafa;
+  height: 3.75rem;
+  color: #333;
+}
+.my-cart:hover {
+  text-decoration: underline;
+  color: #4285f4;
+}
+.box-tail {
+  display: inline-block;
+  position: absolute;
+  width: 1rem;
+  height: 0.7rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 4;
+  background: url("../../../assets/img/header_img/header_img_collection.webp")
+    no-repeat -140px -39px;
+}

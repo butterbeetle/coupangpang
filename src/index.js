@@ -2,14 +2,14 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 
 import { Provider } from "react-redux";
-import reduxStore from "./store";
+import store from "./store";
 
 import "./index.css";
 import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-  <Provider store={reduxStore}>
+  <Provider store={store}>
     <App />
   </Provider>
 );

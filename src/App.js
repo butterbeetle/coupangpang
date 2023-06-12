@@ -33,7 +33,7 @@ import { lazy, useEffect, useLayoutEffect } from "react";
 
 /* IndexedDB */
 import { getIndexedDbData } from "./Util/IndexedDB";
-import { useUnload } from "./hooks/useUnload";
+// import { useUnload } from "./hooks/useUnload";
 import { getUserData } from "./store/login-action";
 import { getAddrData } from "./store/address-action";
 import OrderComplete from "./Components/Payment/complete/Complete";
@@ -106,12 +106,12 @@ function App() {
   const isLogged = useSelector((state) => state.logged.isLogged);
 
   /* 창 종료 시 indexedDB data 삭제 */
-  useUnload((e) => {
-    e.preventDefault();
-    /* popup 문제 */
-    // @TODO window.onbeforeunload 찾아보기
-    // dispatch(loggedActions.logout());
-  });
+  // useUnload((e) => {
+  //   e.preventDefault();
+  //   /* popup 문제 */
+  //   // @TODO window.onbeforeunload 찾아보기
+  //   // dispatch(loggedActions.logout());
+  // });
 
   /* login 확인 */
   useLayoutEffect(() => {
@@ -141,14 +141,18 @@ function App() {
     if (cart.changed && isLogged) {
       dispatch(sendCartData(cart));
     }
-  }, [cart, recentView, dispatch, isLogged]);
 
-  /* 최근 본 상품 넣기 */
-  useEffect(() => {
     if (recentView.changed && isLogged) {
       dispatch(sendRecentViewData(recentView.items));
     }
-  }, [recentView, dispatch, isLogged]);
+  }, [cart, recentView, dispatch, isLogged]);
+
+  /* 최근 본 상품 넣기 */
+  // useEffect(() => {
+  //   if (recentView.changed && isLogged) {
+  //     dispatch(sendRecentViewData(recentView.items));
+  //   }
+  // }, [recentView, dispatch, isLogged]);
 
   return <RouterProvider router={router} />;
 }

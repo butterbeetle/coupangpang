@@ -73,3 +73,7 @@
 .hovermenu--ul li {
   padding: 3px 5px 0;
 }
+.hovermenu--ul li:hover {
+  text-decoration: underline;
+  color: #4285f4;
+}

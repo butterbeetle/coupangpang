@@ -34,7 +34,7 @@ export const getThumbnailUrl = (productId) => {
   return async (dispatch) => {
     const getData = async () => {
       dispatch(productActions.resetUrl());
-      const thumbnailRef = ref(storage, `/product/food/${productId}/thumbnail`);
+      const thumbnailRef = ref(storage, `/product/${productId}/thumbnail`);
       const res = await listAll(thumbnailRef);
       res.items.forEach(async (itemRef) => {
         const url = await getDownloadURL(ref(storage, itemRef));
@@ -44,7 +44,7 @@ export const getThumbnailUrl = (productId) => {
     try {
       await getData();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 };
@@ -53,8 +53,9 @@ export const getDetailUrl = (productId) => {
   return async (dispatch) => {
     const getData = async () => {
       dispatch(productActions.resetUrl());
-      const detailRef = ref(storage, `/product/food/${productId}/detail`);
+      const detailRef = ref(storage, `/product/${productId}/detail`);
       const res = await listAll(detailRef);
+
       res.items.forEach(async (itemRef) => {
         const url = await getDownloadURL(ref(storage, itemRef));
         dispatch(productActions.addDetailUrl({ url }));
@@ -63,7 +64,7 @@ export const getDetailUrl = (productId) => {
     try {
       await getData();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 };

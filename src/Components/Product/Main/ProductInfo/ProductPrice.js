@@ -5,7 +5,7 @@ import { AiOutlineInfo } from "@react-icons/all-files/ai/AiOutlineInfo";
 import { ImCoinDollar } from "@react-icons/all-files/im/ImCoinDollar";
 
 const ProductPrice = () => {
-  const prodDiscount = useSelector((state) => state.prod.discount);
+  const prodDiscount = useSelector((state) => state.prod.discount) ?? 0;
   const { price } = useSelector((state) => state.prod.current);
 
   return (

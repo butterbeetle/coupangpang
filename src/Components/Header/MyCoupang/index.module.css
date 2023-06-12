@@ -1,0 +1,55 @@
+.main {
+  margin-right: 20px;
+  width: 30px;
+  height: 35px;
+  background: url("../../../assets/img/header_img/header_img_collection.webp")
+    no-repeat -112px -36px;
+}
+.my-coupang {
+  display: inline-block;
+  position: relative;
+  top: 28px;
+  left: -9px;
+}
+
+.pre-view {
+  cursor: default;
+  position: absolute;
+  left: -0.5rem;
+  top: 3.5rem;
+  width: 6rem;
+  height: 8rem;
+  z-index: 3;
+}
+.view {
+  padding: 0.5rem 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border: 0.1rem solid #ddd;
+  box-shadow: 0 4px 5px rgba(117, 105, 105, 0.3);
+  position: relative;
+  right: 0;
+  top: 0.53rem;
+  width: 6rem;
+  background-color: #fff;
+}
+.view p {
+  cursor: pointer;
+  margin: 0.5rem;
+}
+.view p:hover {
+  text-decoration: underline;
+  color: #4285f4;
+}
+.box-tail {
+  display: inline-block;
+  position: absolute;
+  width: 1rem;
+  height: 0.7rem;
+  top: 0;
+  right: 2.5rem;
+  z-index: 4;
+  background: url("../../../assets/img/header_img/header_img_collection.webp")
+    no-repeat -140px -39px;
+}

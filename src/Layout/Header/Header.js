@@ -8,8 +8,9 @@ import CategoryItems from "./CategoryItems";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import HeaderCart from "../../Components/Header/Cart";
+import HeaderMyCoupang from "../../Components/Header/MyCoupang";
 
 const searchTagItems = [
   { title: "전체" },
@@ -45,15 +46,7 @@ const searchTagItems = [
   { title: "실버스토어" },
 ];
 
-const myCoupangItems = [
-  { title: "주문목록" },
-  { title: "취소/반품" },
-  { title: "찜 리스트" },
-];
-
 const Header = () => {
-  /* 장바구니 전체 수량 */
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   /* 드롭다운 표시 */
   const [dropdown, setDropdown] = useState(false);
   const viewPortHeight = window.innerHeight - 125;
@@ -74,15 +67,6 @@ const Header = () => {
         display: "none",
       },
     },
-  };
-  /* 마이쿠팡 마우스오버 시 */
-  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
-
-  const onMouseEnter = () => {
-    setMyCoupangDropdown(true);
-  };
-  const onMouseLeave = () => {
-    setMyCoupangDropdown(false);
   };
 
   /* 외부 클릭 시 드롭다운 메뉴 닫힘 */
@@ -141,45 +125,8 @@ const Header = () => {
                 </form>
               </div>
               <ul className={styles.searchBox__mainBox__user}>
-                <li onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-                  <div className={styles.searchBox__mainBox__user__info}>
-                    <p className={styles["mycoupang"]}>마이쿠팡</p>
-                    {myCoupangDropdown && (
-                      <div className={styles["myCoupang-dropdown"]}>
-                        <i className={styles["speech-icon"]}></i>
-                        <ul
-                          className={`${styles["menus"]} ${styles["my-coupang"]}`}
-                        >
-                          {myCoupangItems.map((menu, idx) => {
-                            const depth = 0;
-                            return (
-                              <CategoryItems
-                                items={menu}
-                                key={idx}
-                                depth={depth}
-                                type={1}
-                              />
-                            );
-                          })}
-                        </ul>
-                      </div>
-                    )}
-                  </div>
-                </li>
-                <li>
-                  <Link to="/cart">
-                    <div className={styles.searchBox__mainBox__user__cart}>
-                      <p className={styles["mycart"]}>장바구니</p>
-                      <p
-                        className={
-                          styles.searchBox__mainBox__user__cart__counter
-                        }
-                      >
-                        {totalQuantity > 0 ? totalQuantity : 0}
-                      </p>
-                    </div>
-                  </Link>
-                </li>
+                <HeaderMyCoupang />
+                <HeaderCart />
               </ul>
             </div>
             <ul className={styles.searchBox__gnbMenu}>
