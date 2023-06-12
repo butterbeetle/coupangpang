@@ -12,7 +12,9 @@ export const getRecentViewData = () => {
     const getData = async () => {
       const { uid } = await getIndexedDbData();
       if (uid === null) return;
-      const docSnap = await getDoc(doc(firestore, "recentView", uid));
+      const docSnap = await getDoc(
+        doc(firestore, `users/${uid}/recentView`, "infos")
+      );
       if (docSnap.exists()) {
         // console.log("Redux:", docSnap.data().items);
         dispatch(
@@ -34,7 +36,8 @@ export const sendRecentViewData = (RecentViewData) => {
   return async () => {
     const sendData = async () => {
       const { uid } = await getIndexedDbData();
-      await setDoc(doc(firestore, "recentView", uid), {
+      if (uid === null) return;
+      await setDoc(doc(firestore, `users/${uid}/recentView`, "infos"), {
         items: RecentViewData,
       });
     };
