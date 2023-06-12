@@ -46,12 +46,6 @@ const searchTagItems = [
   { title: "실버스토어" },
 ];
 
-const myCoupangItems = [
-  { title: "주문목록" },
-  { title: "취소/반품" },
-  { title: "찜 리스트" },
-];
-
 const Header = () => {
   /* 드롭다운 표시 */
   const [dropdown, setDropdown] = useState(false);
@@ -73,15 +67,6 @@ const Header = () => {
         display: "none",
       },
     },
-  };
-  /* 마이쿠팡 마우스오버 시 */
-  const [myCoupangDropdown, setMyCoupangDropdown] = useState(false);
-
-  const onMouseEnter = () => {
-    setMyCoupangDropdown(true);
-  };
-  const onMouseLeave = () => {
-    setMyCoupangDropdown(false);
   };
 
   /* 외부 클릭 시 드롭다운 메뉴 닫힘 */
