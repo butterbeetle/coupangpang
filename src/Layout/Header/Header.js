@@ -8,8 +8,8 @@ import CategoryItems from "./CategoryItems";
 import { Link } from "react-router-dom";
 
 import { motion } from "framer-motion";
-import { useSelector } from "react-redux";
 import useOutsideClick from "../../hooks/useOutsideClick";
+import HeaderCart from "../../Components/Header/Cart";
 
 const searchTagItems = [
   { title: "전체" },
@@ -52,8 +52,6 @@ const myCoupangItems = [
 ];
 
 const Header = () => {
-  /* 장바구니 전체 수량 */
-  const totalQuantity = useSelector((state) => state.cart.totalQuantity);
   /* 드롭다운 표시 */
   const [dropdown, setDropdown] = useState(false);
   const viewPortHeight = window.innerHeight - 125;
@@ -166,20 +164,7 @@ const Header = () => {
                     )}
                   </div>
                 </li>
-                <li>
-                  <Link to="/cart">
-                    <div className={styles.searchBox__mainBox__user__cart}>
-                      <p className={styles["mycart"]}>장바구니</p>
-                      <p
-                        className={
-                          styles.searchBox__mainBox__user__cart__counter
-                        }
-                      >
-                        {totalQuantity > 0 ? totalQuantity : 0}
-                      </p>
-                    </div>
-                  </Link>
-                </li>
+                <HeaderCart />
               </ul>
             </div>
             <ul className={styles.searchBox__gnbMenu}>
