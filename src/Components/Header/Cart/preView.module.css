@@ -32,7 +32,7 @@
 .view-item p {
   display: inline;
   margin: 0;
-  margin-left: 0.5rem;
+  margin-left: 1rem;
   white-space: normal;
 }
 .view-item:hover {
