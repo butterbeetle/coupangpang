@@ -2,7 +2,7 @@
   cursor: default;
   position: absolute;
   right: 1rem;
-  top: 2.5rem;
+  top: 2.2rem;
   width: 18rem;
   height: 9rem;
   z-index: 3;
@@ -53,4 +53,15 @@
 .my-cart:hover {
   text-decoration: underline;
   color: #4285f4;
+}
+.box-tail {
+  display: inline-block;
+  position: absolute;
+  width: 1rem;
+  height: 0.7rem;
+  top: 1.5rem;
+  right: 1.5rem;
+  z-index: 4;
+  background: url("../../../assets/img/header_img/header_img_collection.webp")
+    no-repeat -140px -39px;
 }
