@@ -11,7 +11,9 @@ export const getAddrData = () => {
     const getData = async () => {
       const { uid } = await getIndexedDbData();
       if (uid === null) return;
-      const docSnap = await getDoc(doc(firestore, "addr", uid));
+      const docSnap = await getDoc(
+        doc(firestore, `users/${uid}/addr`, "infos")
+      );
       if (docSnap.exists()) {
         dispatch(
           addrActions.replaceAddr({
@@ -32,7 +34,7 @@ export const sendAddrData = (addr) => {
   return async () => {
     const sendData = async () => {
       const { uid } = await getIndexedDbData();
-      await setDoc(doc(firestore, "addr", uid), {
+      await setDoc(doc(firestore, `users/${uid}/addr`, "infos"), {
         data: addr,
       });
     };
