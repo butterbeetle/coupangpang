@@ -4,7 +4,7 @@ import { AiOutlineInfoCircle } from "@react-icons/all-files/ai/AiOutlineInfoCirc
 import { ImCoinDollar } from "@react-icons/all-files/im/ImCoinDollar";
 import { useSelector } from "react-redux";
 const ProductCash = () => {
-  const prodDiscount = useSelector((state) => state.prod.discount);
+  const prodDiscount = useSelector((state) => state.prod.discount) ?? 0;
   const { price } = useSelector((state) => state.prod.current);
 
   return (
@@ -17,13 +17,11 @@ const ProductCash = () => {
         </div>
         <div>
           <p>
-            최대{" "}
+            최대
             <strong>
-              {parseInt(
-                (price - price * prodDiscount * 0.01) * 0.01
-              ).toLocaleString()}
+              {((price - price * prodDiscount * 0.01) * 0.01).toLocaleString()}
               원
-            </strong>{" "}
+            </strong>
             적립
           </p>
         </div>
