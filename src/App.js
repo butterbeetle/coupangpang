@@ -47,8 +47,6 @@ import OrderComplete from "./Components/Payment/complete/Complete";
 //     </Suspense>
 //   );
 // };
-import dotenv from "dotenv";
-dotenv.config();
 
 const ProductDetail = lazy(() => import("./pages/ProductDetail"));
 
