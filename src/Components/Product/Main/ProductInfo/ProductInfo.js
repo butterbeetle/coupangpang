@@ -36,7 +36,7 @@ const ProductInfo = () => {
     }
   }, [dispatch, id, title, price, url, isLogged]);
 
-  console.log(seller);
+  // console.log(seller);
   return (
     <div className={styles["product__info"]}>
       <ProductHeader />
