@@ -1,6 +1,8 @@
 import styles from "./ProductTab.module.css";
+/* Components */
 import ProductTabMenu from "./ProductTabMenu";
 import ProductTabContents from "./ProductTabContents";
+/* Hook */
 import { useRef } from "react";
 
 const ProductTab = () => {

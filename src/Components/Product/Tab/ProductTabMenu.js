@@ -35,6 +35,7 @@ const ProductTabMenu = ({ refArray }) => {
       block: "start",
     });
   };
+
   return (
     <ul
       className={`${styles["tab-menu"]} ${scrollAct ? styles["fixed"] : ""}`}
