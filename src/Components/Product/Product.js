@@ -47,7 +47,6 @@ const Product = () => {
       {loading && <LoadingModal />}
       <div className={styles["main"]}>
         <ProductMain />
-        <div>{/* 함께 비교하면 좋을 상품 */}</div>
         <ProductTab />
       </div>
     </section>

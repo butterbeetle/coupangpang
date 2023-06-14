@@ -36,7 +36,6 @@ const TodayItems = ({ item, idx, activeItem, itemNumber, isActive }) => {
 
   return (
     <li
-      key={idx}
       className={styles["today-item"]}
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}

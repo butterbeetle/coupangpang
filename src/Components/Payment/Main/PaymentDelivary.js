@@ -1,13 +1,11 @@
 import { useSelector } from "react-redux";
 import styles from "./PaymentDelivary.module.css";
 import PaymentItem from "./PaymentItem";
+import { dateFormat } from "../../../Util/format";
 
 const PaymentDelivary = () => {
+  const { day, month, date } = dateFormat(new Date());
   const currentItems = useSelector((state) => state.order.currentItems.items);
-
-  const day = ["일", "월", "화", "수", "목", "금", "토"];
-  const today = new Date();
-  const tomorrow = new Date(today.setDate(today.getDate() + 1));
 
   return (
     <div className={styles["content"]}>
@@ -16,9 +14,9 @@ const PaymentDelivary = () => {
       </div>
       <div className={styles["customer"]}>
         <div className={styles["customer__info"]}>
-          <div className={styles["customer__info__header"]}>{`내일(${
-            day[tomorrow.getDay()]
-          }) ${tomorrow.getMonth() + 1}/${tomorrow.getDate()} 도착 보장`}</div>
+          <div
+            className={styles["customer__info__header"]}
+          >{`내일 ${day}요일 ${month}/${date} 도착 예정`}</div>
           {currentItems.map((item) => (
             <PaymentItem key={item.id} item={item} />
           ))}

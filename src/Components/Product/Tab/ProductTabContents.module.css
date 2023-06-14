@@ -2,6 +2,9 @@
   margin: 0;
 }
 /* 상품상세 */
+.contents__detail {
+  scroll-margin-top: 0.5rem;
+}
 .detail__title {
   font-size: 0.9rem;
   margin-bottom: 0.5rem;
@@ -92,6 +95,7 @@
 /* 상품평 */
 .contents__review {
   margin-top: 2rem;
+  scroll-margin-top: 5rem;
 }
 .review__header {
   position: relative;
@@ -125,6 +129,7 @@
 /* 상품문의 */
 .contents__enquiry {
   margin-top: 2rem;
+  scroll-margin-top: 5rem;
 }
 .enquiry__main {
   padding: 2.5rem;
@@ -194,6 +199,7 @@
 /* 배송/교환/반품 안내 */
 .contents__notice {
   margin-top: 2.5rem;
+  scroll-margin-top: 5rem;
 }
 .contents__notice h5 {
   font-size: 0.9rem;

@@ -1,12 +1,18 @@
-.tab__menu {
+.tab-menu {
   display: flex;
   width: 100%;
   border-top: 0.15rem solid #555;
   border-bottom: 0.1rem solid #ccc;
   border-left: 0.1rem solid #ccc;
   box-sizing: border-box;
+  z-index: 2;
 }
-.tab__menu li {
+.fixed {
+  position: fixed;
+  width: 63rem;
+  top: -1rem;
+}
+.menu {
   cursor: pointer;
   padding: 0.9rem 0;
   width: 25%;
@@ -16,7 +22,7 @@
   color: #555;
   font-weight: bold;
 }
-.tab__menu li:first-child {
+.active {
   color: #111;
   background-color: #fff;
   margin-bottom: -0.1rem;

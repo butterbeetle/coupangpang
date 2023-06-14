@@ -16,6 +16,8 @@ export const getProductData = (productId) => {
             title: docSnap.data().title,
             price: docSnap.data().price,
             discount: docSnap.data().discount,
+            seller: docSnap.data().seller,
+            delivery_service: docSnap.data().delivery_service,
             review: docSnap.data().review,
             maxQuantity: docSnap.data().maxQuantity,
           })

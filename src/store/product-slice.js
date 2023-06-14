@@ -8,6 +8,8 @@ const initialState = {
   discount: "",
   review: "",
   maxQuantity: "",
+  seller: "",
+  delivery_service: "",
   detailUrl: [],
   thumbnailUrl: [],
   current: {
@@ -28,6 +30,8 @@ const productSlice = createSlice({
       state.title = action.payload.title;
       state.price = action.payload.price;
       state.discount = action.payload.discount;
+      state.seller = action.payload.seller;
+      state.delivery_service = action.payload.delivery_service;
       state.review = action.payload.review;
       state.maxQuantity = action.payload.maxQuantity;
     },
