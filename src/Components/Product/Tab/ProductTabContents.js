@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import { IoIosArrowUp } from "@react-icons/all-files/io/IoIosArrowUp";
 import { IoIosArrowDown } from "@react-icons/all-files/io/IoIosArrowDown";
 import { RiErrorWarningFill } from "@react-icons/all-files/ri/RiErrorWarningFill";
-const ProductTabContents = () => {
+const ProductTabContents = ({ refArray }) => {
   const [seeMore, setSeeMore] = useState(false);
 
   const urlArray = useSelector((state) => state.prod.detailUrl);
@@ -14,9 +14,13 @@ const ProductTabContents = () => {
   const seeMoreHandler = () => {
     setSeeMore((prev) => !prev);
   };
+
   return (
     <ul className={styles["tab__contents"]}>
-      <li className={styles["contents__detail"]}>
+      <li
+        className={styles["contents__detail"]}
+        ref={(el) => (refArray.current[0] = el)}
+      >
         <div>
           <p className={styles["detail__title"]}>필수 표기정보</p>
           <div className={styles["detail__info"]}>
@@ -95,7 +99,10 @@ const ProductTabContents = () => {
         {/* 이런 상품은 어때요? */}
         {/* 다른 고객이 함께 본 상품 */}
       </li>
-      <li className={styles["contents__review"]}>
+      <li
+        className={styles["contents__review"]}
+        ref={(el) => (refArray.current[1] = el)}
+      >
         <div className={styles["review__header"]}>
           <p>상품평 운영원칙</p>
           <p>상품평</p>
@@ -107,7 +114,10 @@ const ProductTabContents = () => {
         </div>
         {/* 4점 이상 리뷰가 좋은 상품*/}
       </li>
-      <li className={styles["contents__enquiry"]}>
+      <li
+        className={styles["contents__enquiry"]}
+        ref={(el) => (refArray.current[2] = el)}
+      >
         <div className={styles["enquiry__main"]}>
           <div className={styles["enquiry__header"]}>
             <h4>상품문의</h4>
@@ -156,7 +166,10 @@ const ProductTabContents = () => {
           </div>
         </div>
       </li>
-      <li className={styles["contents__notice"]}>
+      <li
+        className={styles["contents__notice"]}
+        ref={(el) => (refArray.current[3] = el)}
+      >
         <div className={styles["notice__delivery__info"]}>
           <h5>배송정보</h5>
           <div className={styles["notice__grid"]}>

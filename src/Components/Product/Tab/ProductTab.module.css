@@ -1,3 +1,5 @@
 .tab-main {
+  position: relative;
   width: 63rem;
+  height: auto;
 }
