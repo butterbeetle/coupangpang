@@ -4,7 +4,7 @@ import ProductTabContents from "./ProductTabContents";
 
 const ProductTab = () => {
   return (
-    <div className={styles["product__tab"]}>
+    <div className={styles["tab-main"]}>
       <ProductTabMenu />
       <ProductTabContents />
     </div>
