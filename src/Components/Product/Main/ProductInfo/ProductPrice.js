@@ -19,12 +19,12 @@ const ProductPrice = () => {
         <p className={styles["price__total"]}>{price.toLocaleString()}원</p>
         <p className={styles["price__info"]}>쿠팡판매가</p>
       </div>
-      <div className={styles["price__coupon"]}>
+      {/* <div className={styles["price__coupon"]}>
         <p className={styles["price__total"]}>
           {(price - price * prodDiscount * 0.01).toLocaleString()}원
         </p>
         <p className={styles["price__info"]}>와우할인가</p>
-      </div>
+      </div> */}
       <div>
         <div className={styles["price__badge"]}>
           <ImCoinDollar />

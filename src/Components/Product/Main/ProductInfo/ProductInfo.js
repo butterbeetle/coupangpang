@@ -17,9 +17,9 @@ import { recentViewSliceActions } from "../../../../store/recentView-slice";
 
 const ProductInfo = () => {
   const dispatch = useDispatch();
-  const id = useSelector((state) => state.prod.id);
-  const title = useSelector((state) => state.prod.title);
-  const price = useSelector((state) => state.prod.price);
+  const { id, title, price, seller, delivery_service } = useSelector(
+    (state) => state.prod
+  );
   const url = useSelector((state) => state.prod.thumbnailUrl[0]);
   const isLogged = useSelector((state) => state.logged.isLogged);
 
@@ -36,13 +36,14 @@ const ProductInfo = () => {
     }
   }, [dispatch, id, title, price, url, isLogged]);
 
+  console.log(seller);
   return (
     <div className={styles["product__info"]}>
       <ProductHeader />
       <ProductPrice />
       <ProductDelivery />
-      <ProductSeller />
-      <ProductDeliveryCompany />
+      {seller && <ProductSeller />}
+      {delivery_service && <ProductDeliveryCompany />}
       <ProductCash />
       <ProductBuy />
       <ProductDesc />
