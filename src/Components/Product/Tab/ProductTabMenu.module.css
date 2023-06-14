@@ -12,7 +12,7 @@
   width: 63rem;
   top: -1rem;
 }
-.tab-menu li {
+.menu {
   cursor: pointer;
   padding: 0.9rem 0;
   width: 25%;
@@ -22,7 +22,7 @@
   color: #555;
   font-weight: bold;
 }
-.tab-menu li:first-child {
+.active {
   color: #111;
   background-color: #fff;
   margin-bottom: -0.1rem;
