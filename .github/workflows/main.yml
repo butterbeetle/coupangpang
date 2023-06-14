@@ -1,0 +1,9 @@
+name: test workflow # Workflow 이름
+on: [push] # Event 감지
+jobs: # Job 설정
+  build: # Job ID
+    name: hello github action # Job 이름
+    runs-on: ubuntu-latest # Job 가상환경 인스턴스
+    steps: # Steps
+      - name: echo Hello # Step 이름
+        run: echo "Hello" # Run을 통한 스크립트 실행: Hello 출력
