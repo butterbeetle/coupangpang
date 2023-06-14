@@ -5,7 +5,6 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./pages/HomePage";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
-import ProductDetail from "./pages/ProductDetail";
 import PaymentPage from "./pages/PaymentPage";
 
 import LoginForm from "./Components/Auth/LoginForm";
@@ -49,6 +48,8 @@ import OrderComplete from "./Components/Payment/complete/Complete";
 //   );
 // };
 
+const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+
 const router = createBrowserRouter([
   {
     path: "/",
@@ -58,12 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
-        router: lazy(() => import("./pages/HomePage")),
       },
       {
         path: "/products/:productId",
         element: <ProductDetail />,
-        router: lazy(() => import("./pages/ProductDetail")),
       },
       {
         path: "/order/complete/:orderId",
