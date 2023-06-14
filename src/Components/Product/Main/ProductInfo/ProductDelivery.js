@@ -8,7 +8,7 @@ const ProductDelivery = () => {
       <p className={styles["delivery--type"]}>무료배송</p>
       <p
         className={styles["delivery--date"]}
-      >{`${day}요일 ${month}/${date} 도착 예정`}</p>
+      >{`내일 ${day}요일 ${month}/${date} 도착 예정`}</p>
     </div>
   );
 };
