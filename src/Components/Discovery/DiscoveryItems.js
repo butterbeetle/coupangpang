@@ -2,7 +2,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import styles from "./DiscoveryItems.module.css";
 
-const DiscoveryItems = ({ url, idx }) => {
+const DiscoveryItems = ({ idx }) => {
   const [hover, setHover] = useState(false);
 
   const onMouseEnter = () => {
@@ -23,7 +23,7 @@ const DiscoveryItems = ({ url, idx }) => {
       onMouseEnter={onMouseEnter}
       onMouseLeave={onMouseLeave}
     >
-      <Link to={url} title="/">
+      <Link to="/" title="/">
         <span className={`${styles["discovery__item--img0" + idx]}`} />
         {buyButton}
       </Link>
