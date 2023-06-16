@@ -246,6 +246,7 @@ const Personalized = () => {
                     key={item.id}
                     item_type="personalized"
                     img={item.thumbnail}
+                    url={item.id}
                     title={item.data.title}
                     discount={item.data.discount}
                     price={item.data.price}
