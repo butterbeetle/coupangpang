@@ -112,6 +112,12 @@ function App() {
   //   // dispatch(loggedActions.logout());
   // });
 
+  console.log("apiKey:", process.env.REACT_APP_APIKEY);
+  console.log("authDomain:", process.env.REACT_APP_AUTH_DOMAIN);
+  console.log("projectId:", process.env.REACT_APP_PROJECT_ID);
+  console.log("storageBucket:", process.env.REACT_APP_STORAGE_BUCKET);
+  console.log("messagingSenderId:", process.env.REACT_APP_MESSAGIN_ID);
+  console.log("appId:", process.env.REACT_APP_APP_ID);
   /* login 확인 */
   useLayoutEffect(() => {
     getIndexedDbData().then((e) => {
