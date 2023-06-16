@@ -16,6 +16,9 @@
   width: 18rem;
   background-color: #fff;
 }
+.none {
+  margin: 2rem 1rem;
+}
 .view-item {
   cursor: pointer;
   margin: 0 1rem;

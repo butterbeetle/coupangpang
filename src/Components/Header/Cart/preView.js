@@ -8,9 +8,10 @@ const PreView = () => {
   /* 장바구니 */
   const { items } = useSelector((state) => state.cart);
 
-  return (
-    <div className={styles["pre-view"]}>
-      <i className={styles["box-tail"]} />
+  console.log(items?.length);
+
+  let cartView =
+    items?.length > 0 ? (
       <div className={styles["view"]}>
         {[...items]
           .reverse()
@@ -27,6 +28,16 @@ const PreView = () => {
           <div className={styles["my-cart"]}>장바구니 전체보기</div>
         </Link>
       </div>
+    ) : (
+      <div className={styles["view"]}>
+        <p className={styles["none"]}>장바구니에 담긴 상품이 없습니다.</p>
+      </div>
+    );
+
+  return (
+    <div className={styles["pre-view"]}>
+      <i className={styles["box-tail"]} />
+      {cartView}
     </div>
   );
 };
