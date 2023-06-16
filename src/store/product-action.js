@@ -1,9 +1,38 @@
 import { productActions } from "./product-slice";
 
 /* firebase */
-import { doc, getDoc } from "firebase/firestore";
 import { firestore, storage } from "../firebase-config";
+import { collection, doc, getDoc, getDocs } from "firebase/firestore";
 import { ref, getDownloadURL, listAll } from "firebase/storage";
+
+export const getAllProdData = () => {
+  return async (dispatch) => {
+    const getAllData = async () => {
+      const allDocs = await getDocs(collection(firestore, "product"));
+      allDocs.forEach(async (doc) => {
+        /* Thumbnail Image */
+        const thumbnailRef = ref(storage, `/product/${doc.id}/thumbnail`);
+        const thumbnailRes = await listAll(thumbnailRef);
+        thumbnailRes.items.forEach(async (itemRef) => {
+          const url = await getDownloadURL(ref(storage, itemRef));
+          const idx = url.indexOf(".webp");
+          const first = url.substring(idx - 2, idx).replace(/[^0-9]/g, "");
+          if (first === "1")
+            dispatch(productActions.setAllProdData({ id: doc.id, url }));
+        });
+
+        dispatch(
+          productActions.setAllProdData({ id: doc.id, data: doc.data() })
+        );
+      });
+    };
+    try {
+      await getAllData();
+    } catch (e) {
+      // console.log(e);
+    }
+  };
+};
 
 export const getProductData = (productId) => {
   return async (dispatch) => {
@@ -27,7 +56,7 @@ export const getProductData = (productId) => {
     try {
       await getData();
     } catch (e) {
-      console.log(e);
+      // console.log(e);
     }
   };
 };

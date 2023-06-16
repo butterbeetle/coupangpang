@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import styles from "./Personalized.module.css";
 import AdsItems from "./AdsItems";
@@ -18,6 +18,8 @@ import personalizedItem_12 from "../../assets/img/personalizedItems/item12.webp"
 import personalizedItem_13 from "../../assets/img/personalizedItems/item13.webp";
 import personalizedItem_14 from "../../assets/img/personalizedItems/item14.webp";
 import personalizedItem_15 from "../../assets/img/personalizedItems/item15.webp";
+import { useDispatch, useSelector } from "react-redux";
+import { getAllProdData } from "../../store/product-action";
 
 const personalizedItems = [
   {
@@ -175,13 +177,9 @@ const Personalized = () => {
   const totalItems = personalizedItems.length;
   const maxIndex = Math.ceil(totalItems / offset) - 1;
 
-  const prev = () => {
-    setBack(true);
+  const onSetBack = (e) => {
+    setBack(e);
   };
-  const next = () => {
-    setBack(false);
-  };
-
   const decreaseIndex = () => {
     if (playing) return;
     togglePlaying();
@@ -195,18 +193,23 @@ const Personalized = () => {
 
   const slides = {
     init: () => {
-      // console.log(index, "나오는 방향", "back:", back, back ? -980 : 980);
       return { x: back ? -980 : 980 };
     },
+
     center: {
       x: 0,
     },
 
     exit: () => {
-      // console.log(index, "사라지는 방향", "back:", back, back ? -980 : 980);
       return { x: back ? 980 : -980 };
     },
   };
+
+  const dispatch = useDispatch();
+  const { allProdData } = useSelector((state) => state.prod);
+  useEffect(() => {
+    dispatch(getAllProdData());
+  }, [dispatch]);
 
   return (
     <article className={styles["main"]}>
@@ -216,12 +219,12 @@ const Personalized = () => {
         </div>
         <div className={styles["items"]}>
           <span
-            onMouseEnter={prev}
+            onMouseEnter={() => onSetBack(true)}
             onClick={decreaseIndex}
             className={`${styles["items-button"]} ${styles["prev"]}`}
           />
           <span
-            onMouseEnter={next}
+            onMouseEnter={() => onSetBack(false)}
             onClick={increaseIndex}
             className={`${styles["items-button"]} ${styles["next"]}`}
           />
@@ -233,22 +236,21 @@ const Personalized = () => {
               initial="init"
               animate="center"
               exit="exit"
-              transition={{ type: "tween", duration: 0.6 }}
+              transition={{ type: "tween", duration: 0.8 }}
               className={styles["items--ul"]}
             >
-              {personalizedItems
+              {allProdData
                 .slice(offset * index, offset * index + offset)
-                .map((item, itemIndex) => (
+                .map((item) => (
                   <AdsItems
-                    key={itemIndex}
+                    key={item.id}
                     item_type="personalized"
-                    img={item.img}
-                    title={item.title}
-                    discount={item.discount}
-                    price={item.price}
-                    badge={item.badge}
-                    review_score={item.review_score}
-                    review_count={item.review_count}
+                    img={item.thumbnail}
+                    title={item.data.title}
+                    discount={item.data.discount}
+                    price={item.data.price}
+                    review_score={5}
+                    review_count={5}
                   />
                 ))}
             </motion.ul>
