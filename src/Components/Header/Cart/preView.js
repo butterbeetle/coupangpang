@@ -8,8 +8,6 @@ const PreView = () => {
   /* 장바구니 */
   const { items } = useSelector((state) => state.cart);
 
-  console.log(items?.length);
-
   let cartView =
     items?.length > 0 ? (
       <div className={styles["view"]}>
