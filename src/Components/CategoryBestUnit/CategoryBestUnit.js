@@ -1,10 +1,12 @@
 import styles from "./CategoryBestUnit.module.css";
-import { lazy, useContext } from "react";
+import { useContext } from "react";
 import SideMenu from "./SideMenu/SideMenu";
 /* Context */
 import { SideMenuContext } from "../../store/sideMenu-context";
 
-const Contents = lazy(() => import("./Contents"));
+// const Contents = lazy(() => import("./Contents"));
+
+import Contents from "./Contents";
 
 const CategoryBestUnit = () => {
   const sideCtx = useContext(SideMenuContext);

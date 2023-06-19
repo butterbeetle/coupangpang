@@ -33,19 +33,6 @@ const productSlice = createSlice({
           thumbnail: url,
         };
       }
-      // if (tUrl && idx > -1) {
-      //   if (state.allProdData[idx].thumbnail) {
-      //     const existingUrl = state.allProdData[idx].thumbnail.find(
-      //       (el) => el.url === tUrl
-      //     );
-      //     if (!existingUrl) state.allProdData[idx].thumbnail.push(tUrl);
-      //   } else {
-      //     state.allProdData[idx] = {
-      //       ...state.allProdData[idx],
-      //       thumbnail: [tUrl],
-      //     };
-      //   }
-      // }
     },
     chagneCurrentProd(state, action) {
       state.current = action.payload;
