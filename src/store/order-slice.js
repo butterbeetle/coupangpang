@@ -12,6 +12,9 @@ const orderSlice = createSlice({
       // console.log("redux", order);
       state.orderedItems.push(order);
     },
+    resetOrderedItems(state) {
+      state.orderedItems = [];
+    },
     addToCurrentItems(state, action) {
       const { addr, items, method } = action.payload;
 

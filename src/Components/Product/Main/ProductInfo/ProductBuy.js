@@ -6,10 +6,12 @@ import { IoMdArrowUp } from "@react-icons/all-files/io/IoMdArrowUp";
 import { IoMdArrowDown } from "@react-icons/all-files/io/IoMdArrowDown";
 import { IoMdArrowForward } from "@react-icons/all-files/io/IoMdArrowForward";
 
+/* Redux */
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { cartActions } from "../../../../store/cart-slice";
 import { productActions } from "../../../../store/product-slice";
+import { orderActions } from "../../../../store/order-slice";
 
 const ProductBuy = () => {
   const isLogged = useSelector((state) => state.logged.isLogged);
@@ -17,7 +19,7 @@ const ProductBuy = () => {
   const prodPrice = useSelector((state) => state.prod.price);
   const prodTitle = useSelector((state) => state.prod.title);
   const prodMaxQuantity = useSelector((state) => state.prod.maxQuantity) ?? 999;
-
+  const prodImg = useSelector((state) => state.prod.thumbnailUrl);
   /* 가격 */
   const [price, setPrice] = useState(prodPrice);
   /* 개수 */
@@ -100,6 +102,21 @@ const ProductBuy = () => {
     }
   };
 
+  /* 바로 구매 시 */
+  const addToCurrentItemsHandler = () => {
+    const items = [
+      {
+        id: prodId,
+        name: prodTitle,
+        quantity: quantity,
+        thumbnail: prodImg[0].url,
+        totalPrice: price,
+      },
+    ];
+    // console.log("ProductBuy", items);
+    dispatch(orderActions.addToCurrentItems({ items }));
+  };
+
   let cartModal = isLogged ? (
     <div className={styles["goCart"]}>
       <MdCancel onClick={goCartCancel} />
@@ -142,7 +159,7 @@ const ProductBuy = () => {
         </button>
         <div></div>
         <Link to="/payment">
-          <button type="button">
+          <button type="button" onClick={addToCurrentItemsHandler}>
             바로 구매 <IoMdArrowForward />
           </button>
         </Link>

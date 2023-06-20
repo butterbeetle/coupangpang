@@ -17,7 +17,7 @@ const PaymentDelivary = () => {
           <div
             className={styles["customer__info__header"]}
           >{`내일 ${day}요일 ${month}/${date} 도착 예정`}</div>
-          {currentItems.map((item) => (
+          {currentItems?.map((item) => (
             <PaymentItem key={item.id} item={item} />
           ))}
         </div>

@@ -8,6 +8,7 @@ import { sendOrderedData } from "../../../store/order-action";
 /* Util */
 import { phoneFormat } from "../../../Util/format";
 import { cartActions } from "../../../store/cart-slice";
+import { orderActions } from "../../../store/order-slice";
 
 const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
 const TOSPAY = "tosspay.tosstest"; // 토스페이
@@ -22,13 +23,12 @@ const PaymentButton = () => {
 
   const curItems = useSelector((state) => state.order.currentItems);
   const checked = useSelector((state) => state.cart.checked);
-  const name = `${curItems.items[0]?.name.slice(0, 35)}${
-    checked?.length > 1 ? "... 외 " + (checked?.length - 1) + "개" : "..."
+
+  const items = useSelector((state) => state.order.currentItems.items);
+  const amount = items?.reduce((acc, cur) => (acc += cur.totalPrice), 0);
+  const name = `${items[0]?.name.slice(0, 35)}${
+    items?.length > 1 ? "... 외 " + (items?.length - 1) + "개" : "..."
   }`;
-  const amount = curItems.items?.reduce(
-    (acc, cur) => (acc += cur.totalPrice),
-    0
-  );
 
   const callback = (res) => {
     const {
@@ -73,6 +73,7 @@ const PaymentButton = () => {
       dispatch(cartActions.removeItemsToCart(checked));
       const date = new Date().getTime();
       dispatch(sendOrderedData({ date, ...curItems }));
+      dispatch(orderActions.resetOrderedItems());
       navigate(`/order/complete/IMP${date}`);
     } else {
       console.log(`결제 실패: ${error_msg}`);

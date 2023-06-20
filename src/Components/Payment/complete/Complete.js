@@ -59,7 +59,7 @@ const OrderComplete = () => {
         return "카드";
     }
   };
-  // console.log(orderedItems);
+
   return (
     <div className={styles["background"]}>
       {loading && <LoadingModal />}
