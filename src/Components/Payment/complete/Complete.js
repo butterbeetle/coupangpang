@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderedData } from "../../../store/order-action";
 import Sidebar from "../../Home/Sidebar/Sidebar";
+import { orderActions } from "../../../store/order-slice";
 
 const OrderComplete = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const OrderComplete = () => {
   /* 첫 접속 시 로딩 */
   useEffect(() => {
     setLoading(true);
+    dispatch(orderActions.resetOrderedItems());
     dispatch(getOrderedData(orderId));
   }, [dispatch, orderId]);
 
