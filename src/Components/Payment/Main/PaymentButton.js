@@ -73,7 +73,6 @@ const PaymentButton = () => {
       dispatch(cartActions.removeItemsToCart(checked));
       const date = new Date().getTime();
       dispatch(sendOrderedData({ date, ...curItems }));
-      dispatch(orderActions.resetOrderedItems());
       navigate(`/order/complete/IMP${date}`);
     } else {
       console.log(`결제 실패: ${error_msg}`);
