@@ -11,7 +11,6 @@ import LoadingModal from "../../../UI/LoadingModal";
 
 const PaymentAddress = () => {
   const dispatch = useDispatch();
-  const currentAddr = useSelector((state) => state.order.currentItems.addr);
   const addrData = useSelector((state) => state.addr.data);
   const addrLen = addrData.length;
 
@@ -21,9 +20,10 @@ const PaymentAddress = () => {
   const [popupData, setPopupData] = useState(null);
 
   //@TODO 배송지 추가하고 새로고침 안하면 안됨
-  console.log("currentAddr", currentAddr, Object.entries(currentAddr).length);
-  console.log("addrData", addrData);
-  console.log("popupData", popupData);
+  // console.log("currentAddr", currentAddr, Object.entries(currentAddr).length);
+  // console.log("addrData", addrData);
+  // console.log("addrrrr", addrrrr);
+  // console.log("popupData", popupData);
 
   const dNormal = popupData?.delivaryNormal;
   const comb = dNormal?.length === 0 ? "문 앞" : dNormal;
@@ -101,7 +101,7 @@ const PaymentAddress = () => {
   }, [popup]);
 
   let addressData =
-    addrLen > 0 ? (
+    popupData?.name?.length > 0 ? (
       <div className={styles["customer"]}>
         <div className={styles["customer__info"]}>
           <div className={styles["customer__info__header"]}>이름</div>
