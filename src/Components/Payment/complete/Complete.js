@@ -92,9 +92,13 @@ const OrderComplete = () => {
           {openProdInfo &&
             orderedItems?.items.map((item) => (
               <div className={styles["prod__main"]} key={item.id}>
-                <img src={item.thumbnail} alt="" loading="lazy" />
+                <Link to={`/products/${item.id}`}>
+                  <img src={item.thumbnail} alt="" loading="lazy" />
+                </Link>
                 <div className={styles["prod__main__text"]}>
-                  <p className={styles["prod__title"]}>{item.name}</p>
+                  <Link to={`/products/${item.id}`}>
+                    <p className={styles["prod__title"]}>{item.name}</p>
+                  </Link>
                   <p className={styles["prod__price"]}>
                     <strong>{item.totalPrice}</strong>원
                   </p>
