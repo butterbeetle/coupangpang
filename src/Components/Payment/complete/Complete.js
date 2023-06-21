@@ -100,7 +100,7 @@ const OrderComplete = () => {
                     <p className={styles["prod__title"]}>{item.name}</p>
                   </Link>
                   <p className={styles["prod__price"]}>
-                    <strong>{item.totalPrice}</strong>원
+                    <strong>{item.totalPrice.toLocaleString()}</strong>원
                   </p>
                   <p className={styles["prod__amount"]}>
                     수량: {item.quantity}개
