@@ -8,7 +8,6 @@ import { sendOrderedData } from "../../../store/order-action";
 /* Util */
 import { phoneFormat } from "../../../Util/format";
 import { cartActions } from "../../../store/cart-slice";
-import { orderActions } from "../../../store/order-slice";
 
 const KAKAOPAY = "kakaopay.TC0ONETIME"; // 카카오페이
 const TOSPAY = "tosspay.tosstest"; // 토스페이
