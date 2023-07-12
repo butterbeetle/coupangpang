@@ -4,7 +4,8 @@
 
 쿠팡을 참고하여 공부하면서 만든 클론 사이트입니다.
 <br>
-
+[바로 가기](http://butterbeetle-coupang.s3-website.ap-northeast-2.amazonaws.com/)
+<br>
 ### 👩🏻‍🤝‍🧑🏼 멤버 구성 (1)
 
 - 김승회 : 전체 기능 개발 및 CSS
