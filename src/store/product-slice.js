@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
   isLoading: true,
+  allProdData: [],
   id: "",
   title: "",
   price: "",
@@ -22,6 +23,17 @@ const productSlice = createSlice({
   name: "product",
   initialState,
   reducers: {
+    setAllProdData(state, action) {
+      const { id, data, url } = action.payload;
+      const idx = state.allProdData.findIndex((prodData) => prodData.id === id);
+      if (data && idx < 0) state.allProdData.push({ id, data });
+      if (url && idx > -1) {
+        state.allProdData[idx] = {
+          ...state.allProdData[idx],
+          thumbnail: url,
+        };
+      }
+    },
     chagneCurrentProd(state, action) {
       state.current = action.payload;
     },

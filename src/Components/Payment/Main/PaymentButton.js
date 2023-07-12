@@ -22,13 +22,12 @@ const PaymentButton = () => {
 
   const curItems = useSelector((state) => state.order.currentItems);
   const checked = useSelector((state) => state.cart.checked);
-  const name = `${curItems.items[0]?.name.slice(0, 35)}${
-    checked?.length > 1 ? "... 외 " + (checked?.length - 1) + "개" : "..."
+
+  const items = useSelector((state) => state.order.currentItems.items);
+  const amount = items?.reduce((acc, cur) => (acc += cur.totalPrice), 0);
+  const name = `${items[0]?.name.slice(0, 35)}${
+    items?.length > 1 ? "... 외 " + (items?.length - 1) + "개" : "..."
   }`;
-  const amount = curItems.items?.reduce(
-    (acc, cur) => (acc += cur.totalPrice),
-    0
-  );
 
   const callback = (res) => {
     const {

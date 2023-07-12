@@ -7,6 +7,7 @@ const AdsItems = ({
   img,
   title,
   discount,
+  url,
   discount_type = null,
   price,
   badge,
@@ -63,7 +64,7 @@ const AdsItems = ({
       onMouseLeave={onMouseLeave}
       className={`${styles[item_type + "-item"]}`}
     >
-      <Link href="/">
+      <Link to={url ? `/products/${url}` : "/"}>
         <div className={styles["infos"]}>
           <img src={img} alt="오늘의 쇼핑 제안1" loading="lazy" />
           {discount > 0 && discountJsx}

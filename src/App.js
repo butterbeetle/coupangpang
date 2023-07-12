@@ -6,6 +6,7 @@ import Home from "./pages/HomePage";
 import RootLayout from "./pages/Root";
 import ErrorPage from "./pages/Error";
 import PaymentPage from "./pages/PaymentPage";
+import ProductDetail from "./pages/ProductDetail";
 
 import LoginForm from "./Components/Auth/LoginForm";
 import JoinForm from "./Components/Auth/JoinForm";
@@ -28,7 +29,7 @@ import {
 import { getCartData, sendCartData } from "./store/cart-action";
 
 /* Hook */
-import { lazy, useEffect, useLayoutEffect } from "react";
+import { useEffect, useLayoutEffect } from "react";
 
 /* IndexedDB */
 import { getIndexedDbData } from "./Util/IndexedDB";
@@ -36,19 +37,7 @@ import { getIndexedDbData } from "./Util/IndexedDB";
 import { getUserData } from "./store/login-action";
 import { getAddrData } from "./store/address-action";
 import OrderComplete from "./Components/Payment/complete/Complete";
-
-// const lazyLoadRoutes = (componentName) => {
-//   const LazyElement = lazy(() => import(`./pages/Root`));
-
-//   // Wrapping around the suspense component is mandatory
-//   return (
-//     <Suspense fallback="Loading...">
-//       <LazyElement />
-//     </Suspense>
-//   );
-// };
-
-const ProductDetail = lazy(() => import("./pages/ProductDetail"));
+import { getAllProdData } from "./store/product-action";
 
 const router = createBrowserRouter([
   {
@@ -123,6 +112,7 @@ function App() {
 
   /* firebase에서 장바구니, 최근 본 상품 얻어오기 */
   useEffect(() => {
+    dispatch(getAllProdData());
     if (isLogged) {
       dispatch(getAddrData());
       dispatch(getUserData());

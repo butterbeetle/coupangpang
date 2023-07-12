@@ -74,6 +74,9 @@
   border-radius: 0.2rem;
   margin: 0 1rem;
 }
+.prod__main img:hover {
+  border: 0.1rem solid #4285f4;
+}
 .prod__main__text {
   margin-left: 1.8rem;
   font-size: 0.75rem;
@@ -83,6 +86,10 @@
   font-size: 0.85rem;
   margin-bottom: 1rem;
   font-weight: bold;
+}
+.prod__title:hover {
+  text-decoration: underline;
+  color: #4285f4;
 }
 .prod__price {
   margin: 0;

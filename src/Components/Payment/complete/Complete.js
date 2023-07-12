@@ -13,6 +13,7 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getOrderedData } from "../../../store/order-action";
 import Sidebar from "../../Home/Sidebar/Sidebar";
+import { orderActions } from "../../../store/order-slice";
 
 const OrderComplete = () => {
   const dispatch = useDispatch();
@@ -27,6 +28,7 @@ const OrderComplete = () => {
   /* 첫 접속 시 로딩 */
   useEffect(() => {
     setLoading(true);
+    dispatch(orderActions.resetOrderedItems());
     dispatch(getOrderedData(orderId));
   }, [dispatch, orderId]);
 
@@ -59,7 +61,7 @@ const OrderComplete = () => {
         return "카드";
     }
   };
-  // console.log(orderedItems);
+
   return (
     <div className={styles["background"]}>
       {loading && <LoadingModal />}
@@ -90,11 +92,15 @@ const OrderComplete = () => {
           {openProdInfo &&
             orderedItems?.items.map((item) => (
               <div className={styles["prod__main"]} key={item.id}>
-                <img src={item.thumbnail} alt="" loading="lazy" />
+                <Link to={`/products/${item.id}`}>
+                  <img src={item.thumbnail} alt="" loading="lazy" />
+                </Link>
                 <div className={styles["prod__main__text"]}>
-                  <p className={styles["prod__title"]}>{item.name}</p>
+                  <Link to={`/products/${item.id}`}>
+                    <p className={styles["prod__title"]}>{item.name}</p>
+                  </Link>
                   <p className={styles["prod__price"]}>
-                    <strong>{item.totalPrice}</strong>원
+                    <strong>{item.totalPrice.toLocaleString()}</strong>원
                   </p>
                   <p className={styles["prod__amount"]}>
                     수량: {item.quantity}개

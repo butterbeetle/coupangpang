@@ -96,7 +96,7 @@ const AddAddrData = () => {
   };
 
   /* 저장 */
-  const onsubmit = () => {
+  const onSubmit = () => {
     dispatch(
       addrActions.addAddr({
         id: state?.id ?? Math.floor((Date.now() * Math.random()) / 32),
@@ -162,7 +162,7 @@ const AddAddrData = () => {
       {loading && <LoadingModal />}
       <header className={styles["header"]}>배송지 추가</header>
       <main className={styles["main"]}>
-        <form onSubmit={handleSubmit(onsubmit)}>
+        <form onSubmit={handleSubmit(onSubmit)}>
           {openSearchPost ? (
             <DaumPostcodeEmbed onComplete={onComplete} autoClose={false} />
           ) : (

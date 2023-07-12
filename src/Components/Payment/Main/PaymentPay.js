@@ -1,26 +1,23 @@
 import styles from "./PaymentPay.module.css";
 import PaymentMethod from "./PaymentMethod";
 /* Hook */
-import { useEffect } from "react";
+// import { useEffect } from "react";
 /* Redux */
-import { useDispatch, useSelector } from "react-redux";
-import { orderActions } from "../../../store/order-slice";
+import { useSelector } from "react-redux";
+// import { orderActions } from "../../../store/order-slice";
 
 const PaymentPay = () => {
-  const dispatch = useDispatch();
-  const checked = useSelector((state) => state.cart.checked);
-  const cartItem = useSelector((state) => state.cart.items);
-  const purchasedItem = cartItem?.filter((item) => checked?.includes(item.id));
-
-  const amount = purchasedItem?.reduce(
-    (acc, cur) => (acc += cur.totalPrice),
-    0
-  );
+  // const dispatch = useDispatch();
+  // const checked = useSelector((state) => state.cart.checked);
+  // const cartItem = useSelector((state) => state.cart.items);
+  // const purchasedItem = cartItem?.filter((item) => checked?.includes(item.id));
+  const items = useSelector((state) => state.order.currentItems.items);
+  const amount = items?.reduce((acc, cur) => (acc += cur.totalPrice), 0);
 
   /* 새로고침 했을때를 위해 다시한번 저장 */
-  useEffect(() => {
-    dispatch(orderActions.addToCurrentItems({ items: purchasedItem }));
-  }, [dispatch, purchasedItem]);
+  // useEffect(() => {
+  //   dispatch(orderActions.addToCurrentItems({ items: purchasedItem }));
+  // }, [dispatch, purchasedItem]);
 
   return (
     <div className={styles["content"]}>

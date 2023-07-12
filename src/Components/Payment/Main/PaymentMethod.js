@@ -2,12 +2,13 @@ import styles from "./PaymentMethod.module.css";
 /* Hook */
 import { useState } from "react";
 /* Redux */
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { orderActions } from "../../../store/order-slice";
 
 const PaymentMethod = () => {
   const dispatch = useDispatch();
-  const [radio, setRadio] = useState("card");
+  const { method } = useSelector((state) => state.order.currentItems);
+  const [radio, setRadio] = useState(method);
   const radioHandler = (e) => {
     setRadio(e.target.value);
     dispatch(orderActions.addToCurrentItems({ method: e.target.value }));
