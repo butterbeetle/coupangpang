@@ -86,6 +86,7 @@ const router = createBrowserRouter([
 let isInitial = true;
 
 function App() {
+  console.log("Ver.7.12");
   const dispatch = useDispatch();
   /* 장바구니 데이터 */
   const cart = useSelector((state) => state.cart);
