@@ -4,8 +4,18 @@
 
 쿠팡을 참고하여 공부하면서 만든 클론 사이트입니다.
 <br>
+<br>
+id: t123@test.com
+<br>
+pw: qQ2413!!
+<br>
+<br>
+위 정보로 로그인 하실 수 있습니다!
+<br>
+<br>
 [바로 가기](http://butterbeetle-coupang.s3-website.ap-northeast-2.amazonaws.com/)
 <br>
+
 ### 👩🏻‍🤝‍🧑🏼 멤버 구성 (1)
 
 - 김승회 : 전체 기능 개발 및 CSS
@@ -125,9 +135,3 @@
       <summary>주문완료 페이지</summary>
       <img src="https://github.com/butterbeetle/coupangpang/assets/50831567/078f5c17-30b2-4d03-91b4-a168a16d14a2" alt="주문완료 페이지"/>
     </details>
-
-#### 마이 페이지
-
-- 기본 정보 (예정)
-- 주문 정보 (예정)
-- 찜 리스트 (예정)
